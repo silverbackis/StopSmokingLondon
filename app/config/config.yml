@@ -84,3 +84,120 @@ assetic:
             bin: /usr/local/bin/uglifyjs
 irozgar_gulp_rev_versions:
     manifest_path: "../src/AppBundle/Resources/assets/rev-manifest.json"
+
+sonata_seo:
+    encoding:         UTF-8
+    page:
+        title:        Website Name
+        default:      sonata.seo.page.default
+        metas:
+            name:
+                robots:               index, follow                
+                description:          The description
+                viewport:             width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1
+
+                # Only if an application
+                #application-name:     Website Name
+
+                # Android
+                #mobile-web-app-capable: 'yes'
+                theme-color:            '#000'
+
+                # Apple App Capable
+                #apple-mobile-web-app-capable:           'yes'
+                #apple-mobile-web-app-status-bar-style:  'black-translucent'
+
+                # Windows Phone - Back/Forward Button Colour
+                msapplication-navbutton-color:          '#000'
+
+                # Windows Phone - Shortcut Tile Colour
+                msapplication-TileColor:                '#000'
+
+            property:
+                # Facebook application settings - will be auto-added by fb ask if used
+                #fb:app_id:          XXXXXX
+                #fb:admins:          admin1, admin2
+
+                # Open Graph information
+                # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
+                og:site_name:       Website Name
+                og:description:     A demo of the some rich bundles for your Symfony2 projects
+                og:locale:          en_GB
+
+                #web based options: website, article or blog
+                og:type:            website
+
+            http-equiv:
+                'Content-Type':         text/html; charset=utf-8
+                #'X-Ua-Compatible':      IE=EmulateIE7
+
+            charset:
+                UTF-8:    ''
+
+        head:
+            xmlns:          http://www.w3.org/1999/xhtml
+            xmlns:og:       http://opengraphprotocol.org/schema/
+            #xmlns:fb:      "http://www.facebook.com/2008/fbml"
+
+            #Possible twitter namespace??
+            #xmlns:twitter: "http://api.twitter.com/"
+bw_base:
+    page:
+        #Will be merged with Sonata meta tags when being fetched using Twig extension - defining here means will auto-detect tags which are image assets and pass through the default package's getURL method (e.g. for CDN prefix in live environment)
+        metas:
+            name:
+                # Twitter card settings
+                twitter:card:       'summary_large_image'
+                twitter:site:       '@silverbackis'
+                twitter:creator:    '@silverbackis'
+                #twitter:image:      '%ogimages_folder%SocialImage.png'
+                twitter:image:alt:  'Alt tag for the twigger image'
+
+                #msapplication-TileImage:            '%icons_folder%mstile-144x144.png'
+                #msapplication-square70x70logo:      '%icons_folder%mstile-70x70.png'
+                #msapplication-square150x150logo:    '%icons_folder%mstile-150x150logo.png'
+                #msapplication-square310x310logo:    '%icons_folder%mstile-310x310.png'
+                #msapplication-wide310x150logo:      '%icons_folder%mstile-310x150.png'
+            property:
+                #Repeat images tags as many times as you want for new images
+                #og:image:          '%ogimages_folder%SocialImage.png'
+                #og:image:width:    '500'
+                #og:image:height:   '500'
+        links:
+            rel:
+                apple-touch-icon-precomposed:
+                    #- { sizes: 57x57, href: '%icons_folder%apple-touch-icon-57x57.png' }
+                    #- { sizes: 114x114, href: '%icons_folder%apple-touch-icon-114x114.png' }
+                    #- { sizes: 72x72, href: '%icons_folder%apple-touch-icon-72x72.png' }
+                    #- { sizes: 144x144, href: '%icons_folder%apple-touch-icon-144x144.png' }
+                    #- { sizes: 60x60, href: '%icons_folder%apple-touch-icon-60x60.png' }
+                    #- { sizes: 120x120, href: '%icons_folder%apple-touch-icon-120x120.png' }
+                    #- { sizes: 76x76, href: '%icons_folder%apple-touch-icon-76x76.png' }
+                    #- { sizes: 152x152, href: '%icons_folder%apple-touch-icon-152x152.png' }
+                icon:
+                    #- { type: image/png, sizes: 196x196, href: '%icons_folder%favicon-196x196.png' }
+                    #- { type: image/png, sizes: 96x96, href: '%icons_folder%favicon-96x96.png' }
+                    #- { type: image/png, sizes: 32x32, href: '%icons_folder%favicon-32x32.png' }
+                    #- { type: image/png, sizes: 16x16, href: '%icons_folder%favicon-16x16.png' }
+                    #- { type: image/png, sizes: 128x128, href: '%icons_folder%favicon-128x128.png' }
+                    #- { type: image/x-icon, href: '%icons_folder%favicon.ico' }
+        js_sdk:
+            ganalytics:
+                enabled: false
+                id: null
+                domain: auto
+            woopra:
+                enabled: false
+                domain: null
+            facebookPixel:
+                enabled: false
+                id: null
+            facebook:
+                enabled: false
+                app_id: null
+                xfbml: true
+                version: 'v2.8'
+                language: en_US
+                login_status_check: false
+                debug: false
+            twitter: false
