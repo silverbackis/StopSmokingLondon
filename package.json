@@ -1,0 +1,22 @@
+{
+  "name": "assetic-and-gulp-cache-busting-for-symfony",
+  "version": "1.0.0",
+  "description": "Symfony and Assetic with Gulp Cache Busing using irozgar/gulp-rev-versions-bundle",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-rev": "^7.1.2",
+    "rev-del": "^1.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel West <daniel@silverback.is>",
+  "license": "Apache-2.0",
+  "homepage": "https://gist.github.com/silverbackdan/d20e01b7d13bf32df7c5fa5fd6de0f62"
+}
