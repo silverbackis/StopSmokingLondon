@@ -1,0 +1,38 @@
+//custom bootstrap variables
+@import 'variables';
+
+// import bootstrap main scss
+@import 'bower/bootstrap/scss/bootstrap';
+
+body,
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-width: 320px;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.alert-dismissible .close {
+  padding: .55rem 1.25rem;
+}
+
+.modal-content {
+  color: $gray-dark;
+}
+
+.modal-title {
+  color: $teal-dark;
+}

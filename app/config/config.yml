@@ -71,13 +71,13 @@ swiftmailer:
     spool:     { type: memory }
 
 assetic:
-    write_to: '%kernel.root_dir%/../web/static/orig'
+    write_to: '%kernel.root_dir%/../src/AppBundle/Resources/assets/assetic'
     filters:
         cssrewrite: ~
         compass:
             bin: /usr/local/bin/compass
             load_paths: 
-            - "%kernel.root_dir%/../src/AppBundle/Resources/private/bower/"
+            - "%kernel.root_dir%/../src/AppBundle/Resources/assets/global/"
         uglifycss:
             bin: /usr/local/bin/uglifycss
         uglifyjs2:
