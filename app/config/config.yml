@@ -77,18 +77,19 @@ assetic:
         compass:
             bin: /usr/local/bin/compass
             load_paths: 
-            - "%kernel.root_dir%/../src/AppBundle/Resources/assets/global/"
+                - "%kernel.root_dir%/../src/AppBundle/Resources/assets/global/"
         uglifycss:
             bin: /usr/local/bin/uglifycss
         uglifyjs2:
             bin: /usr/local/bin/uglifyjs
+
 irozgar_gulp_rev_versions:
     manifest_path: "../src/AppBundle/Resources/assets/rev-manifest.json"
 
 sonata_seo:
     encoding:         UTF-8
     page:
-        title:        Website Name
+        title:        London's Stop Smoking Portal
         default:      sonata.seo.page.default
         metas:
             name:

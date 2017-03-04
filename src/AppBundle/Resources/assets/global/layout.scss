@@ -1,0 +1,113 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.page {
+  max-width: 2389px;
+  padding: 0;
+  width: auto;
+
+  .layout-table {
+    background: $gray-lighter;
+    margin: 0;
+
+    td {
+      border: 0;
+      padding: 0;
+    }
+  }
+}
+
+.header-bar {
+  background: $white;
+  box-shadow: 0 0 10px 0 rgba($black, .24);
+  padding: 20px 0;
+  text-align: right;
+  z-index: 2;
+
+  .header-bar-inner {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .header-logo {
+    display: block;
+    height: 85.5px;
+    width: 129.5px;
+  }
+
+  h2 {
+    @include roboto(30px, $blue);
+    bottom: 0;
+    margin: 0;
+    padding-left: 150px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+}
+
+.footer {
+  background-color: $white;
+  box-shadow: 0 0 6px 0 rgba($black, .24) inset;
+  padding-bottom: 15px;
+  padding-top: 30px;
+
+  .nav-link {
+    @include open-sans(16px, $gray);
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $blue;
+    }
+  }
+
+  .copyright-footer {
+    @include open-sans(15px, $gray-light);
+
+    a {
+      color: inherit !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .social-nav {
+    margin-top: 10px;
+  }
+
+  .social-link {
+    background: 50% 0 no-repeat;
+    background-size: auto 200%;
+    display: inline-block;
+    margin: auto 5px;
+    overflow: hidden;
+    padding: 0;
+    text-indent: -9999px;
+    vertical-align: middle;
+    width: 30px;
+
+    &.facebook {
+      background-image: url($asset-image-base + 'logo/footer_facebook.png');
+      height: 26px;
+    }
+
+    &.twitter {
+      background-image: url($asset-image-base + 'logo/footer_twitter.png');
+      height: 24px;
+    }
+
+    &.linkedin {
+      background-image: url($asset-image-base + 'logo/footer_linkedin.png');
+      height: 30px;
+    }
+
+    &:hover {
+      background-position: 50% 100%;
+    }
+  }
+}

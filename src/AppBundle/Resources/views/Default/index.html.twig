@@ -1,1 +1,82 @@
 {% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/index.scss'
+    filter='compass'
+    filter='cssrewrite'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+  {{ parent() }}
+  <div class="column">
+    <div class="row home-feature justify-content-center col-auto">
+      <div class="col-lg-10 align-self-center">
+        <h3 class="welcome">
+          <span class="small">Welcome to</span><br />
+          Stop Smoking London
+        </h3>
+      </div>
+    </div>
+    <div class="row home-bottom justify-content-center">
+      <div class="col-lg-11">
+        <div class="row h-100 triples-row gutter-lg">
+          <div class="home-right-bg"></div>
+          <div class="col-12 col-lg-auto">
+            <ul class="fact-list">
+              <li>
+                <img src="{{ asset('bundles/app/images/icon/map_london.png') }}" alt="Smokers in london with pie chart effect over London outline" class="fact-icon map" />
+                <span class="fact">1.3 million out of 8 million Londoners still smoke</span>
+              </li>
+              <li>
+                <img src="{{ asset('bundles/app/images/icon/stop.png') }}" alt="Stop sign - most smokers want to stop" class="fact-icon stop" />
+                <span class="fact">Most want to stop</span>
+              </li>
+              <li>
+                <img src="{{ asset('bundles/app/images/icon/stop_smoking.png') }}" alt="Stop smoking icon" class="fact-icon stop-smoking" />
+                <span class="fact">Stop Smoking London aims to help with that</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg">
+            <h4>Latest news</h4>
+            
+            <div class="card twitter-card mb-3">
+              <div class="card-block">
+                <div class="retweet-tag">
+                  <span class="text">CBC retweeted</span>
+                </div>
+                <h5 class="twitter-user"><img src="" /> University College London @UCL</h5>
+                <p class="mb-2">This is a sample tweet with some text and a link here <a href="#">http://t.co/dgb271</a></p>
+                <a class="view-tweet" href="#">View tweet</a>
+              </div>
+            </div>
+
+            <div class="card twitter-card">
+              <div class="card-block">
+                <h5 class="twitter-user"><img src="" /> University College London @UCL</h5>
+                <p class="mb-2">This is a sample tweet with some text no link at all</p>
+                <a class="view-tweet" href="#">View tweet</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg home-right">
+            <h4>What do you want to do?</h4>
+            <a class="btn btn-lg btn-block btn-success home-cta-link" href="#">I want to stop smoking</a>
+            <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">I want to help a family member or friend to stop</a>
+            <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">I want to know more about stopping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

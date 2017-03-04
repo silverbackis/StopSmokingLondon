@@ -1,26 +1,132 @@
-{% extends '@BWBase/base.html.twig' %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:300|Open+Sans:300,400" />
-    {% stylesheets 
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+  <head {{ sonata_seo_head_attributes() }}>
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+    {{ sonata_seo_link_canonical() }}
+    {{ sonata_seo_lang_alternates() }}
+    {{ bwbase_linktags() }}
+    {{ bwbase_sdks('head') }}
+    {% block stylesheets %}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Roboto:400,700" />
+      {% stylesheets 
         '@AppBundle/Resources/assets/global/bootstrap/bootstrap.scss'
+        '@AppBundle/Resources/assets/global/layout.scss'
         filter='compass'
         filter='cssrewrite'
         filter='?uglifycss'
         name='BaseCSS'
          %}
         <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
-
-{% block javascripts %}
-    {% javascripts
-        '@AppBundle/Resources/assets/global/greensock/TweenMax.min.js'
-        '@AppBundle/Resources/assets/global/bower/jquery/dist/jquery.min.js'
-        '@AppBundle/Resources/assets/global/bower/tether/dist/js/tether.min.js'
-        '@AppBundle/Resources/assets/global/bower/bootstrap/dist/js/bootstrap.min.js'
-        filter='?uglifyjs2'
-        name='BaseJS' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
+      {% endstylesheets %}
+    {% endblock %}
+  </head>
+  <body>
+      {{ bwbase_sdks('body') }}
+      {% block body %}
+        <div class="container-fluid h-100 page">
+        {# table to make sticky footer with dynamic height #}
+        <table class="table layout-table h-100">
+          <tbody>
+            <tr>
+              <td class="h-100">
+                {% block page %}
+                  <table class="table layout-table h-100">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="container-fluid">
+                            <div class="row header-bar justify-content-center">
+                              <div class="col-lg-10">
+                                <div class="header-bar-inner">
+                                  <img class="header-logo" src="{{ asset('bundles/app/images/logo/ssl_regular.png') }}" alt="Stop Smoking London Logo" />
+                                  <h2>The capital's starting point for <b>stopping smoking</b></h2>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="h-100">
+                          <div class="container-fluid h-100">
+                            {% block page_content %}{% endblock %}
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {% endblock %}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {% block footer %}
+                <footer class="container-fluid footer">
+                  {% block footer_content %}
+                    <div class="row">
+                      <div class="col">
+                        <ul class="nav justify-content-center">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Useful Links and Apps</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">More About Stopping</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Terms &amp; Privacy</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <ul class="nav justify-content-center social-nav">
+                          <li class="nav-item">
+                            <a class="nav-link social-link twitter" href="#">Follow us on Twitter</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link social-link facebook" href="#">Like us on Facebook</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link social-link linkedin" href="#">Connect on LinkedIn</a>
+                          </li>
+                        </ul>                        
+                      </div>
+                    </div>
+                    <div class="row copyright-footer">
+                      <div class="col">
+                        &copy; {{ "now"|date("Y") }} Stop Smoking London
+                      </div>
+                      <div class="col-12 col-auto">
+                        <a href="https://www.britishwebsites.co.uk" target="_blank">site by British Websites</a>
+                      </div>
+                    </div>
+                  {% endblock %}
+                </footer>
+                {% endblock %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      {% endblock %}
+      
+      {% block javascripts %}
+        {% javascripts
+          '@AppBundle/Resources/assets/global/greensock/TweenMax.min.js'
+          '@AppBundle/Resources/assets/global/bower/jquery/dist/jquery.min.js'
+          '@AppBundle/Resources/assets/global/bower/tether/dist/js/tether.min.js'
+          '@AppBundle/Resources/assets/global/bower/bootstrap/dist/js/bootstrap.min.js'
+          filter='?uglifyjs2'
+          name='BaseJS' %}
+          <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+      {% endblock %}
+  </body>
+</html>
