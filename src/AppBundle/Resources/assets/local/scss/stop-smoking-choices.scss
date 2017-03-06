@@ -1,0 +1,136 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.tell-me-header {
+  @include open-sans(1.8rem, $blue-dark, $semi-bold);
+  margin: 20px 0;
+  text-align: center;
+}
+
+.btn-cta {
+  padding: .75rem .5rem;
+
+  .top-img {
+    height: 43px;
+  }
+}
+
+.chance-percent-row {
+  @include open-sans(.83rem, $gray-dark);
+  text-align: center;
+
+  b {
+    color: $blue;
+    display: inline-block;
+    min-width: 39px;
+    text-align: center;
+  }
+}
+
+.chance-percent-row,
+.arrow-row {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.arrow-row {
+  display: none;
+
+  .selected-arrow {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.card-outline-success {
+  @include open-sans(1rem, $gray-dark);
+  border-color: $green;
+
+  .card-block {
+    padding: 1rem;
+  }
+
+  .btn-cta {
+    font-size: inherit;
+    min-width: 355px;
+    padding: .65rem 2.5rem;
+    width: auto;
+  }
+}
+
+.info-cols {
+  margin: 3rem 0;
+  text-align: center;
+
+  > .row {
+    margin-left: -1.2rem;
+    margin-right: -1.2rem;
+  }
+
+  .info-title {
+    @include open-sans(1.2rem, $blue, $semi-bold);
+    margin: 1.5rem 0 .5rem;
+  }
+
+  .col-image {
+    height: 135px;
+  }
+
+  .info-list {
+    @include open-sans(1rem);
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 0 0 1rem;
+      padding: 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .info-cols {
+    > .row {
+      margin-left: -3rem;
+      margin-right: -3rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .btn-cta {
+    .text {
+      height: 36px;
+    }
+  }
+
+  .tell-me-header {
+    font-size: 1.4rem;
+  }
+
+  .info-cols {
+    margin-top: 0;
+
+    .info-title {
+      color: $green;
+      font-size: 1.5rem;
+    }
+
+    .col-12 {
+      margin-top: 2rem;
+    }
+  }
+
+  .card-outline-success {
+    font-size: .8rem;
+
+    .btn-cta {
+      font-size: inherit;
+      margin: .5rem 0 0 !important;
+      min-width: 0;
+      padding: .65rem 0;
+      width: 100%;
+    }
+  }
+}

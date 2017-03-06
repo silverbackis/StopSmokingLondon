@@ -33,12 +33,12 @@
                     <tbody>
                       <tr>
                         <td>
-                          <div class="container-fluid">
+                          <div class="container-fluid header-container">
                             <div class="row header-bar justify-content-center">
                               <div class="col-lg-10">
                                 <div class="header-bar-inner">
-                                  <img class="header-logo" src="{{ asset('bundles/app/images/logo/ssl_regular.png') }}" alt="Stop Smoking London Logo" />
                                   <h2>The capital's starting point for <b>stopping smoking</b></h2>
+                                  <a href="/" style="position: relative;"><img class="header-logo" src="{{ asset('bundles/app/images/logo/ssl_regular.png') }}" alt="Stop Smoking London Logo" /></a>
                                 </div>
                               </div>
                             </div>
@@ -47,9 +47,7 @@
                       </tr>
                       <tr>
                         <td class="h-100">
-                          <div class="container-fluid h-100">
-                            {% block page_content %}{% endblock %}
-                          </div>
+                          {% block page_content %}{% endblock %}
                         </td>
                       </tr>
                     </tbody>
