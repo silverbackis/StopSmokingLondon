@@ -2,6 +2,13 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+
+.jumbotron {
+  h2 {
+    font-size: 3rem;
+  }
+}
+
 .tell-me-header {
   @include open-sans(1.8rem, $blue-dark, $semi-bold);
   margin: 20px 0;
@@ -115,22 +122,34 @@
     .info-title {
       color: $green;
       font-size: 1.5rem;
+      margin: 1rem 0;
     }
 
     .col-12 {
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
   }
 
   .card-outline-success {
     font-size: .8rem;
 
+    .text-chances {
+      display: block;
+      margin-bottom: .3rem;
+    }
+
     .btn-cta {
       font-size: inherit;
-      margin: .5rem 0 0 !important;
+      margin-left: 0 !important;
       min-width: 0;
       padding: .65rem 0;
       width: 100%;
+    }
+  }
+
+  .jumbotron {
+    h2 {
+      font-size: 1.8rem;
     }
   }
 }

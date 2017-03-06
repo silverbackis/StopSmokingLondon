@@ -138,7 +138,7 @@
   margin-bottom: 0;
 
   h2 {
-    @include open-sans(3rem, $white, $semi-bold);
+    @include open-sans(2.2rem, $white, $semi-bold);
   }
 
   .lead {
@@ -277,7 +277,7 @@
     padding: 2rem 1rem;
 
     h2 {
-      font-size: 2.1rem;
+      font-size: 1.45rem;
     }
 
     .lead {

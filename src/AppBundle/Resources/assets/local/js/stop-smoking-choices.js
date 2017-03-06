@@ -29,6 +29,6 @@ $(function(){
   $(window).on("resize orientationchange", positionArrow);
 
   $(".card-outline-success").each(function(){
-    $(this).clone().addClass("mb-5").appendTo($(this).parent());
+    $(this).clone().appendTo($(this).parent());
   });
 });

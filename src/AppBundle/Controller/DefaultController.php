@@ -23,4 +23,28 @@ class DefaultController extends Controller
     {
         return $this->render('@App/Default/stop_smoking.html.twig');
     }
+
+    /**
+     * @Route("/stop-smoking/telephone-advisor", name="stop_smoking_advisor")
+     */
+    public function stopSmokingAdvisorAction(Request $request)
+    {
+        return $this->render('@App/Default/stop_smoking_advisor.html.twig');
+    }
+
+    /**
+     * @Route("/stop-smoking/using-medicines", name="stop_smoking_medicines")
+     */
+    public function stopSmokingMedicinesAction(Request $request)
+    {
+        return $this->render('@App/Default/stop_smoking_medicines.html.twig');
+    }
+
+    /**
+     * @Route("/stop-smoking/alone-with-websites-and-apps", name="stop_smoking_alone")
+     */
+    public function stopSmokingAloneAction(Request $request)
+    {
+        return $this->render('@App/Default/stop_smoking_alone.html.twig');
+    }
 }
