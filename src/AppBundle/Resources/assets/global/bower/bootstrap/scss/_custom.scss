@@ -12,24 +12,35 @@ $gray-lightest:         #f7f7f7;
 $body-bg:       	      $gray-dark;
 $link-hover-decoration: none;
 
-$asset-url-base:  	"/";
-$asset-image-base:  $asset-url-base + "bundles/app/images/";
-$transition-dur: 	  .3s;
-
-$green-dark:  	#0fb163;
-$blue-dark: 		#1866b8;
+// Additional colours
+$green-dark:    #0fb163;
+$blue-dark:     #1866b8;
 $blue-light:    #31a9ff;
 $blue-lighter:  #1866b8;
-$cyan: 				  #0cf;
+$cyan:          #0cf;
 
-@mixin open-sans($font-size: 18px, $colour: $body-color) {
+// Asset paths
+$asset-url-base:  	"/";
+$asset-image-base:  $asset-url-base + "bundles/app/images/";
+
+// consistent transition durations
+$transition-dur:    .3s;
+
+// Font weights
+$semi-bold: 600;
+$bold:      700;
+
+// font mix-ins
+@mixin open-sans($font-size: 18px, $colour: $body-color, $weight: normal) {
   color: $colour;
   font-family: 'Open Sans', sans-serif;
   font-size: $font-size;
+  font-weight: $weight;
 }
 
-@mixin roboto($font-size: 18px, $colour: $body-color) {
+@mixin roboto($font-size: 18px, $colour: $body-color, $weight: normal) {
   color: $colour;
   font-family: 'Roboto', sans-serif;
   font-size: $font-size;
+  font-weight: $weight;
 }

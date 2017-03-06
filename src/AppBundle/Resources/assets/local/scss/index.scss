@@ -44,7 +44,7 @@
 }
 
 .home-bottom {
-  flex-basis: 1;
+  //flex-basis: 0;
   flex-grow: 1;
   max-height: 100%;
   overflow: hidden;
@@ -58,6 +58,10 @@
     position: absolute;
     top: 0;
     width: 30%;
+
+    + .home-right {
+      display: none;
+    }
   }
 
   .col-lg,
@@ -109,16 +113,104 @@
   }
 
   .fact {
-    @include open-sans(18px, $blue);
+    @include open-sans(18px, $blue, $semi-bold);
     display: block;
-    font-weight: 600;
   }
 }
 
 h4 {
-  @include open-sans(24px, $blue);
-  font-weight: 600;
+  @include open-sans(24px, $blue, $semi-bold);
   margin-bottom: 1rem;
+}
+
+.h4-outer {
+  margin-bottom: 1rem;
+  position: relative;
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.news-header {
+  display: inline-block;
+  position: relative;
+}
+
+.twitter-profile-link {
+  @include open-sans(16px, $gray, $semi-bold);
+  bottom: 0;
+  position: absolute;
+  right: 0;
+
+  .twitter-icon {
+    background: url($asset-image-base + 'logo/footer_twitter.png') 50% 0 no-repeat;
+    background-size: 14.5px 200%;
+    height: 12px;
+    width: 15px;
+  }
+
+  &:hover,
+  &:focus {
+    color: $blue;
+
+    .twitter-icon {
+      background-position: 50% 100%;
+    }
+  }
+}
+
+.carousel-container {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.news-carousel {
+  list-style: none;
+  margin-left: -.2rem;
+  overflow: hidden;
+  padding: 0 0 0 .2rem;
+
+  .news-panel {
+    box-sizing: content-box;
+    display: inline-block;
+    margin: 0 5px 0 -5px;
+    padding-left: 5px;
+    vertical-align: top;
+    white-space: normal;
+    width: 100%;
+  }
+}
+
+.news-carousel-indicators {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  left: 0;
+  z-index: 15;
+  text-align: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+
+  li {
+    background-color: $blue;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    position: relative;
+    text-indent: -999px;
+    width: 20px;
+
+    &.active {
+      background-color: $cyan;
+    }
+  }
 }
 
 .twitter-card {
@@ -126,28 +218,34 @@ h4 {
   border: 0;
   border-bottom: 3px solid $blue;
   border-radius: 0;
+  width: 100%;
+
+  .card-block {
+    padding-bottom: 1rem;
+  }
 
   .retweet-tag {
-    margin: -12px 0 15px -30px;
+    margin: -1rem 0 15px -1.45rem;
     position: relative;
 
     .text {
-      @include open-sans(14px, $white);
+      @include open-sans(14px, $white, $semi-bold);
       background: url($asset-image-base + 'icon/twitter_retweet.png') 5px 50% no-repeat $gray-light;
       background-size: 17px auto;
-      font-weight: 600;
-      padding: 5px 5px 5px 27px;
+      padding: 2px 5px 2px 27px;
     }
   }
 
   .twitter-user {
-    @include open-sans(14px, $gray);
-    font-weight: 600;
-
     img {
-      background: $black;
-      height: 25px;
-      width: 25px;
+      background: $blue;
+      border: 0;
+      height: 23px;
+      width: 23px;
+    }
+
+    h5 {
+      @include open-sans(14px, $gray, $semi-bold);
     }
   }
 
@@ -161,7 +259,141 @@ h4 {
 }
 
 .home-cta-link {
-  min-width: 350px;
+  @include open-sans(16px, $white, $semi-bold);
+  //background-image: url($asset-image-base + 'button/arrow_right.png');
+  //background-position: 90% 50%;
+  //background-repeat: no-repeat;
+  //background-size: 19.5px 13.5px;
+  border: 4px solid $blue-dark;
+  border-width: 0 0 4px;
+  min-width: 320px;
+  transition: color $transition-dur, background $transition-dur;
   white-space: normal;
   width: 100%;
+
+  + .home-cta-link {
+    margin-top: 0;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: darken($blue-dark, 15%);
+    color: $white;
+  }
+
+  &.btn-success {
+    border-color: $green-dark;
+    font-size: 24px;
+    padding: 1.5rem 1.5rem;
+
+    &:hover,
+    &:focus {
+      border-color: darken($green-dark, 15%);
+    }
+  }
+
+  &:active {
+    border-bottom: 0;
+    margin-top: 4px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .news-header {
+    display: block;
+  }
+
+  .twitter-profile-link {
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      content: ' ';
+      display: block;
+      height: 5px;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .twitter-card {
+    font-size: 16px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .home-feature {
+    background-position: 45% 66%;
+    background-size: auto 427.5px;
+    height: 250px;
+  }
+
+  .welcome {
+    font-size: 38px;
+
+    .small {
+      font-size: 26px;
+    }
+  }
+
+  .fact-list {
+    width: 100%;
+
+    .fact {
+      font-size: 16px;
+    }
+  }
+
+  h4,
+  .h4-outer {
+    text-align: center;
+  }
+
+  .news-col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .news-carousel {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .carousel-container {
+    padding-bottom: 0;
+  }
+
+  .news-carousel-indicators {
+    display: none !important;
+  }
+
+  .news-panel {
+    display: block !important;
+  }
+
+  .twitter-card .retweet-tag {
+    margin-left: -1.25rem;
+  }
+
+  .triples-row {
+    .home-right-bg {
+      display: none;
+
+      + .home-right {
+        display: block;
+      }
+    }
+
+    .news-col + .home-right {
+      background: transparent;
+    }
+  }
+
+  .home-cta-link {
+    font-size: 15px;
+
+    &.btn-success {
+      font-size: 21px;
+    }
+  }
 }

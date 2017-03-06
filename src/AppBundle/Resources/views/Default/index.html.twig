@@ -4,8 +4,6 @@
   {{ parent() }}
   {% stylesheets 
     '@AppBundle/Resources/assets/local/scss/index.scss'
-    filter='compass'
-    filter='cssrewrite'
     filter='?uglifycss'
      %}
     <link rel="stylesheet" href="{{ asset_url }}" />
@@ -14,6 +12,11 @@
 
 {% block javascripts %}
   {{ parent() }}
+  {% javascripts
+    '@AppBundle/Resources/assets/local/js/index.js'
+    filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
 {% endblock %}
 
 {% block page_content %}
@@ -31,6 +34,42 @@
       <div class="col-lg-11">
         <div class="row h-100 triples-row gutter-lg">
           <div class="home-right-bg"></div>
+          <div class="col-lg home-right">
+            <h4 class="d-inline-block">What do you want to do?</h4>
+            <div class="d-inline-block w-100">
+              <a class="btn btn-lg btn-block btn-success home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_stop_smoking.png') }}" style="width: 47px; height: 47.5px;" />
+                  <div class="media-body align-self-center">
+                    I want to stop smoking
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
+            <div class="d-inline-block w-100 mt-2">
+              <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_info.png') }}" style="width: 37px; height: 36.5px;" />
+                  <div class="media-body align-self-center">
+                    I want to help a family member or friend to stop
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
+            <div class="d-inline-block w-100 mt-2">
+              <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_question.png') }}" style="width: 38px; height: 39px;" />
+                  <div class="media-body align-self-center">
+                    I want to know more about stopping
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
+          </div>
           <div class="col-12 col-lg-auto">
             <ul class="fact-list">
               <li>
@@ -47,33 +86,153 @@
               </li>
             </ul>
           </div>
-          <div class="col-lg">
-            <h4>Latest news</h4>
-            
-            <div class="card twitter-card mb-3">
-              <div class="card-block">
-                <div class="retweet-tag">
-                  <span class="text">CBC retweeted</span>
+          <div class="col-lg news-col">
+            <div class="h4-outer">
+              <h4 class="news-header">
+                Latest news
+              </h4>
+              <a href="#" class="twitter-profile-link">
+                <div class="media">
+                  <div class="d-flex mr-1 align-self-center twitter-icon"></div>
+                  <div class="media-body align-self-center">@StopSmokingLondon</div>
                 </div>
-                <h5 class="twitter-user"><img src="" /> University College London @UCL</h5>
-                <p class="mb-2">This is a sample tweet with some text and a link here <a href="#">http://t.co/dgb271</a></p>
-                <a class="view-tweet" href="#">View tweet</a>
-              </div>
+              </a>
             </div>
+            <div class="carousel-container">
+              <ol class="news-carousel-indicators">
+                <li data-show-index="0" class="active"></li>
+                <li data-show-index="1"></li>
+                <li data-show-index="2"></li>
+              </ol>
+              <ul id="newsCarousel" class="news-carousel">
+                <li class="news-panel">
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="retweet-tag">
+                        <span class="text">CBC retweeted</span>
+                      </div>
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      
+                      <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a></p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      
+                      <p class="mb-2">This is a sample <a href="#">#tweet</a> with some text</p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                </li>
 
-            <div class="card twitter-card">
-              <div class="card-block">
-                <h5 class="twitter-user"><img src="" /> University College London @UCL</h5>
-                <p class="mb-2">This is a sample tweet with some text no link at all</p>
-                <a class="view-tweet" href="#">View tweet</a>
-              </div>
+                <li class="news-panel">
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="retweet-tag">
+                        <span class="text">CBC retweeted</span>
+                      </div>
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      
+                      <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a> on another carousel item</p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      <p class="mb-2">This is a sample <a href="#">#tweet</a> with some text and it may go onto 2 lines as well</p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="news-panel">
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      
+                      <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a> on another carousel item 333</p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                  <div class="card twitter-card mb-3">
+                    <div class="card-block">
+                      <div class="media twitter-user mb-1">
+                        <img class="d-flex mr-1 align-self-center" src="" />
+                        <div class="media-body align-self-center">
+                          <h5 class="mt-0 mb-0">University College London @UCL</h5>
+                        </div>
+                      </div>
+                      <p class="mb-2">This is a sample <a href="#">#tweet</a> with some texticles</p>
+                      <a class="view-tweet" href="#">View tweet</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="col-lg home-right">
-            <h4>What do you want to do?</h4>
-            <a class="btn btn-lg btn-block btn-success home-cta-link" href="#">I want to stop smoking</a>
-            <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">I want to help a family member or friend to stop</a>
-            <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">I want to know more about stopping</a>
+            <h4 class="d-inline-block">What do you want to do?</h4>
+            <div class="d-inline-block w-100">
+              <a class="btn btn-lg btn-block btn-success home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_stop_smoking.png') }}" style="width: 47px; height: 47.5px;" />
+                  <div class="media-body align-self-center">
+                    I want to stop smoking
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
+            <div class="d-inline-block w-100 mt-2">
+              <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_info.png') }}" style="width: 37px; height: 36.5px;" />
+                  <div class="media-body align-self-center">
+                    I want to help a family member or friend to stop
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
+            <div class="d-inline-block w-100 mt-2">
+              <a class="btn btn-lg btn-block btn-primary home-cta-link" href="#">
+                <div class="media">
+                  <img class="d-flex mr-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_question.png') }}" style="width: 38px; height: 39px;" />
+                  <div class="media-body align-self-center">
+                    I want to know more about stopping
+                  </div>
+                  <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

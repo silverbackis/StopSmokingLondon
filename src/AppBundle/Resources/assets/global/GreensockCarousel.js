@@ -1,0 +1,3 @@
+var GreensockCarousel = (function($){
+  
+})(jQuery);

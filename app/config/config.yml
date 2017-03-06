@@ -73,9 +73,11 @@ swiftmailer:
 assetic:
     write_to: '%kernel.root_dir%/../src/AppBundle/Resources/assets/assetic'
     filters:
-        cssrewrite: ~
+        cssrewrite:
+            apply_to:   '(\.scss|\.css)$'
         compass:
             bin: /usr/local/bin/compass
+            apply_to:   '\.scss$'
             load_paths: 
                 - "%kernel.root_dir%/../src/AppBundle/Resources/assets/global/"
         uglifycss:
