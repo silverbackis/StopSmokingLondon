@@ -40,12 +40,16 @@ var GoogleMap = (function($, viewport, alert, confirm){
         bounds: map.getBounds()
       }, searchResult);
     }
+    else
+    {
+      $("#confirmPostcode").removeClass("disabled");
+    }
   },
   searchResult = function(results, status) 
   {
     totalAttempts++;
 
-    $("#confirmPostcode").removeClass("disabled"); 
+    $("#confirmPostcode").removeClass("disabled");
     // callback with a status and result
     if (status == google.maps.GeocoderStatus.OK) 
     {
