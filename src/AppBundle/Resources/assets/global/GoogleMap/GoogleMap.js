@@ -144,11 +144,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
                 }
               });
               // Check if the marker point is within any borough, if not display error
+              
+              $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
               if(!selectedFeature)
               {
-                alert("Sorry, the address entered does not appear to be within the London boroughs. Please try again.");
-                $("#selectedBorough").html("Not Found");
-                $("#boroughCard").hide();
+                //alert("Sorry, the address entered does not appear to be within the London boroughs. Please try again.");
+                $("#selectedBorough").html("Postcode Not Found Within London Boroughs");
+                $("#boroughCard").addClass("card-outline-warning");
+                $("#liveIn").hide();
               }
               else
               {
@@ -160,7 +163,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
                 });
                 // Update and show the card displaying the borough
                 $("#selectedBorough").html(selectedFeature.getProperty('name'));
-                $("#boroughCard").show();
+                $("#boroughCard").addClass("card-outline-success");
+                $("#liveIn").show();
               }
             }
             else
