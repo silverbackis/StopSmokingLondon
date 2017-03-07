@@ -2,10 +2,24 @@
 
 {% block stylesheets %}
   {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api }}&callback=GoogleMap.init">
+    </script>
+  {% javascripts
+    '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.js'
+    filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
 {% endblock %}
 
 {% block page_content %}
@@ -21,5 +35,6 @@
         <h2>You are making an appointment<br />with an advisor</h2>
       </div>
     </div>
+    <div class="google-map" id="map"></div>
   </div>
 {% endblock %}

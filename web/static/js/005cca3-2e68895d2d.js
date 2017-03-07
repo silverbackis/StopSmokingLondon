@@ -1,0 +1,1 @@
+var GoogleMap=function($){var public={init:function(){var map=new google.maps.Map(document.getElementById("map"),{zoom:10,center:{lat:51.5074,lng:.1278},mapTypeId:"terrain"});var boroughsLayer=new google.maps.KmlLayer("/bundles/app/maps/LondonBoroughs.kml");boroughsLayer.setMap(map)}};return public}(jQuery);
