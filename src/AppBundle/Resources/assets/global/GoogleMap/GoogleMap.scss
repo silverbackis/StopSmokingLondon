@@ -1,3 +1,26 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.google-map-outer {
+  text-align: center;
+}
+
 .google-map {
-  height: 400px;
+  height: 540px;
+  width: 630px;
+}
+
+.borough-card {
+  display: none;
+}
+
+@include media-breakpoint-down(md) {
+  .google-map-outer {
+    padding: 0;
+  }
+
+  .bottom-row > [class*='col-'] {
+    padding: 0;
+  }
 }

@@ -4,6 +4,7 @@
   {{ parent() }}
   {% stylesheets 
     '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.scss'
+    '@AppBundle/Resources/assets/local/scss/stop-smoking-selected.scss'
     filter='?uglifycss'
      %}
     <link rel="stylesheet" href="{{ asset_url }}" />
@@ -12,15 +13,14 @@
 
 {% block javascripts %}
   {{ parent() }}
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api }}&callback=GoogleMap.init">
-    </script>
   {% javascripts
-    '@AppBundle/Resources/assets/global/GoogleMap/geoxml3.js'
+    '@AppBundle/Resources/assets/global/bootstrap-toolkit/bootstrap-toolkit.js'
+    '@AppBundle/Resources/assets/global/BootstrapModalAlerts.js'
     '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.js'
     filter='?uglifyjs2' %}
     <script src="{{ asset_url }}"></script>
   {% endjavascripts %}
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api }}&callback=GoogleMap.init"></script>
 {% endblock %}
 
 {% block page_content %}
@@ -29,13 +29,46 @@
       <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/stop-smoking">I want to stop smkoking</a></li>
+          <li class="breadcrumb-item"><a href="/stop-smoking">I want to stop smoking</a></li>
           <li class="breadcrumb-item active">Book appointment</li>
         </ol>
         <a href="/" class="home-link">Home</a>
         <h2>You are making an appointment<br />with an advisor</h2>
       </div>
     </div>
-    <div class="google-map" id="map"></div>
+    <div class="row justify-content-center bottom-row">
+      <div class="col-12 col-lg-9 col-xl-11">
+        <div class="container-fluid container-lower">
+          <div class="row justify-content-center">
+            <div class="col flex-last flex-lg-first">
+              <h3 class="postcode-header">Enter your postcode</h3>
+              <div class="form-group row postcode-group gutter-sm">
+                <div class="col">
+                  <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" maxlength="8" />
+                </div>
+                <div class="col-12 col-auto">
+                  <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Confirm</a>
+                </div>
+                <div class="col-12">
+                  <p class="form-text text-muted">Don't know postcode? <a href="#">Select borough instead</a></p>
+                </div>
+              </div>
+
+              <div class="card card-outline-success text-center borough-card" id="boroughCard">
+                <div class="card-block">
+                  <span>You have said that you live in <h4 id="selectedBorough">XYZ</h4></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-auto google-map-outer">
+              <center>
+                <div class="google-map" id="map"></div>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 {% endblock %}

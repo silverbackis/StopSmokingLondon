@@ -2,3 +2,93 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.container-lower {
+  margin: 2rem auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.postcode-header {
+  @include open-sans(1.6rem, $blue, $semi-bold);
+  margin-top: 2rem;
+}
+
+.postcode-group {
+  margin-top: 1rem;
+
+  .form-control-lg {
+    height: 100%;
+  }
+
+  .btn-cta {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    padding: .75rem 1.5rem;
+  }
+
+  .form-text {
+    font-size: .8rem;
+  }
+}
+
+.card {
+  @include open-sans(1.3rem, $gray);
+
+  .card-block {
+    padding: 2rem 1.25rem;
+  }
+
+  h4 {
+    @include open-sans(1.8rem, $green, $semi-bold);
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .postcode-header {
+    font-size: 1.4rem;
+    margin-top: 0;
+  }
+
+  .postcode-group {
+    margin-bottom: .5rem;
+  }
+
+  .card {
+    font-size: 1.1rem;
+
+    .card-block {
+      padding: 1.25rem;
+    }
+
+    h4 {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .postcode-header {
+    margin-top: 1rem;
+  }
+
+  .postcode-group {
+    .btn-cta,
+    .form-control-lg {
+      font-size: 1rem;
+      line-height: 1.2;
+      padding: .75rem 1.5rem;
+    }
+
+    .form-text {
+      font-size: .7rem;
+    }
+  }
+
+  .card {
+    font-size: .8rem;
+
+    h4 {
+      font-size: 1.2rem;
+    }
+  }
+}
