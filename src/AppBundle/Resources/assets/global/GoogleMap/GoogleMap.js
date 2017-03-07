@@ -25,21 +25,32 @@ var GoogleMap = (function($, viewport, alert, confirm){
   center = {lat: 51.4820, lng: -0.09},
   searchMarker = null,
   selectedFeature = null,
+  lastSearch = null,
+  maxAttempts = 3,
+  totalAttempts = 0,
   search = function(postcode)
   {
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-      address: postcode,
-      region: 'GB',
-      bounds: map.getBounds()
-    }, searchResult);
+    if(lastSearch !== postcode)
+    {
+      lastSearch = postcode;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({
+        address: postcode,
+        region: 'GB',
+        bounds: map.getBounds()
+      }, searchResult);
+    }
   },
   searchResult = function(results, status) 
   {
+    totalAttempts++;
+
     $("#confirmPostcode").removeClass("disabled"); 
     // callback with a status and result
     if (status == google.maps.GeocoderStatus.OK) 
     {
+      totalAttempts = 0;
+
       var resultLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
       // Loop through all features
       map.data.forEach(function(feature){
@@ -64,13 +75,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
       });
       // Check if the marker point is within any borough, if not display error
       
-      $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
+      
       if(!selectedFeature)
       {
-        //alert("Sorry, the address entered does not appear to be within the London boroughs. Please try again.");
-        $("#selectedBorough").html("Postcode Not Found Within London Boroughs");
-        $("#boroughCard").addClass("card-outline-warning");
-        $("#liveIn").hide();
+        showBoroughBox("No Address Found Within London Boroughs", true);
       }
       else
       {
@@ -81,14 +89,49 @@ var GoogleMap = (function($, viewport, alert, confirm){
           animation: google.maps.Animation.DROP
         });
         // Update and show the card displaying the borough
-        $("#selectedBorough").html(selectedFeature.getProperty('name'));
-        $("#boroughCard").addClass("card-outline-success");
-        $("#liveIn").show();
+        showBoroughBox(selectedFeature.getProperty('name'));
       }
+    }
+    else if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
+    {
+      showBoroughBox("Sorry, No Results Found", true);
+    }
+    else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
+    {
+      if(totalAttempts >= maxAttempts)
+      {
+        showBoroughBox("Sorry, we've reached out search limit. Please try again later or select your borough instead.", true);
+      }
+      else
+      {
+        showBoroughBox("Retrying... Attempt "+(totalAttempts+1), true);
+        var repeatSearch = lastSearch;
+        lastSearch = null;
+        setTimeout(function(){
+          search(repeatSearch);
+        }, 900);
+      }
+      
     }
     else
     {
       alert("Sorry, there was an error looking up that postcode. Please check it and try again.");
+    }
+  },
+  showBoroughBox = function(msg, error)
+  {
+    $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
+    if(error)
+    {
+      $("#selectedBorough").html(msg);
+      $("#boroughCard").addClass("card-outline-warning");
+      $("#liveIn").hide();
+    }
+    else
+    {
+      $("#selectedBorough").html(msg);
+      $("#boroughCard").addClass("card-outline-success");
+      $("#liveIn").show();
     }
   },
   public = {
