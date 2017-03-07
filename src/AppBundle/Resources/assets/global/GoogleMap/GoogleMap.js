@@ -30,7 +30,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
   totalAttempts = 0,
   search = function()
   {
-    var postcode = $("#postcodeInput").val().prop('disabled', true);
+    var postcode = $("#postcodeInput").prop('disabled', true).val();
     if(lastSearch.toLowerCase() !== postcode.toLowerCase())
     {
       lastSearch = postcode;
