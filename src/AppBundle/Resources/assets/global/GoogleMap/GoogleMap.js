@@ -25,6 +25,72 @@ var GoogleMap = (function($, viewport, alert, confirm){
   center = {lat: 51.4820, lng: -0.09},
   searchMarker = null,
   selectedFeature = null,
+  search = function(postcode)
+  {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      address: postcode,
+      region: 'GB',
+      bounds: map.getBounds()
+    }, searchResult);
+  },
+  searchResult = function(results, status) 
+  {
+    $("#confirmPostcode").removeClass("disabled"); 
+    // callback with a status and result
+    if (status == google.maps.GeocoderStatus.OK) 
+    {
+      var resultLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+      // Loop through all features
+      map.data.forEach(function(feature){
+        // Get geometry lat lng array from feature
+        var geometry = feature.getGeometry(),
+        latLngArray = geometry.getArray()[0].getArray();
+        // create a temporary polygon becayse we cannot access a polygon class it seems from a feature
+        var tempPolygon = new google.maps.Polygon({paths: latLngArray});
+        // check if the found marker point is within the new polygon
+        if(google.maps.geometry.poly.containsLocation(resultLatLng, tempPolygon))
+        {
+          // The marker is within the polygon, set it as selected and stop looping
+          selectedFeature = feature;
+          map.data.overrideStyle(selectedFeature, {
+            fillColor: '#15ce75',
+            strokeColor: '#FFFFFF',
+            strokeWeight: 4,
+            zIndex: 2
+          });
+          return false;
+        }
+      });
+      // Check if the marker point is within any borough, if not display error
+      
+      $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
+      if(!selectedFeature)
+      {
+        //alert("Sorry, the address entered does not appear to be within the London boroughs. Please try again.");
+        $("#selectedBorough").html("Postcode Not Found Within London Boroughs");
+        $("#boroughCard").addClass("card-outline-warning");
+        $("#liveIn").hide();
+      }
+      else
+      {
+        // Add the marker at the new position
+        searchMarker = new google.maps.Marker({
+          position: resultLatLng,
+          map: map,
+          animation: google.maps.Animation.DROP
+        });
+        // Update and show the card displaying the borough
+        $("#selectedBorough").html(selectedFeature.getProperty('name'));
+        $("#boroughCard").addClass("card-outline-success");
+        $("#liveIn").show();
+      }
+    }
+    else
+    {
+      alert("Sorry, there was an error looking up that postcode. Please check it and try again.");
+    }
+  },
   public = {
     initialised: false,
     init: function()
@@ -112,68 +178,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         if(!$btn.hasClass("disabled"))
         {
           $btn.addClass("disabled");
-          var geocoder = new google.maps.Geocoder();
-          geocoder.geocode({
-            address: postcode,
-            region: 'GB',
-            bounds: map.getBounds()
-          }, function(results, status) 
-          {
-            $btn.removeClass("disabled"); 
-            // callback with a status and result
-            if (status == google.maps.GeocoderStatus.OK) 
-            {
-              var resultLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-              // Loop through all features
-              map.data.forEach(function(feature){
-                // Get geometry lat lng array from feature
-                var geometry = feature.getGeometry(),
-                latLngArray = geometry.getArray()[0].getArray();
-                // create a temporary polygon becayse we cannot access a polygon class it seems from a feature
-                var tempPolygon = new google.maps.Polygon({paths: latLngArray});
-                // check if the found marker point is within the new polygon
-                if(google.maps.geometry.poly.containsLocation(resultLatLng, tempPolygon))
-                {
-                  // The marker is within the polygon, set it as selected and stop looping
-                  selectedFeature = feature;
-                  map.data.overrideStyle(selectedFeature, {
-                    fillColor: '#15ce75',
-                    strokeColor: '#FFFFFF',
-                    strokeWeight: 4,
-                    zIndex: 2
-                  });
-                  return false;
-                }
-              });
-              // Check if the marker point is within any borough, if not display error
-              
-              $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
-              if(!selectedFeature)
-              {
-                //alert("Sorry, the address entered does not appear to be within the London boroughs. Please try again.");
-                $("#selectedBorough").html("Postcode Not Found Within London Boroughs");
-                $("#boroughCard").addClass("card-outline-warning");
-                $("#liveIn").hide();
-              }
-              else
-              {
-                // Add the marker at the new position
-                searchMarker = new google.maps.Marker({
-                  position: resultLatLng,
-                  map: map,
-                  animation: google.maps.Animation.DROP
-                });
-                // Update and show the card displaying the borough
-                $("#selectedBorough").html(selectedFeature.getProperty('name'));
-                $("#boroughCard").addClass("card-outline-success");
-                $("#liveIn").show();
-              }
-            }
-            else
-            {
-              alert("Sorry, there was an error looking up that postcode. Please check it and try again.");
-            }
-          });
+          search(postcode);
         }
       });
 
