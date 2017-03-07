@@ -28,11 +28,33 @@ var GoogleMap = (function($, viewport, alert, confirm){
   lastSearch = null,
   maxAttempts = 3,
   totalAttempts = 0,
-  search = function(postcode)
+  search = function()
   {
-    if(lastSearch !== postcode)
+    var postcode = $("#postcodeInput").val().prop('disabled', true);
+    if(lastSearch.toLowerCase() !== postcode.toLowerCase())
     {
       lastSearch = postcode;
+
+      // Unset any selected feature
+      if(selectedFeature)
+      {
+        map.data.overrideStyle(selectedFeature, selectedFeature.getProperty('originalColors'));
+        selectedFeature = null;
+      }
+      // Unset the marker if already present
+      if(searchMarker)
+      {
+        searchMarker.setMap(null);
+      }
+      if(postcode === '')
+      {
+        $("#confirmPostcode").removeClass("disabled");
+        $("#boroughCard").hide();
+        return;
+      }
+
+      $("#postcodeInput").prop('disabled', true);
+
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({
         address: postcode,
@@ -43,13 +65,13 @@ var GoogleMap = (function($, viewport, alert, confirm){
     else
     {
       $("#confirmPostcode").removeClass("disabled");
+      $("#postcodeInput").prop('disabled', false);
     }
   },
   searchResult = function(results, status) 
   {
     totalAttempts++;
-
-    $("#confirmPostcode").removeClass("disabled");
+    
     // callback with a status and result
     if (status == google.maps.GeocoderStatus.OK) 
     {
@@ -109,10 +131,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
       else
       {
         showBoroughBox("Retrying... Attempt "+(totalAttempts+1), true);
-        var repeatSearch = lastSearch;
         lastSearch = null;
         setTimeout(function(){
-          search(repeatSearch);
+          search();
         }, 900);
       }
       
@@ -137,6 +158,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#boroughCard").addClass("card-outline-success");
       $("#liveIn").show();
     }
+    $("#confirmPostcode").removeClass("disabled");
+    $("#postcodeInput").prop('disabled', false);
   },
   public = {
     initialised: false,
@@ -205,27 +228,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#confirmPostcode").on("click", function(e){
         e.preventDefault();
         var $btn = $(this);
-        // Unset any selected feature
-        if(selectedFeature)
-        {
-
-          map.data.overrideStyle(selectedFeature, selectedFeature.getProperty('originalColors'));
-          selectedFeature = null;
-        }
-        // Unset the marker if already present
-        if(searchMarker)
-        {
-          searchMarker.setMap(null);
-        }
-        var postcode = $("#postcodeInput").val();
-        if(postcode==='')
-        {
-          return;
-        }
         if(!$btn.hasClass("disabled"))
         {
           $btn.addClass("disabled");
-          search(postcode);
+          search();
         }
       });
 
