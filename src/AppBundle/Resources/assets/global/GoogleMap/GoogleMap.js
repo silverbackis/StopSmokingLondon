@@ -6,8 +6,18 @@ var GoogleMap = (function($){
         center: {lat: 51.5074, lng: 0.1278},
         mapTypeId: 'terrain'
       });
-      var boroughsLayer = new google.maps.KmlLayer('/bundles/app/maps/LondonBoroughs.kml');
-      boroughsLayer.setMap(map);
+
+      //var myParser = new geoXML3.parser({map: map});
+      //myParser.parse('/bundles/app/maps/LondonBoroughs.kml');
+      var boroughsLayer = new google.maps.KmlLayer({
+        url: 'https://www.stopsmokingportal.com/bundles/app/maps/LondonBoroughs.kml',
+        map: map
+      });
+
+      /*var ctaLayer = new google.maps.KmlLayer({
+        url: 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
+        map: map
+      });*/
 
       /*
       // Define the LatLng coordinates for the polygon's path.

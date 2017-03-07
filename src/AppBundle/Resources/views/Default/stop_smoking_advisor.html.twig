@@ -16,6 +16,7 @@
     src="https://maps.googleapis.com/maps/api/js?key={{ google_map_api }}&callback=GoogleMap.init">
     </script>
   {% javascripts
+    '@AppBundle/Resources/assets/global/GoogleMap/geoxml3.js'
     '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.js'
     filter='?uglifyjs2' %}
     <script src="{{ asset_url }}"></script>
