@@ -56,10 +56,13 @@
 
 @include media-breakpoint-down(md) {
   .postcode-header {
+    font-size: 1.2rem;
     margin-top: 1rem;
   }
 
   .postcode-group {
+    margin-top: .6rem;
+
     .btn-cta,
     .form-control-lg {
       font-size: 1rem;
