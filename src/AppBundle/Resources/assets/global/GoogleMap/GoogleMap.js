@@ -182,6 +182,12 @@ var GoogleMap = (function($, viewport, alert, confirm){
         }
       });
 
+      $("#postcodeInput").on('keypress', function (e) {
+          if (e.keyCode == 13) {
+            $("#confirmPostcode").trigger("click");
+          }
+      });
+
       $(function(){
         var $map = $('#map'),
         updateMap = function(breakpoint)
