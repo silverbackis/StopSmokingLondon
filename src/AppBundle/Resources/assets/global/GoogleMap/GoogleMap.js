@@ -45,6 +45,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       {
         $("#confirmPostcode").removeClass("disabled");
         $("#boroughCard").hide();
+        $sessionSelect.selectpicker('val', '').trigger("change");
         return;
       }
 
