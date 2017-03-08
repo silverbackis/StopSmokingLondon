@@ -46,13 +46,19 @@
   text-align: right;
 
   .header-bar-inner {
-    display: block;
+    display: inline-block;
     position: relative;
     width: 100%;
+
+    .logo-link {
+      display: inline-block;
+      float: left;
+      position: relative;
+    }
   }
 
   .header-logo {
-    display: block;
+    display: inline-block;
     height: 85.5px;
     width: 129.5px;
   }

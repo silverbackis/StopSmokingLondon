@@ -243,12 +243,18 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
       $(function(){
         var $map = $('#map'),
+        updateRealMapLeft = function()
+        {
+          $map.css({
+            left: Math.round($(".google-map.spacer").offset().left)+"px"
+          });
+        },
         updateMap = function(breakpoint)
         {
           switch(breakpoint)
           {
             case "xl":
-              $map.css({
+              $(".google-map").css({
                 height: '500px',
                 width: '630px'
               });
@@ -256,7 +262,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
               map.setZoom(10);
             break;
             default:
-              $map.css({
+              $(".google-map").css({
                 height: '280px',
                 width: '312px'
               });
@@ -264,10 +270,13 @@ var GoogleMap = (function($, viewport, alert, confirm){
               map.setZoom(9);
             break;
           }
+          updateRealMapLeft();
           map.setCenter(center);
         };
         viewport.breakpointChanged(updateMap);
         updateMap(viewport.current());
+        
+        $(window).on("resize orientationchange", updateRealMapLeft);
       });
     }
   };  

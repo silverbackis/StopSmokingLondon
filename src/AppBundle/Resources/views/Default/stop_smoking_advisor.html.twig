@@ -36,39 +36,35 @@
         <h2>You are making an appointment<br />with an advisor</h2>
       </div>
     </div>
-    <div class="row justify-content-center bottom-row">
-      <div class="col-12 col-lg-9 col-xl-11">
-        <div class="container-fluid container-lower">
-          <div class="row justify-content-center">
-            <div class="col flex-last flex-lg-first">
-              <h3 class="postcode-header">Search address or postcode</h3>
-              <div class="form-group row postcode-group gutter-sm">
-                <div class="col">
-                  <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
-                </div>
-                <div class="col-12 col-auto">
-                  <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Search</a>
-                </div>
-                <div class="col-12">
-                  <p class="form-text text-muted">Don't know what to search? <a href="#">Select borough instead</a></p>
-                </div>
-              </div>
-
-              <div class="card card-outline-success text-center borough-card" id="boroughCard">
-                <div class="card-block">
-                  <span><span id="liveIn">You have said that you live in</span><h4 id="selectedBorough">XYZ</h4></span>
-                </div>
-              </div>
+    <div class="map-row-wrapper">
+      <div class="row justify-content-center bottom-row container-lower">
+        <div class="col flex-last flex-lg-first">
+          <h3 class="postcode-header">Search address or postcode</h3>
+          <div class="form-group row postcode-group gutter-sm">
+            <div class="col">
+              <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
             </div>
-            <div class="col-12 col-lg-auto google-map-outer">
-              <center>
-                <div class="google-map" id="map"></div>
-              </center>
+            <div class="col-12 col-auto">
+              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Search</a>
+            </div>
+            <div class="col-12">
+              <p class="form-text text-muted">Don't know what to search? <a href="#">Select borough instead</a></p>
             </div>
           </div>
+
+          <div class="card card-outline-success text-center borough-card" id="boroughCard">
+            <div class="card-block">
+              <span><span id="liveIn">You have said that you live in</span><h4 id="selectedBorough">XYZ</h4></span>
+            </div>
+          </div>
+        </div> 
+        <div class="col-12 col-lg-auto google-map-outer">
+          <center>
+            <div class="google-map spacer"></div>
+          </center>
         </div>
       </div>
+      <div class="google-map actual" id="map"></div>
     </div>
-    
   </div>
 {% endblock %}

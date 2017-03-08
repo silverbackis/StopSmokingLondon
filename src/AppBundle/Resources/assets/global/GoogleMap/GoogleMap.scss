@@ -2,13 +2,19 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.map-row-wrapper {
+  position: relative;
+}
+
 .google-map-outer {
   text-align: center;
 }
 
 .google-map {
-  height: 540px;
-  width: 630px;
+  &.actual {
+    position: absolute;
+    top: 0;
+  }
 }
 
 .borough-card {
