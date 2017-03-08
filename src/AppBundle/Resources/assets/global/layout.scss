@@ -16,6 +16,12 @@
       outline: none;
     }
   }
+
+  .no-results {
+    background: transparent;
+    color: $gray;
+    padding: .4rem 1rem;
+  }
 }
 
 .bootstrap-select.btn-group .dropdown-toggle .filter-option {
