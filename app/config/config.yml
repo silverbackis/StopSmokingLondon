@@ -86,6 +86,8 @@ assetic:
             bin: /usr/local/bin/uglifycss
         uglifyjs2:
             bin: /usr/local/bin/uglifyjs
+    bundles:
+        - AppBundle
 
 irozgar_gulp_rev_versions:
     manifest_path: "../src/AppBundle/Resources/assets/rev-manifest.json"

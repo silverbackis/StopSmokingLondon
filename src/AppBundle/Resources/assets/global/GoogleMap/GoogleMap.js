@@ -198,7 +198,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         return bounds;
       };
 
-      map.data.loadGeoJson('/bundles/app/maps/GeoJson.json', {}, function(features){
+      map.data.loadGeoJson('/boroughs.json', {}, function(features){
         //console.log(feature);
         map.data.setStyle({
           fillColor: colors[1],

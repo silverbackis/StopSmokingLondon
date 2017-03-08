@@ -5,14 +5,18 @@
 .bootstrap-select.show>.dropdown-menu>.dropdown-menu {
   display: block;
 
+  .selected,
+  .active {
+    a {
+      color: $green;
+    }
+  }
+
   a {
     display: block;
     padding: .4rem 1rem;
 
-    &:hover,
-    &:active,
     &:focus {
-      color: $green;
       outline: none;
     }
   }
