@@ -62,12 +62,6 @@
               <div class="col-12">
                 <div class="w-100">
                   <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" data-live-search="true" title="Select your borough" id="sessionSelect">
-                    <option value="1">Borough 1</option>
-                    <option value="2">Borough 2</option>
-                    <option value="3">Borough 3</option>
-                    <option value="4">Borough 4</option>
-                    <option value="5">Borough 5</option>
-                    <option value="6">Borough 6</option>
                   </select>
                 </div>
               </div>
@@ -88,7 +82,7 @@
           </center>
         </div>
       </div>
-      <div class="google-map actual" id="map"></div>
+      <div data-token="{{ csrf_token('borough_json') }}" class="google-map actual" id="map"></div>
     </div>
   </div>
 {% endblock %}

@@ -9,31 +9,26 @@ var GoogleMap = (function($, viewport, alert, confirm){
   viewport.use('bootstrap4', bootstrap4Divs);
 
   var map,
-  newJSON = {
-    "type": "FeatureCollection",
-    "features": []
-  },
-  feature = {
-    "type": "Feature",
-    "properties": {
-      "name": null
-    },
-    "geometry": {}
-  },
   colors = ['#1866b8', '#0a76e5', '#31a9ff', '#b2d6fa'],//
-  geoJSON,
   center = {lat: 51.4820, lng: -0.09},
   searchMarker = null,
   selectedFeature = null,
   lastSearch = null,
   maxAttempts = 3,
   totalAttempts = 0,
-  search = function()
+  GeoJson,
+  $map = $('#map'),
+  $sessionSelect = $("#sessionSelect"),
+  $searchInput = $("#postcodeInput"),
+  search = function(searchText)
   {
-    var postcode = $("#postcodeInput").val();
-    if(null === lastSearch || lastSearch.toLowerCase() !== postcode.toLowerCase())
+    if(!searchText)
     {
-      lastSearch = postcode;
+      searchText = $searchInput.val();
+    }
+    if(null === lastSearch || lastSearch.toLowerCase() !== searchText.toLowerCase())
+    {
+      lastSearch = searchText;
 
       // Unset any selected feature
       if(selectedFeature)
@@ -46,18 +41,18 @@ var GoogleMap = (function($, viewport, alert, confirm){
       {
         searchMarker.setMap(null);
       }
-      if(postcode === '')
+      if(searchText === '')
       {
         $("#confirmPostcode").removeClass("disabled");
         $("#boroughCard").hide();
         return;
       }
 
-      $("#postcodeInput").prop('disabled', true);
+      $searchInput.prop('disabled', true);
 
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({
-        address: postcode,
+        address: searchText,
         region: 'GB',
         bounds: map.getBounds()
       }, searchResult);
@@ -65,7 +60,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     else
     {
       $("#confirmPostcode").removeClass("disabled");
-      $("#postcodeInput").prop('disabled', false);
+      $searchInput.prop('disabled', false);
     }
   },
   searchResult = function(results, status) 
@@ -114,8 +109,16 @@ var GoogleMap = (function($, viewport, alert, confirm){
           map: map,
           animation: google.maps.Animation.DROP
         });
+
         // Update and show the card displaying the borough
-        showBoroughBox(selectedFeature.getProperty('name'));
+        if($sessionSelect.val() !== selectedFeature.getProperty('name'))
+        {
+          $sessionSelect.selectpicker('val', selectedFeature.getProperty('name')).trigger("change");
+        }
+        else
+        {
+          enableInputs();
+        }
       }
     }
     else if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
@@ -140,9 +143,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
     }
     else
     {
-      alert("Sorry, there was an error looking up that postcode. Please check it and try again.");
+      showBoroughBox("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
     }
   },
+  enableInputs = function()
+  {
+    $("#confirmPostcode").removeClass("disabled");
+    $searchInput.prop('disabled', false);
+  }, 
   showBoroughBox = function(msg, error)
   {
     $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
@@ -158,8 +166,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#boroughCard").addClass("card-outline-success");
       $("#liveIn").show();
     }
-    $("#confirmPostcode").removeClass("disabled");
-    $("#postcodeInput").prop('disabled', false);
+    enableInputs();
   },
   public = {
     initialised: false,
@@ -198,8 +205,27 @@ var GoogleMap = (function($, viewport, alert, confirm){
         return bounds;
       };
 
-      map.data.loadGeoJson('/boroughs.json', {}, function(features){
-        //console.log(feature);
+      // Set token as variable and remove the attribute
+      var token = $map.attr("data-token");
+      $map.removeAttr("data-token");
+      // Get GeoJson with token in GET
+      $.getJSON('/boroughs.json?token=' + token, function(LoadedGeoJson)
+      {
+        // Set local variable with the GeoJson data - parameters have all the info we need out of database
+        GeoJson = LoadedGeoJson;
+        //  Add borough options to dropdown
+        $.each(GeoJson.features, function(){
+          $sessionSelect.append(
+            $("<option />", {
+              value: this.properties.name,
+              html: this.properties.name
+            })
+          );
+        });
+        $sessionSelect.selectpicker('refresh');
+        
+        // Initialise the map
+        var features = map.data.addGeoJson(GeoJson);
         map.data.setStyle({
           fillColor: colors[1],
           fillOpacity: 1,
@@ -235,15 +261,16 @@ var GoogleMap = (function($, viewport, alert, confirm){
         }
       });
 
-      $("#postcodeInput").on('keypress', function (e) {
+      $searchInput.on('keypress', function (e) {
           if (e.keyCode == 13) {
             $("#confirmPostcode").trigger("click");
           }
       });
 
       $(function(){
-        var $map = $('#map'),
-        updateRealMapLeft = function()
+        // Fix because gridlines appear in safari when positioning google map with subpixels/percent
+        // Also mobile/desktop google map resize
+        var updateRealMapLeft = function()
         {
           $map.css({
             left: Math.round($(".google-map.spacer").offset().left)+"px"
@@ -275,8 +302,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
         };
         viewport.breakpointChanged(updateMap);
         updateMap(viewport.current());
-        
         $(window).on("resize orientationchange", updateRealMapLeft);
+
+        // Setup the selectbox change event
+        $sessionSelect.on("change", function(){
+          var borough = $sessionSelect.val();
+          showBoroughBox(borough);
+          search(borough);
+        });
       });
     }
   };  
