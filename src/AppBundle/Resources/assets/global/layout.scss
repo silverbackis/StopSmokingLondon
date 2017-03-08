@@ -2,6 +2,48 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
+  display: block;
+
+  a {
+    display: block;
+    padding: .4rem 1rem;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $green;
+      outline: none;
+    }
+  }
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+  vertical-align: middle;
+}
+
+.bootstrap-select > .dropdown-toggle {
+  padding-right: 2rem;
+}
+
+@mixin placeholder {
+  color: $gray-light;
+}
+
+.form-control {
+  &::-webkit-input-placeholder {
+    @include placeholder;
+  }
+
+  &::-moz-placeholder {
+    @include placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    @include placeholder;
+  }
+}
+
 @include media-breakpoint-up(xl) {
   .gutter-lg {
     margin-left: -30px;
@@ -81,7 +123,7 @@
   padding-top: 30px;
 
   .nav-link {
-    @include open-sans(16px, $gray);
+    @include open-sans(.9rem, $gray);
 
     &:hover,
     &:active,
@@ -91,7 +133,7 @@
   }
 
   .copyright-footer {
-    @include open-sans(15px, $gray-light);
+    @include open-sans(.8rem, $gray-light);
 
     a {
       color: inherit !important;
@@ -154,7 +196,7 @@
   }
 
   .breadcrumb {
-    @include open-sans(16px, $blue-lighter);
+    @include open-sans(.85rem, $blue-lighter);
     background: transparent;
     left: 0;
     margin-bottom: 0;
@@ -183,7 +225,7 @@
 
 
 .btn-cta {
-  @include open-sans(16px, $white, $semi-bold);
+  @include open-sans(.85rem, $white, $semi-bold);
   border: 4px solid $blue-dark;
   border-width: 0 0 4px;
   transition: color $transition-dur, background $transition-dur, border-color $transition-dur;
@@ -210,8 +252,6 @@
 
   &.btn-success {
     border-color: $green-dark;
-    font-size: 24px;
-    padding: 1.5rem;
 
     &:hover,
     &:focus {
@@ -271,13 +311,13 @@
     }
 
     .copyright-footer {
-      font-size: 12px;
+      font-size: .6rem;
       margin-top: 30px;
     }
   }
 
   .btn-cta {
-    font-size: 14px;
+    font-size: .8rem;
   }
 
   .jumbotron {

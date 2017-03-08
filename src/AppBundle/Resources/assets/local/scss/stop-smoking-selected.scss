@@ -13,7 +13,8 @@
   margin-top: 2rem;
 }
 
-.postcode-group {
+.postcode-group,
+.borough-group {
   margin-top: 1rem;
 
   .form-control-lg {
@@ -21,6 +22,7 @@
   }
 
   .btn-cta {
+    display: block;
     font-size: 1.25rem;
     line-height: 1.25;
     padding: .75rem 1.5rem;
@@ -28,6 +30,30 @@
 
   .form-text {
     font-size: .8rem;
+  }
+}
+
+.borough-group {
+  .bootstrap-select {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    font-size: inherit;
+  }
+
+  .dropdown-menu {
+    font-size: 1.1rem;
+
+    a {
+      font-size: inherit;
+      width: 100%;
+    }
+  }
+
+  .dropdown-toggle::after {
+    border-top-color: $blue;
+    margin-left: -.3rem;
   }
 }
 
@@ -60,14 +86,13 @@
     margin-top: 1rem;
   }
 
-  .postcode-group {
+  .postcode-group,
+  .borough-group {
     margin-top: .6rem;
 
     .btn-cta,
     .form-control-lg {
       font-size: 1rem;
-      line-height: 1.2;
-      padding: .75rem 1.5rem;
     }
 
     .form-text {

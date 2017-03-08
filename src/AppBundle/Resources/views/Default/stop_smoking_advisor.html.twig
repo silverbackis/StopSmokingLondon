@@ -3,6 +3,7 @@
 {% block stylesheets %}
   {{ parent() }}
   {% stylesheets 
+    '@AppBundle/Resources/assets/global/bower/bootstrap-select/dist/css/bootstrap-select.css'
     '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.scss'
     '@AppBundle/Resources/assets/local/scss/stop-smoking-selected.scss'
     filter='?uglifycss'
@@ -14,9 +15,11 @@
 {% block javascripts %}
   {{ parent() }}
   {% javascripts
+    '@AppBundle/Resources/assets/global/bower/bootstrap-select/dist/js/bootstrap-select.min.js'
     '@AppBundle/Resources/assets/global/bootstrap-toolkit/bootstrap-toolkit.js'
     '@AppBundle/Resources/assets/global/BootstrapModalAlerts.js'
     '@AppBundle/Resources/assets/global/GoogleMap/GoogleMap.js'
+    '@AppBundle/Resources/assets/local/js/stop-smoking-selected.js'
     filter='?uglifyjs2' %}
     <script src="{{ asset_url }}"></script>
   {% endjavascripts %}
@@ -39,19 +42,41 @@
     <div class="map-row-wrapper">
       <div class="row justify-content-center bottom-row container-lower">
         <div class="col flex-last flex-lg-first">
-          <h3 class="postcode-header">Search address or postcode</h3>
-          <div class="form-group row postcode-group gutter-sm">
-            <div class="col">
-              <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
-            </div>
-            <div class="col-12 col-auto">
-              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Search</a>
-            </div>
-            <div class="col-12">
-              <p class="form-text text-muted">Don't know what to search? <a href="#">Select borough instead</a></p>
+          <div id="searchText" class="toggle-area">
+            <h3 class="postcode-header">Search address or postcode</h3>
+            <div class="form-group row postcode-group gutter-sm">
+              <div class="col">
+                <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
+              </div>
+              <div class="col-12 col-auto">
+                <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Search</a>
+              </div>
+              <div class="col-12">
+                <p class="form-text text-muted">Don't know what to search? <a href="#" class="search-type-toggle" data-toggle="#searchBorough">Select borough instead</a></p>
+              </div>
             </div>
           </div>
-
+          <div id="searchBorough" class="toggle-area" style="display: none;">
+            <h3 class="postcode-header">Select your borough</h3>
+            <div class="form-group row borough-group gutter-sm">
+              <div class="col-12">
+                <div class="w-100">
+                  <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" id="sessionSelect">
+                    <option value="">Select your borough</option>
+                    <option value="1">Borough 1</option>
+                    <option value="2">Borough 2</option>
+                    <option value="3">Borough 3</option>
+                    <option value="4">Borough 4</option>
+                    <option value="5">Borough 5</option>
+                    <option value="6">Borough 6</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12">
+                <p class="form-text text-muted">Can't find your borough? <a href="#" class="search-type-toggle" data-toggle="#searchText">Search instead</a></p>
+              </div>
+            </div>
+          </div>
           <div class="card card-outline-success text-center borough-card" id="boroughCard">
             <div class="card-block">
               <span><span id="liveIn">You have said that you live in</span><h4 id="selectedBorough">XYZ</h4></span>

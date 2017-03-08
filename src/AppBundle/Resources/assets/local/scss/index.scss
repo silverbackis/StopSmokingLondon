@@ -4,6 +4,11 @@
 
 .btn-cta {
   min-width: 320px;
+
+  &.btn-success {
+    font-size: 1.4rem;
+    padding: 1.5rem;
+  }
 }
 
 .home-feature {
@@ -14,11 +19,11 @@
 }
 
 .welcome {
-  @include roboto(42px, $white);
+  @include roboto(2.3rem, $white);
   text-shadow: 0 1.5px 1.5px rgba($black, .24);
 
   .small {
-    font-size: 32px;
+    font-size: 1.6rem;
   }
 }
 
@@ -92,13 +97,13 @@
   }
 
   .fact {
-    @include open-sans(18px, $blue, $semi-bold);
+    @include open-sans(.9rem, $blue, $semi-bold);
     display: block;
   }
 }
 
 h4 {
-  @include open-sans(24px, $blue, $semi-bold);
+  @include open-sans(1.3rem, $blue, $semi-bold);
   margin-bottom: 1rem;
 }
 
@@ -117,7 +122,7 @@ h4 {
 }
 
 .twitter-profile-link {
-  @include open-sans(16px, $gray, $semi-bold);
+  @include open-sans(.85rem, $gray, $semi-bold);
   bottom: 0;
   position: absolute;
   right: 0;
@@ -193,7 +198,7 @@ h4 {
 }
 
 .twitter-card {
-  @include open-sans(18px);
+  @include open-sans(1rem);
   border: 0;
   border-bottom: 3px solid $blue;
   border-radius: 0;
@@ -208,7 +213,7 @@ h4 {
     position: relative;
 
     .text {
-      @include open-sans(14px, $white, $semi-bold);
+      @include open-sans(.75rem, $white, $semi-bold);
       background: url($asset-image-base + 'icon/twitter_retweet.png') 5px 50% no-repeat $gray-light;
       background-size: 17px auto;
       padding: 2px 5px 2px 27px;
@@ -224,12 +229,12 @@ h4 {
     }
 
     h5 {
-      @include open-sans(14px, $gray, $semi-bold);
+      @include open-sans(.75rem, $gray, $semi-bold);
     }
   }
 
   .view-tweet {
-    @include open-sans(14px, $gray);
+    @include open-sans(.75rem, $gray);
 
     &:hover {
       color: $blue;
@@ -256,7 +261,7 @@ h4 {
   }
 
   .twitter-card {
-    font-size: 16px;
+    font-size: .9rem;
   }
 }
 
@@ -268,10 +273,10 @@ h4 {
   }
 
   .welcome {
-    font-size: 38px;
+    font-size: 2.1rem;
 
     .small {
-      font-size: 26px;
+      font-size: 1.5rem;
     }
   }
 
@@ -279,7 +284,7 @@ h4 {
     width: 100%;
 
     .fact {
-      font-size: 15px;
+      font-size: .95rem;
     }
   }
 
@@ -329,11 +334,11 @@ h4 {
   }
 
   .btn-cta {
-    font-size: 15px;
+    font-size: .85rem;
     min-width: 290px;
 
     &.btn-success {
-      font-size: 21px;
+      font-size: 1.2rem;
     }
   }
 }
