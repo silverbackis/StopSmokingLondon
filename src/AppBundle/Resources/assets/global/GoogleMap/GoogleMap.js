@@ -44,7 +44,6 @@ var GoogleMap = (function($, viewport, alert, confirm){
       if(searchText === '')
       {
         $("#confirmPostcode").removeClass("disabled");
-        $("#boroughCard").hide();
         $sessionSelect.selectpicker('val', '').trigger("change");
         return;
       }
@@ -308,8 +307,15 @@ var GoogleMap = (function($, viewport, alert, confirm){
         // Setup the selectbox change event
         $sessionSelect.on("change", function(){
           var borough = $sessionSelect.val();
-          showBoroughBox(borough);
-          search(borough);
+          if(borough === '')
+          {
+            $("#boroughCard").hide();
+          }
+          else
+          {
+            showBoroughBox(borough);
+            search(borough);
+          }          
         });
       });
     }
