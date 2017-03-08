@@ -57,10 +57,12 @@ class DefaultController extends Controller
     {
         $response = new JsonResponse();
         if ($this->isCsrfTokenValid('borough_json', $request->query->get('token'))) {
+            $csrf = $this->get('security.csrf.token_manager');
+            $token = $csrf->refreshToken('borough_json');
+
             $boroughs = $this->getDoctrine()
                 ->getRepository('AppBundle:Borough')
                 ->findAll();
-           
 
             $lastUpdatedDate = null;
             foreach($boroughs as $borough)
