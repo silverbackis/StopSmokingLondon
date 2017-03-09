@@ -25,19 +25,10 @@ class Borough
     protected $name;
 
     /**
-    * @ORM\Column(type="string", length=500, nullable=true)
-    */
+     * @ORM\ManyToOne(targetEntity="StopSmokingService")
+     * @ORM\JoinColumn(name="service_id", referencedColumnName="id", onDelete="NO ACTION")
+     */
     protected $service;
-
-    /**
-    * @ORM\Column(type="string", length=50, nullable=true)
-    */
-    protected $telephone;
-
-    /**
-    * @ORM\Column(type="string", length=500, nullable=true)
-    */
-    protected $website;
 
     /**
     * @ORM\Column(type="text", nullable=false)
@@ -81,7 +72,7 @@ class Borough
     /**
      * Set name
      *
-     * @param string $borough
+     * @param string $name
      *
      * @return Borough
      */
@@ -100,78 +91,6 @@ class Borough
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set service
-     *
-     * @param string $service
-     *
-     * @return Borough
-     */
-    public function setService($service)
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    /**
-     * Get service
-     *
-     * @return string
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
-
-    /**
-     * Set telephone
-     *
-     * @param string $telephone
-     *
-     * @return Borough
-     */
-    public function setTelephone($telephone)
-    {
-        $this->telephone = $telephone;
-
-        return $this;
-    }
-
-    /**
-     * Get telephone
-     *
-     * @return string
-     */
-    public function getTelephone()
-    {
-        return $this->telephone;
-    }
-
-    /**
-     * Set website
-     *
-     * @param string $website
-     *
-     * @return Borough
-     */
-    public function setWebsite($website)
-    {
-        $this->website = $website;
-
-        return $this;
-    }
-
-    /**
-     * Get website
-     *
-     * @return string
-     */
-    public function getWebsite()
-    {
-        return $this->website;
     }
 
     /**
@@ -244,5 +163,29 @@ class Borough
     public function getModifiedAt()
     {
         return $this->modified_at;
+    }
+
+    /**
+     * Set service
+     *
+     * @param \AppBundle\Entity\StopSmokingService $service
+     *
+     * @return Borough
+     */
+    public function setService(\AppBundle\Entity\StopSmokingService $service = null)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    /**
+     * Get service
+     *
+     * @return \AppBundle\Entity\StopSmokingService
+     */
+    public function getService()
+    {
+        return $this->service;
     }
 }

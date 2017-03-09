@@ -19,3 +19,8 @@ monolog:
             level: debug
         console:
             type:  console
+bw_base:
+    page:
+        js_sdk:
+            ganalytics:
+                enabled: true

@@ -20,7 +20,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
   $map = $('#map'),
   $sessionSelect = $("#sessionSelect"),
   $searchInput = $("#postcodeInput"),
-  search = function(searchText)
+  initCalled = false,
+  pageIntent = null,
+  $advisorCard = $("#advisorCard"),
+  $medicineCard = $("#medicineCard"),
+  $nextSteps = $("#nextSteps"),
+  boroughsLocation = "London";
+
+  function search(searchText)
   {
     if(!searchText)
     {
@@ -36,15 +43,20 @@ var GoogleMap = (function($, viewport, alert, confirm){
         map.data.overrideStyle(selectedFeature, selectedFeature.getProperty('originalColors'));
         selectedFeature = null;
       }
+
       // Unset the marker if already present
       if(searchMarker)
       {
         searchMarker.setMap(null);
       }
+
+      // Reset if the search field is empty
       if(searchText === '')
       {
         $("#confirmPostcode").removeClass("disabled");
-        $sessionSelect.selectpicker('val', '').trigger("change");
+        $sessionSelect.selectpicker('val', '');
+        $nextSteps.hide();
+        selectChanged();
         return;
       }
 
@@ -62,8 +74,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#confirmPostcode").removeClass("disabled");
       $searchInput.prop('disabled', false);
     }
-  },
-  searchResult = function(results, status) 
+  }
+
+  function searchResult(results, status) 
   {
     totalAttempts++;
     
@@ -88,7 +101,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
           map.data.overrideStyle(selectedFeature, {
             fillColor: '#15ce75',
             strokeColor: '#FFFFFF',
-            strokeWeight: 4,
+            strokeWeight: 3,
             zIndex: 2
           });
           return false;
@@ -96,10 +109,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
       });
       // Check if the marker point is within any borough, if not display error
       
-      
       if(!selectedFeature)
       {
-        showBoroughBox("No Address Found Within London Boroughs", true);
+        showBoroughInfo("Sorry, we couldn't find that within the "+boroughsLocation+" boroughs", true);
       }
       else
       {
@@ -113,7 +125,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
         // Update and show the card displaying the borough
         if($sessionSelect.val() !== selectedFeature.getProperty('name'))
         {
-          $sessionSelect.selectpicker('val', selectedFeature.getProperty('name')).trigger("change");
+          $sessionSelect.selectpicker('val', selectedFeature.getProperty('name'));
+          selectChanged(selectedFeature);
         }
         else
         {
@@ -123,202 +136,321 @@ var GoogleMap = (function($, viewport, alert, confirm){
     }
     else if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
     {
-      showBoroughBox("Sorry, No Results Found", true);
+      showBoroughInfo("Sorry, No Results Found", true);
     }
     else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
     {
       if(totalAttempts >= maxAttempts)
       {
-        showBoroughBox("Sorry, we've reached out search limit. Please try again later or select your borough instead.", true);
+        showBoroughInfo("Sorry we've reached our limit to search for "+boroughsLocation+" boroughs.", true);
       }
       else
       {
-        showBoroughBox("Retrying... Attempt "+(totalAttempts+1), true);
+        showBoroughInfo("Retrying... Attempt "+(totalAttempts+1), true);
         lastSearch = null;
         setTimeout(function(){
           search();
-        }, 900);
+        }, 1100);
       }
-      
     }
     else
     {
-      showBoroughBox("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
+      showBoroughInfo("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
     }
-  },
-  enableInputs = function()
+  }
+
+  function selectChanged(boroughFeature)
+  {
+    var featureProperties = {},
+    borough = $sessionSelect.val();
+    if(borough === '')
+    {
+      $("#boroughCard").hide();
+    }
+    else
+    {
+      if(typeof boroughFeature.getProperty !== 'function')
+      {
+        // var passed is not a feautre, fine the feature (if dropdown select changed instead of map found and provided it to this function)
+        // Skip using the map data in case it hasn't loaded
+        $.each(GeoJson.features, function()
+        {
+          if(this.properties.name === borough)
+          {
+            featureProperties = this.properties;
+            return false;
+          }
+        });
+      }
+      else
+      {
+        boroughFeature.forEachProperty(function(val, key)
+        {
+          featureProperties[key] = val;
+        });
+      }
+      showBoroughInfo(featureProperties);
+      
+      // Search will only happen if not a duplicate search so this is OK to call here.
+      // When search completes it triggers this selectChanged function. Primary flow is for dropdown change to happen
+      // and info to display immediately, before the map search is done
+      search(borough);
+    }
+  }
+
+  function enableInputs()
   {
     $("#confirmPostcode").removeClass("disabled");
     $searchInput.prop('disabled', false);
-  }, 
-  showBoroughBox = function(msg, error)
+  }
+
+  function showBoroughInfo(msg, error)
   {
+    // Show the card - remove success and warning styles
     $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
+    
+    // Add warning styles for error
     if(error)
     {
-      $("#selectedBorough").html(msg);
       $("#boroughCard").addClass("card-outline-warning");
       $("#liveIn").hide();
+      $("#selectedBorough").html(msg);
     }
     else
     {
-      $("#selectedBorough").html(msg);
+      var boroughProps = msg,
+      $telCont,
+      $message,
+      $websiteLink,
+      $tel = $('<a />', {
+        class: 'tel'
+      });
       $("#boroughCard").addClass("card-outline-success");
       $("#liveIn").show();
-    }
-    enableInputs();
-  },
-  public = {
-    initialised: false,
-    init: function()
-    {
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: center,
-        styles: [
-          {
-            "featureType": "all",
-            "stylers": [
-              { 
-                "color": "#eceeef",
-                "visibility": "off"
-              }
-            ]
-          }
-        ],
-        //mapTypeControl: false,
-        mapTypeId: 'roadmap',
-        //streetViewControl: false,
-        zoomControl: false,
-        clickableIcons: false,
-        disableDefaultUI: true,
-        draggable: false,
-        gestureHandling: "none",
-        keyboardShortcuts: false,
-        scrollwheel: false
-      });
+      $("#selectedBorough").html(boroughProps.name);
 
-      // http://stackoverflow.com/questions/3081021/how-to-get-the-center-of-a-polygon-in-google-maps-v3/13772082#13772082
-      google.maps.Polygon.prototype.poly_getBounds = function(){
-        var bounds = new google.maps.LatLngBounds();
-        this.getPath().forEach(function(element,index){bounds.extend(element);});
-        return bounds;
-      };
-
-      // Set token as variable and remove the attribute
-      var token = $map.attr("data-token");
-      $map.removeAttr("data-token");
-      // Get GeoJson with token in GET
-      $.getJSON('/boroughs.json?token=' + token, function(LoadedGeoJson)
+      if($advisorCard.length > 0)
       {
-        // Set local variable with the GeoJson data - parameters have all the info we need out of database
-        GeoJson = LoadedGeoJson;
-        //  Add borough options to dropdown
-        $.each(GeoJson.features, function(){
-          $sessionSelect.append(
-            $("<option />", {
-              value: this.properties.name,
-              html: this.properties.name
-            })
-          );
-        });
-        $sessionSelect.selectpicker('refresh');
-        
-        // Initialise the map
-        var features = map.data.addGeoJson(GeoJson);
-        map.data.setStyle({
-          fillColor: colors[1],
-          fillOpacity: 1,
-          strokeWeight: 1,
-          strokeColor: '#FFFFFF',
-          strokeOpacity: 1,
-          draggable: false,
-          clickable: false
-        });
-        $.each(features, function(index){
-          var colIndex = index%colors.length;
-          var initStrkIndex = colIndex===1 ? index+1 : index+3;
-          var strkIndex = initStrkIndex%colors.length;
-          var featureStyle = {
-            fillColor: colors[colIndex],
-            strokeColor: colors[strkIndex],
-            strokeWeight: 1,
-            zIndex: 1
-          };
-          map.data.overrideStyle(this, featureStyle);
-          this.setProperty('originalColors', featureStyle);
-        });
-        public.initialised = true;
-      });
-
-      $("#confirmPostcode").on("click", function(e){
-        e.preventDefault();
-        var $btn = $(this);
-        if(!$btn.hasClass("disabled"))
+        // We have an advisor info card to fill in
+        $telCont = $(".tel-cont", $advisorCard);
+        $message = $(".message", $advisorCard);
+        $websiteLink = $(".website-link");
+        if(null === boroughProps.service)
         {
-          $btn.addClass("disabled");
-          search();
+          $telCont.hide();
+          $websiteLink.hide();
+          $message.html('We are not currently aware of a local stop smoking service in <b>' + boroughProps.name + '</b>.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
         }
-      });
-
-      $searchInput.on('keypress', function (e) {
-          if (e.keyCode == 13) {
-            $("#confirmPostcode").trigger("click");
-          }
-      });
-
-      $(function(){
-        // Fix because gridlines appear in safari when positioning google map with subpixels/percent
-        // Also mobile/desktop google map resize
-        var updateRealMapLeft = function()
+        else
         {
-          $map.css({
-            left: Math.round($(".google-map.spacer").offset().left)+"px"
-          });
-        },
-        updateMap = function(breakpoint)
-        {
-          switch(breakpoint)
+          var text = 'To make an appointment with <a href="#">'+boroughProps.service+'</a>';
+          if(boroughProps.telephone)
           {
-            case "xl":
-              $(".google-map").css({
-                height: '500px',
-                width: '630px'
+            text += ', this is the number to call:';
+            if(null !== boroughProps.telephone)
+            {
+              $telCont.empty();
+              $.each(JSON.parse(boroughProps.telephone), function()
+              {
+                $tel.clone().attr("href", "tel:+44"+this.replace(" ", "").substr(1)).html(this).appendTo($telCont);
               });
-              google.maps.event.trigger(map, "resize");
-              map.setZoom(10);
-            break;
-            default:
-              $(".google-map").css({
-                height: '280px',
-                width: '312px'
-              });
-              google.maps.event.trigger(map, "resize");
-              map.setZoom(9);
-            break;
+              $telCont.show();
+            }
+            $websiteLink.hide();
           }
-          updateRealMapLeft();
-          map.setCenter(center);
-        };
-        viewport.breakpointChanged(updateMap);
-        updateMap(viewport.current());
-        $(window).on("resize orientationchange", updateRealMapLeft);
-
-        // Setup the selectbox change event
-        $sessionSelect.on("change", function(){
-          var borough = $sessionSelect.val();
-          if(borough === '')
+          else if(boroughProps.website)
           {
-            $("#boroughCard").hide();
+            text += ', click below to visit their website:';
+            $telCont.hide();
+            $websiteLink.attr("href", boroughProps.website).html(boroughProps.service + "Website").show();
           }
           else
           {
-            showBoroughBox(borough);
-            search(borough);
-          }          
-        });
-      });
+
+          }
+          $message.html(text);
+        }
+        
+      }
+
+      if($medicineCard.length > 0)
+      {
+        // We have an medicine info card to fill in
+        $telCont = $(".tel-cont", $medicineCard);
+        $message = $(".message", $medicineCard);
+        $websiteLink = $(".website-link");
+        $telCont.hide();
+        $websiteLink.hide();
+        if(null === boroughProps.service)
+        {
+          $message.html('We are not currently aware of a local stop smoking service in <b>' + boroughProps.name + '</b>.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
+        }
+        else{
+          $message.html('We are waiting for questionnaires to be returned from local stop smoking services so we can tell you the best way to go about getting a medicine.</b>');
+        }
+      }
+
+      $nextSteps.show();
     }
+    enableInputs();
+  }
+
+  function initMap()
+  {
+    // Only initialise once - public function so extra control
+    // Called from the google maps async loaded script
+    if(initCalled)
+    {
+      return;
+    }
+    initCalled = true;
+
+    // Initialise the map
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: center,
+      styles: [
+        {
+          "featureType": "all",
+          "stylers": [
+            { 
+              "color": "#eceeef",
+              "visibility": "off"
+            }
+          ]
+        }
+      ],
+      //mapTypeControl: false,
+      mapTypeId: 'roadmap',
+      //streetViewControl: false,
+      zoomControl: false,
+      clickableIcons: false,
+      disableDefaultUI: true,
+      draggable: false,
+      gestureHandling: "none",
+      keyboardShortcuts: false,
+      scrollwheel: false
+    });
+
+    // Set token as variable and remove the attribute
+    var token = $map.attr("data-token");
+    $map.removeAttr("data-token");
+    // Get GeoJson with token in GET
+    $.getJSON('/boroughs.json?token=' + token, function(LoadedGeoJson)
+    {
+      // Set local variable with the GeoJson data - parameters have all the info we need out of database
+      GeoJson = LoadedGeoJson;
+      //  Add borough options to dropdown
+      $.each(GeoJson.features, function(){
+        $sessionSelect.append(
+          $("<option />", {
+            value: this.properties.name,
+            html: this.properties.name
+          })
+        );
+      });
+      $sessionSelect.selectpicker('refresh');
+      
+      // Initialise the map
+      var features = map.data.addGeoJson(GeoJson);
+      map.data.setStyle({
+        fillColor: colors[1],
+        fillOpacity: 1,
+        strokeWeight: 1,
+        strokeColor: '#FFFFFF',
+        strokeOpacity: 1,
+        draggable: false,
+        clickable: false
+      });
+      $.each(features, function(index){
+        var colIndex = index%colors.length;
+        var initStrkIndex = colIndex===1 ? index+1 : index+3;
+        var strkIndex = initStrkIndex%colors.length;
+        var featureStyle = {
+          fillColor: colors[colIndex],
+          strokeColor: colors[strkIndex],
+          strokeWeight: 1,
+          zIndex: 1
+        };
+        map.data.overrideStyle(this, featureStyle);
+        this.setProperty('originalColors', featureStyle);
+      });
+    });
+
+    $("#confirmPostcode").on("click", function(e){
+      e.preventDefault();
+      var $btn = $(this);
+      if(!$btn.hasClass("disabled"))
+      {
+        $btn.addClass("disabled");
+        search();
+      }
+    });
+
+    $searchInput.on('keypress', function (e) {
+        if (e.keyCode == 13) {
+          $("#confirmPostcode").trigger("click");
+        }
+    });
+
+    $(initDoc);
+  }
+
+  function initDoc()
+  {
+    // Fix because gridlines appear in safari when positioning google map with subpixels/percent
+    // Also mobile/desktop google map resize
+    var updateRealMapLeft = function()
+    {
+      var $posElem = $(".google-map-outer"),
+      posOffset = $posElem.position(),
+      $spacer = $(".google-map.spacer"),
+      spacerOffset = $spacer.position();
+      $map.css({
+        left: Math.round(posOffset.left+spacerOffset.left)+"px"
+      });
+    },
+    updateMap = function(breakpoint)
+    {
+      switch(breakpoint)
+      {
+        case "xl":
+          $(".google-map").css({
+            height: '500px',
+            width: '630px'
+          });
+          google.maps.event.trigger(map, "resize");
+          map.setZoom(10);
+        break;
+        default:
+          $(".google-map").css({
+            height: '280px',
+            width: '312px'
+          });
+          google.maps.event.trigger(map, "resize");
+          map.setZoom(9);
+        break;
+      }
+      updateRealMapLeft();
+      map.setCenter(center);
+    };
+    viewport.breakpointChanged(updateMap);
+    updateMap(viewport.current());
+    $(window).on("resize orientationchange", updateRealMapLeft);
+
+    // Setup the selectbox change event
+    $sessionSelect.on("change", selectChanged);
+
+    $(".search-type-toggle").on("click", function(e)
+    {
+      e.preventDefault();
+      $(this).parents(".toggle-area").hide();
+      $($(this).attr("data-toggle")).show();
+    });
+  }
+
+  var public = {
+    init: initMap
   };  
   return public;
 })(jQuery, ResponsiveBootstrapToolkit, BootstrapModalAlerts.alert, BootstrapModalAlerts.confirm);

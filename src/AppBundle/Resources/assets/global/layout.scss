@@ -36,6 +36,10 @@
   padding-right: 2rem;
 }
 
+.bootstrap-select.btn-group .dropdown-toggle:focus {
+  outline: none !important;
+}
+
 @mixin placeholder {
   color: $gray-light;
 }
@@ -276,8 +280,8 @@
 }
 
 .gutter-sm {
-  margin-left: -10px;
-  margin-right: -10px;
+  margin-left: -5px;
+  margin-right: -5px;
 
   > .col,
   > [class*="col-"] {
@@ -327,7 +331,7 @@
   }
 
   .btn-cta {
-    font-size: .8rem;
+    font-size: .75rem;
   }
 
   .jumbotron {

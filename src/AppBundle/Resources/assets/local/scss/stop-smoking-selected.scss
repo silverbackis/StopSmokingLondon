@@ -3,33 +3,70 @@
 @import 'bower/bootstrap/scss/custom';
 
 .container-lower {
-  margin: 2rem auto;
-  max-width: 1200px;
-  text-align: center;
+  margin-bottom: 2rem;
+
+  > .row {
+    text-align: center;
+
+    &.row-main-page {
+      margin-top: 2rem;
+    }
+
+    + .row {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+    }
+  }
 }
 
-.postcode-header {
-  @include open-sans(1.6rem, $blue, $semi-bold);
-  margin-top: 2rem;
+.page-header {
+  @include open-sans(1.6rem, $blue-dark, $semi-bold);
+
+  &.postcode-header {
+    margin-top: 2rem;
+  }
+
+  &.two-steps {
+    margin-bottom: 1rem;
+  }
+}
+
+.card {
+  + .card {
+    margin-top: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    + p {
+      margin: 1rem 0;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
 }
 
 .postcode-group,
 .borough-group {
   margin-top: 1rem;
 
-  .form-control-lg {
-    height: 100%;
+  .form-text {
+    font-size: .8rem;
   }
+}
 
+.form-group {
   .btn-cta {
     display: block;
     font-size: 1.25rem;
     line-height: 1.25;
-    padding: .75rem 1.5rem;
-  }
-
-  .form-text {
-    font-size: .8rem;
+    padding: .71rem 1.5rem;
   }
 }
 
@@ -44,10 +81,12 @@
 
   .btn {
     font-size: inherit;
+    padding: .7rem 1.5rem;
   }
 
   .dropdown-menu {
     font-size: 1.1rem;
+    min-height: 140px !important;
 
     a {
       font-size: inherit;
@@ -57,14 +96,63 @@
 
   .dropdown-toggle::after {
     border-top-color: $blue;
-    margin-left: -.3rem;
+    margin-left: -.6rem;
+  }
+}
+
+.row-bottom {
+  display: none;
+  margin-top: 2rem;
+}
+
+.tel {
+  @include open-sans(3rem, $green, $semi-bold);
+  background: url($asset-image-base + 'icon/telephone.png') 0 55% no-repeat;
+  background-size: 28px 37px;
+  line-height: 3rem;
+  padding-left: 38px;
+}
+
+.stop-smoking-london-bottom {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+
+  p {
+    @include open-sans(1.2rem, $gray-dark);
+
+    &:first-child {
+      margin-top: 1.5rem;
+    }
+
+    &.text-primary {
+      font-size: 1.9rem;
+
+      a {
+        display: inline-block;
+        font-weight: $semi-bold;
+      }
+    }
+  }
+
+  .btn-cta {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    width: auto;
+  }
+
+  .ssl-logo-large {
+    height: 106px;
+    width: 160.5px;
   }
 }
 
 @include media-breakpoint-down(lg) {
-  .postcode-header {
+  .page-header {
     font-size: 1.4rem;
-    margin-top: 0;
+
+    &.postcode-header {
+      margin-top: 0;
+    }
   }
 
   .postcode-group {
@@ -85,22 +173,126 @@
 }
 
 @include media-breakpoint-down(md) {
-  .postcode-header {
-    font-size: 1.2rem;
-    margin-top: 1rem;
+  .page-header {
+    font-size: 1.1rem;
+
+    &.postcode-header {
+      margin-top: 1rem;
+    }
   }
 
   .postcode-group,
   .borough-group {
     margin-top: .6rem;
 
-    .btn-cta,
-    .form-control-lg {
-      font-size: 1rem;
+    .form-text {
+      font-size: .65rem;
+      margin-bottom: 0;
     }
 
-    .form-text {
-      font-size: .7rem;
+    .dropdown-menu {
+      font-size: .8rem;
     }
   }
+
+  .form-group {
+    .btn-cta,
+    .form-control-lg,
+    .btn-lg {
+      font-size: 1rem;
+      padding-left: .8rem;
+      padding-right: .8rem;
+    }
+  }
+
+  .container-lower {
+    padding-left: 4px;
+    padding-right: 4px;
+
+    > .row {
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+  }
+
+  .card {
+    font-size: .95rem;
+
+    .card-block {
+      padding: 1rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .tel {
+    background-size: 18px auto;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+    padding-left: 23px;
+  }
+
+  .row-bottom {
+    .card {
+      .card-block {
+        padding-left: .9rem;
+        padding-right: .9rem;
+      }
+
+      h4 {
+        font-size: .9rem;
+
+        + p {
+          margin: .5rem 0;
+        }
+      }
+    }
+  }
+
+  .stop-smoking-london-bottom {
+    margin-top: 2rem;
+
+    p {
+      font-size: 1rem;
+
+      &:first-child {
+        margin-top: 1rem;
+      }
+
+      &.text-primary {
+        font-size: 1.4rem;
+      }
+    }
+
+    .btn-cta {
+      font-size: .8rem;
+    }
+
+    .ssl-logo-large {
+      height: auto;
+      width: 110px;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .card {
+    font-size: .8rem;
+
+    .btn-cta {
+      margin-top: .5rem;
+    }
+  }
+
+  .row-bottom {
+    .card {
+      border-left: 0;
+      border-radius: 0;
+      border-right: 0;
+      margin-left: -19px;
+      margin-right: -19px;
+    }
+  }  
 }

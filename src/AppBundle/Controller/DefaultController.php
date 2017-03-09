@@ -31,7 +31,10 @@ class DefaultController extends Controller
      */
     public function stopSmokingAdvisorAction(Request $request)
     {
-        return $this->render('@App/Default/stop_smoking_advisor.html.twig');
+        return $this->render('@App/Default/stop_smoking_map.html.twig', [
+            "title" => "You are making an appointment<br />with an advisor",
+            "type" => 'advisor'
+        ]);
     }
 
     /**
@@ -39,7 +42,10 @@ class DefaultController extends Controller
      */
     public function stopSmokingMedicinesAction(Request $request)
     {
-        return $this->render('@App/Default/stop_smoking_medicines.html.twig');
+        return $this->render('@App/Default/stop_smoking_map.html.twig', [
+            "title" => "You are getting a stop smoking medicine",
+            "type" => 'medicine'
+        ]);
     }
 
     /**
@@ -56,18 +62,22 @@ class DefaultController extends Controller
     public function boroughJsonAction(Request $request)
     {
         $response = new JsonResponse();
-        if ($this->isCsrfTokenValid('borough_json', $request->query->get('token'))) {
+        if ($this->container->getParameter('kernel.debug') || $this->isCsrfTokenValid('borough_json', $request->query->get('token'))) {
             $csrf = $this->get('security.csrf.token_manager');
             $token = $csrf->refreshToken('borough_json');
 
-            $boroughs = $this->getDoctrine()
-                ->getRepository('AppBundle:Borough')
-                ->findAll();
+            $boroughs = $this->getDoctrine()->getRepository('AppBundle:Borough')->findAll();
 
             $lastUpdatedDate = null;
             foreach($boroughs as $borough)
             {
                 $lastModified = $borough->getModifiedAt();
+                $service = $borough->getService();
+                $serviceLastModified = $service ? $borough->getService()->getModifiedAt() : new \DateTime("1970");
+                if($serviceLastModified > $lastModified)
+                {
+                    $lastModified = $serviceLastModified;
+                }
                 if(null === $lastUpdatedDate || $lastModified > $lastUpdatedDate)
                 {
                     $lastUpdatedDate = $lastModified;
@@ -94,16 +104,17 @@ class DefaultController extends Controller
             );
             foreach($boroughs as $borough)
             {
+                $service = $borough->getService();
                 $data['features'][] = array(
                     "type" => "Feature",
                     "id" => $borough->getId(),
                     "properties" => array(
                         "name" => $borough->getName(),
-                        "service" => $borough->getService(),
-                        "telephone" => $borough->getTelephone(),
-                        "website" => $borough->getWebsite(),
-                        "created" => $borough->getCreatedAt(),
-                        "modified" => $borough->getModifiedAt(),
+                        "service" => $service ? $service->getName() : null,
+                        "telephone" => $service ? $service->getTelephone() : null,
+                        "website" => $service ? $service->getWebsite() : null,
+                        "created" => $service ? $service->getCreatedAt() : null,
+                        "modified" => $service ? $service->getModifiedAt() : null,
                     ),
                     "geometry" => array(
                         "type" => "Polygon",

@@ -95,12 +95,12 @@ irozgar_gulp_rev_versions:
 sonata_seo:
     encoding:         UTF-8
     page:
-        title:        London's Stop Smoking Portal
+        title:        Stop Smoking - London Portal
         default:      sonata.seo.page.default
         metas:
             name:
                 robots:               index, follow                
-                description:          The description
+                description:          Stop Smoking London - The capital's starting point for stopping smoking
                 viewport:             width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1
 
                 # Only if an application
@@ -127,8 +127,8 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                og:site_name:       Website Name
-                og:description:     A demo of the some rich bundles for your Symfony2 projects
+                og:site_name:       Stop Smoking - London Portal
+                og:description:     The capital's starting point for stopping smoking
                 og:locale:          en_GB
 
                 #web based options: website, article or blog
@@ -190,8 +190,8 @@ bw_base:
                     #- { type: image/x-icon, href: '%icons_folder%favicon.ico' }
         js_sdk:
             ganalytics:
-                enabled: false
-                id: null
+                enabled: false # Enable in production config unless debugging
+                id: UA-88234079-3
                 domain: auto
             woopra:
                 enabled: false
