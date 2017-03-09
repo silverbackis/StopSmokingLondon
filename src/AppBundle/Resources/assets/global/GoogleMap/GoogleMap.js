@@ -252,7 +252,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
               $telCont.empty();
               $.each(JSON.parse(boroughProps.telephone), function()
               {
-                $tel.clone().attr("href", "tel:+44"+this.replace(" ", "").substr(1)).html(this).appendTo($telCont);
+                $tel.clone().attr("href", "tel:+44"+this.replace(/\s/g, '').substr(1)).html(this).appendTo($telCont);
               });
               $telCont.show();
             }

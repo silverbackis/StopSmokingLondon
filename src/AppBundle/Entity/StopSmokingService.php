@@ -31,6 +31,12 @@ class StopSmokingService
 
     /**
     * @ORM\Column(type="string", length=500, nullable=true)
+    * @Assert\Url(
+    *    message = "The url '{{ value }}' is not a valid url",
+    *    protocols = {"http", "https"},
+    *    checkDNS = true,
+    *    dnsMessage = "The host '{{ value }}' could not be resolved."
+    * )
     */
     protected $website;
 

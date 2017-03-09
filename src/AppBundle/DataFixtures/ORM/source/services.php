@@ -209,7 +209,7 @@ return array(
       ),
       'gp_prescription' => true,
       'ecig_friendly' => true,
-      'web' => 'http://www.oneyouealing.co.uk',
+      'web' => 'http://oneyouealing.org',
       'tel' => array(
         '0208 579 8622'
       )
@@ -231,7 +231,7 @@ return array(
       'web' => 'http://www.smokefreehackney.org',
       'tel' => array(
         '0800 046 9946',
-        '020 3316 1085'
+        '0203 316 1085'
       )
     ),
     array(
@@ -250,7 +250,7 @@ return array(
       'ecig_friendly' => true,
       'web' => null,
       'tel' => array(
-        '020 8724 8018'
+        '0208 724 8018'
       )
     ),
     array(
@@ -271,7 +271,7 @@ return array(
       'ecig_friendly' => true,
       'web' => 'https://kick-it.org.uk/',
       'tel' => array(
-        '020 3434 2500'
+        '0203 434 2500'
       )
     ),
     array(
@@ -290,7 +290,7 @@ return array(
       'ecig_friendly' => true,
       'web' => 'http://www.guysandstthomas.nhs.uk/ourservices/stop-smoking-service/overview.aspx',
       'tel' => array(
-        '020 7188 7188'
+        '0207 188 7188'
       )
     )/*,
     array(
