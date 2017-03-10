@@ -31,14 +31,14 @@ $semi-bold: 600;
 $bold:      700;
 
 // font mix-ins
-@mixin open-sans($font-size: 18px, $colour: $body-color, $weight: normal) {
+@mixin open-sans($font-size: 1.1rem, $colour: $body-color, $weight: normal) {
   color: $colour;
   font-family: 'Open Sans', sans-serif;
   font-size: $font-size;
   font-weight: $weight;
 }
 
-@mixin roboto($font-size: 18px, $colour: $body-color, $weight: normal) {
+@mixin roboto($font-size: 1.1rem, $colour: $body-color, $weight: normal) {
   color: $colour;
   font-family: 'Roboto', sans-serif;
   font-size: $font-size;

@@ -12,9 +12,9 @@
  * - Wandsworth correct phone number from 0800 389 7921 to 0800 389 7291 (Saw difference on the website)
  *
  * NOTES:
- * Camden & Islington Service - Web and Tel are TBC, so not set yet
- * Camden number may be 0800 1070 401 (found website https://www.smokefreelifecamden.co.uk/)
- * Islington number may be 0800 093 9030 (found website http://www.smokefreeislington.nhs.uk/)
+ * - Camden & Islington Service - Web and Tel are TBC, so not set yet
+ * - Camden number may be 0800 1070 401 (found website https://www.smokefreelifecamden.co.uk/)
+ * - Islington number may be 0800 093 9030 (found website http://www.smokefreeislington.nhs.uk/)
  */
 return array(
     array(

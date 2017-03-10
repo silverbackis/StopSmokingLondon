@@ -2,9 +2,7 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
-.page-header {
-  @include open-sans(1.6rem, $blue-dark, $semi-bold);
-
+.page-header-2 {
   &.postcode-header {
     margin-top: 2rem;
   }
@@ -110,9 +108,7 @@
 }
 
 @include media-breakpoint-down(lg) {
-  .page-header {
-    font-size: 1.4rem;
-
+  .page-header-2 {
     &.postcode-header {
       margin-top: 0;
     }
@@ -124,9 +120,7 @@
 }
 
 @include media-breakpoint-down(md) {
-  .page-header {
-    font-size: 1.1rem;
-
+  .page-header-2 {
     &.postcode-header {
       margin-top: 1rem;
     }

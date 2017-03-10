@@ -20,7 +20,7 @@ input,
 optgroup,
 select,
 textarea {
-  @include open-sans(16px);
+  @include open-sans(.9rem);
 }
 
 button {

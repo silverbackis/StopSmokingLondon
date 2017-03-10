@@ -11,7 +11,15 @@
 {% block page_content %}
   <div class="container-fluid h-100 container-lower">
     {% include '@App/Default/_header.html.twig' %}
-    
+    <div class="row block-text">
+      <div class="col-12">
+        <h3>Finding out if they want to quit</h3>
+        <p>Some text</p>
+        <h3>Providing advice</h3>
+        <p>Some text</p>
+      </div>
+    </div>
+
     <div class="row justify-content-center mt-5">
       <div class="col-12">
         <div class="card card-outline-success text-center container-fluid mobile-w-100">
@@ -26,6 +34,6 @@
       </div>
     </div>
 
-    {% include '@App/Default/_stop_smoking_london_info.html' %}
+    {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
   </div>
 {% endblock %}

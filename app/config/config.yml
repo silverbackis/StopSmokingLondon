@@ -40,23 +40,25 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        google_map_api: AIzaSyCGYII4VXeKwO-GHKz0lgcGtf1cGfNAtCk
+        google_map_api:         AIzaSyCGYII4VXeKwO-GHKz0lgcGtf1cGfNAtCk
+        launch_date:            "%launch_date%"
+        launch_date_format:     "%launch_date_format%"
         external_links:
-            british_websites: https://www.britishwebsites.co.uk
-            facebook: https://www.facebook.com
-            twitter: https://www.twitter.com
-            linkedin: https://www.linkedin.com
-            smokingaz: http://www.smokingaz.com
+            british_websites:   https://www.britishwebsites.co.uk
+            facebook:           https://www.facebook.com
+            twitter:            https://www.twitter.com
+            linkedin:           https://www.linkedin.com
+            smokingaz:          http://www.smokingaz.com
             smoke_free_formula: \#
-            ash: \#
-            phe: \#
+            ash:                \#
+            phe:                \#
             sf28:
-                google: \#
-                itunes: \#
-                website: \#
+                google:         \#
+                itunes:         \#
+                website:        \#
             smoke_free_app:
-                google: \#
-                itunes: \#
+                google:         \#
+                itunes:         \#
 
 # Doctrine Configuration
 doctrine:
@@ -111,7 +113,7 @@ irozgar_gulp_rev_versions:
 sonata_seo:
     encoding:         UTF-8
     page:
-        title:        Stop Smoking - London Portal
+        title:        Stop Smoking London Portal
         default:      sonata.seo.page.default
         metas:
             name:

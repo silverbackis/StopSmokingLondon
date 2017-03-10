@@ -27,11 +27,38 @@ var GoogleMap = (function($, viewport, alert, confirm){
   $nextSteps = $("#nextSteps"),
   boroughsLocation = "London";
 
+  function gaTrack(obj)
+  {
+    if(typeof ga!='undefined')
+    {
+      ga('send', obj);
+    }
+    else
+    {
+      console.log("Google analytics not available. Object attempted to send", obj);
+    }
+  }
+
+  function hideAllResults()
+  {
+    $("#confirmPostcode").removeClass("disabled");
+    $sessionSelect.selectpicker('val', '');
+    $nextSteps.addClass("hidden");
+    $("#boroughCard").hide();
+    selectChanged();
+  }
+
   function search(searchText)
   {
     if(!searchText)
     {
       searchText = $searchInput.val();
+      gaTrack({
+        hitType: 'event',
+        eventCategory: 'Google Map Search',
+        eventAction: 'Query',
+        eventLabel: searchText
+      });
     }
     if(null === lastSearch || lastSearch.toLowerCase() !== searchText.toLowerCase())
     {
@@ -53,10 +80,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       // Reset if the search field is empty
       if(searchText === '')
       {
-        $("#confirmPostcode").removeClass("disabled");
-        $sessionSelect.selectpicker('val', '');
-        $nextSteps.addClass("hidden");
-        selectChanged();
+        hideAllResults();
         return;
       }
 
@@ -67,7 +91,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
         address: searchText,
         region: 'GB',
         bounds: map.getBounds()
-      }, searchResult);
+      }, function(results, status){
+        searchResult(results, status, searchText);
+      });
     }
     else
     {
@@ -76,7 +102,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     }
   }
 
-  function searchResult(results, status) 
+  function searchResult(results, status, searchText) 
   {
     totalAttempts++;
     
@@ -84,33 +110,47 @@ var GoogleMap = (function($, viewport, alert, confirm){
     if (status == google.maps.GeocoderStatus.OK) 
     {
       totalAttempts = 0;
-
-      var resultLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-      // Loop through all features
-      map.data.forEach(function(feature){
-        // Get geometry lat lng array from feature
-        var geometry = feature.getGeometry(),
-        latLngArray = geometry.getArray()[0].getArray();
-        // create a temporary polygon becayse we cannot access a polygon class it seems from a feature
-        var tempPolygon = new google.maps.Polygon({paths: latLngArray});
-        // check if the found marker point is within the new polygon
-        if(google.maps.geometry.poly.containsLocation(resultLatLng, tempPolygon))
+      var resultLatLng;
+      $.each(results, function(){
+        resultLatLng = new google.maps.LatLng(this.geometry.location.lat(), this.geometry.location.lng());
+        // Loop through all features
+        map.data.forEach(function(feature){
+          // Get geometry lat lng array from feature
+          var geometry = feature.getGeometry(),
+          latLngArray = geometry.getArray()[0].getArray();
+          // create a temporary polygon becayse we cannot access a polygon class it seems from a feature
+          var tempPolygon = new google.maps.Polygon({paths: latLngArray});
+          // check if the found marker point is within the new polygon
+          if(google.maps.geometry.poly.containsLocation(resultLatLng, tempPolygon))
+          {
+            // The marker is within the polygon, set it as selected and stop looping
+            selectedFeature = feature;
+            map.data.overrideStyle(selectedFeature, {
+              fillColor: '#15ce75',
+              strokeColor: '#FFFFFF',
+              strokeWeight: 3,
+              zIndex: 2
+            });
+            return false;
+          }
+        });
+        if(selectedFeature)
         {
-          // The marker is within the polygon, set it as selected and stop looping
-          selectedFeature = feature;
-          map.data.overrideStyle(selectedFeature, {
-            fillColor: '#15ce75',
-            strokeColor: '#FFFFFF',
-            strokeWeight: 3,
-            zIndex: 2
-          });
           return false;
         }
       });
+      
       // Check if the marker point is within any borough, if not display error
       
       if(!selectedFeature)
       {
+        gaTrack({
+          hitType: 'event',
+          eventCategory: 'Google Map Search',
+          eventAction: 'Not London Borough Result',
+          eventLabel: searchText
+        });
+        hideAllResults();
         showBoroughInfo("Sorry, we couldn't find that within the "+boroughsLocation+" boroughs", true);
       }
       else
@@ -134,28 +174,45 @@ var GoogleMap = (function($, viewport, alert, confirm){
         }
       }
     }
-    else if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
+    else 
     {
-      showBoroughInfo("Sorry, No Results Found", true);
-    }
-    else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
-    {
-      if(totalAttempts >= maxAttempts)
+      // Allow same search to be completed again
+      lastSearch = null;
+      hideAllResults();
+      gaTrack({
+        hitType: 'event',
+        eventCategory: 'Google Map Search',
+        eventAction: 'Error '+status,
+        eventLabel: searchText
+      });
+
+      if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
       {
-        showBoroughInfo("Sorry we've reached our limit to search for "+boroughsLocation+" boroughs.", true);
+        showBoroughInfo("Sorry, No Results Found", true);
+      }
+      else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
+      {
+        if(totalAttempts >= maxAttempts)
+        {
+          showBoroughInfo("Sorry we've reached our limit to search for "+boroughsLocation+" boroughs.", true);
+        }
+        else
+        {
+          showBoroughInfo("Retrying... Attempt "+(totalAttempts+1), true);
+          lastSearch = null;
+          setTimeout(function(){
+            search();
+          }, 1100);
+        }
+      }
+      else if(status === google.maps.GeocoderStatus.UNKNOWN_ERROR)
+      {
+        showBoroughInfo("Sorry, an unknown error occurred. Please try again.", true);
       }
       else
       {
-        showBoroughInfo("Retrying... Attempt "+(totalAttempts+1), true);
-        lastSearch = null;
-        setTimeout(function(){
-          search();
-        }, 1100);
+        showBoroughInfo("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
       }
-    }
-    else
-    {
-      showBoroughInfo("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
     }
   }
 
@@ -163,11 +220,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
   {
     var featureProperties = {},
     borough = $sessionSelect.val();
-    if(borough === '')
-    {
-      $("#boroughCard").hide();
-    }
-    else
+    if(borough !== '')
     {
       if(typeof boroughFeature.getProperty !== 'function')
       {
@@ -181,6 +234,12 @@ var GoogleMap = (function($, viewport, alert, confirm){
             return false;
           }
         });
+
+        gaTrack({
+          hitType: 'event',
+          eventCategory: 'Borough Dropdown Selected',
+          eventAction: borough
+        });
       }
       else
       {
@@ -188,7 +247,18 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           featureProperties[key] = val;
         });
+        gaTrack({
+          hitType: 'event',
+          eventCategory: 'Google Map Search',
+          eventAction: 'Borough Result',
+          eventLabel: borough
+        });
       }
+      gaTrack({
+        hitType: 'event',
+        eventCategory: 'Borough Information Shown',
+        eventAction: borough
+      });
       showBoroughInfo(featureProperties);
       
       // Search will only happen if not a duplicate search so this is OK to call here.
@@ -224,7 +294,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $websiteLink,
       message,
       fallbackAppend = '<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>',
-      noServiceFallback = 'We have not received information back from <b>' + boroughProps.name + '</b> about your local stop smoking services yet.' + fallbackAppend,
+      noServiceFallback = '<b>' + boroughProps.name + '</b> has failed to provide us information about any stop smoking services.' + fallbackAppend,
       $tel = $('<a />', {
         class: 'tel'
       });
@@ -257,15 +327,24 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           message = noServiceFallback;
         }
-        else if(!boroughProps.service.specialistAdvisors)
+        else if(null === boroughProps.service.telephone)
         {
-          message = 'It appears <b>' + boroughProps.name + '</b> does not have local stop smoking telephone advisors available.' + fallbackAppend;
+          message = '<b>' + boroughProps.name + '</b> has failed to provide us information about how to contact their stop smoking service.' + fallbackAppend;
+        }
+        else if(boroughProps.service.specialistAdvisors)
+        {
+          var serviceName = boroughProps.service.name ? ', <b>' + boroughProps.service.name + '</b>' : '';
+          message = 'Good news,  <b>' + boroughProps.name + '</b> does have a specialist <a href="#">Stop Smoking Service</a>' + serviceName + '. To make an appointment please call:';
+          showTelephone($telCont);
+        }
+        else if(boroughProps.service.pharmacyStaff)
+        {
+          message = 'Unfortunately,  <b>' + boroughProps.name + '</b> does not have a specialist <a href="#">Stop Smoking Service</a>, but it does have a service provided by pharmacies or health centres. To make an appointment please call:';
+          showTelephone($telCont);
         }
         else
         {
-          var serviceName = boroughProps.service.name ? ', <b>' + boroughProps.service.name + '</b>' : '';
-          message = 'Here is some information for your local <a href="#">Stop Smoking Service</a>' + serviceName + ' in <b>' + boroughProps.name + '</b>';
-          showTelephone($telCont);
+          message = 'It appears <b>' + boroughProps.name + '</b> does not have a stop smoking service.' + fallbackAppend;
         }
         $message.html(message);
       }
@@ -282,13 +361,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
         }
         else if(boroughProps.service.gpPrescription)
         {
-          message = 'Your local GP will be able to discuss your situation and prescribe you the most appropriate medication.<br /><br /><b>Alternatively, why not speak to a Stop Smoking London advisor who will be able to recommend one you can pick up at your local pharmacy?</b>';
-          showTelephone($telCont);
+          message = 'Your local GP will be able to discuss your situation and prescribe you the most appropriate medicines.<br /><br /><b>Alternatively, why not speak to a Stop Smoking London advisor who will be able to recommend one?</b>';
         }
         else
         {
-          console.log(boroughProps.service.gpPrescription);
-          message = 'Unfortunately, your local GP will not be able to prescribe your stop smoking medication.<br /><br /><b>Why not speak to a Stop Smoking London advisor who will be able to recommend one you can pick up at your local pharmacy?</b>';
+          message = 'Unfortunately, GPs in your area do not prescribe stop smoking medicines.<br /><br /><b>Why not speak to a Stop Smoking London advisor who will be able to recommend a one you can obtain from your local pharmacy?</b>';
         }
         $message.html(message);
       }

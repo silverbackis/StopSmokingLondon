@@ -9,12 +9,6 @@
   }
 }
 
-.tell-me-header {
-  @include open-sans(1.8rem, $blue-dark, $semi-bold);
-  margin: 20px 0;
-  text-align: center;
-}
-
 .btn-cta {
   font-size: .9rem;
   padding: .75rem .5rem;
@@ -113,10 +107,6 @@
     .text {
       height: 36px;
     }
-  }
-
-  .tell-me-header {
-    font-size: 1.4rem;
   }
 
   .info-cols {
