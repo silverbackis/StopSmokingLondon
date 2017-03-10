@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -20,9 +21,10 @@ class StopSmokingService
     protected $id;
 
     /**
-    * @ORM\Column(type="string", length=500, nullable=false)
-    */
-    protected $name;
+     * One Service has Many Boroughs.
+     * @ORM\OneToMany(targetEntity="Borough", mappedBy="service")
+     */
+    protected $boroughs;
 
     /**
     * @ORM\Column(type="string", length=50, nullable=true)
@@ -104,6 +106,10 @@ class StopSmokingService
         }
     }
 
+    public function __construct() {
+        $this->boroughs = new ArrayCollection();
+    }
+
     /**
     * Get id
     *
@@ -112,31 +118,6 @@ class StopSmokingService
     public function getId()
     {
       return $this->id;
-    }
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return StopSmokingService
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

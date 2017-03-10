@@ -232,43 +232,40 @@ var GoogleMap = (function($, viewport, alert, confirm){
       if($advisorCard.length > 0)
       {
         // We have an advisor info card to fill in
-        $telCont = $(".tel-cont", $advisorCard);
+        $telCont = $(".tel-cont", $advisorCard).empty();
+        $websiteLink = $(".website-link").hide();
         $message = $(".message", $advisorCard);
-        $websiteLink = $(".website-link");
         if(null === boroughProps.service)
         {
-          $telCont.hide();
-          $websiteLink.hide();
-          $message.html('We are not currently aware of a local stop smoking service in <b>' + boroughProps.name + '</b>.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
+          $message.html('We have not received information back from <b>' + boroughProps.name + '</b> about your local stop smoking services yet.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
         }
         else
         {
-          var text = 'To make an appointment with <a href="#">'+boroughProps.service+'</a>';
-          if(boroughProps.telephone)
+          var serviceName = boroughProps.name+' Stop Smoking Service',
+          message = 'Here is some information for <a href="#">'+serviceName+'</a>';
+          
+          if(boroughProps.service.telephone)
           {
-            text += ', this is the number to call:';
-            if(null !== boroughProps.telephone)
+            if(null !== boroughProps.service.telephone)
             {
-              $telCont.empty();
-              $.each(JSON.parse(boroughProps.telephone), function()
+              $.each(JSON.parse(boroughProps.service.telephone), function()
               {
-                $tel.clone().attr("href", "tel:+44"+this.replace(/\s/g, '').substr(1)).html(this).appendTo($telCont);
+                $tel
+                  .clone()
+                    .attr("href", "tel:+44"+this.replace(/\s/g, '').substr(1))
+                    .html(this).appendTo($telCont);
               });
-              $telCont.show();
             }
-            $websiteLink.hide();
           }
-          else if(boroughProps.website)
-          {
-            text += ', click below to visit their website:';
-            $telCont.hide();
-            $websiteLink.attr("href", boroughProps.website).html(boroughProps.service + "Website").show();
-          }
-          else
-          {
 
+          if(boroughProps.service.website)
+          {
+            $websiteLink
+              .attr("href", boroughProps.service.website).html(serviceName + " Website")
+              .show();
           }
-          $message.html(text);
+
+          $message.html(message);
         }
         
       }

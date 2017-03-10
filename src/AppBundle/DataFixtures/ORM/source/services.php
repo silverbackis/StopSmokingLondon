@@ -1,4 +1,13 @@
 <?php
+/**
+ * Changes made to original data
+ * - Wandworth and Richmond were combined, moved Richmond into Kick-It
+ * - Added Kingston upon thames to kick-it service
+ * - Corrected http://oneyouealing.co.uk to http://oneyouealing.org (Failed DNS lookup validation on entry)
+ *
+ * NOTES:
+ * Camden & Islington Service - Web and Tel are TBC, so not set yet
+ */
 return array(
     array(
       'boroughs' => array(
@@ -21,8 +30,7 @@ return array(
     ),
     array(
       'boroughs' => array(
-        'Wandsworth',
-        'Richmond'
+        'Wandsworth'
       ),
       'specialist_advisors' => true,
       'pharmacy_staff' => true,
@@ -257,7 +265,9 @@ return array(
       'boroughs' => array(
         'Westminster',
         'Kensington and Chelsea',
-        'Hammersmith and Fulham'
+        'Hammersmith and Fulham',
+        'Richmond upon Thames',
+        'Kingston upon Thames'
       ),
       'specialist_advisors' => true,
       'pharmacy_staff' => true,

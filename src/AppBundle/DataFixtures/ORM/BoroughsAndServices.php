@@ -59,7 +59,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     return $entity;
   }
 
-  private function makeServiceName($boroughs)
+  /*private function makeServiceName($boroughs)
   {
     $serviceNamePostfix = 'Stop Smoking Service';
     $totalBoroughs = count($boroughs);
@@ -73,18 +73,16 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       $serviceName = join(", ",$boroughs)." and $lastBorough $serviceNamePostfix";
     }
     return $serviceName;
-  }
+  }*/
 
   private function locateService($service, ObjectManager $manager)
   {
-      return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy(['name' => $service]) ?: new StopSmokingService();
+      return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy(['website' => $service['web']]) ?: new StopSmokingService();
   }
 
   private function createService(array $service, ObjectManager $manager)
   {
     $entity = new StopSmokingService();
-
-    $entity->setName($this->makeServiceName($service['boroughs']));
 
     $entity->setSpecialistAdvisors($service['specialist_advisors']);
     $entity->setPharmacyStaff($service['pharmacy_staff']);
@@ -98,10 +96,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     $entity->setEcigFriendly($service['ecig_friendly']);
 
     $entity->setWebsite($service['web']);
-    if($service['tel'] !== null)
-    {
-      $entity->setTelephone(json_encode($service['tel']));
-    }
+    $entity->setTelephone($service['tel']);
 
     // validate
     $errors = $this->validator->validate($entity);
@@ -125,9 +120,12 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     
     foreach($servicesInput as $service)
     {
-      
-      $serviceName = $this->makeServiceName($service['boroughs']);
-      $locator = $this->locateService($serviceName, $manager);
+      if($service['tel'] !== null)
+      {
+        $service['tel'] = json_encode($service['tel']);
+      }
+
+      $locator = $this->locateService($service, $manager);
       if (!$manager->contains($locator))
       {
           $serviceEntity = $this->createService($service, $manager);

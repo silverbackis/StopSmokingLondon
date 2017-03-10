@@ -165,28 +165,4 @@ class Borough
     {
         return $this->modified_at;
     }
-
-    /**
-     * Set service
-     *
-     * @param \AppBundle\Entity\StopSmokingService $service
-     *
-     * @return Borough
-     */
-    public function setService(\AppBundle\Entity\StopSmokingService $service = null)
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    /**
-     * Get service
-     *
-     * @return \AppBundle\Entity\StopSmokingService
-     */
-    public function getService()
-    {
-        return $this->service;
-    }
 }

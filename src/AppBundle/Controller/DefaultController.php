@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+
 class DefaultController extends Controller
 {
     /**
@@ -102,6 +106,8 @@ class DefaultController extends Controller
                 "type" => "FeatureCollection",
                 "features" => []
             );
+
+            
             foreach($boroughs as $borough)
             {
                 $service = $borough->getService();
@@ -110,11 +116,7 @@ class DefaultController extends Controller
                     "id" => $borough->getId(),
                     "properties" => array(
                         "name" => $borough->getName(),
-                        "service" => $service ? $service->getName() : null,
-                        "telephone" => $service ? $service->getTelephone() : null,
-                        "website" => $service ? $service->getWebsite() : null,
-                        "created" => $service ? $service->getCreatedAt() : null,
-                        "modified" => $service ? $service->getModifiedAt() : null,
+                        "service" => $borough->getService() ?: null
                     ),
                     "geometry" => array(
                         "type" => "Polygon",
@@ -122,7 +124,12 @@ class DefaultController extends Controller
                     )
                 );
             }
-            $response->setData($data);
+
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
+            $serializer = new Serializer($normalizers, $encoders);
+            $data = $serializer->serialize($data, 'json');
+            $response->setContent($data);
             //$response->setEncodingOptions(JSON_PRETTY_PRINT);
             
         }
