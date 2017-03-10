@@ -1,0 +1,20 @@
+<div class="row bg-primary text-white justify-content-center">
+  <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
+    {% if breadcrumb is defined %}
+      <ol class="breadcrumb">
+        {% for crumb in breadcrumb %}
+          <li class="breadcrumb-item{% if loop.last %} active{% endif %}">
+            {% if crumb.path is defined %}<a href="{{ crumb.path }}">{% endif %}
+              {{ crumb.title }}
+            {% if crumb.path is defined %}</a>{% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+    <a href="{{ path('homepage') }}" class="home-link">Home</a>
+    <h2>{{ title | raw }}</h2>
+    {% if lead is defined %}
+      <p class="lead">{{ lead | raw }}</p>
+    {% endif %}
+  </div>
+</div>

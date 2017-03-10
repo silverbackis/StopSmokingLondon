@@ -1,0 +1,83 @@
+{% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+  <div class="container-fluid h-100 container-lower">
+    {% include '@App/Default/_header.html.twig' %}
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-12">
+        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free_formula.png') }}" alt="Smoke Free Formula Logo" style="width: 43px; height: 43.5px;" />
+              <h4>SmokeFree Formula</h4>
+              <p>A description about the website/app will go here.</p>
+              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.smoke_free_formula }}" target="_blank">Visit Smoke Free Formula</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/ash.png') }}" alt="Action on Smoking and Health (ASH) Logo" style="width: 77px; height: 45px;" />
+              <h4>Action on Smoking and Health</h4>
+              <p>A description about the website/app will go here.</p>
+              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.ash }}" target="_blank">Visit Action on Smoking and Health</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/public_health_england.png') }}" alt="Public Health England Logo" style="width: 138.5px; height: 75.5px;" />
+              <h4>Public Health England: Stop Smoking</h4>
+              <p>A description about the website/app will go here.</p>
+              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.phe }}" target="_blank">Visit Public Health England</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/sf28.png') }}" alt="SF28 (Smoke Free 28) Logo" style="width: 84.5px; height: 84.5px;" />
+              <h4>Smoke Free 28</h4>
+              <p>A description about the website/app will go here.</p>
+              <div>
+                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.sf28.google }}" target="_blank">Google Play</a>
+                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.sf28.itunes }}" target="_blank">App Store</a>
+                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.sf28.website }}" target="_blank">Website</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free.png') }}" alt="Smoke Free App Logo" style="width: 87.5px; height: 87.5px;" />
+              <h4>Smoke Free</h4>
+              <p>A description about the website/app will go here.</p>
+              <div>
+                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.smoke_free_app.google }}" target="_blank">Google Play</a>
+                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ external_links.smoke_free_app.itunes }}" target="_blank">App Store</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

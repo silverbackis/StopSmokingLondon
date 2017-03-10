@@ -55,7 +55,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       {
         $("#confirmPostcode").removeClass("disabled");
         $sessionSelect.selectpicker('val', '');
-        $nextSteps.hide();
+        $nextSteps.addClass("hidden");
         selectChanged();
         return;
       }
@@ -222,6 +222,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $telCont,
       $message,
       $websiteLink,
+      message,
+      fallbackAppend = '<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>',
+      noServiceFallback = 'We have not received information back from <b>' + boroughProps.name + '</b> about your local stop smoking services yet.' + fallbackAppend,
       $tel = $('<a />', {
         class: 'tel'
       });
@@ -229,45 +232,42 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#liveIn").show();
       $("#selectedBorough").html(boroughProps.name);
 
+      var showTelephone = function($telCont)
+      {
+        if(boroughProps.service.telephone)
+          {
+            if(null !== boroughProps.service.telephone)
+            {
+              var telNumbers = JSON.parse(boroughProps.service.telephone);
+              $tel
+                .clone()
+                  .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
+                  .html(telNumbers[0]).appendTo($telCont);
+            }
+          }
+      };
+
       if($advisorCard.length > 0)
       {
         // We have an advisor info card to fill in
         $telCont = $(".tel-cont", $advisorCard).empty();
-        $websiteLink = $(".website-link").hide();
         $message = $(".message", $advisorCard);
+
         if(null === boroughProps.service)
         {
-          $message.html('We have not received information back from <b>' + boroughProps.name + '</b> about your local stop smoking services yet.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
+          message = noServiceFallback;
+        }
+        else if(!boroughProps.service.specialistAdvisors)
+        {
+          message = 'It appears <b>' + boroughProps.name + '</b> does not have local stop smoking telephone advisors available.' + fallbackAppend;
         }
         else
         {
-          var serviceName = boroughProps.name+' Stop Smoking Service',
-          message = 'Here is some information for <a href="#">'+serviceName+'</a>';
-          
-          if(boroughProps.service.telephone)
-          {
-            if(null !== boroughProps.service.telephone)
-            {
-              $.each(JSON.parse(boroughProps.service.telephone), function()
-              {
-                $tel
-                  .clone()
-                    .attr("href", "tel:+44"+this.replace(/\s/g, '').substr(1))
-                    .html(this).appendTo($telCont);
-              });
-            }
-          }
-
-          if(boroughProps.service.website)
-          {
-            $websiteLink
-              .attr("href", boroughProps.service.website).html(serviceName + " Website")
-              .show();
-          }
-
-          $message.html(message);
+          var serviceName = boroughProps.service.name ? ', <b>' + boroughProps.service.name + '</b>' : '';
+          message = 'Here is some information for your local <a href="#">Stop Smoking Service</a>' + serviceName + ' in <b>' + boroughProps.name + '</b>';
+          showTelephone($telCont);
         }
-        
+        $message.html(message);
       }
 
       if($medicineCard.length > 0)
@@ -275,19 +275,25 @@ var GoogleMap = (function($, viewport, alert, confirm){
         // We have an medicine info card to fill in
         $telCont = $(".tel-cont", $medicineCard);
         $message = $(".message", $medicineCard);
-        $websiteLink = $(".website-link");
         $telCont.hide();
-        $websiteLink.hide();
         if(null === boroughProps.service)
         {
-          $message.html('We are not currently aware of a local stop smoking service in <b>' + boroughProps.name + '</b>.<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>');
+          message = noServiceFallback;
         }
-        else{
-          $message.html('We are waiting for questionnaires to be returned from local stop smoking services so we can tell you the best way to go about getting a medicine.</b>');
+        else if(boroughProps.service.gpPrescription)
+        {
+          message = 'Your local GP will be able to discuss your situation and prescribe you the most appropriate medication.<br /><br /><b>Alternatively, why not speak to a Stop Smoking London advisor who will be able to recommend one you can pick up at your local pharmacy?</b>';
+          showTelephone($telCont);
         }
+        else
+        {
+          console.log(boroughProps.service.gpPrescription);
+          message = 'Unfortunately, your local GP will not be able to prescribe your stop smoking medication.<br /><br /><b>Why not speak to a Stop Smoking London advisor who will be able to recommend one you can pick up at your local pharmacy?</b>';
+        }
+        $message.html(message);
       }
 
-      $nextSteps.show();
+      $nextSteps.removeClass("hidden");
     }
     enableInputs();
   }

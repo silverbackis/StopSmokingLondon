@@ -41,6 +41,22 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         google_map_api: AIzaSyCGYII4VXeKwO-GHKz0lgcGtf1cGfNAtCk
+        external_links:
+            british_websites: https://www.britishwebsites.co.uk
+            facebook: https://www.facebook.com
+            twitter: https://www.twitter.com
+            linkedin: https://www.linkedin.com
+            smokingaz: http://www.smokingaz.com
+            smoke_free_formula: \#
+            ash: \#
+            phe: \#
+            sf28:
+                google: \#
+                itunes: \#
+                website: \#
+            smoke_free_app:
+                google: \#
+                itunes: \#
 
 # Doctrine Configuration
 doctrine:

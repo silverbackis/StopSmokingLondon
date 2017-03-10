@@ -21,13 +21,18 @@ class StopSmokingService
     protected $id;
 
     /**
+    * @ORM\Column(type="string", length=50, nullable=true)
+    */
+    protected $name;
+
+    /**
      * One Service has Many Boroughs.
      * @ORM\OneToMany(targetEntity="Borough", mappedBy="service")
      */
     protected $boroughs;
 
     /**
-    * @ORM\Column(type="string", length=50, nullable=true)
+    * @ORM\Column(type="string", length=100, nullable=true)
     */
     protected $telephone;
 
@@ -406,5 +411,63 @@ class StopSmokingService
     public function getModifiedAt()
     {
         return $this->modified_at;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return StopSmokingService
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add borough
+     *
+     * @param \AppBundle\Entity\Borough $borough
+     *
+     * @return StopSmokingService
+     */
+    public function addBorough(\AppBundle\Entity\Borough $borough)
+    {
+        $this->boroughs[] = $borough;
+
+        return $this;
+    }
+
+    /**
+     * Remove borough
+     *
+     * @param \AppBundle\Entity\Borough $borough
+     */
+    public function removeBorough(\AppBundle\Entity\Borough $borough)
+    {
+        $this->boroughs->removeElement($borough);
+    }
+
+    /**
+     * Get boroughs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBoroughs()
+    {
+        return $this->boroughs;
     }
 }

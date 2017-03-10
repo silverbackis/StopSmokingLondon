@@ -1,0 +1,31 @@
+{% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+  <div class="container-fluid h-100 container-lower">
+    {% include '@App/Default/_header.html.twig' %}
+    
+    <div class="row justify-content-center mt-5">
+      <div class="col-12">
+        <div class="card card-outline-success text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <h4>Share Stop Smoking London</h4>
+              <p class="message">Share using your favourite social network or using the link below.</p>
+              <a class="btn btn-lg btn-success btn-cta website-link" href="#">www.stopsmokingportal.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include '@App/Default/_stop_smoking_london_info.html' %}
+  </div>
+{% endblock %}

@@ -66,19 +66,19 @@
                       <div class="col">
                         <ul class="nav justify-content-center footer-nav">
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Useful Links and Apps</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'websites_apps') ? ' active' }}" href="{{ path('websites_apps') }}">Useful Websites and Apps</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">More About Stopping</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'find_out_more') ? ' active' }}" href="{{ path('find_out_more') }}">More About Stopping</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'about_us') ? ' active' }}" href="{{ path('about_us') }}">About Us</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'contact_us') ? ' active' }}" href="{{ path('contact_us') }}">Contact Us</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Terms &amp; Privacy</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'terms_privacy') ? ' active' }}" href="{{ path('terms_privacy') }}">Terms &amp; Privacy</a>
                           </li>
                         </ul>
                       </div>
@@ -87,13 +87,13 @@
                       <div class="col">
                         <ul class="nav justify-content-center social-nav">
                           <li class="nav-item">
-                            <a class="nav-link social-link twitter" href="#">Follow us on Twitter</a>
+                            <a class="nav-link social-link twitter" target="_blank" href="{{ external_links.twitter }}">Follow us on Twitter</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link social-link facebook" href="#">Like us on Facebook</a>
+                            <a class="nav-link social-link facebook" target="_blank" href="{{ external_links.facebook }}">Like us on Facebook</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link social-link linkedin" href="#">Connect on LinkedIn</a>
+                            <a class="nav-link social-link linkedin" target="_blank" href="{{ external_links.linkedin }}">Connect on LinkedIn</a>
                           </li>
                         </ul>                        
                       </div>
@@ -103,7 +103,7 @@
                         &copy; {{ "now"|date("Y") }} Stop Smoking London
                       </div>
                       <div class="col-12 col-auto">
-                        <a href="https://www.britishwebsites.co.uk" target="_blank">site by British Websites</a>
+                        <a target="_blank" href="{{ external_links.british_websites }}">site by British Websites</a>
                       </div>
                     </div>
                   {% endblock %}

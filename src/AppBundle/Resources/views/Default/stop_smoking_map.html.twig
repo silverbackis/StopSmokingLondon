@@ -28,23 +28,9 @@
 
 {% block page_content %}
   <div class="container-fluid h-100 container-lower">
-    <div class="row bg-primary text-white justify-content-center">
-      <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/stop-smoking">I want to stop smoking</a></li>
-          <li class="breadcrumb-item active">
-            {% if type == 'advisor' %}
-              Book appointment
-            {% else %}
-              Get medicine
-            {% endif %}
-          </li>
-        </ol>
-        <a href="/" class="home-link">Home</a>
-        <h2>{{ title | raw }}</h2>
-      </div>
-    </div>
+
+    {% include '@App/Default/_header.html.twig' %}
+
     <div class="row justify-content-center map-row-wrapper row-main-page">
       <div class="col flex-last flex-lg-first">
         <div id="searchText" class="toggle-area">
@@ -89,68 +75,36 @@
       </div>
       <div data-token="{{ csrf_token('borough_json') }}" class="google-map actual" id="map"></div>
     </div>
-    <div class="row justify-content-center row-bottom" id="nextSteps">
+    <div class="row justify-content-center mt-5 hidden" id="nextSteps">
       <div class="col-12">
         <h3 class="page-header two-steps">There are now just two small steps to get you started</h3>
-        <div class="card card-outline-success text-center container-fluid">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <h4>Step 1: Provide email</h4>
-              <p>
-                If you like, we can update you now and then with new information to help with your quit attempt. Enter <a href="#">your email</a> below to register.
-              </p>
-              <div class="container-fluid">
-                <div class="form-group row gutter-sm">
-                  <div class="col">
-                    <input class="form-control form-control-lg" type="email" value="" placeholder="your@email.com" />
-                  </div>
-                  <div class="col-12 col-md-auto">
-                    <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Confirm</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
+        {% include '@App/Default/_step1.html' %}
+        
         {% if type == 'advisor' %}
-        <div class="card card-outline-success text-center container-fluid" id="advisorCard">
+        <div class="card card-outline-success text-center container-fluid mobile-w-100" id="advisorCard">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
               <h4>Step 2: Contact your service</h4>
               <p class="message"></p>
               <span class="tel-cont"></span>
-              <a class="btn btn-lg btn-success btn-cta website-link" target="_blank" href="#"></a>
+              {# <a class="btn btn-lg btn-success btn-cta website-link" target="_blank" href="#"></a> #}
             </div>
           </div>
         </div>
         {% endif %}
         {% if type == 'medicine' %}
-        <div class="card card-outline-success text-center container-fluid" id="medicineCard">
+        <div class="card card-outline-success text-center container-fluid mobile-w-100" id="medicineCard">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
-              <h4>Step 2: Choose medicine and contact GP</h4>
+              <h4>Step 2: Getting your medication</h4>
               <p class="message"></p>
             </div>
           </div>
         </div>
         {% endif %}
-
-        <div class="stop-smoking-london-bottom container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <img src="{{ asset('bundles/app/images/logo/ssl_large.png') }}" alt="Stop Smoking London Logo" class="ssl-logo-large" />
-            </div>
-          </div>
-          <div class="row row justify-content-center">
-            <div class="col-12 col-md-11">
-              <p>Stop Smoking London provides a special service for <b>anyone wanting to stop.</b></p>
-              <p>You can call a helpline between <b>8am and 10pm</b> and speak to a specially trained advisor. Call this number and just say you are calling from London.</p>
-              <p class="text-primary">Stop Smoking London Helpline: <a href="#">0201 234 5678</a></p>
-              <a class="btn btn-lg btn-primary btn-cta" href="#">Find out more about stopping</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+    {% include '@App/Default/_stop_smoking_london_info.html' %}
   </div>
 {% endblock %}

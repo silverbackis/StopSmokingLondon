@@ -22,17 +22,8 @@
 {% block page_content %}
   {{ parent() }}
   <div class="container-fluid h-100" style="padding-bottom: 5rem;">
-    <div class="row bg-primary text-white justify-content-center">
-      <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active">I want to stop smoking</li>
-        </ol>
-        <a href="/" class="home-link">Home</a>
-        <h2>Ready to stop smoking?</h2>
-        <p class="lead">We'll help you find the best method for you.</p>
-      </div>
-    </div>
+    {% include '@App/Default/_header.html.twig' %}
+
     <h3 class="tell-me-header">Tell me more about...</h3>
     <ul class="nav row justify-content-center gutter-sm" role="tablist">
       <li class="col-4 col-xl-3 nav-item">

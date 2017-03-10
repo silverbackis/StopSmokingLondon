@@ -36,42 +36,7 @@
           <div class="row h-100 triples-row gutter-lg">
             <div class="home-right-bg"></div>
 
-            <div class="col-lg home-right">
-              <h4 class="d-inline-block">What do you want to do?</h4>
-              <div class="d-inline-block w-100">
-                <a class="btn btn-lg btn-block btn-success btn-cta" href="/stop-smoking">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_stop_smoking.png') }}" style="width: 47px; height: 47.5px;" />
-                    <div class="media-body align-self-center">
-                      I want to stop smoking
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-              <div class="d-inline-block w-100 mt-2">
-                <a class="btn btn-lg btn-block btn-primary btn-cta" href="#">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_info.png') }}" style="width: 37px; height: 36.5px;" />
-                    <div class="media-body align-self-center">
-                      I want to help a family member or friend to stop
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-              <div class="d-inline-block w-100 mt-2">
-                <a class="btn btn-lg btn-block btn-primary btn-cta" href="#">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_question.png') }}" style="width: 38px; height: 39px;" />
-                    <div class="media-body align-self-center">
-                      I want to know more about stopping
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-            </div>
+            {% include '@App/Default/_home_cta_buttons.html' %}
 
             <div class="col-12 col-lg-auto">
               <ul class="fact-list">
@@ -201,42 +166,9 @@
                 </ul>
               </div>
             </div>
-            <div class="col-lg home-right">
-              <h4 class="d-inline-block">What do you want to do?</h4>
-              <div class="d-inline-block w-100">
-                <a class="btn btn-lg btn-block btn-success btn-cta" href="/stop-smoking">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_stop_smoking.png') }}" style="width: 47px; height: 47.5px;" />
-                    <div class="media-body align-self-center">
-                      I want to stop smoking
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-              <div class="d-inline-block w-100 mt-2">
-                <a class="btn btn-lg btn-block btn-primary btn-cta" href="#">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_info.png') }}" style="width: 37px; height: 36.5px;" />
-                    <div class="media-body align-self-center">
-                      I want to help a family member or friend to stop
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-              <div class="d-inline-block w-100 mt-2">
-                <a class="btn btn-lg btn-block btn-primary btn-cta" href="#">
-                  <div class="media">
-                    <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_question.png') }}" style="width: 38px; height: 39px;" />
-                    <div class="media-body align-self-center">
-                      I want to know more about stopping
-                    </div>
-                    <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
-                  </div>
-                </a>
-              </div>
-            </div>
+            
+            {% include '@App/Default/_home_cta_buttons.html' %}
+            
           </div>
         </div>
       </div>

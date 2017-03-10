@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -20,9 +21,15 @@ class StopSmokingService
     protected $id;
 
     /**
-    * @ORM\Column(type="string", length=500, nullable=false)
+    * @ORM\Column(type="string", length=50, nullable=true)
     */
     protected $name;
+
+    /**
+     * One Service has Many Boroughs.
+     * @ORM\OneToMany(targetEntity="Borough", mappedBy="service")
+     */
+    protected $boroughs;
 
     /**
     * @ORM\Column(type="string", length=50, nullable=true)
@@ -31,6 +38,12 @@ class StopSmokingService
 
     /**
     * @ORM\Column(type="string", length=500, nullable=true)
+    * @Assert\Url(
+    *    message = "The url '{{ value }}' is not a valid url",
+    *    protocols = {"http", "https"},
+    *    checkDNS = true,
+    *    dnsMessage = "The host '{{ value }}' could not be resolved."
+    * )
     */
     protected $website;
 
@@ -98,6 +111,10 @@ class StopSmokingService
         }
     }
 
+    public function __construct() {
+        $this->boroughs = new ArrayCollection();
+    }
+
     /**
     * Get id
     *
@@ -106,31 +123,6 @@ class StopSmokingService
     public function getId()
     {
       return $this->id;
-    }
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return StopSmokingService
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

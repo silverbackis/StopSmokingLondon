@@ -84,6 +84,8 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
   {
     $entity = new StopSmokingService();
 
+    $entity->setName($service['name']);
+
     $entity->setSpecialistAdvisors($service['specialist_advisors']);
     $entity->setPharmacyStaff($service['pharmacy_staff']);
 

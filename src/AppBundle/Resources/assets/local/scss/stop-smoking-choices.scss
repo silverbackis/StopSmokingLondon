@@ -16,6 +16,7 @@
 }
 
 .btn-cta {
+  font-size: .9rem;
   padding: .75rem .5rem;
 
   .top-img {
@@ -107,6 +108,8 @@
 
 @include media-breakpoint-down(md) {
   .btn-cta {
+    font-size: .75rem;
+
     .text {
       height: 36px;
     }

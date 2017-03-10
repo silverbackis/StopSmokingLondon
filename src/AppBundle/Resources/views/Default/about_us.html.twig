@@ -1,0 +1,15 @@
+{% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+  <div class="container-fluid h-100 container-lower">
+    {% include '@App/Default/_header.html.twig' %}
+  </div>
+{% endblock %}

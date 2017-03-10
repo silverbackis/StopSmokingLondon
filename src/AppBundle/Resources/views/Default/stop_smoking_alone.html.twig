@@ -2,6 +2,12 @@
 
 {% block stylesheets %}
   {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/stop-smoking-selected.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
@@ -9,17 +15,54 @@
 {% endblock %}
 
 {% block page_content %}
-  <div class="container-fluid h-100">
-    <div class="row bg-primary text-white justify-content-center">
-      <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/stop-smoking">I want to stop smoking</a></li>
-          <li class="breadcrumb-item active">Going it alone</li>
-        </ol>
-        <a href="/" class="home-link">Home</a>
-        <h2>You are going it alone</h2>
+  <div class="container-fluid h-100 container-lower">
+
+    {% include '@App/Default/_header.html.twig' %}
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-12">
+        <h3 class="page-header two-steps">Here are a few important tips to get you going</h3>
+        <div class="text-center container-fluid alone-tips" id="aloneTips">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center justify-content-center col-image">
+                <img src="{{ asset('bundles/app/images/icon/stop.png') }}" style="width: auto; height: 110px;" alt="Stop sign - stop smoking abruptly" />
+              </div>
+              <p>Surprising as it may seem you are better off <a href="#">stopping abruptly</a>, NOT trying to gradually cut down. Research has found that when smokers stop abruptly they are <a href="#">more likely to succeed</a>.</p>
+            </div>
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center justify-content-center col-image">
+                <img src="{{ asset('bundles/app/images/main/ecig.png') }}" style="width: 60x; height: 109.5px;" alt="Stop smoking specialist icon" />
+              </div>
+              <p><a href="#">Electronic cigarettes</a> can help you stop. Research has shown that smokers who use an e-cigarette in a quit attempt are <a href="#">50% more likely to succeed</a>.</p>
+            </div>
+            <div class="col-lg-4">
+              <div class="d-flex align-items-center justify-content-center col-image">
+                <img src="{{ asset('bundles/app/images/main/website_and_apps.png') }}" style="width: 117px; height: 96px;" alt="Stop smoking specialist icon" />
+              </div>
+              <p><a href="#">Websites and mobile apps</a> can support you. Stop Smoking London can tell you about the best ones and help you track your progress..</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-12">
+        <h3 class="page-header two-steps">There are now just two small steps to get you started</h3>
+        
+        {% include '@App/Default/_step1.html' %}
+
+        <div class="card card-outline-success text-center container-fluid mobile-w-100">
+          <div class="card-block row justify-content-center">
+            <div class="col-12 col-md-9">
+              <h4>Step 2: Explore useful tools</h4>
+              <p class="message">Click below for selected websites and apps that you may find helpful</p>
+              <a class="btn btn-lg btn-success btn-cta website-link" href="{{ path('websites_apps') }}">Useful websites and apps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include '@App/Default/_stop_smoking_london_info.html' %}
   </div>
 {% endblock %}

@@ -141,7 +141,8 @@
 
     &:hover,
     &:active,
-    &:focus {
+    &:focus,
+    &.active {
       color: $blue;
     }
   }
@@ -237,17 +238,70 @@
   }
 }
 
+.container-lower {
+  margin-bottom: 2rem;
+
+  > .row {
+    text-align: center;
+
+    &.row-main-page {
+      margin-top: 2rem;
+    }
+
+    + .row {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+    }
+  }
+}
+
+.stop-smoking-london-bottom {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+
+  p {
+    @include open-sans(1.2rem, $gray-dark);
+
+    &:first-child {
+      margin-top: 1.5rem;
+    }
+
+    &.text-primary {
+      font-size: 1.9rem;
+      margin-bottom: 2rem;
+
+      a {
+        display: inline-block;
+        font-weight: $semi-bold;
+      }
+    }
+  }
+
+  .btn-cta {
+    font-size: 1.25rem;
+    width: auto;
+  }
+
+  .ssl-logo-large {
+    height: 106px;
+    width: 160.5px;
+  }
+}
 
 .btn-cta {
-  @include open-sans(.85rem, $white, $semi-bold);
+  @include open-sans(null, $white, $semi-bold);
   border: 4px solid $blue-dark;
   border-width: 0 0 4px;
   transition: color $transition-dur, background $transition-dur, border-color $transition-dur;
   white-space: normal;
-  width: 100%;
 
   &.btn-primary.active:not(:hover) {
     background-color: $blue;
+  }
+
+  &:not(.btn-lg) {
+    @include open-sans(.85rem, $white, $semi-bold);
   }
 
   .top-img {
@@ -294,6 +348,58 @@
   display: none;
 }
 
+.card {
+  @include open-sans(1.3rem, $gray-dark);
+
+  .card-block {
+    padding: 2rem 1.25rem;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h4 {
+    @include open-sans(1.5rem, $blue-dark, $semi-bold);
+
+    + p {
+      margin: 1rem 0;
+    }
+  }
+
+  &.card-outline-success {
+    h4 {
+      @include open-sans(1.8rem, $green, $semi-bold);
+    }
+  }
+
+  &.card-outline-warning h4 {
+    color: $orange;
+  }
+
+  + .card {
+    margin-top: 1.5rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .card {
+    font-size: 1.1rem;
+
+    .card-block {
+      padding: 1.25rem;
+    }
+
+    h4 {
+      font-size: 1.6rem;
+    }
+  }
+}
+
 @include media-breakpoint-down(md) {
   .gutter-sm {
     > .col,
@@ -311,6 +417,22 @@
 
     h2 {
       font-size: 1.05rem;
+    }
+  }
+
+  .card {
+    font-size: .95rem;
+
+    .card-block {
+      padding: 1rem .9rem;
+    }
+
+    h4 {
+      font-size: .9rem;
+
+      + p {
+        margin: .5rem 0;
+      }
     }
   }
 
@@ -361,5 +483,64 @@
 
   .breadcrumb {
     display: none;
+  }
+
+  .container-lower {
+    padding-left: 4px;
+    padding-right: 4px;
+
+    > .row {
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+  }
+
+  .stop-smoking-london-bottom {
+    margin-top: 2rem;
+
+    p {
+      font-size: 1rem;
+
+      &:first-child {
+        margin-top: 1rem;
+      }
+
+      &.text-primary {
+        font-size: 1.4rem;
+      }
+    }
+
+    .btn-cta {
+      font-size: .8rem;
+    }
+
+    .ssl-logo-large {
+      height: auto;
+      width: 110px;
+    }
+  }
+
+  .alone-tips {
+    p {
+      font-size: .8rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .card {
+    font-size: .8rem;
+
+    .btn-cta {
+      margin-top: .5rem;
+    }
+
+    &.mobile-w-100 {
+      border-left: 0;
+      border-radius: 0;
+      border-right: 0;
+      margin-left: -19px;
+      margin-right: -19px;
+    }
   }
 }

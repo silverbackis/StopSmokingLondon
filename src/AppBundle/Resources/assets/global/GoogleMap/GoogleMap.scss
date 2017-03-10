@@ -21,33 +21,8 @@
   display: none;
 }
 
-.borough-card,
-.card {
-  @include open-sans(1.3rem, $gray);
-
-  .card-block {
-    padding: 2rem 1.25rem;
-  }
-
-  h4 {
-    @include open-sans(1.8rem, $green, $semi-bold);
-  }
-
-  &.card-outline-warning h4 {
-    color: $orange;
-  }
-}
-
 @include media-breakpoint-down(md) {
   .google-map-outer {
     padding: 0;
-  }
-
-  .card {
-    font-size: .8rem;
-
-    h4 {
-      font-size: 1.2rem;
-    }
   }
 }

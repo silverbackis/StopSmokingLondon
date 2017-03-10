@@ -4,12 +4,21 @@
  * - Wandworth and Richmond were combined, moved Richmond into Kick-It
  * - Added Kingston upon thames to kick-it service
  * - Corrected http://oneyouealing.co.uk to http://oneyouealing.org (Failed DNS lookup validation on entry)
+ * - Havering removed - added to NELFT
+ * - Barking and Dagenham added to NELFT
+ * - Freephone added to Tower Hamlets as top priority number
+ * - Corrected web address for NELFT (Page did not exist on website, new page introduces buttons to select which area user is in)
+ * - One You Haringey corrected link from http://www.haringey.gov.uk/oneyou to http://www.oneyouharingey.org/sign-up/
+ * - Wandsworth correct phone number from 0800 389 7921 to 0800 389 7291 (Saw difference on the website)
  *
  * NOTES:
  * Camden & Islington Service - Web and Tel are TBC, so not set yet
+ * Camden number may be 0800 1070 401 (found website https://www.smokefreelifecamden.co.uk/)
+ * Islington number may be 0800 093 9030 (found website http://www.smokefreeislington.nhs.uk/)
  */
 return array(
     array(
+      'name' => null,
       'boroughs' => array(
         'Haringey'
       ),
@@ -23,12 +32,13 @@ return array(
       ),
       'gp_prescription' => false,
       'ecig_friendly' => true,
-      'web' => 'http://www.haringey.gov.uk/oneyou',
+      'web' => 'http://www.oneyouharingey.org/sign-up/',
       'tel' => array(
         '0208 885 9095'
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Wandsworth'
       ),
@@ -44,10 +54,11 @@ return array(
       'ecig_friendly' => true,
       'web' => 'http://www.wandsworth.gov.uk/stopsmoking',
       'tel' => array(
-        '0800 389 7921'
+        '0800 389 7291'
       )      
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Tower Hamlets'
       ),
@@ -63,12 +74,14 @@ return array(
       'ecig_friendly' => true,
       'web' => 'http://www.towerhamlets.gov.uk/stopsmoking',
       'tel' => array(
+        '0800 169 1943',
         '020 7882 8230',
         '020 7882 8660',
         '020 7882 8669'
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Bexley'
       ),
@@ -89,6 +102,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Hillingdon'
       ),
@@ -108,6 +122,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Croydon'
       ),
@@ -127,6 +142,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Camden',
         'Islington'
@@ -145,6 +161,7 @@ return array(
       'tel' => null
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Lewisham'
       ),
@@ -164,9 +181,13 @@ return array(
       )
     ),
     array(
+      'name' => 'NELFT',
       'boroughs' => array(
         'Redbridge',
-        'Waltham Forest'
+        'Waltham Forest',
+        //'Essex', // Not a Longon Borough
+        'Havering',
+        'Barking and Dagenham'
       ),
       'specialist_advisors' => true,
       'pharmacy_staff' => true,
@@ -178,13 +199,14 @@ return array(
       ),
       'gp_prescription' => false,
       'ecig_friendly' => true,
-      'web' => 'http://www.nelft.nhs.uk/services-rbwf-stopsmoking',
+      'web' => 'http://www.nelft.nhs.uk/our-services',
       'tel' => array(
         '0800 032 0102',
         '0300 300 1880'
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'City of London'
       ),
@@ -204,6 +226,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Ealing'
       ),
@@ -223,6 +246,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Hackney'
       ),
@@ -242,7 +266,7 @@ return array(
         '0203 316 1085'
       )
     ),
-    array(
+    /*array(
       'boroughs' => array(
         'Havering'
       ),
@@ -260,8 +284,9 @@ return array(
       'tel' => array(
         '0208 724 8018'
       )
-    ),
+    ),*/
     array(
+      'name' => 'Kick-It',
       'boroughs' => array(
         'Westminster',
         'Kensington and Chelsea',
@@ -285,6 +310,7 @@ return array(
       )
     ),
     array(
+      'name' => null,
       'boroughs' => array(
         'Lambeth'
       ),
