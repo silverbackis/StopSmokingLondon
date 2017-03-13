@@ -273,17 +273,58 @@ class DefaultController extends Controller
         ]);
         //die(dump($tweets));
         if(!empty($tweets)) {
+            $urls_found = [];
             foreach($tweets as $tweet) {
-                # Access as an object
+                # Assign text as a variable to modify
                 $tweetText = isset($tweet->retweeted_status) ? $tweet->retweeted_status->text : $tweet->text;
-                # Make links active
-                $tweetText = preg_replace("#(https://|(www.))(([^s<]{4,68})[^s<]*)#", '<a href="https://$2$3" target="_blank">$1$2$4</a>', $tweetText);
-                # Linkify user mentions
-                $tweetText = preg_replace("/@(w+)/", '<a href="https://www.twitter.com/$1" target="_blank">@$1</a>', $tweetText);
-                # Linkify tags
-                $tweetText = preg_replace("/#(w+)/", '<a href="https://search.twitter.com/search?q=$1" target="_blank">#$1</a>', $tweetText);
-                # Output
-                $tweet->text = $tweetText;
+
+                # Replace text with entities we want to make into links
+                $entities = isset($tweet->retweeted_status) ? $tweet->retweeted_status->entities : $tweet->entities;
+                $replacements = [];
+                foreach($entities->hashtags as $hashtag)
+                {
+                    $replacements[] = [
+                        'start' => $hashtag->indices[0],
+                        'end' => $hashtag->indices[1],
+                        'new' => '<a href="https://twitter.com/hashtag/'.$hashtag->text.'?src=hash" target="_blank">'.$hashtag->text.'</a>'
+                    ];
+                }
+                foreach($entities->user_mentions as $user_mention)
+                {
+                    $replacements[] = [
+                        'start' => $user_mention->indices[0],
+                        'end' => $user_mention->indices[1],
+                        'new' => '<a href="https://twitter.com/'.$user_mention->screen_name.'" target="_blank">@'.$user_mention->screen_name.'</a>'
+                    ];
+                }
+                foreach($entities->urls as $url)
+                {
+                    /*
+                    URL indicies can be wrong - let's find the URL ourselves
+                     */
+                    $url_occurances = array_count_values($urls_found);
+                    $strposOffset = isset($url_occurances[$url->url]) ? $url_occurances[$url->url] : 0;
+                    $url->indices[0] = strpos($tweetText, $url->url, $strposOffset);
+                    $url->indices[1] = $url->indices[0]+strlen($url->url);
+                    $replacements[] = [
+                        'start' => $url->indices[0],
+                        'end' => $url->indices[1],
+                        'new' => '<a href="'.$url->expanded_url.'" target="_blank">'.$url->display_url.'</a>'
+                    ];
+                    $urls_found[] = $url->url;
+                }
+                
+                usort($replacements, function($a,$b){
+                    return($b["start"]-$a["start"]);
+                });
+                
+                foreach($replacements as $r)
+                {
+                    $tweetText = substr_replace($tweetText, $r["new"], $r["start"], $r["end"] - $r["start"]);
+                }
+
+                # Set text variable back to object to read in
+                $tweet->htmlText = $tweetText;
                 $tweet->tweetUser = isset($tweet->retweeted_status) ? $tweet->retweeted_status->user : $tweet->user;
             }
         }

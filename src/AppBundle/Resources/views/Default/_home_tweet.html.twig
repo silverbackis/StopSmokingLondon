@@ -14,7 +14,7 @@
       </div>
     </a>
     
-    <p class="mb-2">{{ tweet.text | raw }}</p>
+    <p class="mb-2">{{ tweet.htmlText | raw }}</p>
     <a class="view-tweet" href="https://twitter.com/statuses/{{ tweet.id }}" target="_blank">View tweet</a>
   </div>
 </div>
