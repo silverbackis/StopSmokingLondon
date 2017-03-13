@@ -64,29 +64,8 @@
                   </div>
                 </a>
               </div>
-              <div class="carousel-container">
-                <ol class="news-carousel-indicators">
-                  <li data-show-index="0" class="active"></li>
-                  <li data-show-index="1"></li>
-                  <li data-show-index="2"></li>
-                </ol>
-                <ul id="newsCarousel" class="news-carousel">
-                  <li class="news-panel">
-                    {% for tweet in tweets|slice(0, 2) %}
-                      {% include '@App/Default/_home_tweet.html.twig' %}
-                    {% endfor %}
-                  </li>
-                  <li class="news-panel">
-                    {% for tweet in tweets|slice(2, 2) %}
-                      {% include '@App/Default/_home_tweet.html.twig' %}
-                    {% endfor %}
-                  </li>
-                  <li class="news-panel">
-                    {% for tweet in tweets|slice(4, 2) %}
-                      {% include '@App/Default/_home_tweet.html.twig' %}
-                    {% endfor %}
-                  </li>
-                </ul>
+              <div class="carousel-container" id="carouselContainer">
+                
               </div>
             </div>
             {% include '@App/Default/_home_cta_buttons.html' %}

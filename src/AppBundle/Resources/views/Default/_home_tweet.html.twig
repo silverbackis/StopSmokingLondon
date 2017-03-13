@@ -1,12 +1,12 @@
 <div class="card twitter-card mb-3">
   <div class="card-block">
-    {% if tweet.retweeted %}
+    {% if tweet.retweeted_status is defined %}
     <div class="retweet-tag">
-      <span class="text">@{{ tweet.user.screen_name }} retweeted</span>
+      <a class="text" href="https://twitter.com/{{ tweet.user.screen_name }}" target="_blank">@{{ tweet.user.screen_name }} retweeted</a>
     </div>
     {% endif %}
     <a class="media twitter-user mb-1" href="https://twitter.com/{{ tweet.tweetUser.screen_name }}" target="_blank">
-      <img class="d-flex mr-1 align-self-center" src="{{ tweet.user.profile_image_url_https }}" />
+      <img class="d-flex mr-1 align-self-center" src="{{ tweet.tweetUser.profile_image_url_https }}" />
       <div class="media-body align-self-center">
         <h5 class="mt-0 mb-0">
           {{ tweet.tweetUser.name }} @{{ tweet.tweetUser.screen_name }}
@@ -16,8 +16,5 @@
     
     <p class="mb-2">{{ tweet.text | raw }}</p>
     <a class="view-tweet" href="https://twitter.com/statuses/{{ tweet.id }}" target="_blank">View tweet</a>
-    {% if tweet.retweeted == true %}
-    | <a class="view-tweet" href="{{ tweet.retweeted_status.id }}">View original tweet</a>
-    {% endif %}
   </div>
 </div>

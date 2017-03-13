@@ -12,8 +12,6 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
-use Endroid\Twitter\Twitter;
-
 class DefaultController extends Controller
 {
     /**
@@ -21,33 +19,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // \Endroid\Twitter\Twitter
-        $twitter = $this->get('endroid.twitter');
-
-        $tweets = $twitter->getTimeline([
-            'screen_name' => 'StopSmokingLon', 
-            'exclude_replies' => 'true', 
-            'include_rts' => 'false', 
-            'count' => 6
-        ]);
-        if(!empty($tweets)) {
-            foreach($tweets as $tweet) {
-                # Access as an object
-                $tweetText = $tweet->text;
-                # Make links active
-                $tweetText = preg_replace("#(https://|(www.))(([^s<]{4,68})[^s<]*)#", '<a href="https://$2$3" target="_blank">$1$2$4</a>', $tweetText);
-                # Linkify user mentions
-                $tweetText = preg_replace("/@(w+)/", '<a href="https://www.twitter.com/$1" target="_blank">@$1</a>', $tweetText);
-                # Linkify tags
-                $tweetText = preg_replace("/#(w+)/", '<a href="https://search.twitter.com/search?q=$1" target="_blank">#$1</a>', $tweetText);
-                # Output
-                $tweet->text = $tweetText;
-                $tweet->tweetUser = $tweet->retweeted ? $tweet->retweeted_status->user : $tweet->user;
-            }
-        }
-        return $this->render('@App/Default/index.html.twig', [
-            'tweets' => $tweets
-        ]);
+        return $this->render('@App/Default/index.html.twig');
     }
 
     /**
@@ -282,6 +254,41 @@ class DefaultController extends Controller
                     'title' => 'Contact us'
                 )
             )
+        ]);
+    }
+
+    /**
+     * @Route("/tweets.json", name="home_tweets")
+     */
+    public function homeTweets(Request $request)
+    {
+        // \Endroid\Twitter\Twitter
+        $twitter = $this->get('endroid.twitter');
+
+        $tweets = $twitter->getTimeline([
+            'screen_name' => 'StopSmokingLon', 
+            //'exclude_replies' => 'true', 
+            //'include_rts' => 'true', 
+            'count' => 6
+        ]);
+        //die(dump($tweets));
+        if(!empty($tweets)) {
+            foreach($tweets as $tweet) {
+                # Access as an object
+                $tweetText = isset($tweet->retweeted_status) ? $tweet->retweeted_status->text : $tweet->text;
+                # Make links active
+                $tweetText = preg_replace("#(https://|(www.))(([^s<]{4,68})[^s<]*)#", '<a href="https://$2$3" target="_blank">$1$2$4</a>', $tweetText);
+                # Linkify user mentions
+                $tweetText = preg_replace("/@(w+)/", '<a href="https://www.twitter.com/$1" target="_blank">@$1</a>', $tweetText);
+                # Linkify tags
+                $tweetText = preg_replace("/#(w+)/", '<a href="https://search.twitter.com/search?q=$1" target="_blank">#$1</a>', $tweetText);
+                # Output
+                $tweet->text = $tweetText;
+                $tweet->tweetUser = isset($tweet->retweeted_status) ? $tweet->retweeted_status->user : $tweet->user;
+            }
+        }
+        return $this->render('@App/Default/home_tweets.html.twig', [
+            'tweets' => $tweets
         ]);
     }
 
