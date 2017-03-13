@@ -35,9 +35,7 @@
         <div class="col-lg-11">
           <div class="row h-100 triples-row gutter-lg">
             <div class="home-right-bg"></div>
-
             {% include '@App/Default/_home_cta_buttons.html' %}
-
             <div class="col-12 col-lg-auto">
               <ul class="fact-list">
                 <li>
@@ -59,10 +57,10 @@
                 <h4 class="news-header">
                   Latest news
                 </h4>
-                <a href="#" class="twitter-profile-link">
+                <a href="https://twitter.com/stopsmokinglon" class="twitter-profile-link" target="_blank">
                   <div class="media">
-                    <div class="d-flex mr-1 align-self-center twitter-icon"></div>
-                    <div class="media-body align-self-center">@StopSmokingLondon</div>
+                    <div class="d-flex mr-1 align-self-center icon"></div>
+                    <div class="media-body align-self-center">@StopSmokingLon</div>
                   </div>
                 </a>
               </div>
@@ -74,101 +72,24 @@
                 </ol>
                 <ul id="newsCarousel" class="news-carousel">
                   <li class="news-panel">
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="retweet-tag">
-                          <span class="text">CBC retweeted</span>
-                        </div>
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        
-                        <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a></p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        
-                        <p class="mb-2">This is a sample <a href="#">#tweet</a> with some text</p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
+                    {% for tweet in tweets|slice(0, 2) %}
+                      {% include '@App/Default/_home_tweet.html.twig' %}
+                    {% endfor %}
                   </li>
-
                   <li class="news-panel">
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="retweet-tag">
-                          <span class="text">CBC retweeted</span>
-                        </div>
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        
-                        <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a> on another carousel item</p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        <p class="mb-2">This is a sample <a href="#">#tweet</a> with some text and it may go onto 2 lines as well</p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
+                    {% for tweet in tweets|slice(2, 2) %}
+                      {% include '@App/Default/_home_tweet.html.twig' %}
+                    {% endfor %}
                   </li>
-
                   <li class="news-panel">
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        
-                        <p class="mb-2">This is a sample tweet with some text and a <a href="#">#link</a> here <a href="#">http://t.co/dgb271</a> on another carousel item 333</p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
-                    <div class="card twitter-card mb-3">
-                      <div class="card-block">
-                        <div class="media twitter-user mb-1">
-                          <img class="d-flex mr-1 align-self-center" src="" />
-                          <div class="media-body align-self-center">
-                            <h5 class="mt-0 mb-0">University College London @UCL</h5>
-                          </div>
-                        </div>
-                        <p class="mb-2">This is a sample <a href="#">#tweet</a> with some texticles</p>
-                        <a class="view-tweet" href="#">View tweet</a>
-                      </div>
-                    </div>
+                    {% for tweet in tweets|slice(4, 2) %}
+                      {% include '@App/Default/_home_tweet.html.twig' %}
+                    {% endfor %}
                   </li>
                 </ul>
               </div>
             </div>
-            
             {% include '@App/Default/_home_cta_buttons.html' %}
-            
           </div>
         </div>
       </div>

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new BW\BaseBundle\BWBaseBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Irozgar\GulpRevVersionsBundle\IrozgarGulpRevVersionsBundle(),
+            new Endroid\Twitter\Bundle\EndroidTwitterBundle(),
             new AppBundle\AppBundle(),
         ];
 

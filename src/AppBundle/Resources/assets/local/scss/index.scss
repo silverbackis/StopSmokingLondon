@@ -128,7 +128,7 @@ h4 {
   position: absolute;
   right: 0;
 
-  .twitter-icon {
+  .icon {
     background: url($asset-image-base + 'logo/footer_twitter.png') 50% 0 no-repeat;
     background-size: 14.5px 200%;
     height: 12px;
@@ -223,6 +223,8 @@ h4 {
   }
 
   .twitter-user {
+    @include open-sans(.75rem, $gray, $semi-bold);
+
     img {
       background: $blue;
       border: 0;
@@ -231,9 +233,15 @@ h4 {
     }
 
     h5 {
-      @include open-sans(.75rem, $gray, $semi-bold);
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    &:hover {
+      color: $blue;
     }
   }
+
 
   .view-tweet {
     @include open-sans(.75rem, $gray);
@@ -243,6 +251,7 @@ h4 {
     }
   }
 }
+
 
 @include media-breakpoint-down(lg) {
   .news-header {
