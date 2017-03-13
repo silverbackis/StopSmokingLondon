@@ -42,7 +42,7 @@ monolog:
             handler: swift
         swift:
             type:       swift_mailer
-            from_email: 'anywebsite@britishwebsites.co.uk'
+            from_email: 'outgoing@stopsmokingportal.com'
             to_email:   'webmaster@stopsmokingportal.com'
             # or list of recipients
             # to_email:   ['dev1@example.com', 'dev2@example.com', ...]
