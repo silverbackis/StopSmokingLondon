@@ -262,6 +262,7 @@ class DefaultController extends Controller
      */
     public function homeTweets(Request $request)
     {
+        // Dummy response for cache
         $response = new JsonResponse();
 
         // \Endroid\Twitter\Twitter
@@ -273,26 +274,23 @@ class DefaultController extends Controller
             //'include_rts' => 'true', 
             'count' => 6
         ]);
+        $halfYear = round((86400*365)/2);
+        $cacheArray = array(
+            'last_modified' => new \DateTime(),
+            'max_age'       => $halfYear, //.5 years
+            's_maxage'      => $halfYear, //.5 years
+            'public'        => true
+        );
         //die(dump($tweets));
         if(!empty($tweets)) {
             $urls_found = [];
-            //.5 years
-            $halfYear = round((86400*365)/2);
-            $response->setCache(array(
-                'last_modified' => new \DateTime($tweets[0]->created_at),
-                'max_age'       => $halfYear, //.5 years
-                's_maxage'      => $halfYear, //.5 years
-                'public'        => true
-            ));
+            $cacheArray['last_modified'] = new \DateTime($tweets[0]->created_at);
+            $response->setCache($cacheArray);
 
             // Check that the Response is not modified for the given Request
             if ($response->isNotModified($request)) {
                 // return the 304 Response immediately
                 return $response;
-            }
-            else
-            {
-                die(var_dump(date("d/m/Y H:i:s",strtotime($tweets[0]->created_at))));
             }
 
             foreach($tweets as $tweet) {
@@ -349,9 +347,11 @@ class DefaultController extends Controller
                 $tweet->tweetUser = isset($tweet->retweeted_status) ? $tweet->retweeted_status->user : $tweet->user;
             }
         }
-        return $this->render('@App/Default/home_tweets.html.twig', [
+        $finalResponse = $this->render('@App/Default/home_tweets.html.twig', [
             'tweets' => $tweets
         ]);
+        $finalResponse->setCache($cacheArray);
+        return $finalResponse;
     }
 
     /**
