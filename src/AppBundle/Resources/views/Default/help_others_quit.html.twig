@@ -2,10 +2,22 @@
 
 {% block stylesheets %}
   {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/help-others.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
+  {% javascripts
+    '@AppBundle/Resources/assets/global/bower/clipboard/dist/clipboard.min.js'
+    '@AppBundle/Resources/assets/local/js/help-others.js'
+    filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
 {% endblock %}
 
 {% block page_content %}
@@ -26,8 +38,25 @@
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
               <h4>Share Stop Smoking London</h4>
-              <p class="message">Share using your favourite social network or using the link below.</p>
-              <a class="btn btn-lg btn-success btn-cta website-link" href="#">www.stopsmokingportal.com</a>
+              <p class="message">Share using your favourite social network. Alternatively, clicking the link below will copy it to your clipboard.</p>
+
+              <div class="social-links mb-3">
+                {% set shareMessage = "If you're in London and want to stop smoking check out Stop Smoking London https://www.stopsmokingportal.com - It'll help you get started" %}
+                <a class="btn btn-lg btn-success btn-cta website-link t" id="shareT" href="https://twitter.com/intent/tweet?text={{ shareMessage|url_encode }}">Twitter</a>
+                <a class="btn btn-lg btn-success btn-cta website-link f" id="shareF" href="#">Facebook</a>
+                <a class="btn btn-lg btn-success btn-cta website-link l" id="shareL" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ "https://www.stopsmokingportal.com"|url_encode }}&amp;title={{ "Stop Smoking London"|url_encode }}
+&amp;summary={{ shareMessage|url_encode }}&amp;source={{ "Stop Smoking London Website"|url_encode }}" target="_blank">LinkedIn</a>
+              </div>
+              <div class="form-group has-success">
+                <div class="input-group">
+                  <input class="form-control form-control-lg" type="text" value="https://www.stopsmokingportal.com" id="shareLink" data-clipboard-target="#shareLink" />
+                  <!--<span class="input-group-btn">
+                    <button class="btn btn-lg btn-success btn-cta" type="button" data-clipboard-target="#shareLink">Copy Link</button>
+                  </span>-->
+                </div>
+                <span class="badge badge-pill" id="copySuccess">Copied to clipboard</span>
+                <span class="badge badge-pill" id="copyError">Press 'ctrl/cmd + c' to copy</span>
+              </div>
             </div>
           </div>
         </div>

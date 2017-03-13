@@ -133,6 +133,9 @@ class DefaultController extends Controller
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->setTitle("Help someone else stop smoking - ".$seoPage->getTitle());
 
+        $bwBase = $this->container->get('bw.base');
+        $bwBase->addSDK('facebook');
+        $bwBase->addSDK('twitter');
         return $this->render('@App/Default/help_others_quit.html.twig', [
             "title" => "You want to help a family member or friend to stop",
             'breadcrumb' => array(

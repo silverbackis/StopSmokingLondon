@@ -219,10 +219,10 @@ bw_base:
                 id: null
             facebook:
                 enabled: false
-                app_id: null
+                app_id: 629732443887621
                 xfbml: true
                 version: 'v2.8'
-                language: en_US
+                language: en_GB
                 login_status_check: false
                 debug: false
             twitter: false

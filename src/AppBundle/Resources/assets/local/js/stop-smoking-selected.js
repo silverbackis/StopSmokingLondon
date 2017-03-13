@@ -6,10 +6,11 @@
 
   $emailForm.submit(function (e) {
     e.preventDefault();
-
+    var url = this.action + "?callback=?";
+    console.log(url);
     $.ajax({
       cache: false,
-      url: this.action + "?callback=?",
+      url: url,
       dataType: "json",
       data: $(this).serialize(),
       success: function(data) {
