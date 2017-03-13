@@ -49,16 +49,16 @@ twig:
             twitter:            https://www.twitter.com
             linkedin:           https://www.linkedin.com
             smokingaz:          http://www.smokingaz.com
-            smoke_free_formula: \#
-            ash:                \#
-            phe:                \#
+            smoke_free_formula: http://www.smokefreeformula.com/
+            ash:                http://ash.org.uk/
+            phe:                https://www.gov.uk/government/publications/health-matters-smoking-and-quitting-in-england/smoking-and-quitting-in-england
             sf28:
-                google:         \#
-                itunes:         \#
-                website:        \#
+                google:         https://play.google.com/store/apps/details?id=com.silverbackis.smokefree28&hl=en_GB
+                itunes:         https://itunes.apple.com/gb/app/smoke-free-28-sf28-quit-smoking/id720796646?mt=8
+                website:        http://www.sf28.co.uk/
             smoke_free_app:
-                google:         \#
-                itunes:         \#
+                google:         https://play.google.com/store/apps/details?id=com.portablepixels.smokefree&hl=en_GB
+                itunes:         https://itunes.apple.com/gb/app/smoke-free-quit-smoking-now-and-stop-for-good/id577767592?mt=8
 
 # Doctrine Configuration
 doctrine:
