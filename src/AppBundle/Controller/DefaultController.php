@@ -360,6 +360,7 @@ class DefaultController extends Controller
     public function boroughJsonAction(Request $request)
     {
         $response = new JsonResponse();
+        // Allow in debug mode or if in production - only with a valid csrf token
         if ($this->container->getParameter('kernel.debug') || $this->isCsrfTokenValid('borough_json', $request->query->get('token'))) {
             $csrf = $this->get('security.csrf.token_manager');
             $token = $csrf->refreshToken('borough_json');
@@ -383,11 +384,11 @@ class DefaultController extends Controller
             }
             $halfYear = round((86400*365)/2);
             $response->setCache(array(
+                'etag'          => 'boroughs.json',
                 'last_modified' => $lastUpdatedDate,
-                'max_age'       => $halfYear, //.5 years
-                's_maxage'      => $halfYear, //.5 years
-                'public'        => true,
-                // 'private'    => true,
+                'max_age'       => $halfYear,
+                's_maxage'      => $halfYear,
+                'public'        => true
             ));
             // Check that the Response is not modified for the given Request
             if ($response->isNotModified($request)) {

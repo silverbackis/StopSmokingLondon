@@ -12,6 +12,12 @@
 
 {% block javascripts %}
   {{ parent() }}
+  {% javascripts
+    '@AppBundle/Resources/assets/global/BootstrapModalAlerts.js'
+    '@AppBundle/Resources/assets/local/js/stop-smoking-selected.js'
+    filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
 {% endblock %}
 
 {% block page_content %}

@@ -371,7 +371,8 @@
     }
   }
 
-  &.card-outline-success {
+  &.card-outline-success,
+  &.card-outline-warning {
     h4 {
       @include open-sans(1.8rem, $green, $semi-bold);
     }

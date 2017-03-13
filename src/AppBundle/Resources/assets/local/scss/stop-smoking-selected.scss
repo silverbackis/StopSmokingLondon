@@ -32,6 +32,17 @@
     @extend %large-cta;
     display: block;
   }
+
+  .form-control-feedback {
+    font-size: .9rem;
+    font-weight: $semi-bold;
+    text-align: left;
+  }
+}
+
+.email-thanks {
+  display: none;
+  margin: 2rem 0 .5rem;
 }
 
 .website-link {
