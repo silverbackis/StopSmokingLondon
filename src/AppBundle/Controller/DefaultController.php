@@ -260,8 +260,11 @@ class DefaultController extends Controller
             $contact = $form->getData();
             $message = \Swift_Message::newInstance()
                 ->setSubject('New Contact Message: '.$contact->getSubject())
-                ->setFrom('outgoing@stopsmokingportal.com')
+                ->setFrom([
+                    'outgoing@stopsmokingportal.com' => 'Stop Smoking London'
+                ])
                 ->setTo('webmaster@stopsmokingportal.com')
+                ->setReplyTo($contact->getEmail())
                 ->setBody(
                     $this->renderView(
                         '@App/Emails/contact.txt.twig', [

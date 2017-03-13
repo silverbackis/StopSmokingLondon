@@ -51,6 +51,7 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals('New Contact Message: General enquiry', $message->getSubject());
         $this->assertEquals('outgoing@stopsmokingportal.com', key($message->getFrom()));
         $this->assertEquals('daniel@silverback.is', key($message->getTo()));
+        $this->assertEquals('info@silverback.is', key($message->getReplyTo()));
         $this->assertContains(
             'Test message post',
             $message->getBody()
