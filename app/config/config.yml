@@ -226,6 +226,7 @@ bw_base:
                 login_status_check: false
                 debug: false
             twitter: false
+
 endroid_twitter:
     consumer_key:           '%twitter.consumer_key%'
     consumer_secret:        '%twitter.consumer_secret%'
