@@ -262,6 +262,8 @@ class DefaultController extends Controller
      */
     public function homeTweets(Request $request)
     {
+        $response = new JsonResponse();
+
         // \Endroid\Twitter\Twitter
         $twitter = $this->get('endroid.twitter');
 
@@ -274,6 +276,22 @@ class DefaultController extends Controller
         //die(dump($tweets));
         if(!empty($tweets)) {
             $urls_found = [];
+
+            $response->setCache(array(
+                'etag'          => 'ssl-tweets',
+                'last_modified' => new \DateTime($tweets[0]->created_at),
+                'max_age'       => (86400*365)/2, //.5 years
+                's_maxage'      => (86400*365)/2, //.5 years
+                'public'        => true,
+                // 'private'    => true,
+            ));
+
+            // Check that the Response is not modified for the given Request
+            if ($response->isNotModified($request)) {
+                // return the 304 Response immediately
+                return $response;
+            }
+
             foreach($tweets as $tweet) {
                 # Assign text as a variable to modify
                 $tweetText = isset($tweet->retweeted_status) ? $tweet->retweeted_status->text : $tweet->text;
