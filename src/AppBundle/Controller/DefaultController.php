@@ -276,20 +276,23 @@ class DefaultController extends Controller
         //die(dump($tweets));
         if(!empty($tweets)) {
             $urls_found = [];
-
+            //.5 years
+            $halfYear = round((86400*365)/2);
             $response->setCache(array(
-                'etag'          => 'ssl-tweets',
                 'last_modified' => new \DateTime($tweets[0]->created_at),
-                'max_age'       => (86400*365)/2, //.5 years
-                's_maxage'      => (86400*365)/2, //.5 years
-                'public'        => true,
-                // 'private'    => true,
+                'max_age'       => $halfYear, //.5 years
+                's_maxage'      => $halfYear, //.5 years
+                'public'        => true
             ));
 
             // Check that the Response is not modified for the given Request
             if ($response->isNotModified($request)) {
                 // return the 304 Response immediately
                 return $response;
+            }
+            else
+            {
+                die(var_dump(date("d/m/Y H:i:s",strtotime($tweets[0]->created_at))));
             }
 
             foreach($tweets as $tweet) {
@@ -378,11 +381,11 @@ class DefaultController extends Controller
                     $lastUpdatedDate = $lastModified;
                 }
             }
+            $halfYear = round((86400*365)/2);
             $response->setCache(array(
-                'etag'          => 'borough-geojson',
                 'last_modified' => $lastUpdatedDate,
-                'max_age'       => (86400*365)/2, //.5 years
-                's_maxage'      => (86400*365)/2, //.5 years
+                'max_age'       => $halfYear, //.5 years
+                's_maxage'      => $halfYear, //.5 years
                 'public'        => true,
                 // 'private'    => true,
             ));
