@@ -1,0 +1,13 @@
+{% set label_cls = 'form-control-label' %}
+{% if input.vars.errors|length %}
+  {% set label_cls = label_cls ~ ' text-warning' %}
+{% endif %}
+<div class="form-group{% if input.vars.errors|length %} has-warning{% endif %}">
+    {{ form_label(input, null, {'label_attr': {'class': label_cls}}) }}
+    {{ form_widget(input, {'attr': {'class': 'form-control'}}) }}
+    <div class="form-control-feedback">
+      {% for error in input.vars.errors %}
+      {{ error.messageTemplate|trans(error.messageParameters, 'validators')|raw }}<br>
+      {% endfor %}
+    </div>
+</div>

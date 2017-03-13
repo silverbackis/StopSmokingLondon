@@ -12,6 +12,9 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
+use AppBundle\Form\ContactType;
+use AppBundle\Entity\Contact;
+
 class DefaultController extends Controller
 {
     /**
@@ -246,6 +249,32 @@ class DefaultController extends Controller
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->setTitle("Contact us - ".$seoPage->getTitle());
 
+        $contactEntity = new Contact();
+        $form = $this->createForm(ContactType::class, $contactEntity, [
+            'action' => $this->generateUrl('contact_us').'#contactform',
+            'attr' => ['id' => 'contactform']
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('New Contact Message: '.$contact->getSubject())
+                ->setFrom('outgoing@stopsmokingportal.com')
+                ->setTo('webmaster@stopsmokingportal.com')
+                ->setBody(
+                    $this->renderView(
+                        '@App/Emails/contact.txt.twig', [
+                            'contact' => $contact
+                        ]
+                    ),
+                    'text/plain'
+                );
+            $this->get('mailer')->send($message);
+
+            return $this->redirectToRoute('contact_success');
+        }
+
         return $this->render('@App/Default/contact_us.html.twig', [
             'title' => 'Contact Stop Smoking London',
             'breadcrumb' => array(
@@ -255,6 +284,35 @@ class DefaultController extends Controller
                 ),
                 array(
                     'title' => 'Contact us'
+                )
+            ),
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/contact-success", name="contact_success")
+     */
+    public function contactSuccessAction(Request $request)
+    {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage
+            ->setTitle("Contact message sent - ".$seoPage->getTitle())
+            ->addMeta('name', 'robots', 'noindex, nofollow');
+
+        return $this->render('@App/Default/contact_success.html.twig', [
+            'title' => 'Contact message sent',
+            'breadcrumb' => array(
+                array(
+                    'path' => $this->generateUrl('homepage'),
+                    'title' => 'Home'
+                ),
+                array(
+                    'path' => $this->generateUrl('contact_us'),
+                    'title' => 'Contact us'
+                ),
+                array(
+                    'title' => 'Contact message sent'
                 )
             )
         ]);

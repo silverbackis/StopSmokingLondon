@@ -2,10 +2,12 @@
 
 {% block stylesheets %}
   {{ parent() }}
-{% endblock %}
-
-{% block javascripts %}
-  {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/contact.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
 {% endblock %}
 
 {% block page_content %}
@@ -15,6 +17,21 @@
     <div class="row block-text">
       <div class="col-12">
         <p>Some text about getting in touch.</p>
+      </div>
+    </div>
+
+    <div class="row contact-row">
+      <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        {{ form_start(form) }}
+          {% include '@App/Default/_contact_row.html.twig'  with {'input': form.subject} only %}
+          {% include '@App/Default/_contact_row.html.twig'  with {'input': form.name} only %}
+          {% include '@App/Default/_contact_row.html.twig'  with {'input': form.email} only %}
+          {% include '@App/Default/_contact_row.html.twig'  with {'input': form.telephone} only %}
+          {% include '@App/Default/_contact_row.html.twig'  with {'input': form.message} only %}
+          <div class="submit-inner-row">
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-lg btn-success btn-cta'}}) }}
+          </div>
+        {{ form_end(form) }}
       </div>
     </div>
 

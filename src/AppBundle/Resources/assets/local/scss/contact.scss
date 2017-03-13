@@ -1,0 +1,37 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.contact-row {
+  margin-top: 2rem;
+
+  .col-12 {
+    text-align: left;
+  }
+
+  .form-control-label {
+    color: $blue-dark;
+    font-size: 1rem;
+    font-weight: $semi-bold;
+    margin-bottom: .2rem;
+  }
+
+  .form-control-feedback {
+    font-size: .8rem;
+    font-weight: $semi-bold;
+  }
+
+  textarea {
+    height: 160px;
+    resize: none;
+  }
+
+  .submit-inner-row {
+    margin: 1.5rem auto 3rem;
+    text-align: center;
+
+    .btn-cta {
+      width: 70%;
+    }
+  }
+}

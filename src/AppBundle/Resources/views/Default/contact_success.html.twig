@@ -1,0 +1,25 @@
+{% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/contact.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block page_content %}
+  <div class="container-fluid h-100 container-lower">
+    {% include '@App/Default/_header.html.twig' %}
+    
+    <div class="row block-text">
+      <div class="col-12">
+        <p class="text-success"><b>Thank you for contacting us. We will try to get back to your enquiry as soon as we can.</b></p>
+      </div>
+    </div>
+
+    {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
+  </div>
+{% endblock %}

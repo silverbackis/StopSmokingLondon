@@ -1,0 +1,11 @@
+Hello,
+
+You've received a new contact message from the Stop Smoking London website.
+
+Subject: {{ contact.subject }}
+Name: {{ contact.name }}
+Email: {{ contact.email }}
+Telephone: {{ contact.telephone ?: 'not provided' }}
+
+Message:
+{{ contact.message }}
