@@ -12,9 +12,9 @@
       </ol>
     {% endif %}
     <a href="{{ path('homepage') }}" class="home-link">Home</a>
-    <h2>{{ title | raw }}</h2>
-    {% if lead is defined %}
-      <p class="lead">{{ lead | raw }}</p>
+    <h2>{{ title.header | raw | nl2br }}</h2>
+    {% if title.lead is defined %}
+      <p class="lead">{{ title.lead | raw | nl2br }}</p>
     {% endif %}
   </div>
 </div>

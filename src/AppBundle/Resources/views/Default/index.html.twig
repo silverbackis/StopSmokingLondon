@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "home" %}
 
 {% block stylesheets %}
   {{ parent() }}
@@ -26,8 +27,8 @@
       <div class="row home-feature justify-content-center col-auto">
         <div class="col-lg-10 align-self-center">
           <h1 class="welcome">
-            <span class="small">Welcome to</span><br />
-            Stop Smoking London
+            <span class="small">{{ 'header.main.small'|trans }}</span><br />
+            {{ 'header.main.large'|trans }}
           </h1>
         </div>
       </div>
@@ -35,27 +36,27 @@
         <div class="col-lg-11">
           <div class="row h-100 triples-row gutter-lg">
             <div class="home-right-bg"></div>
-            {% include '@App/Default/_home_cta_buttons.html' %}
+            {% include '@App/Default/_home_cta_buttons.html.twig' %}
             <div class="col-12 col-lg-auto">
               <ul class="fact-list">
                 <li>
                   <img src="{{ asset('bundles/app/images/icon/map_london.png') }}" alt="Smokers in london with pie chart effect over London outline" class="fact-icon map" />
-                  <span class="fact">1.3 million out of 8 million<br />Londoners still smoke</span>
+                  <span class="fact">{{ 'image_captions.1'|trans }}</span>
                 </li>
                 <li>
                   <img src="{{ asset('bundles/app/images/icon/stop.png') }}" alt="Stop sign - most smokers want to stop" class="fact-icon stop" />
-                  <span class="fact">Most want to stop</span>
+                  <span class="fact">{{ 'image_captions.2'|trans }}</span>
                 </li>
                 <li>
                   <img src="{{ asset('bundles/app/images/icon/stop_smoking.png') }}" alt="Stop smoking icon" class="fact-icon stop-smoking" />
-                  <span class="fact">Stop Smoking London<br />aims to help with that</span>
+                  <span class="fact">{{ 'image_captions.3'|trans }}</span>
                 </li>
               </ul>
             </div>
             <div class="col-lg news-col">
               <div class="h3-outer">
                 <h3 class="news-header">
-                  Latest news
+                  {{ 'header.latest_news'|trans }}
                 </h3>
                 <a href="https://twitter.com/stopsmokinglon" class="twitter-profile-link" target="_blank">
                   <div class="media">
@@ -64,11 +65,9 @@
                   </div>
                 </a>
               </div>
-              <div class="carousel-container" id="carouselContainer">
-                
-              </div>
+              <div class="carousel-container" id="carouselContainer"></div>
             </div>
-            {% include '@App/Default/_home_cta_buttons.html' %}
+            {% include '@App/Default/_home_cta_buttons.html.twig' %}
           </div>
         </div>
       </div>

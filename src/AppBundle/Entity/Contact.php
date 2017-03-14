@@ -7,19 +7,25 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contact
 {
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message = "contact.subject.not_blank"
+     * )
      */
     protected $subject;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message = "contact.name.not_blank"
+     * )
      */
     protected $name;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message = "contact.email.not_blank"
+     * )
      * @Assert\Email(
-     *     message = "The email entered is not valid.",
+     *     message = "contact.email.invalid",
      *     checkMX = true,
      *     checkHost = true
      * )
@@ -30,14 +36,16 @@ class Contact
      * @Assert\Length(
      *      min = 10,
      *      max = 20,
-     *      minMessage = "Your telephone number should be at least <b>{{ limit }}</b> characters long",
-     *      maxMessage = "Your telephone number cannot be longer than <b>{{ limit }}</b> characters"
+     *      minMessage = "contact.telephone.short",
+     *      maxMessage = "contact.telephone.long"
      * )
      */
     protected $telephone;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message = "contact.message.not_blank"
+     * )
      */
     protected $message;
 

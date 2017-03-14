@@ -1,11 +1,12 @@
+{% trans_default_domain "home" %}
 <div class="col-lg home-right">
-  <h3 class="d-inline-block">What do you want to do?</h3>
+  <h3 class="d-inline-block">{{ 'header.buttons'|trans }}</h3>
   <div class="d-inline-block w-100">
     <a class="btn btn-lg btn-block btn-success btn-cta" href="{{ path('stop_smoking_choices') }}">
       <div class="media">
         <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_stop_smoking.png') }}" style="width: 47px; height: 47.5px;" />
         <div class="media-body align-self-center">
-          I want to stop smoking
+          {{ 'buttons.self_stop'|trans }}
         </div>
         <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
       </div>
@@ -16,7 +17,7 @@
       <div class="media">
         <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_info.png') }}" style="width: 37px; height: 36.5px;" />
         <div class="media-body align-self-center">
-          I want to help a family member or friend to stop
+          {{ 'buttons.help_others'|trans }}
         </div>
         <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
       </div>
@@ -27,7 +28,7 @@
       <div class="media">
         <img class="d-flex mr-2 mr-sm-3 align-self-center" src="{{ asset('bundles/app/images/button/icon_question.png') }}" style="width: 38px; height: 39px;" />
         <div class="media-body align-self-center">
-          I want to know more about stopping
+          {{ 'buttons.find_out'|trans }}
         </div>
         <img class="d-flex ml-3 align-self-center" src="{{ asset('bundles/app/images/button/arrow_right.png') }}" style="width: 19.5px; height: 13.5px;" />
       </div>

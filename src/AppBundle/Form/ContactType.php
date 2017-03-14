@@ -11,38 +11,66 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ContactType extends AbstractType
 {
+    private $translator;
+    public function __construct(TranslatorInterface $translator=null)
+    {
+        $this->translator = $translator;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $choicesLoaded = false;
+        $index = 0;
+        $choices = [];
+        while(!$choicesLoaded)
+        {
+            $choiceKey = 'subject_choices.'.$index;
+            $choice = $this->translator->trans($choiceKey, array(), 'contact');
+            if($choice !== $choiceKey)
+            {
+                $choices[$choice] = $choice;
+                $index++;
+            }
+            else
+            {
+                $choicesLoaded = true;
+            }
+        }
+
         $builder
             ->add('subject', ChoiceType::class, [
-              'label' => 'Reason for contact',
+              'label' => 'labels.subject',
+              'translation_domain' => 'contact',
               'required' => true,
-              'choices' => [
-                'General enquiry' => 'General enquiry',
-                'Report a bug' => 'Report a bug'
-              ]
+              'choices' => $choices
             ])
             ->add('name', TextType::class, [
-              'label' => 'Your name',
+              'label' => 'labels.name',
+              'translation_domain' => 'contact',
               'required' => true
             ])
             ->add('email', EmailType::class, [
-              'label' => 'Your email',
+              'label' => 'labels.email',
+              'translation_domain' => 'contact',
               'required' => true
             ])
             ->add('telephone', TextType::class, [
-              'label' => 'Your telephone number',
+              'label' => 'labels.telephone',
+              'translation_domain' => 'contact',
               'required' => false
             ])
             ->add('message', TextareaType::class, [
-              'label' => 'Comment',
+              'label' => 'labels.message',
+              'translation_domain' => 'contact',
               'required' => true
             ])
             ->add('submit', SubmitType::class, [
-              'label' => 'Send Message'
+              'label' => 'labels.submit',
+              'translation_domain' => 'contact'
             ])
         ;
     }

@@ -1,5 +1,5 @@
 {% extends '@App/base.html.twig' %}
-
+{% trans_default_domain "contact" %}
 {% block stylesheets %}
   {{ parent() }}
   {% stylesheets 
@@ -26,7 +26,7 @@
     
     <div class="row block-text">
       <div class="col-12">
-        <p>Some text about getting in touch.</p>
+        <p>{{ 'intro_text'|trans|nl2br }}</p>
       </div>
     </div>
 

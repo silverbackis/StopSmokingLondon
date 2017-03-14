@@ -25,3 +25,4 @@ parameters:
     twitter.consumer_secret: ~
     twitter.access_token: ~
     twitter.access_token_secret: ~
+    locale: ~

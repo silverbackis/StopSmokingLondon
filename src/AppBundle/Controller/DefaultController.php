@@ -30,12 +30,10 @@ class DefaultController extends Controller
      */
     public function stopSmokingAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Ready to Stop Smoking - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/stop_smoking.html.twig', [
-            'title' => 'Ready to stop smoking?',
-            'lead' => 'We\'ll help you find the best method for you.',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -53,12 +51,11 @@ class DefaultController extends Controller
      */
     public function stopSmokingAdvisorAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Talk to a specialist advisor - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/stop_smoking_map.html.twig', [
             "type" => 'advisor',
-            "title" => "You are making an appointment<br />with an advisor",
+            "title" => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -80,12 +77,11 @@ class DefaultController extends Controller
      */
     public function stopSmokingMedicinesAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Getting a Stop Smoking Medicine - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/stop_smoking_map.html.twig', [
             "type" => 'medicine',
-            "title" => "You are getting a stop smoking medicine",
+            "title" => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -107,11 +103,10 @@ class DefaultController extends Controller
      */
     public function stopSmokingAloneAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Going it alone - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/stop_smoking_alone.html.twig', [
-            "title" => "You are going it alone",
+            "title" => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -133,14 +128,15 @@ class DefaultController extends Controller
      */
     public function familyFriendAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Help someone else stop smoking - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
+        // Add SDKs to template for Share buttons
         $bwBase = $this->container->get('bw.base');
         $bwBase->addSDK('facebook');
         $bwBase->addSDK('twitter');
+
         return $this->render('@App/Default/help_others_quit.html.twig', [
-            "title" => "You want to help a family member or friend to stop",
+            "title" => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -158,11 +154,10 @@ class DefaultController extends Controller
      */
     public function stoppingInfoAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Find out more about stopping - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/find_out_more.html.twig', [
-            'title' => 'Find out more about stopping',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -180,11 +175,10 @@ class DefaultController extends Controller
      */
     public function websitesAppsAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Useful websites and apps - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/websites_apps.html.twig', [
-            'title' => 'Useful websites and apps',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -198,15 +192,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/about-us", name="about_us")
+     * @Route("/about", name="about_us")
      */
     public function aboutAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("About us - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/about_us.html.twig', [
-            'title' => 'About Stop Smoking London',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -224,11 +217,10 @@ class DefaultController extends Controller
      */
     public function termsAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Terms and privacy - ".$seoPage->getTitle());
+        $title = $this->getHeader($request);
 
         return $this->render('@App/Default/terms_privacy.html.twig', [
-            'title' => 'Terms and Privacy',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -246,8 +238,6 @@ class DefaultController extends Controller
      */
     public function contactAction(Request $request)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->setTitle("Contact us - ".$seoPage->getTitle());
 
         $contactEntity = new Contact();
         $form = $this->createForm(ContactType::class, $contactEntity, [
@@ -255,7 +245,30 @@ class DefaultController extends Controller
             'attr' => ['id' => 'contactform']
         ]);
         $form->handleRequest($request);
+        $sendEmailResponse = $this->sendContactEmail($form);
+        if($sendEmailResponse !== false)
+        {
+            return $sendEmailResponse;
+        }
 
+        $title = $this->getHeader($request);
+        return $this->render('@App/Default/contact_us.html.twig', [
+            'title' => $title,
+            'breadcrumb' => array(
+                array(
+                    'path' => $this->generateUrl('homepage'),
+                    'title' => 'Home'
+                ),
+                array(
+                    'title' => 'Contact us'
+                )
+            ),
+            'form' => $form->createView()
+        ]);
+    }
+
+    private function sendContactEmail($form)
+    {
         if ($form->isSubmitted() && $form->isValid()) {
             $contact = $form->getData();
             $message = \Swift_Message::newInstance()
@@ -277,20 +290,7 @@ class DefaultController extends Controller
 
             return $this->redirectToRoute('contact_success');
         }
-
-        return $this->render('@App/Default/contact_us.html.twig', [
-            'title' => 'Contact Stop Smoking London',
-            'breadcrumb' => array(
-                array(
-                    'path' => $this->generateUrl('homepage'),
-                    'title' => 'Home'
-                ),
-                array(
-                    'title' => 'Contact us'
-                )
-            ),
-            'form' => $form->createView()
-        ]);
+        return false;
     }
 
     /**
@@ -298,13 +298,13 @@ class DefaultController extends Controller
      */
     public function contactSuccessAction(Request $request)
     {
+        $title = $this->getHeader($request);
+
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage
-            ->setTitle("Contact message sent - ".$seoPage->getTitle())
-            ->addMeta('name', 'robots', 'noindex, nofollow');
+        $seoPage->addMeta('name', 'robots', 'noindex, nofollow');
 
         return $this->render('@App/Default/contact_success.html.twig', [
-            'title' => 'Contact message sent',
+            'title' => $title,
             'breadcrumb' => array(
                 array(
                     'path' => $this->generateUrl('homepage'),
@@ -318,6 +318,17 @@ class DefaultController extends Controller
                     'title' => 'Contact message sent'
                 )
             )
+        ]);
+    }
+
+    /**
+     * @Route("/tooltip/{text}", name="tooltip_info")
+     */
+    public function tooltipInfo($text = '', Request $request)
+    {
+        $tooltipText = $this->get('translator')->trans($text, array(), 'tooltips');
+        return new JsonResponse([
+            'tooltip' => $tooltipText
         ]);
     }
 
@@ -504,5 +515,28 @@ class DefaultController extends Controller
             $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
         }
         return $response;
+    }
+
+    private function getHeader(Request $request)
+    {
+        $page = $request->get('_route');
+        $trans = $this->get('translator')->trans($page, array(), 'page_headers');
+        if($trans === $page)
+        {
+            $ret = [
+                'header' => $this->get('translator')->trans($page.'.header', array(), 'page_headers'),
+                'lead' => $this->get('translator')->trans($page.'.lead', array(), 'page_headers')
+            ];
+        }
+        else
+        {
+            $ret = [
+                'header' => $trans,
+                'lead' => null
+            ];
+        }
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->setTitle($ret['header']." - ".$seoPage->getTitle());
+        return $ret;
     }
 }
