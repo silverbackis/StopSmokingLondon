@@ -21,7 +21,8 @@ class ContactType extends AbstractType
               'label' => 'Reason for contact',
               'required' => true,
               'choices' => [
-                'General enquiry' => 'General enquiry'
+                'General enquiry' => 'General enquiry',
+                'Report a bug' => 'Report a bug'
               ]
             ])
             ->add('name', TextType::class, [

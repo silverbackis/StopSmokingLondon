@@ -2,42 +2,65 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
-.bootstrap-select.show>.dropdown-menu>.dropdown-menu {
-  display: block;
+.bootstrap-select {
+  font-size: 1.25rem;
 
-  .selected,
-  .active {
+  .hidden {
+    display: none;
+  }
+
+  .dropdown-menu {
+    font-size: 1rem;
+    min-height: 140px !important;
+
     a {
-      color: $green;
+      font-size: inherit;
+      width: 100%;
     }
   }
 
-  a {
+  &.show>.dropdown-menu>.dropdown-menu {
     display: block;
-    padding: .4rem 1rem;
 
-    &:focus {
-      outline: none;
+    .selected,
+    .active {
+      a {
+        color: $green;
+      }
+    }
+
+    a {
+      display: block;
+      padding: .4rem 1rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .no-results {
+      background: transparent;
+      color: $gray;
+      padding: .4rem 1rem;
     }
   }
 
-  .no-results {
-    background: transparent;
-    color: $gray;
-    padding: .4rem 1rem;
+  &.btn-group .dropdown-toggle .filter-option {
+    vertical-align: middle;
+  }
+
+  > .dropdown-toggle {
+    padding-right: 2rem;
+  }
+
+  &.btn-group .dropdown-toggle:focus {
+    outline: none !important;
   }
 }
 
-.bootstrap-select.btn-group .dropdown-toggle .filter-option {
-  vertical-align: middle;
-}
-
-.bootstrap-select > .dropdown-toggle {
-  padding-right: 2rem;
-}
-
-.bootstrap-select.btn-group .dropdown-toggle:focus {
-  outline: none !important;
+.dropdown-toggle::after {
+  border-top-color: $blue;
+  margin-left: -.6rem;
 }
 
 @mixin placeholder {
@@ -438,6 +461,13 @@
     h4 {
       font-size: 1.6rem;
     }
+
+    &.card-outline-success,
+    &.card-outline-warning {
+      h4 {
+        font-size: 1.4rem;
+      }
+    }
   }
 
   .page-header-2,
@@ -620,12 +650,27 @@
     }
 
     .btn-cta {
-      display: block;
+      display: inline-block;
+      margin-bottom: .2rem;
+      width: 100%;
 
       + .btn-cta {
         margin-left: 0;
-        margin-top: .2rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
       }
     }
+  }
+
+  .page-header-1,
+  .block-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .page-header-2,
+  .block-text h4 {
+    font-size: 1.1rem;
   }
 }

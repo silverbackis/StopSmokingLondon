@@ -51,41 +51,18 @@
 }
 
 .borough-group {
-  .bootstrap-select {
-    font-size: 1.25rem;
-
-    .hidden {
-      display: none;
-    }
-  }
-
   .btn {
     font-size: inherit;
     padding: .7rem 1.5rem;
-  }
-
-  .dropdown-menu {
-    font-size: 1.1rem;
-    min-height: 140px !important;
-
-    a {
-      font-size: inherit;
-      width: 100%;
-    }
-  }
-
-  .dropdown-toggle::after {
-    border-top-color: $blue;
-    margin-left: -.6rem;
   }
 }
 
 .row.hidden {
   display: none;
 
-   +.stop-smoking-london-info-row {
+  +.stop-smoking-london-info-row {
     display: none;
-   }
+  }
 }
 
 .tel {
