@@ -263,7 +263,7 @@ class DefaultController extends Controller
                 ->setFrom([
                     'outgoing@stopsmokingportal.com' => 'Stop Smoking London'
                 ])
-                ->setTo('webmaster@stopsmokingportal.com')
+                ->setTo('london@stopsmokingportal.com')
                 ->setReplyTo($contact->getEmail())
                 ->setBody(
                     $this->renderView(
