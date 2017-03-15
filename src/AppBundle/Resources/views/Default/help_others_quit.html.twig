@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "help_others_quit" %}
 
 {% block stylesheets %}
   {{ parent() }}
@@ -37,22 +38,21 @@
         <div class="card card-outline-success text-center container-fluid mobile-w-100">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
-              <h4>Share Stop Smoking London</h4>
-              <p class="message">Share using your favourite social network. Alternatively, clicking the link below will copy it to your clipboard.</p>
+              <h4>{{ 'share.title'|trans }}</h4>
+              <p class="message">{{ 'share.text'|trans }}</p>
 
               <div class="social-links mb-3">
-                {% set shareMessage = "If you're in London and want to stop smoking check out Stop Smoking London https://www.stopsmokingportal.com - It'll help you get started" %}
-                <a class="btn btn-lg btn-success btn-cta website-link t" id="shareT" href="https://twitter.com/intent/tweet?text={{ shareMessage|url_encode }}">Twitter</a>
+                <a class="btn btn-lg btn-success btn-cta website-link t" id="shareT" href="https://twitter.com/intent/tweet?text={{ 'share.social_post'|trans|url_encode }}">Twitter</a>
                 <a class="btn btn-lg btn-success btn-cta website-link f" id="shareF" href="#">Facebook</a>
                 <a class="btn btn-lg btn-success btn-cta website-link l" id="shareL" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ "https://www.stopsmokingportal.com"|url_encode }}&amp;title={{ "Stop Smoking London"|url_encode }}
-&amp;summary={{ shareMessage|url_encode }}&amp;source={{ "Stop Smoking London Website"|url_encode }}" target="_blank">LinkedIn</a>
+&amp;summary={{ 'share.social_post'|trans|url_encode }}&amp;source={{ "Stop Smoking London Website"|url_encode }}" target="_blank">LinkedIn</a>
               </div>
               <div class="form-group has-success">
                 <div class="input-group">
                   <input class="form-control form-control-lg" type="text" value="https://www.stopsmokingportal.com" id="shareLink" data-clipboard-target="#shareLink" />
-                  <!--<span class="input-group-btn">
+                  {# <span class="input-group-btn">
                     <button class="btn btn-lg btn-success btn-cta" type="button" data-clipboard-target="#shareLink">Copy Link</button>
-                  </span>-->
+                  </span> #}
                 </div>
                 <span class="badge badge-pill" id="copySuccess">Copied to clipboard</span>
                 <span class="badge badge-pill" id="copyError">Press 'ctrl/cmd + c' to copy</span>
