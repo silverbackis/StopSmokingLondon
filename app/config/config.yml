@@ -127,7 +127,7 @@ sonata_seo:
 
             property:
                 # Facebook application settings - will be auto-added by fb ask if used
-                #fb:app_id:          XXXXXX
+                fb:app_id:          "629732443887621"
                 #fb:admins:          admin1, admin2
 
                 # Open Graph information
@@ -162,8 +162,8 @@ bw_base:
                 twitter:card:       'summary_large_image'
                 twitter:site:       '@silverbackis'
                 twitter:creator:    '@silverbackis'
-                #twitter:image:      '%ogimages_folder%SocialImage.png'
-                twitter:image:alt:  'Alt tag for the twigger image'
+                twitter:image:      '%ogimages_folder%OpengraphImages2.png'
+                twitter:image:alt:  'Stop Smoking London'
 
                 #msapplication-TileImage:            '%icons_folder%mstile-144x144.png'
                 #msapplication-square70x70logo:      '%icons_folder%mstile-70x70.png'
@@ -172,9 +172,15 @@ bw_base:
                 #msapplication-wide310x150logo:      '%icons_folder%mstile-310x150.png'
             property:
                 #Repeat images tags as many times as you want for new images
-                #og:image:          '%ogimages_folder%SocialImage.png'
-                #og:image:width:    '500'
-                #og:image:height:   '500'
+                og:image:          '%ogimages_folder%OpengraphImages2.png'
+                og:image:width:    '2000'
+                og:image:height:   '2000'
+                og:image:          '%ogimages_folder%OpengraphImages3.png'
+                og:image:width:    '2000'
+                og:image:height:   '2000'
+                og:image:          '%ogimages_folder%OpengraphImages4.png'
+                og:image:width:    '2000'
+                og:image:height:   '2000'
         links:
             rel:
                 apple-touch-icon-precomposed:

@@ -24,7 +24,7 @@ steps:
   header: There are now just two small steps to get you started
   # Step 1 text
   1:
-    header:             'Step 1: Provide email'
+    header:             "Step 1: Provide email"
     text:               If you like, we can update you now and then with new information to help with your quit attempt. Enter your email below to register.
     input_placeholder:  your@email.com
     button:             Confirm
