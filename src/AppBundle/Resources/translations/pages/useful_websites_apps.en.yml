@@ -1,29 +1,28 @@
-items:
-  smoke_free_formula:
-    name:   "SmokeFree Formula"
-    text:   "A description about the website/app will go here."
-    buttons: 
-      - { name: "Visit SmokeFree Formula", link: "http://www.smokefreeformula.com/" }
-  ash:
-    name:   "Action on Smoking and Health"
-    text:   "A description about the website/app will go here."
-    buttons: 
-      - { name: "Visit Action on Smoking and Health", link: "http://ash.org.uk/" }
-  phe:
-    name:   "Public Health England: Stop Smoking"
-    text:   "A description about the website/app will go here."
-    buttons: 
-      - { name: "Visit Public Health England", link: "https://www.gov.uk/government/publications/health-matters-smoking-and-quitting-in-england/smoking-and-quitting-in-england" }
-  sf28:
-    name:   "Smoke Free 28"
-    text:   "A description about the website/app will go here."
-    buttons: 
-      - { name: "Google Play", link: "https://play.google.com/store/apps/details?id=com.silverbackis.smokefree28&hl=en_GB" }
-      - { name: "App Store", link: "https://itunes.apple.com/gb/app/smoke-free-28-sf28-quit-smoking/id720796646?mt=8" }
-      - { name: "Website", link: "http://www.sf28.co.uk/" }
-  smoke_free:
-    name:   "Smoke Free"
-    text:   "A description about the website/app will go here."
-    buttons: 
-      - { name: "Google Play", link: "https://play.google.com/store/apps/details?id=com.portablepixels.smokefree&hl=en_GB" }
-      - { name: "App Store", link: "https://itunes.apple.com/gb/app/smoke-free-quit-smoking-now-and-stop-for-good/id577767592?mt=8" }
+smoke_free_formula:
+  name:   "SmokeFree Formula"
+  text:   "A description about the website/app will go here."
+  buttons: 
+    - { name: "Visit SmokeFree Formula", link: "http://www.smokefreeformula.com/" }
+ash:
+  name:   "Action on Smoking and Health"
+  text:   "A description about the website/app will go here."
+  buttons: 
+    - { name: "Visit Action on Smoking and Health", link: "http://ash.org.uk/" }
+phe:
+  name:   "Public Health England: Stop Smoking"
+  text:   "A description about the website/app will go here."
+  buttons: 
+    - { name: "Visit Public Health England", link: "https://www.gov.uk/government/publications/health-matters-smoking-and-quitting-in-england/smoking-and-quitting-in-england" }
+sf28:
+  name:   "Smoke Free 28"
+  text:   "A description about the website/app will go here."
+  buttons: 
+    - { name: "Google Play", link: "https://play.google.com/store/apps/details?id=com.silverbackis.smokefree28&hl=en_GB" }
+    - { name: "App Store", link: "https://itunes.apple.com/gb/app/smoke-free-28-sf28-quit-smoking/id720796646?mt=8" }
+    - { name: "Website", link: "http://www.sf28.co.uk/" }
+smoke_free:
+  name:   "Smoke Free"
+  text:   "A description about the website/app will go here."
+  buttons: 
+    - { name: "Google Play", link: "https://play.google.com/store/apps/details?id=com.portablepixels.smokefree&hl=en_GB" }
+    - { name: "App Store", link: "https://itunes.apple.com/gb/app/smoke-free-quit-smoking-now-and-stop-for-good/id577767592?mt=8" }

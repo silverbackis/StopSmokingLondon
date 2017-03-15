@@ -74,22 +74,21 @@
           <div class="google-map spacer"></div>
         </center>
       </div>
-      <div data-token="{{ csrf_token('borough_json') }}" class="google-map actual" id="map"></div>
+      <div data-token="{{ csrf_token('borough_json') }}" data-search-token="{{ csrf_token('geocode_search') }}" class="google-map actual" id="map"></div>
     </div>
     <div class="row justify-content-center mt-5 hidden" id="nextSteps">
       <div class="col-12">
-        <h3 class="page-header-2 two-steps">There are now just two small steps to get you started</h3>
+        <h3 class="page-header-2 two-steps">{{ 'steps.header'|trans }}</h3>
         
-        {% include '@App/Default/_step1.html' %}
+        {% include '@App/Default/_step1.html.twig' %}
         
         {% if type == 'advisor' %}
         <div class="card card-outline-success text-center container-fluid mobile-w-100" id="advisorCard">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
-              <h4>Step 2: Contact your service</h4>
+              <h4>{{ 'steps.2.advisor.header'|trans }}</h4>
               <p class="message"></p>
               <span class="tel-cont"></span>
-              {# <a class="btn btn-lg btn-success btn-cta website-link" target="_blank" href="#"></a> #}
             </div>
           </div>
         </div>
@@ -98,7 +97,7 @@
         <div class="card card-outline-success text-center container-fluid mobile-w-100" id="medicineCard">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">
-              <h4>Step 2: Getting your medicine</h4>
+              <h4>{{ 'steps.2.medicine.header'|trans }}</h4>
               <p class="message"></p>
             </div>
           </div>

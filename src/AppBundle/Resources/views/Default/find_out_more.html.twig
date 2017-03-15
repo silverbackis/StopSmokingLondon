@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "find_out_more" %}
 
 {% block page_content %}
   <div class="container-fluid h-100 container-lower">
@@ -12,8 +13,8 @@
               <h4>
                 <img src="{{ asset('bundles/app/images/logo/a_to_z.png') }}" alt="A to Z of Stopping Smoking Logo" style="width: 194px; height: 45px;" />
               </h4>
-              <p class="message">A to Z of stopping smoking is a partner site to Stop Smoking London and is a reference dictionary to Stop Smoking terminology and provides a comprehensive list of different stop smoking methods.</p>
-              <a class="btn btn-lg btn-success btn-cta website-link" href="{{ external_links.smokingaz }}" target="_blank">Visit A to Z of Stopping Smoking</a>
+              <p class="message">{{ 'az_stopping_smoking.text'|trans }}</p>
+              <a class="btn btn-lg btn-success btn-cta website-link" href="{{ 'az_stopping_smoking.buttons.0.link'|trans }}" target="_blank">{{ 'az_stopping_smoking.buttons.0.name'|trans }}</a>
             </div>
           </div>
         </div>

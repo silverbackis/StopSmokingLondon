@@ -15,6 +15,8 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use AppBundle\Form\ContactType;
 use AppBundle\Entity\Contact;
 
+use Symfony\Component\Yaml\Yaml;
+
 class DefaultController extends Controller
 {
     /**
@@ -333,6 +335,38 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/geocode", name="geocode")
+     */
+    /*public function geocodeAction(Request $request)
+    {
+        $response = new JsonResponse();
+        // Allow in debug mode or if in production - only with a valid csrf token
+        if ($this->isCsrfTokenValid('geocode_search', $request->request->get('token'))) {
+            //$referrer_ip = $this->container->getParameter('kernel.debug') ? '88.98.91.88' : getHostByName(getHostName());
+            $url = 'https://maps.googleapis.com/maps/api/geocode/json?'.http_build_query(array(
+                'address'   =>    $request->request->get('address'),
+                'key'       =>    $this->container->getParameter('google_map_api_key_server'),
+                'region'    =>    'GB',
+                'bounds'    =>    $request->request->get('bounds'),
+            ));
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, ["REMOTE_ADDR: $referrer_ip", "HTTP_X_FORWARDED_FOR: $referrer_ip"]);
+            curl_setopt($ch, CURLOPT_REFERER, "https://www.stopsmokingportal.com");
+            $rawResponse = curl_exec($ch);
+            $responseData = json_decode($rawResponse, true);
+
+            $response->setData($responseData);
+        }
+        else
+        {
+            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
+        }
+        return $response;
+    }*/
+
+    /**
      * @Route("/tweets.json", name="home_tweets")
      */
     public function homeTweets(Request $request)
@@ -430,7 +464,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/boroughs.json", name="boroughs_json")
+     * @Route("/boroughs-and-messages.json", name="boroughs_json")
      */
     public function boroughJsonAction(Request $request)
     {
@@ -495,6 +529,22 @@ class DefaultController extends Controller
                 );
             }
 
+            //Now let's get the messages javascript needs to display results.
+            $locale = $this->get('translator')->getLocale();
+            $kernel = $this->get('kernel');
+            try{
+                $path = $kernel->locateResource("@AppBundle/Resources/translations/pages/stop_smoking_chosen.$locale.yml");
+            }catch(\InvalidArgumentException $e)
+            {
+                $path = $kernel->locateResource("@AppBundle/Resources/translations/pages/stop_smoking_chosen.en.yml");
+            }
+            $yamlArray = Yaml::parse(file_get_contents($path));
+            $messages = [
+                'map'   =>  $yamlArray['map_search_results'],
+                'step2' =>  $yamlArray['steps'][2]
+            ];
+
+
             $encoders = array(new JsonEncoder());
             $normalizer = new ObjectNormalizer();
             $normalizer->setCircularReferenceHandler(function ($object) {
@@ -505,7 +555,10 @@ class DefaultController extends Controller
             });
             $serializer = new Serializer(array($normalizer), $encoders);
             
-            $data = $serializer->serialize($data, 'json');
+            $data = $serializer->serialize([
+                'LoadedGeoJson' => $data,
+                'messages' => $messages
+            ], 'json');
             $response->setContent($data);
             //$response->setEncodingOptions(JSON_PRETTY_PRINT);
             

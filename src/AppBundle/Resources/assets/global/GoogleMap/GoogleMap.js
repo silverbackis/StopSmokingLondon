@@ -25,7 +25,16 @@ var GoogleMap = (function($, viewport, alert, confirm){
   $advisorCard = $("#advisorCard"),
   $medicineCard = $("#medicineCard"),
   $nextSteps = $("#nextSteps"),
-  boroughsLocation = "London";
+  boroughsLocation = "London",
+  searchToken,
+  geocoder,
+  ResponseMessages;
+
+  String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    search = search.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+    return target.replace(new RegExp(search, 'g'), replacement);
+  };
 
   function gaTrack(obj)
   {
@@ -48,7 +57,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     selectChanged();
   }
 
-  function search(searchText)
+  function search(searchText, dropdown)
   {
     if(!searchText)
     {
@@ -85,15 +94,32 @@ var GoogleMap = (function($, viewport, alert, confirm){
       }
 
       $searchInput.prop('disabled', true);
-
-      var geocoder = new google.maps.Geocoder();
+      /*var boundsPost = map.getBounds().getNorthEast().toUrlValue() + "|" + map.getBounds().getSouthWest().toUrlValue();
+      $.ajax({
+        url: '/geocode',
+        type: 'POST',
+        data: {
+          address: searchText,
+          bounds: boundsPost,
+          token: searchToken
+        },
+        success: function(data)
+        {
+          console.log(data);
+          searchResult(data.results, data.status, searchText, dropdown);
+        }
+      });*/
+      if(!geocoder)
+      {
+        geocoder = new google.maps.Geocoder();
+      }
       geocoder.geocode({
         address: searchText,
         region: 'GB',
         bounds: map.getBounds()
       }, function(results, status){
-        searchResult(results, status, searchText);
-      });
+        searchResult(results, status, searchText, dropdown);
+      }); 
     }
     else
     {
@@ -102,7 +128,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     }
   }
 
-  function searchResult(results, status, searchText) 
+  function searchResult(results, status, searchText, dropdown) 
   {
     totalAttempts++;
     
@@ -112,7 +138,15 @@ var GoogleMap = (function($, viewport, alert, confirm){
       totalAttempts = 0;
       var resultLatLng;
       $.each(results, function(){
-        resultLatLng = new google.maps.LatLng(this.geometry.location.lat(), this.geometry.location.lng());
+        if(typeof this.geometry.location.lat == 'function')
+        {
+          resultLatLng = new google.maps.LatLng(this.geometry.location.lat(), this.geometry.location.lng());
+        }
+        else
+        {
+          // if we request from our own server again
+          resultLatLng = new google.maps.LatLng(this.geometry.location.lat, this.geometry.location.lng);
+        }
         // Loop through all features
         map.data.forEach(function(feature){
           // Get geometry lat lng array from feature
@@ -150,8 +184,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
           eventAction: 'Not Local Borough Result',
           eventLabel: searchText
         });
-        hideAllResults();
-        showBoroughInfo("Sorry, we couldn't find that within the "+boroughsLocation+" boroughs", true);
+        if(!dropdown)
+        {
+          hideAllResults();
+        }
+        showBoroughInfo(ResponseMessages.map.result_not_local, true, dropdown);
       }
       else
       {
@@ -178,7 +215,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
     {
       // Allow same search to be completed again
       lastSearch = null;
-      hideAllResults();
+      if(!dropdown)
+      {
+        hideAllResults();
+      }
       gaTrack({
         hitType: 'event',
         eventCategory: 'Google Map Search',
@@ -188,30 +228,30 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
       if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
       {
-        showBoroughInfo("Sorry, No Results Found", true);
+        showBoroughInfo(ResponseMessages.map.no_results, true, dropdown);
       }
       else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
       {
         if(totalAttempts >= maxAttempts)
         {
-          showBoroughInfo("Sorry we've reached our limit to search for "+boroughsLocation+" boroughs.", true);
+          showBoroughInfo(ResponseMessages.map.limit_reached, true, dropdown);
         }
         else
         {
-          showBoroughInfo("Retrying... Attempt "+(totalAttempts+1), true);
+          showBoroughInfo(ResponseMessages.map.retry.replaceAll("%attempt_count%", totalAttempts+1), true, dropdown);
           lastSearch = null;
           setTimeout(function(){
-            search();
+            search(searchText, dropdown);
           }, 1100);
         }
       }
       else if(status === google.maps.GeocoderStatus.UNKNOWN_ERROR)
       {
-        showBoroughInfo("Sorry, an unknown error occurred. Please try again.", true);
+        showBoroughInfo(ResponseMessages.map.unknown_error, true, dropdown);
       }
       else
       {
-        showBoroughInfo("Sorry, there was an error searching for that address. The status returned was "+status+".", true);
+        showBoroughInfo(ResponseMessages.map.other_error.replaceAll("%status%", status), true, dropdown);
       }
     }
   }
@@ -264,7 +304,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       // Search will only happen if not a duplicate search so this is OK to call here.
       // When search completes it triggers this selectChanged function. Primary flow is for dropdown change to happen
       // and info to display immediately, before the map search is done
-      search(borough);
+      search(borough, true);
     }
   }
 
@@ -274,7 +314,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     $searchInput.prop('disabled', false);
   }
 
-  function showBoroughInfo(msg, error)
+  function showBoroughInfo(msg, error, fromDropdown)
   {
     // Show the card - remove success and warning styles
     $("#boroughCard").show().removeClass("card-outline-warning card-outline-success");
@@ -282,9 +322,17 @@ var GoogleMap = (function($, viewport, alert, confirm){
     // Add warning styles for error
     if(error)
     {
-      $("#boroughCard").addClass("card-outline-warning");
-      $("#liveIn").hide();
-      $("#selectedBorough").html(msg);
+      if(!fromDropdown)
+      {
+        $("#boroughCard").addClass("card-outline-warning");
+        $("#liveIn").hide();
+        $("#selectedBorough").html(msg);
+      }
+      else
+      {
+        console.warn(msg);
+        $("#boroughCard").addClass("card-outline-success");
+      }
     }
     else
     {
@@ -293,8 +341,6 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $message,
       $websiteLink,
       message,
-      fallbackAppend = '<br /><br /><b>But don\'t worry, you can still call the Stop Smoking London helpline.</b>',
-      noServiceFallback = '<b>' + boroughProps.name + '</b> has failed to provide us information about any stop smoking services.' + fallbackAppend,
       $tel = $('<a />', {
         class: 'tel'
       });
@@ -315,6 +361,25 @@ var GoogleMap = (function($, viewport, alert, confirm){
                   .html(telNumbers[0]).appendTo($telCont);
             }
           }
+      },
+      appendMessage = function(msg)
+      {
+        return '<br /><br /><b>' + msg + '</b>';
+      },
+      getMessage = function(group, key)
+      {
+        var message = ResponseMessages.step2[group][key].message;
+        if(ResponseMessages.step2[group][key].append)
+        {
+          message += appendMessage(ResponseMessages.step2[group][key].append);
+        }
+        if(ResponseMessages.step2[group][key].append_fallback_message)
+        {
+          message += appendMessage(ResponseMessages.step2.all.fallback_message);
+        }
+        message = message.replaceAll("%borough%", '<b>' + boroughProps.name + '</b>');
+        message = message.replaceAll("%service_name%", (boroughProps.service && boroughProps.service.name) ? ', <b>' + boroughProps.service.name + '</b>' : '');
+        return message;
       };
 
       if($advisorCard.length > 0)
@@ -325,26 +390,25 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
         if(null === boroughProps.service)
         {
-          message = noServiceFallback;
+          message = getMessage('all', 'no_information');
         }
         else if(null === boroughProps.service.telephone)
         {
-          message = '<b>' + boroughProps.name + '</b> has failed to provide us information about how to contact their stop smoking service.' + fallbackAppend;
+          message = getMessage('advisor', 'no_telephone');
         }
         else if(boroughProps.service.specialistAdvisors)
         {
-          var serviceName = boroughProps.service.name ? ', <b>' + boroughProps.service.name + '</b>' : '';
-          message = 'Good news,  <b>' + boroughProps.name + '</b> does have a specialist <a href="#">Stop Smoking Service</a>' + serviceName + '. To make an appointment please call:';
+          message = getMessage('advisor', 'has_advisors');
           showTelephone($telCont);
         }
         else if(boroughProps.service.pharmacyStaff)
         {
-          message = 'Unfortunately,  <b>' + boroughProps.name + '</b> does not have a specialist <a href="#">Stop Smoking Service</a>, but it does have a service provided by pharmacies or health centres. To make an appointment please call:';
+          message = getMessage('advisor', 'has_pharmacy_staff');
           showTelephone($telCont);
         }
         else
         {
-          message = 'It appears <b>' + boroughProps.name + '</b> does not have a stop smoking service.' + fallbackAppend;
+          message = getMessage('advisor', 'no_service');
         }
         $message.html(message);
       }
@@ -357,15 +421,15 @@ var GoogleMap = (function($, viewport, alert, confirm){
         $telCont.hide();
         if(null === boroughProps.service)
         {
-          message = noServiceFallback;
+          message = getMessage('all', 'no_information');
         }
         else if(boroughProps.service.gpPrescription)
         {
-          message = 'Your local GP will be able to discuss your situation and prescribe you the most appropriate medicines.<br /><br /><b>Alternatively, why not speak to a Stop Smoking London advisor who will be able to recommend one?</b>';
+          message = getMessage('medicine', 'gp_prescription');
         }
         else
         {
-          message = 'Unfortunately, GPs in your area do not prescribe stop smoking medicines.<br /><br /><b>Why not speak to a Stop Smoking London advisor who will be able to recommend a one you can obtain from your local pharmacy?</b>';
+          message = getMessage('medicine', 'no_gp');
         }
         $message.html(message);
       }
@@ -415,11 +479,16 @@ var GoogleMap = (function($, viewport, alert, confirm){
     // Set token as variable and remove the attribute
     var token = $map.attr("data-token");
     $map.removeAttr("data-token");
+
+    searchToken = $map.attr("data-search-token");
+    $map.removeAttr("data-search-token");
+
     // Get GeoJson with token in GET
-    $.getJSON('/boroughs.json?token=' + token, function(LoadedGeoJson)
+    $.getJSON('/boroughs-and-messages.json?token=' + token, function(data)
     {
       // Set local variable with the GeoJson data - parameters have all the info we need out of database
-      GeoJson = LoadedGeoJson;
+      GeoJson = data.LoadedGeoJson;
+      ResponseMessages = data.messages;
       //  Add borough options to dropdown
       $.each(GeoJson.features, function(){
         $sessionSelect.append(

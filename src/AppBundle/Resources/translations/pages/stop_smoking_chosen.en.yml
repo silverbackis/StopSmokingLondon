@@ -31,12 +31,14 @@ steps:
     success:            Thank you. You'll receive email updates.
   #Step 2 text
   2:
-    # Message to be appended if 'append_fallback_message' if true
-    fallback_message: But don't worry, you can still call the Stop Smoking London helpline.
-    # For advisor/medicine if borough not provided information
-    no_information:
-      message:                  "%borough% has failed to provide us information about any stop smoking services."
-      append_fallback_message:  true
+    all:
+      # Message to be appended if 'append_fallback_message' if true
+      fallback_message: But don't worry, you can still call the Stop Smoking London helpline.
+      # For advisor/medicine if borough not provided information
+      no_information:
+        message:                  "%borough% has failed to provide us information about any stop smoking services."
+        append_fallback_message:  true
+    
     # If advisor is selected
     advisor:
       header: "Step 2: Contact your service"
@@ -50,6 +52,7 @@ steps:
       no_service:
         message:                  "It appears %borough% does not have a stop smoking service."
         append_fallback_message:  true
+    
     # If medicine is selected
     medicine:
       header: "Step 2: Getting your medicine"
@@ -59,12 +62,14 @@ steps:
       no_gp:
         message:  "Unfortunately, GPs in your area do not prescribe stop smoking medicines."
         append:   "Why not speak to a Stop Smoking London advisor who will be able to recommend a one you can obtain from your local pharmacy?"
+    
     # If go it alone is selected
     alone: 
       header: "Step 2: Explore useful tools"
       text:   Click below for selected websites and apps that you may find helpful
       button: Useful websites and apps
       info:
-        1: Surprising as it may seem you are better off stopping abruptly, NOT trying to gradually cut down. Research has found that when smokers stop abruptly they are more likely to succeed.
-        2: Electronic cigarettes can help you stop. Research has shown that smokers who use an e-cigarette in a quit attempt are 50% more likely to succeed.
-        3: Websites and mobile apps can support you. Stop Smoking London can tell you about the best ones and help you track your progress.
+        header: Here are a few important tips to get you going
+        1:      Surprising as it may seem you are better off stopping abruptly, NOT trying to gradually cut down. Research has found that when smokers stop abruptly they are more likely to succeed.
+        2:      Electronic cigarettes can help you stop. Research has shown that smokers who use an e-cigarette in a quit attempt are 50% more likely to succeed.
+        3:      Websites and mobile apps can support you. Stop Smoking London can tell you about the best ones and help you track your progress.

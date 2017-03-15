@@ -1,3 +1,5 @@
+{% trans_default_domain "telephone_service" %}
+
 <div class="row justify-content-center stop-smoking-london-info-row">
   <div class="col-12">
     <div class="stop-smoking-london-bottom container-fluid">
@@ -9,15 +11,18 @@
       <div class="row row justify-content-center">
         <div class="col-12 col-md-11">
           {% if date(launch_date) <= date('now') %}
-            <p>Stop Smoking London provides a special service for <b>anyone wanting to stop.</b></p>
-            <p>You can call a helpline between <b>8am and 10pm</b> and speak to a specially trained advisor. Call this number and just say you are calling from London.</p>
-            <p class="text-primary">Stop Smoking London Helpline: <a href="#">0201 234 5678</a></p>
+            {% for paragraphtext in transarray('service_launched.text', [], 'telephone_service') %}
+              <p>{{ paragraphtext|raw }}</p>
+            {% endfor %}
+            <p class="text-primary">{{ 'service_launched.telephone.intro'|trans }} <a href="tel:+44{{ 'service_launched.telephone.number'|trans|replace({" ": ""})|slice(1) }}">{{ 'service_launched.telephone.number'|trans }}</a></p>
           {% else %}
-            <p>Stop Smoking London will provide a special service for <b>anyone wanting to stop.</b></p>
-            <p class="text-primary">Stop Smoking Telephone Service: Coming {{ launch_date|date(launch_date_format) }}</p>
+            {% for paragraphtext in transarray('prelaunch.text', [], 'telephone_service') %}
+              <p>{{ paragraphtext|raw }}</p>
+            {% endfor %}
+            <p class="text-primary">{{ 'prelaunch.telephone.0'|trans|raw|replace({"%launch_date%": launch_date|date(launch_date_format)}) }}</p>
           {% endif %}
           {% if app.request.attributes.get('_route') != 'find_out_more' %}
-          <a class="btn btn-lg btn-primary btn-cta" href="{{ path('find_out_more') }}">Find out more about stopping</a>
+          <a class="btn btn-lg btn-primary btn-cta" href="{{ path('find_out_more') }}">{{ 'find_out_more_button'|trans }}</a>
           {% endif %}
         </div>
       </div>
