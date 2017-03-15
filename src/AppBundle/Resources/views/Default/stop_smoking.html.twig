@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "stop_smoking_choices" %}
 
 {% block stylesheets %}
   {{ parent() }}
@@ -24,7 +25,7 @@
   <div class="container-fluid h-100" style="padding-bottom: 5rem;">
     {% include '@App/Default/_header.html.twig' %}
 
-    <h3 class="page-header-1">Tell me more about...</h3>
+    <h3 class="page-header-1">{{ 'title'|trans }}</h3>
     <ul class="nav row justify-content-center gutter-sm" role="tablist">
       <li class="col-4 col-xl-3 nav-item">
         <a class="btn btn-lg btn-block btn-primary btn-cta" href="#talkTab" data-toggle="tab" role="tab" aria-expanded="false">
@@ -32,7 +33,7 @@
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_specialist.png') }}" style="width: 46px; height: 36.5px;"alt="Talk to a specialist to stop smoking in London - Button icon" />
           </div>
           <span class="d-flex align-items-center justify-content-center text">
-            Talking to a specialist
+            {{ 'specialist.button'|trans }}
           </span>
         </a>
       </li>
@@ -42,7 +43,7 @@
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_medicine.png') }}" style="width: 44px; height: 38.5px;"alt="Stop smoking using medicines in London - Button icon" />
           </div>
           <span class="d-flex align-items-center justify-content-center text">
-            <span class="hidden-lg-up">Using medicine</span><span class="hidden-md-down">Using a stop smoking medicine</span>
+            <span class="hidden-lg-up">{{ 'medicine.button.mobile'|trans }}</span><span class="hidden-md-down">{{ 'medicine.button.desktop'|trans }}</span>
           </span>
         </a>
       </li>
@@ -52,7 +53,7 @@
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_apps.png') }}" style="width: 41.5px; height: 43px;" alt="Stop smoking on your own - Button icon" />
           </div>
           <span class="d-flex align-items-center justify-content-center text">
-            Going it alone
+            {{ 'alone.button'|trans }}
           </span>
         </a>
       </li>
@@ -60,13 +61,13 @@
 
     <div class="row justify-content-center chance-percent-row gutter-sm">
       <div class="col-4 col-xl-3">
-        Increase your chances by <b>300%</b>
+        {{ 'increase_chances_prefix'|trans }} <b>{{ 'specialist.increase_chances'|trans }}</b>
       </div>
       <div class="col-4 col-xl-3">
-        Increase your chances by <b>100%</b>
+        {{ 'increase_chances_prefix'|trans }} <b>{{ 'medicine.increase_chances'|trans }}</b>
       </div>
       <div class="col-4 col-xl-3">
-        Increase your chances by <b>50%</b>
+        {{ 'increase_chances_prefix'|trans }} <b>{{ 'alone.increase_chances'|trans }}</b>
       </div>
     </div>
 
@@ -82,7 +83,7 @@
           <div class="col-12 col-xl-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
-                <span><span class="text-chances">Increase your chances by <b class="text-success">300%</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/telephone-advisor">Book your appointment today</a></span>
+                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'specialist.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/telephone-advisor">{{ 'specialist.continue_button'|trans }}</a></span>
               </div>
             </div>
             <div class="container-fluid info-cols">
@@ -91,33 +92,33 @@
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/specialist.png') }}" style="width: 126.5px; height: 126.5px;" alt="Stop smoking specialist icon" />
                   </div>
-                  <h4 class="info-title">What it involves</h4>
+                  <h4 class="info-title">{{ 'specialist.columns.1.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>A <a href="#" class="link-tooltip">specialist advisor</a> will provide you with expert advice and guidance during the first few weeks of stopping.</li>
-                    <li>He or she will also advise on what <a href="#">stop-smoking medicine</a> is best for you.</li>
-                    <li>You decide on a <a href="#">quit date</a>, and plan a course of <a href="#">weekly appointments</a> with the advisor.</li>
+                    {% for litext in transarray('specialist.columns.1.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
                   </div>
-                  <h4 class="info-title">Your benefits</h4>
+                  <h4 class="info-title">{{ 'specialist.columns.2.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>Your chances of stopping smoking will increase <a href="#">by 300%</a></li>
-                    <li>The advisor will help you address any <a href="#">particular problems</a> you are facing</li>
-                    <li>The medicine will reduce your <a href="#">cigarette cravings</a> and <a href="#">nicotine withdrawal symptoms</a></li>
-                    <li>You will still need a lot of <a href="#">determination</a> to succeed</li>
+                    {% for litext in transarray('specialist.columns.2.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
                   </div>
-                  <h4 class="info-title">Your commitment</h4>
+                  <h4 class="info-title">{{ 'specialist.columns.3.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>This option is not for everyone. You have to commit to attending your appointments for at least <a href="#">4 weeks</a> after your <a href="#">quit date</a>.</li>
-                    <li>If you just want to use a stop smoking medicine or to try to stop by yourself, there are <a href="#">other options</a> you can try.</li>
+                    {% for litext in transarray('specialist.columns.3.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -130,7 +131,7 @@
           <div class="col-12 col-xl-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
-                <span><span class="text-chances">Increase your chances by <b class="text-success">100%</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/using-medicines">Get the medicine</a></span>
+                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'medicine.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/using-medicines">{{ 'medicine.continue_button'|trans }}</a></span>
               </div>
             </div>
             
@@ -140,32 +141,33 @@
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/medicine.png') }}" style="width: 127px; height: 127px;" alt="Stop smoking medicines icon" />
                   </div>
-                  <h4 class="info-title">What it involves</h4>
+                  <h4 class="info-title">{{ 'medicine.columns.1.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>The two main stop-smoking medicines are Champix and NRT. You can get either of these from <a href="#">your GP</a>.</li>
-                    <li><a href="#">Champix</a> is a tablet that you take for 12 weeks. It is non-addictive and very effective at controlling cravings.</li>
-                    <li><a href="#">NRT</a> is Nicotine Replacement Therapy. It comes in lots of forms such as skin patch, chewing gum and lozenge.</li>
+                    {% for litext in transarray('medicine.columns.1.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
                   </div>
-                  <h4 class="info-title">Your benefits</h4>
+                  <h4 class="info-title">{{ 'medicine.columns.2.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>Your chances of stopping smoking will increase <a href="#">by 100%</a>.</li>
-                    <li>Your <a href="#">cigarette cravings</a> and <a href="#">withdrawal symptoms</a> will be much less than they would have been.</li>
-                    <li>You will find it easier to get on with your life without constantly thinking about smoking.</li>
+                    {% for litext in transarray('medicine.columns.2.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
                   </div>
-                  <h4 class="info-title">Your commitment</h4>
+                  <h4 class="info-title">{{ 'medicine.columns.3.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>These medicines only work if you <a href="#">use them properly</a> and follow the <a href="#">full course</a>.</li>
-                    <li>You will need to make an appointment to see your GP to get a <a href="#">prescription</a> and will need to have at least one other appointment for a <a href="#">follow up</a>.</li>
+                    {% for litext in transarray('medicine.columns.3.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -178,7 +180,7 @@
           <div class="col-12 col-xl-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
-                <span><span class="text-chances">Increase your chances by <b class="text-success">50%</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/alone-with-websites-and-apps">Get started</a></span>
+                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'alone.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/alone-with-websites-and-apps">{{ 'alone.continue_button'|trans }}</a></span>
               </div>
             </div>
             
@@ -188,30 +190,33 @@
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/info.png') }}" style="width: 130.5px; height: 132px;" alt="Stop smoking information icon" />
                   </div>
-                  <h4 class="info-title">What it involves</h4>
+                  <h4 class="info-title">{{ 'alone.columns.1.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>If you are going it alone you will want to make sure you are giving yourself the best possible chance of success.</li>
-                    <li><a href="#">Stop Smoking London</a> can help you with this by giving you the information and advice you need, and pointing you to <a href="#">resources</a> that you can use if things get tough.</li>
+                    {% for litext in transarray('alone.columns.1.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
                   </div>
-                  <h4 class="info-title">Your benefits</h4>
+                  <h4 class="info-title">{{ 'alone.columns.2.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>Using Stop Smoking London to guide you can increase your chances of stopping by <a href="#">up to 50%</a>.</li>
-                    <li>You can always talk to one of our <a href="#">telephone advisors</a> if things get tough.</li>
+                    {% for litext in transarray('alone.columns.2.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
                     <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
                   </div>
-                  <h4 class="info-title">Your commitment</h4>
+                  <h4 class="info-title">{{ 'alone.columns.3.title'|trans }}</h4>
                   <ul class="info-list">
-                    <li>You set a quit date (it could be today), and then do everything you can to avoid even a single puff on a cigarette.</li>
-                    <li>You come back to <a href="#">Stop Smoking London</a> for advice and information when you need it.</li>
+                    {% for litext in transarray('alone.columns.3.list', [], 'stop_smoking_choices') %}
+                      <li>{{ litext }}</li>
+                    {% endfor %}
                   </ul>
                 </div>
               </div>

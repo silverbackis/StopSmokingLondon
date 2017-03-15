@@ -1,0 +1,8 @@
+services:
+  translation_array.twig_extension:
+    class:      TranslationArraysBundle\Twig\TranslationArrayExtension
+    public:     false
+    arguments:
+      - "@translator"
+    tags:
+      - { name: twig.extension }

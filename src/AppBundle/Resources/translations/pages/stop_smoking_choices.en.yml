@@ -1,0 +1,72 @@
+title: Tell me more about...
+increase_chances_prefix: Increase your chances by
+
+specialist:
+  button: Talking to a specialist
+  increase_chances: 300%
+  continue_button:  Book your appointment today
+  columns:
+    1:
+      title: What it involves
+      list:
+        - A specialist advisor will provide you with expert advice and guidance during the first few weeks of stopping.
+        - He or she will also advise on what stop-smoking medicine is best for you.
+        - You decide on a quit date, and plan a course of weekly appointments with the advisor.
+    2:
+      title: Your benefits
+      list:
+        - Your chances of stopping smoking will increase by 300%.
+        - The advisor will help you address any particular problems you are facing.
+        - The medicine will reduce your cigarette cravings and nicotine withdrawal symptoms.
+        - You will still need a lot of determination to succeed.
+    3:
+      title: Your commitment
+      list:
+        - This option is not for everyone. You have to commit to attending your appointments for at least 4 weeks after your quit date.
+        - If you just want to use a stop smoking medicine or to try to stop by yourself, there are other options you can try.
+
+medicine:
+  button:
+    desktop:  Using a stop smoking medicine
+    mobile:   Using medicine
+  increase_chances: 100%
+  continue_button:  Get the medicine
+  columns:
+    1:
+      title: What it involves
+      list:
+        - The two main stop-smoking medicines are Champix and NRT. You can get either of these from your GP.
+        - Champix is a tablet that you take for 12 weeks. It is non-addictive and very effective at controlling cravings.
+        - NRT is Nicotine Replacement Therapy. It comes in lots of forms such as skin patch, chewing gum and lozenge.
+    2:
+      title: Your benefits
+      list:
+        - Your chances of stopping smoking will increase by 100%.
+        - Your cigarette cravings and withdrawal symptoms will be much less than they would have been.
+        - You will find it easier to get on with your life without constantly thinking about smoking.
+    3:
+      title: Your commitment
+      list:
+        - These medicines only work if you use them properly and follow the full course.
+        - You will need to make an appointment to see your GP to get a prescription and will need to have at least one other appointment for a follow up.
+
+alone:
+  button: Going it alone
+  increase_chances: 50%
+  continue_button:  Get started
+  columns:
+    1:
+      title: What it involves
+      list:
+        - If you are going it alone you will want to make sure you are giving yourself the best possible chance of success.
+        - Stop Smoking London can help you with this by giving you the information and advice you need, and pointing you to resources that you can use if things get tough.
+    2:
+      title: Your benefits
+      list:
+        - Using Stop Smoking London to guide you can increase your chances of stopping by up to 50%.
+        - You can always talk to one of our telephone advisors if things get tough.
+    3:
+      title: Your commitment
+      list:
+        - You set a quit date (it could be today), and then do everything you can to avoid even a single puff on a cigarette.
+        - You come back to Stop Smoking London for advice and information when you need it.

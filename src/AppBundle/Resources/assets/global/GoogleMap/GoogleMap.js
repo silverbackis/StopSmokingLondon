@@ -147,7 +147,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         gaTrack({
           hitType: 'event',
           eventCategory: 'Google Map Search',
-          eventAction: 'Not London Borough Result',
+          eventAction: 'Not Local Borough Result',
           eventLabel: searchText
         });
         hideAllResults();

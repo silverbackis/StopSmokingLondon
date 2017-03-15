@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "stop_smoking_chosen" %}
 
 {% block stylesheets %}
   {{ parent() }}
@@ -34,37 +35,37 @@
     <div class="row justify-content-center map-row-wrapper row-main-page">
       <div class="col flex-last flex-lg-first">
         <div id="searchText" class="toggle-area">
-          <h3 class="page-header-2 postcode-header">Search address or postcode</h3>
+          <h3 class="page-header-2 postcode-header">{{ 'search.header'|trans }}</h3>
           <div class="form-group row postcode-group gutter-sm">
             <div class="col">
               <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
             </div>
             <div class="col-12 col-auto">
-              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">Search</a>
+              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">{{ 'search_button'|trans }}</a>
             </div>
             <div class="col-12">
-              <p class="form-text text-muted">Don't know what to search? <a href="#" class="search-type-toggle" data-toggle="#searchBorough">Select borough instead</a></p>
+              <p class="form-text text-muted">{{ 'search.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchBorough">{{ 'search.alternative'|trans }}</a></p>
             </div>
           </div>
         </div>
         <div id="searchBorough" class="toggle-area" style="display: none;">
-          <h3 class="page-header-2 postcode-header">Select your borough</h3>
+          <h3 class="page-header-2 postcode-header">{{ 'select.header'|trans }}</h3>
           <div class="form-group row borough-group gutter-sm">
             <div class="col-12">
               <div class="w-100">
-                <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" data-live-search="true" data-live-search-style="startsWith" title="Select your borough" id="sessionSelect">
+                <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" data-live-search="true" data-live-search-style="startsWith" title="{{ 'select.dropdown_initital_text'|trans }}" id="sessionSelect">
                 </select>
               </div>
             </div>
             <div class="col-12">
-              <p class="form-text text-muted">Can't find your borough? <a href="#" class="search-type-toggle" data-toggle="#searchText">Search instead</a></p>
+              <p class="form-text text-muted">{{ 'select.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchText">{{ 'select.alternative'|trans }}</a></p>
             </div>
           </div>
         </div>
         <div class="card card-outline-success text-center borough-card" id="boroughCard">
           <div class="card-block">
-            <p id="liveIn">You have said that you live in</p>
-            <h4 id="selectedBorough">XYZ</h4>
+            <p id="liveIn">{{ 'found_borough_prefix'|trans }}</p>
+            <h4 id="selectedBorough"></h4>
           </div>
         </div>
       </div> 

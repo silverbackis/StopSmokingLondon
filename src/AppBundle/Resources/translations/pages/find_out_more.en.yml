@@ -1,0 +1,4 @@
+az_stopping_smoking:
+  text:   "A to Z of stopping smoking is a partner site to Stop Smoking London and is a reference dictionary to Stop Smoking terminology and provides a comprehensive list of different stop smoking methods."
+  buttons: 
+    - { name: "Visit A to Z of Stopping Smoking", link: "http://www.smokingaz.com" }

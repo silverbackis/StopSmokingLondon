@@ -1,17 +1,15 @@
-default.not_blank: This value should not be blank.
-
 contact:
   subject:
-    not_blank: default.not_blank
+    not_blank: This value should not be blank.
   name:
-    not_blank: default.not_blank
+    not_blank: This value should not be blank.
   subject:
-    not_blank: default.not_blank
+    not_blank: This value should not be blank.
   email:
-    not_blank: default.not_blank
+    not_blank: This value should not be blank.
     invalid: The email entered is not valid.
   telephone:
     short: Your telephone number should be at least {{ limit }} characters long
     long: Your telephone number cannot be longer than {{ limit }} characters
   message:
-    not_blank: default.not_blank
+    not_blank: This value should not be blank.
