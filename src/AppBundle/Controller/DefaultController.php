@@ -133,7 +133,7 @@ class DefaultController extends Controller
         $title = $this->getHeader($request);
 
         // Add SDKs to template for Share buttons
-        $bwBase = $this->container->get('bw.base');
+        $bwBase = $this->container->get('bw.base.page');
         $bwBase->addSDK('facebook');
         $bwBase->addSDK('twitter');
 

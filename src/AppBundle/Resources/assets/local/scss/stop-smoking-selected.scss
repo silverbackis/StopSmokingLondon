@@ -148,4 +148,11 @@
     line-height: 1.7rem;
     padding-left: 23px;
   }
+
+  .form-group {
+    .form-control-feedback {
+      font-size: .8rem;
+      margin-bottom: .75rem;
+    }
+  }
 }

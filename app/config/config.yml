@@ -162,62 +162,62 @@ bw_base:
                 twitter:card:       'summary_large_image'
                 twitter:site:       '@silverbackis'
                 twitter:creator:    '@silverbackis'
-                twitter:image:      '%ogimages_folder%OpengraphImages2.png'
+                twitter:image:      '%opengraph_base%OpengraphImages2.png'
                 twitter:image:alt:  'Stop Smoking London'
 
-                #msapplication-TileImage:            '%icons_folder%mstile-144x144.png'
-                #msapplication-square70x70logo:      '%icons_folder%mstile-70x70.png'
-                #msapplication-square150x150logo:    '%icons_folder%mstile-150x150logo.png'
-                #msapplication-square310x310logo:    '%icons_folder%mstile-310x310.png'
-                #msapplication-wide310x150logo:      '%icons_folder%mstile-310x150.png'
+                #msapplication-TileImage:            '%favicon_base%mstile-144x144.png'
+                #msapplication-square70x70logo:      '%favicon_base%mstile-70x70.png'
+                #msapplication-square150x150logo:    '%favicon_base%mstile-150x150logo.png'
+                #msapplication-square310x310logo:    '%favicon_base%mstile-310x310.png'
+                #msapplication-wide310x150logo:      '%favicon_base%mstile-310x150.png'
             property:
                 #Repeat images tags as many times as you want for new images
-                og:image:          '%ogimages_folder%OpengraphImages2.png'
-                og:image:width:    '2000'
-                og:image:height:   '2000'
-                og:image:          '%ogimages_folder%OpengraphImages3.png'
-                og:image:width:    '2000'
-                og:image:height:   '2000'
-                og:image:          '%ogimages_folder%OpengraphImages4.png'
-                og:image:width:    '2000'
-                og:image:height:   '2000'
+                - { property: "og:image", content: "%opengraph_base%OpengraphImages2.png" }
+                - { property: "og:image:width", content: "2000" }
+                - { property: "og:image:height", content: "2000" }
+                - { property: "og:image", content: "%opengraph_base%OpengraphImages3.png" }
+                - { property: "og:image:width", content: "2000" }
+                - { property: "og:image:height", content: "2000" }
+                - { property: "og:image", content: "%opengraph_base%OpengraphImages4.png" }
+                - { property: "og:image:width", content: "2000" }
+                - { property: "og:image:height", content: "2000" }
         links:
             rel:
                 apple-touch-icon-precomposed:
-                    #- { sizes: 57x57, href: '%icons_folder%apple-touch-icon-57x57.png' }
-                    #- { sizes: 114x114, href: '%icons_folder%apple-touch-icon-114x114.png' }
-                    #- { sizes: 72x72, href: '%icons_folder%apple-touch-icon-72x72.png' }
-                    #- { sizes: 144x144, href: '%icons_folder%apple-touch-icon-144x144.png' }
-                    #- { sizes: 60x60, href: '%icons_folder%apple-touch-icon-60x60.png' }
-                    #- { sizes: 120x120, href: '%icons_folder%apple-touch-icon-120x120.png' }
-                    #- { sizes: 76x76, href: '%icons_folder%apple-touch-icon-76x76.png' }
-                    #- { sizes: 152x152, href: '%icons_folder%apple-touch-icon-152x152.png' }
+                    #- { sizes: 57x57, href: '%favicon_base%apple-touch-icon-57x57.png' }
+                    #- { sizes: 114x114, href: '%favicon_base%apple-touch-icon-114x114.png' }
+                    #- { sizes: 72x72, href: '%favicon_base%apple-touch-icon-72x72.png' }
+                    #- { sizes: 144x144, href: '%favicon_base%apple-touch-icon-144x144.png' }
+                    #- { sizes: 60x60, href: '%favicon_base%apple-touch-icon-60x60.png' }
+                    #- { sizes: 120x120, href: '%favicon_base%apple-touch-icon-120x120.png' }
+                    #- { sizes: 76x76, href: '%favicon_base%apple-touch-icon-76x76.png' }
+                    #- { sizes: 152x152, href: '%favicon_base%apple-touch-icon-152x152.png' }
                 icon:
-                    #- { type: image/png, sizes: 196x196, href: '%icons_folder%favicon-196x196.png' }
-                    #- { type: image/png, sizes: 96x96, href: '%icons_folder%favicon-96x96.png' }
-                    #- { type: image/png, sizes: 32x32, href: '%icons_folder%favicon-32x32.png' }
-                    #- { type: image/png, sizes: 16x16, href: '%icons_folder%favicon-16x16.png' }
-                    #- { type: image/png, sizes: 128x128, href: '%icons_folder%favicon-128x128.png' }
-                    #- { type: image/x-icon, href: '%icons_folder%favicon.ico' }
+                    #- { type: image/png, sizes: 196x196, href: '%favicon_base%favicon-196x196.png' }
+                    #- { type: image/png, sizes: 96x96, href: '%favicon_base%favicon-96x96.png' }
+                    #- { type: image/png, sizes: 32x32, href: '%favicon_base%favicon-32x32.png' }
+                    #- { type: image/png, sizes: 16x16, href: '%favicon_base%favicon-16x16.png' }
+                    #- { type: image/png, sizes: 128x128, href: '%favicon_base%favicon-128x128.png' }
+                    #- { type: image/x-icon, href: '%favicon_base%favicon.ico' }
         js_sdk:
-            ganalytics:
+            google_analytics:
                 enabled: false # Enable in production config unless debugging
                 id: UA-88234079-3
                 domain: auto
             woopra:
                 enabled: false
                 domain: null
-            facebookPixel:
+            facebook_pixel:
                 enabled: false
                 id: null
             facebook:
-                enabled: false
-                app_id: 629732443887621
-                xfbml: true
-                version: 'v2.8'
-                language: en_GB
+                enabled:            false
+                app_id:             629732443887621
+                xfbml:              true
+                version:            'v2.8'
+                language:           en_GB
                 login_status_check: false
-                debug: false
+                debug:              false
             twitter: false
 
 endroid_twitter:
