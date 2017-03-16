@@ -134,8 +134,8 @@ class DefaultController extends Controller
 
         // Add SDKs to template for Share buttons
         $bwBase = $this->container->get('bw.base.page');
-        $bwBase->addSDK('facebook');
-        $bwBase->addSDK('twitter');
+        $bwBase->enableSDK('facebook');
+        $bwBase->enableSDK('twitter');
 
         return $this->render('@App/Default/help_others_quit.html.twig', [
             "title" => $title,

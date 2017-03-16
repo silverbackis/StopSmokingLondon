@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ecbc4a4fde080aa5f4892c324f3c17f",
+    "content-hash": "70c6344c4ed9ef29f981813e239c3ad0",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1736,7 +1736,7 @@
         },
         {
             "name": "silverbackis/bw-base-bundle",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverbackis/BW-BaseBundle.git",
@@ -1788,7 +1788,7 @@
                 "sonta",
                 "symfony"
             ],
-            "time": "2017-03-16 21:41:23"
+            "time": "2017-03-16T21:41:23+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -3047,9 +3047,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "silverbackis/bw-base-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -29,7 +29,7 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
-        "silverbackis/bw-base-bundle": "dev-master",
+        "silverbackis/bw-base-bundle": "^1.0",
         "symfony/assetic-bundle": "^2.8",
         "irozgar/gulp-rev-versions-bundle": "^1.0",
         "sonata-project/seo-bundle": "^2.1",
