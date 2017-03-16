@@ -133,7 +133,6 @@ sonata_seo:
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
                 og:site_name:       Stop Smoking - London Portal
-                og:description:     The capital's starting point for stopping smoking
                 og:locale:          en_GB
 
                 #web based options: website, article or blog
