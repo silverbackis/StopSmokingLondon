@@ -23,7 +23,7 @@ monolog:
 bw_base:
     page:
         js_sdk:
-            ganalytics:
+            google_analytics:
                 enabled: true
 
 monolog:
