@@ -164,6 +164,8 @@ bw_base:
                 twitter:creator:    '@silverbackis'
                 twitter:image:      '%opengraph_base%OpengraphImages2.png'
                 twitter:image:alt:  'Stop Smoking London'
+                twitter:title:      'auto'
+                twitter:description: 'auto'
 
                 #msapplication-TileImage:            '%favicon_base%mstile-144x144.png'
                 #msapplication-square70x70logo:      '%favicon_base%mstile-70x70.png'
@@ -171,7 +173,9 @@ bw_base:
                 #msapplication-square310x310logo:    '%favicon_base%mstile-310x310.png'
                 #msapplication-wide310x150logo:      '%favicon_base%mstile-310x150.png'
             property:
-                #Repeat images tags as many times as you want for new images
+                - { property: "og:title", content: "auto" }
+                - { property: "og:description", content: "auto" }
+                - { property: "og:url", content: "auto" }
                 - { property: "og:image", content: "%opengraph_base%OpengraphImages2.png" }
                 - { property: "og:image:width", content: "2000" }
                 - { property: "og:image:height", content: "2000" }

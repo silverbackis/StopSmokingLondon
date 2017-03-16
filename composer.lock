@@ -1740,12 +1740,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverbackis/BW-BaseBundle.git",
-                "reference": "36c1917b5cc5ba1020fe9d58c3d00e473146f323"
+                "reference": "68c4ae7ff5401ee2eca4831098daeb9afc195646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverbackis/BW-BaseBundle/zipball/36c1917b5cc5ba1020fe9d58c3d00e473146f323",
-                "reference": "36c1917b5cc5ba1020fe9d58c3d00e473146f323",
+                "url": "https://api.github.com/repos/silverbackis/BW-BaseBundle/zipball/68c4ae7ff5401ee2eca4831098daeb9afc195646",
+                "reference": "68c4ae7ff5401ee2eca4831098daeb9afc195646",
                 "shasum": ""
             },
             "require": {
@@ -1788,7 +1788,7 @@
                 "sonta",
                 "symfony"
             ],
-            "time": "2017-03-16 20:22:57"
+            "time": "2017-03-16 21:25:12"
         },
         {
             "name": "sonata-project/block-bundle",
