@@ -50,11 +50,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
+        "bw-scripts": [
+            "composer dump-autoload --optimize --no-dev --classmap-authoritative"
+        ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@bw-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@bw-scripts"
         ]
     },
     "extra": {
