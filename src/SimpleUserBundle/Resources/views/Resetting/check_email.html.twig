@@ -1,0 +1,30 @@
+{% extends '@App/base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {% stylesheets 
+    '@SimpleUserBundle/Resources/assets/scss/forms.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block page_content %}
+    {{ parent() }}
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 offset-lg-2 col-lg-8">
+          <h2 class="form-signin-heading">Reset email sent</h2>
+          <p>
+          {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+          </p>
+
+          <div>
+              <a class="btn btn-lg btn-primary btn-block" href="{{ path('fos_user_security_login') }}">Back to Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

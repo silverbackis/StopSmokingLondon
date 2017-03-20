@@ -93,6 +93,7 @@ assetic:
             bin: /usr/local/bin/uglifyjs
     bundles:
         - AppBundle
+        - SimpleUserBundle
 
 irozgar_gulp_rev_versions:
     manifest_path: "../src/AppBundle/Resources/assets/rev-manifest.json"
@@ -107,24 +108,6 @@ sonata_seo:
                 robots:               index, follow                
                 description:          Stop Smoking London - The capital's starting point for stopping smoking
                 viewport:             width=device-width,height=device-height,initial-scale=1,maximum-scale=1,minimum-scale=1
-
-                # Only if an application
-                #application-name:     Website Name
-
-                # Android
-                #mobile-web-app-capable: 'yes'
-                theme-color:            '#000'
-
-                # Apple App Capable
-                #apple-mobile-web-app-capable:           'yes'
-                #apple-mobile-web-app-status-bar-style:  'black-translucent'
-
-                # Windows Phone - Back/Forward Button Colour
-                msapplication-navbutton-color:          '#000'
-
-                # Windows Phone - Shortcut Tile Colour
-                msapplication-TileColor:                '#000'
-
             property:
                 # Facebook application settings - will be auto-added by fb ask if used
                 fb:app_id:          "629732443887621"
@@ -165,12 +148,22 @@ bw_base:
                 twitter:image:alt:  'Stop Smoking London'
                 twitter:title:      'auto'
                 twitter:description: 'auto'
-
-                #msapplication-TileImage:            '%favicon_base%mstile-144x144.png'
-                #msapplication-square70x70logo:      '%favicon_base%mstile-70x70.png'
-                #msapplication-square150x150logo:    '%favicon_base%mstile-150x150logo.png'
-                #msapplication-square310x310logo:    '%favicon_base%mstile-310x310.png'
-                #msapplication-wide310x150logo:      '%favicon_base%mstile-310x150.png'
+                
+                # Windows/Metro
+                msapplication-TileColor:        '#0275d8'
+                msapplication-navbutton-color:  '#0275d8'
+                msapplication-TileImage:        '%favicon_base%mstile-144x144.png'
+                msapplication-config:           '%favicon_base%browserconfig.xml'
+                
+                # Andriod Theme
+                theme-color: '#0275d8'
+                #mobile-web-app-capable: 'yes'
+                
+                # Apple App Capable
+                #apple-mobile-web-app-capable:           'yes'
+                #apple-mobile-web-app-status-bar-style:  'black-translucent'\
+                
+                #application-name:     Website Name
             property:
                 - { property: "og:title", content: "auto" }
                 - { property: "og:description", content: "auto" }
@@ -186,22 +179,16 @@ bw_base:
                 - { property: "og:image:height", content: "2000" }
         links:
             rel:
-                apple-touch-icon-precomposed:
-                    #- { sizes: 57x57, href: '%favicon_base%apple-touch-icon-57x57.png' }
-                    #- { sizes: 114x114, href: '%favicon_base%apple-touch-icon-114x114.png' }
-                    #- { sizes: 72x72, href: '%favicon_base%apple-touch-icon-72x72.png' }
-                    #- { sizes: 144x144, href: '%favicon_base%apple-touch-icon-144x144.png' }
-                    #- { sizes: 60x60, href: '%favicon_base%apple-touch-icon-60x60.png' }
-                    #- { sizes: 120x120, href: '%favicon_base%apple-touch-icon-120x120.png' }
-                    #- { sizes: 76x76, href: '%favicon_base%apple-touch-icon-76x76.png' }
-                    #- { sizes: 152x152, href: '%favicon_base%apple-touch-icon-152x152.png' }
+                apple-touch-icon:
+                    - { sizes: 180x180, href: '%favicon_base%apple-touch-icon.png' }
                 icon:
-                    #- { type: image/png, sizes: 196x196, href: '%favicon_base%favicon-196x196.png' }
-                    #- { type: image/png, sizes: 96x96, href: '%favicon_base%favicon-96x96.png' }
-                    #- { type: image/png, sizes: 32x32, href: '%favicon_base%favicon-32x32.png' }
-                    #- { type: image/png, sizes: 16x16, href: '%favicon_base%favicon-16x16.png' }
-                    #- { type: image/png, sizes: 128x128, href: '%favicon_base%favicon-128x128.png' }
-                    #- { type: image/x-icon, href: '%favicon_base%favicon.ico' }
+                    - { type: image/png, sizes: 192x192, href: '%favicon_base%favicon-192x192.png' }
+                    - { type: image/png, sizes: 32x32, href: '%favicon_base%favicon-32x32.png' }
+                    - { type: image/png, sizes: 16x16, href: '%favicon_base%favicon-16x16.png' }
+                manifest:
+                    - { href: '%favicon_base%manifest.json' }
+                "shortcut icon":
+                    - { href: '%favicon_base%favicon.ico' }
         js_sdk:
             google_analytics:
                 enabled: false # Enable in production config unless debugging
@@ -228,3 +215,15 @@ endroid_twitter:
     consumer_secret:        '%twitter.consumer_secret%'
     access_token:           '%twitter.access_token%'
     access_token_secret:    '%twitter.access_token_secret%'
+
+lexik_translation:
+    fallback_locale: [en]
+    managed_locales: [en]
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"

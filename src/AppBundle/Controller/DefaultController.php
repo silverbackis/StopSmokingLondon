@@ -324,47 +324,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/tooltip/{text}", name="tooltip_info")
+     * @Route("/tooltips.json", name="tooltips")
      */
-    public function tooltipInfo($text = '', Request $request)
+    public function tooltipsAction($text = '', Request $request)
     {
         $tooltipText = $this->get('translator')->trans($text, array(), 'tooltips');
         return new JsonResponse([
             'tooltip' => $tooltipText
         ]);
     }
-
-    /**
-     * @Route("/geocode", name="geocode")
-     */
-    /*public function geocodeAction(Request $request)
-    {
-        $response = new JsonResponse();
-        // Allow in debug mode or if in production - only with a valid csrf token
-        if ($this->isCsrfTokenValid('geocode_search', $request->request->get('token'))) {
-            //$referrer_ip = $this->container->getParameter('kernel.debug') ? '88.98.91.88' : getHostByName(getHostName());
-            $url = 'https://maps.googleapis.com/maps/api/geocode/json?'.http_build_query(array(
-                'address'   =>    $request->request->get('address'),
-                'key'       =>    $this->container->getParameter('google_map_api_key_server'),
-                'region'    =>    'GB',
-                'bounds'    =>    $request->request->get('bounds'),
-            ));
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            //curl_setopt($ch, CURLOPT_HTTPHEADER, ["REMOTE_ADDR: $referrer_ip", "HTTP_X_FORWARDED_FOR: $referrer_ip"]);
-            curl_setopt($ch, CURLOPT_REFERER, "https://www.stopsmokingportal.com");
-            $rawResponse = curl_exec($ch);
-            $responseData = json_decode($rawResponse, true);
-
-            $response->setData($responseData);
-        }
-        else
-        {
-            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
-        }
-        return $response;
-    }*/
 
     /**
      * @Route("/tweets.json", name="home_tweets")
@@ -530,14 +498,7 @@ class DefaultController extends Controller
             }
 
             //Now let's get the messages javascript needs to display results.
-            $locale = $this->get('translator')->getLocale();
-            $kernel = $this->get('kernel');
-            try{
-                $path = $kernel->locateResource("@AppBundle/Resources/translations/pages/stop_smoking_chosen.$locale.yml");
-            }catch(\InvalidArgumentException $e)
-            {
-                $path = $kernel->locateResource("@AppBundle/Resources/translations/pages/stop_smoking_chosen.en.yml");
-            }
+            $path = $this->getLocaleResourcePath("@AppBundle/Resources/translations/pages/stop_smoking_chosen.{{ locale }}.yml");
             $yamlArray = Yaml::parse(file_get_contents($path));
             $messages = [
                 'map'   =>  $yamlArray['map_search_results'],
@@ -570,6 +531,19 @@ class DefaultController extends Controller
         return $response;
     }
 
+    private function getLocaleResourcePath($locateStr)
+    {
+        $locale = $this->get('translator')->getLocale();
+        $kernel = $this->get('kernel');
+        try{
+            $path = $kernel->locateResource(str_replace("{{ locale }}", $locale, $locateStr));
+        }catch(\InvalidArgumentException $e)
+        {
+            $path = $kernel->locateResource(str_replace("{{ locale }}", 'en', $locateStr));
+        }
+        return $path;
+    }
+
     private function getHeader(Request $request)
     {
         $page = $request->get('_route');
@@ -592,4 +566,34 @@ class DefaultController extends Controller
         $seoPage->setTitle($ret['header']." - ".$seoPage->getTitle());
         return $ret;
     }
+
+
+    /*public function geocodeAction(Request $request)
+    {
+        $response = new JsonResponse();
+        // Allow in debug mode or if in production - only with a valid csrf token
+        if ($this->isCsrfTokenValid('geocode_search', $request->request->get('token'))) {
+            //$referrer_ip = $this->container->getParameter('kernel.debug') ? '88.98.91.88' : getHostByName(getHostName());
+            $url = 'https://maps.googleapis.com/maps/api/geocode/json?'.http_build_query(array(
+                'address'   =>    $request->request->get('address'),
+                'key'       =>    $this->container->getParameter('google_map_api_key_server'),
+                'region'    =>    'GB',
+                'bounds'    =>    $request->request->get('bounds'),
+            ));
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, ["REMOTE_ADDR: $referrer_ip", "HTTP_X_FORWARDED_FOR: $referrer_ip"]);
+            curl_setopt($ch, CURLOPT_REFERER, "https://www.stopsmokingportal.com");
+            $rawResponse = curl_exec($ch);
+            $responseData = json_decode($rawResponse, true);
+
+            $response->setData($responseData);
+        }
+        else
+        {
+            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
+        }
+        return $response;
+    }*/
 }

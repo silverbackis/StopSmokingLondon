@@ -4,7 +4,7 @@ contact_success:  Contact message sent
 terms_privacy:    Terms and Privacy
 stop_smoking_choices:
   header:   Ready to stop smoking?
-  lead:     We'll help you find the best method for you.
+  lead:     We'll help you find the best method for you
 stop_smoking_advisor: |
                       You are making an appointment
                       with an advisor
@@ -16,4 +16,3 @@ websites_apps:          Useful websites and apps
 about_us:               About Stop Smoking London
 terms_privacy:          Terms and Privacy
 contact_us:             Contact Stop Smoking London
-contact_success:        Contact message sent

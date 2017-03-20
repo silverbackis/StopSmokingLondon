@@ -21,6 +21,10 @@ class AppKernel extends Kernel
             new Irozgar\GulpRevVersionsBundle\IrozgarGulpRevVersionsBundle(),
             new Endroid\Twitter\Bundle\EndroidTwitterBundle(),
             new TranslationArraysBundle\TranslationArraysBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new SimpleUserBundle\SimpleUserBundle(),
+            new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+            new RestrictedLexikTranslationBundle\RestrictedLexikTranslationBundle(),
             new AppBundle\AppBundle(),
         ];
 

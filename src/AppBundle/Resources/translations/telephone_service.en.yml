@@ -1,6 +1,6 @@
 service_launched:
   text:
-    - "Stop Smoking London provides a special service for <b>anyone wanting to stop.</b>"
+    - "Stop Smoking London provides a special telephone service for <b>anyone wanting to stop</b>"
     - "You can call a helpline between <b>8am and 10pm</b> and speak to a specially trained advisor. Call this number and just say you are calling from London."
   telephone:
     intro:  "Stop Smoking London Helpline:"
@@ -8,7 +8,7 @@ service_launched:
 
 prelaunch:
   text:
-    - "Stop Smoking London will provide a special service for <b>anyone wanting to stop.</b>"
+    - "Stop Smoking London will provide a special service for <b>anyone in London wanting to stop.</b>"
   telephone:
     - "Stop Smoking Telephone Service: Coming %launch_date%"
 

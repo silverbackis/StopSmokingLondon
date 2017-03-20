@@ -36,32 +36,32 @@ steps:
       fallback_message: But don't worry, you can still call the Stop Smoking London helpline.
       # For advisor/medicine if borough not provided information
       no_information:
-        message:                  "%borough% has failed to provide us information about any stop smoking services."
+        message:                  "Unfortunately %borough% has not yet provided us information about the support it offers. But you can call the Stop Smoking London telephone line for help."
         append_fallback_message:  true
     
     # If advisor is selected
     advisor:
       header: "Step 2: Contact your service"
       no_telephone:
-        message:                  "%borough% has failed to provide us information about how to contact their stop smoking service."
+        message:                  "Unfortunately %borough% has not yet provided us information about how to contact their stop smoking service. But you can always call the Stop Smoking London telephone line for help."
         append_fallback_message:  true
       has_advisors:
         message:                  "Good news, %borough% does have a specialist Stop Smoking Service%service_name%. To make an appointment please call:"
       has_pharmacy_staff:
-        message:                  "Unfortunately,  %borough% does not have a specialist Stop Smoking Service, but it does have a service provided by pharmacies or health centres. To make an appointment please call:"
+        message:                  "Unfortunately, %borough% does not have a specialist Stop Smoking Service, but it does have a service provided by pharmacies or health centres. To make an appointment please call:"
       no_service:
-        message:                  "It appears %borough% does not have a stop smoking service."
+        message:                  "Unfortunately it appears %borough% does not have a stop smoking service."
         append_fallback_message:  true
     
     # If medicine is selected
     medicine:
       header: "Step 2: Getting your medicine"
       gp_prescription:
-        message:  "Your local GP will be able to discuss your situation and prescribe you the most appropriate medicines."
-        append:   "Alternatively, why not speak to a Stop Smoking London advisor who will be able to recommend one?"
+        message:  "Your local GP or pharmacist will be able to discuss your situation and prescribe you the most appropriate medicines."
+        append:   "Alternatively, why not speak to a Stop Smoking London telephone advisor who will be able to recommend one?"
       no_gp:
         message:  "Unfortunately, GPs in your area do not prescribe stop smoking medicines."
-        append:   "Why not speak to a Stop Smoking London advisor who will be able to recommend a one you can obtain from your local pharmacy?"
+        append:   "Why not speak to a Stop Smoking London advisor who will be able to recommend one you can obtain from your local pharmacy?"
     
     # If go it alone is selected
     alone: 

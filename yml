@@ -1,0 +1,2 @@
+contact.subject.not_blank,contact.name.not_blank,contact.email.not_blank,contact.email.invalid,contact.telephone.short,contact.telephone.long,contact.message.not_blank
+"This value should not be blank.","This value should not be blank.","This value should not be blank.","The email entered is not valid.","Your telephone number should be at least {{ limit }} characters long","Your telephone number cannot be longer than {{ limit }} characters","This value should not be blank."

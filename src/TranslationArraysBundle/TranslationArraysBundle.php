@@ -7,8 +7,4 @@ use TranslationArraysBundle\DependencyInjection\TranslationArraysExtension;
 
 class TranslationArraysBundle extends Bundle
 {
-    public function getContainerExtension()
-    {
-        return new TranslationArraysExtension();
-    }
 }

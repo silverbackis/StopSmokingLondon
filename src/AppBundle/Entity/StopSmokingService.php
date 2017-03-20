@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="stop_smoking_service")
+ * @ORM\Table(name="app_stop_smoking_service")
  * @ORM\HasLifecycleCallbacks
  */
 class StopSmokingService

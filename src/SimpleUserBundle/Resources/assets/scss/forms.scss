@@ -1,0 +1,52 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+
+  .form-signin-heading,
+  .checkbox {
+    margin-bottom: 10px;
+  }
+
+  .checkbox {
+    font-weight: normal;
+  }
+
+  .form-control {
+    box-sizing: border-box;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  .username {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .password {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .alert ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 0;
+    }
+  }
+}
