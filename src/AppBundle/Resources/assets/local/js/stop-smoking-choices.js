@@ -4,10 +4,12 @@ function positionArrow()
   if($selectedTab)
   {
     var $parent = $selectedTab.parent(),
-    newLeft = $parent.index()*33.33;
+    pindx = $parent.index(),
+    pPadd = $parent.css("padding-left").replace("px","")/1,
+    newLeft = pindx*33.33;
     $("#selectedArrow").css({
       left: newLeft+"%",
-      marginLeft: ($selectedTab.outerWidth()/2)-($("#selectedArrow").width()/2)
+      marginLeft: ($selectedTab.outerWidth()/2)-($("#selectedArrow").width()/2)+(pindx*pPadd)
     });
   }
 }
