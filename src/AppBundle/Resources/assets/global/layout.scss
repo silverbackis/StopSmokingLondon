@@ -2,6 +2,41 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.modal-backdrop {
+  background: $blue-dark;
+
+  &.show {
+    opacity: .7;
+  }
+}
+
+.modal-tooltip {
+  text-align: center;
+
+  .modal-header {
+    border-bottom: 0;
+    padding-bottom: 0;
+
+    .modal-title {
+      @include open-sans(1.2rem, $blue-dark, $semi-bold);
+      background: url($asset-image-base + 'icon/dictionary.png') 50% 0 no-repeat;
+      background-size: 26.5px 32px;
+      padding-top: 42px;
+      width: 100%;
+    }
+  }
+
+  .tooltip-icon {
+    display: inline-block;
+    height: 32px;
+    width: 26.5px;
+  }
+
+  .modal-footer {
+    border: 0;
+  }
+}
+
 .bootstrap-select {
   font-size: 1.25rem;
 
@@ -633,6 +668,22 @@
   .page-header-3,
   .block-text h5 {
     font-size: 1.1rem;
+  }
+
+  .modal-tooltip {
+    .modal-header {
+      .modal-title {
+        font-size: 1rem;
+      }
+    }
+
+    .modal-body {
+      font-size: .9rem;
+    }
+
+    .modal-dialog {
+      margin: 20px;
+    }
   }
 }
 

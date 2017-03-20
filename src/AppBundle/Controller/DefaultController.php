@@ -328,10 +328,33 @@ class DefaultController extends Controller
      */
     public function tooltipsAction($text = '', Request $request)
     {
-        $tooltipText = $this->get('translator')->trans($text, array(), 'tooltips');
-        return new JsonResponse([
-            'tooltip' => $tooltipText
-        ]);
+        $tooltipsRepo = $this->getDoctrine()->getRepository('Lexik\Bundle\TranslationBundle\Entity\File');
+
+        // Get translation keys and tooltips
+        $tooltips = $tooltipsRepo->createQueryBuilder('f')
+            ->select('t.content, tu.key, tu.updatedAt')
+            ->innerJoin("f.translations", "t")
+            ->innerJoin("t.transUnit", "tu")
+            ->where("f.locale = :locale")
+            ->andWhere("f.domain = :domain")
+            ->setParameter('locale', 'en') 
+            ->setParameter('domain', 'tooltips') 
+            ->getQuery()
+            ->getResult();
+
+        $encoders = array(new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return array(
+                'id' => $object->getId()
+            );
+        });
+        $serializer = new Serializer(array($normalizer), $encoders);
+        
+        $response = new JsonResponse();
+        $response->setContent($serializer->serialize($tooltips, 'json'));
+
+        return $response;
     }
 
     /**

@@ -30,12 +30,6 @@ var GoogleMap = (function($, viewport, alert, confirm){
   geocoder,
   ResponseMessages;
 
-  String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    search = search.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
-    return target.replace(new RegExp(search, 'g'), replacement);
-  };
-
   function gaTrack(obj)
   {
     if(typeof ga!='undefined')
@@ -437,6 +431,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $nextSteps.removeClass("hidden");
     }
     enableInputs();
+    Tooltips.refresh();
   }
 
   function initMap()

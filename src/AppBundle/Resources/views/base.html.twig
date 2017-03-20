@@ -113,6 +113,20 @@
             </tr>
           </tbody>
         </table>
+        </div>
+        <div class="modal fade modal-tooltip" tabindex="-1" role="dialog" aria-hidden="true" id="tooltip">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"></h5>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-block btn-lg btn-primary btn-cta" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       {% endblock %}
       
       {% block javascripts %}
@@ -121,6 +135,7 @@
           '@AppBundle/Resources/assets/global/bower/jquery/dist/jquery.min.js'
           '@AppBundle/Resources/assets/global/bower/tether/dist/js/tether.min.js'
           '@AppBundle/Resources/assets/global/bower/bootstrap/dist/js/bootstrap.min.js'
+          '@AppBundle/Resources/assets/global/Tooltips.js'
           filter='?uglifyjs2'
           name='BaseJS' %}
           <script src="{{ asset_url }}"></script>
