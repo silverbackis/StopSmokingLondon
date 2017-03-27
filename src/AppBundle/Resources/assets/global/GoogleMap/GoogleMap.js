@@ -354,6 +354,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
                 .clone()
                   .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
                   .html(telNumbers[0]).appendTo($telCont);
+              $(".stop-smoking-london-info-row").hide();
             }
           }
       },
@@ -382,7 +383,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         // We have an advisor info card to fill in
         $telCont = $(".tel-cont", $advisorCard).empty();
         $message = $(".message", $advisorCard);
-
+        $(".stop-smoking-london-info-row").show();
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');

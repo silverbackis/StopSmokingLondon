@@ -21,7 +21,7 @@
             {% endfor %}
             <p class="text-primary">{{ 'prelaunch.telephone.0'|trans|raw|replace({"%launch_date%": launch_date|date(launch_date_format)}) }}</p>
           {% endif %}
-          {% if app.request.attributes.get('_route') != 'find_out_more' %}
+          {% if app.request.attributes.get('_route') != 'find_out_more' and app.request.attributes.get('_route') != 'stop_smoking_medicine' and app.request.attributes.get('_route') != 'stop_smoking_advisor' %}
           <a class="btn btn-lg btn-primary btn-cta" href="{{ path('find_out_more') }}">{{ 'find_out_more_button'|trans }}</a>
           {% endif %}
         </div>
