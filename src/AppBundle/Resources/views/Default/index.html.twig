@@ -25,19 +25,26 @@
   <div class="container-fluid h-100">
     <div class="column">
       <div class="row home-feature justify-content-center col-auto">
-        <div class="col-lg-10 align-self-center">
+        <div class="col-lg-11 align-self-center">
           <h1 class="welcome">
             <span class="small">{{ 'header.main.small'|trans }}</span><br />
             {{ 'header.main.large'|trans }}
           </h1>
         </div>
       </div>
+      <div class="row bg-primary justify-content-center">
+        <div class="col-lg-10 align-self-center">
+          <h2 class="text-white facts-header">{{ 'facts_header'|trans|nl2br }}</h2>
+        </div>
+      </div>
       <div class="row home-bottom justify-content-center">
         <div class="col-lg-11">
           <div class="row h-100 triples-row gutter-lg">
-            <div class="home-right-bg"></div>
-            {% include '@App/Default/_home_cta_buttons.html.twig' %}
-            <div class="col-12 col-lg-auto">
+            <div class="col-lg home-right top">
+              {% include '@App/Default/_home_cta_buttons.html.twig' %}
+            </div>
+            
+            {#<div class="col-12 col-lg-auto">
               <ul class="fact-list">
                 <li>
                   <img src="{{ asset('bundles/app/images/icon/map_london.png') }}" alt="Smokers in london with pie chart effect over London outline" class="fact-icon map" />
@@ -52,22 +59,65 @@
                   <span class="fact">{{ 'image_captions.3'|trans|nl2br }}</span>
                 </li>
               </ul>
-            </div>
-            <div class="col-lg news-col">
-              <div class="h3-outer">
-                <h3 class="news-header">
-                  {{ 'header.latest_news'|trans }}
-                </h3>
-                <a href="{{ external_links.twitter }}" class="twitter-profile-link" target="_blank">
-                  <div class="media">
-                    <div class="d-flex mr-1 align-self-center icon"></div>
-                    <div class="media-body align-self-center">@StopSmokingLon</div>
+            </div>#}
+
+            <div class="col-lg-6">
+              <ul class="home-features-list">
+                <li>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col align-self-center">
+                        {{ 'feature.borough_search'|trans }}
+                      </div>
+                      <div class="col-12 col-auto align-self-center">
+                        <img src="{{ asset('bundles/app/images/icon/london.png') }}" class="feature-image london" alt="London boroughs map" />
+                      </div>
+                    </div>
                   </div>
-                </a>
-              </div>
-              <div class="carousel-container" id="carouselContainer"></div>
+                </li>
+                <li>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-12 col-auto align-self-center">
+                        <img src="{{ asset('bundles/app/images/icon/info-tooltip.png') }}" class="feature-image info" alt="Info icon relating to stop smoking information tooltips available" />
+                      </div>
+                      <div class="col align-self-center ttt">
+                        {{ 'feature.tooltips'|trans }}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col align-self-center">
+                        {{ 'feature.chances'|trans }}
+                      </div>
+                      <div class="col-12 col-auto align-self-center">
+                        <img src="{{ asset('bundles/app/images/icon/chances-graph.png') }}" class="feature-image chances" alt="Bar chart illustrating that website gives chances of stopping smoking" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-            {% include '@App/Default/_home_cta_buttons.html.twig' %}
+            <div class="col-lg-6 home-right">
+              {% include '@App/Default/_home_cta_buttons.html.twig' %}
+              <div class="news-box">
+                <div class="h3-outer">
+                  <h3 class="news-header">
+                    {{ 'header.latest_news'|trans }}
+                  </h3>
+                  <a href="{{ external_links.twitter }}" class="twitter-profile-link" target="_blank">
+                    <div class="media">
+                      <div class="d-flex mr-1 align-self-center icon"></div>
+                      <div class="media-body align-self-center">@StopSmokingLon</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="carousel-container" id="carouselContainer"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

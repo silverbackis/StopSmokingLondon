@@ -2,9 +2,7 @@ about:            About Stop Smoking London
 contact:          Contact Stop Smoking London
 contact_success:  Contact message sent
 terms_privacy:    Terms and Privacy
-stop_smoking_choices:
-  header:   Ready to stop smoking?
-  lead:     We'll help you find the best method for you
+stop_smoking_choices: Ready to stop smoking?
 stop_smoking_advisor: |
                       You are making an appointment
                       with an advisor

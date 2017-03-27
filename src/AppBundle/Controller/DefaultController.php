@@ -70,7 +70,8 @@ class DefaultController extends Controller
                 array(
                     'title' => 'Book appointment'
                 )
-            )
+            ),
+            'choices_link' => true
         ]);
     }
 
@@ -96,7 +97,8 @@ class DefaultController extends Controller
                 array(
                     'title' => 'Get medicine'
                 )
-            )
+            ),
+            'choices_link' => true
         ]);
     }
 
@@ -121,7 +123,8 @@ class DefaultController extends Controller
                 array(
                     'title' => 'Going it alone'
                 )
-            )
+            ),
+            'choices_link' => true
         ]);
     }
 
@@ -482,12 +485,12 @@ class DefaultController extends Controller
                     $lastUpdatedDate = $lastModified;
                 }
             }
-            $halfYear = round((86400*365)/2);
+            $day = round(86400);
             $response->setCache(array(
                 'etag'          => 'boroughs.json',
                 'last_modified' => $lastUpdatedDate,
-                'max_age'       => $halfYear,
-                's_maxage'      => $halfYear,
+                'max_age'       => $day*7,
+                's_maxage'      => $day*7,
                 'public'        => true
             ));
             // Check that the Response is not modified for the given Request

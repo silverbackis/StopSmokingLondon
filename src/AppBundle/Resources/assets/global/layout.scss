@@ -37,6 +37,30 @@
   }
 }
 
+.tooltip-link {
+  background: $blue-lightest;
+  border-radius: $border-radius;
+  box-shadow: 0 .5px 1px $gray;
+  color: inherit;
+  display: inline-block;
+  margin: 2px;
+  padding: 0 5px;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.back-choices {
+  background: $white;
+  border-radius: $border-radius;
+  font-size: .9rem;
+  left: 15px;
+  padding: 4px 12px;
+  position: absolute;
+  top: 12px;
+}
+
 .bootstrap-select {
   font-size: 1.25rem;
 
@@ -121,8 +145,8 @@
     margin-left: -30px;
     margin-right: -30px;
 
-    .col,
-    [class*="col-"] {
+    > .col,
+    > [class*="col-"] {
       padding-left: 30px;
       padding-right: 30px;
     }
@@ -156,7 +180,7 @@
 .header-bar {
   background: $white;
   box-shadow: 0 0 10px 0 rgba($black, .24);
-  padding: 20px 0;
+  padding: .8rem 0;
   text-align: right;
 
   .header-bar-inner {
@@ -179,12 +203,23 @@
 
   h2 {
     @include roboto(1.64rem, $blue);
-    bottom: 0;
     margin: 0;
-    padding-left: 135px;
-    position: absolute;
-    right: 0;
-    width: 100%;
+    padding-left: 10px;
+  }
+
+  .nav-item {
+    text-align: center;
+  }
+
+  .nav-link {
+    @include open-sans(.9rem, $gray, $semi-bold);
+    padding: .5em .8em;
+    text-transform: uppercase;
+
+    &.active,
+    &:hover {
+      color: $blue;
+    }
   }
 }
 
@@ -237,16 +272,6 @@
       height: 26px;
     }
 
-    &.twitter {
-      background-image: url($asset-image-base + 'logo/footer_twitter.png');
-      height: 24px;
-    }
-
-    &.linkedin {
-      background-image: url($asset-image-base + 'logo/footer_linkedin.png');
-      height: 30px;
-    }
-
     &:hover {
       background-position: 50% 100%;
     }
@@ -254,18 +279,46 @@
 }
 
 // Used on most pages
-.jumbotron {
-  margin-bottom: 0;
-  text-align: center;
+.jumbotron-outer {
+  background: 50% 60% no-repeat $blue-header;
 
   h2 {
-    @include open-sans(2.2rem, $white, $semi-bold);
+    @include open-sans(2.2rem, $blue, $semi-bold);
   }
 
   .lead {
-    @include open-sans(1.35rem, $white);
+    @include open-sans(1.35rem, $blue);
     margin-bottom: 0;
   }
+
+  &.default {
+    background-image: url($asset-image-base + 'main/header_default.jpg');
+    background-size: 2389.5px 347.5px;
+
+    h2 {
+      color: $white;
+    }
+
+    .lead {
+      color: $white;
+    }
+  }
+
+  &.hills {
+    background-image: url($asset-image-base + 'main/header_hills.jpg');
+    background-size: 2440px 341.5px;
+  }
+
+  &.clouds {
+    background-image: url($asset-image-base + 'main/header_clouds.jpg');
+    background-size: 2440px 341.5px;
+  }
+}
+
+.jumbotron {
+  background: transparent;
+  margin-bottom: 0;
+  text-align: center;
 
   .breadcrumb {
     @include open-sans(.85rem, $blue-lighter);
@@ -682,7 +735,9 @@
     }
 
     .modal-dialog {
-      margin: 20px;
+      .modal-content {
+        margin: 20px;
+      }
     }
   }
 }

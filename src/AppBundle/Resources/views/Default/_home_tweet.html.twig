@@ -1,10 +1,10 @@
 <div class="card twitter-card mb-3">
   <div class="card-block">
-    {% if tweet.retweeted_status is defined %}
+    {#{% if tweet.retweeted_status is defined %}
     <div class="retweet-tag">
       <a class="text" href="https://twitter.com/{{ tweet.user.screen_name }}" target="_blank">@{{ tweet.user.screen_name }} retweeted</a>
     </div>
-    {% endif %}
+    {% endif %}#}
     <a class="media twitter-user mb-1" href="https://twitter.com/{{ tweet.tweetUser.screen_name }}" target="_blank">
       <img class="d-flex mr-1 align-self-center" src="{{ tweet.tweetUser.profile_image_url_https }}" />
       <div class="media-body align-self-center">

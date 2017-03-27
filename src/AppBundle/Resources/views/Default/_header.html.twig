@@ -1,6 +1,6 @@
-<div class="row bg-primary text-white justify-content-center">
-  <div class="col-lg-10 jumbotron jumbotron-fluid bg-primary">
-    {% if breadcrumb is defined %}
+<div class="row text-white justify-content-center jumbotron-outer {{ class is defined ? class : 'default' }}">
+  <div class="col-lg-10 jumbotron jumbotron-fluid">
+    {#{% if breadcrumb is defined %}
       <ol class="breadcrumb">
         {% for crumb in breadcrumb %}
           <li class="breadcrumb-item{% if loop.last %} active{% endif %}">
@@ -11,7 +11,10 @@
         {% endfor %}
       </ol>
     {% endif %}
-    <a href="{{ path('homepage') }}" class="home-link">Home</a>
+    <a href="{{ path('homepage') }}" class="home-link">Home</a>#}
+    {% if choices_link is defined %}
+    <a href="{{ path('stop_smoking_choices') }}" class="back-choices">&lt; Back to Choices</a>
+    {% endif %}
     <h2>{{ title.header | raw | nl2br }}</h2>
     {% if title.lead is defined %}
       <p class="lead">{{ title.lead | raw | nl2br }}</p>

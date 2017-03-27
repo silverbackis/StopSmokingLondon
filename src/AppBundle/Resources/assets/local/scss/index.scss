@@ -13,7 +13,7 @@
 }
 
 .home-feature {
-  background: url($asset-image-base + 'main/home_header.png') 50% 66% no-repeat $white;
+  background: url($asset-image-base + 'main/header_home.png') 50% 66% no-repeat $white;
   background-size: auto 427.5px;
   height: 250px;
   z-index: 1;
@@ -28,6 +28,12 @@
   }
 }
 
+.facts-header {
+  @include open-sans(1.1rem, $white, $semi-bold);
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
 .home-bottom {
   //flex-basis: 0;
   flex-grow: 1;
@@ -36,29 +42,76 @@
 }
 
 .triples-row {
-  .home-right-bg {
-    background: $white;
-    height: 100%;
-    left: 100%;
-    position: absolute;
-    top: 0;
-    width: 30%;
-
-    + .home-right {
-      display: none;
-    }
-  }
-
-  .col-lg,
-  .col-12 {
+  > .col-lg,
+  > [class*="col-"] {
     padding-bottom: 30px;
     padding-top: 30px;
   }
 
   .home-right {
-    background: $white;
     text-align: center;
+
+    &.top {
+      display: none;
+      padding-bottom: 0;
+    }
   }
+}
+
+.home-features-list {
+  font-size: .9rem;
+  line-height: 1.8;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    border-bottom: 1px solid $gray-light;
+    border-top: 1px solid $white;
+    margin: 0;
+    padding: 0;
+
+    &:first-child {
+      border-top: 0;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .feature-image {
+    &.london {
+      height: 184px;
+      width: 237.5px;
+    }
+
+    &.chances {
+      height: 161px;
+      width: 160.5px;
+    }
+
+    &.info {
+      height: 148px;
+      width: 148px;
+    }
+  }
+
+  .container-fluid {
+    margin: 15px auto;
+  }
+}
+
+.cta-buttons-box {
+  background: $white;
+  box-shadow: 0 2px 4px $gray-light;
+  padding: 35px;
+}
+
+.news-box {
+  padding: 35px;
+  text-align: left;
 }
 
 
@@ -252,8 +305,11 @@ h3 {
   }
 }
 
-
 @include media-breakpoint-down(lg) {
+  .home-features-list {
+    font-size: .75rem;
+  }
+
   .news-header {
     display: block;
   }
@@ -277,6 +333,10 @@ h3 {
 }
 
 @include media-breakpoint-down(md) {
+  .home-features-list {
+    font-size: .9rem;
+  }
+
   .home-feature {
     background-position: 45% 66%;
     background-size: auto 427.5px;
@@ -304,11 +364,6 @@ h3 {
     text-align: center;
   }
 
-  .news-col {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   .news-carousel {
     margin-left: 0;
     padding-left: 0;
@@ -333,14 +388,10 @@ h3 {
   .triples-row {
     .home-right-bg {
       display: none;
-
-      + .home-right {
-        display: block;
-      }
     }
 
-    .news-col + .home-right {
-      background: transparent;
+    .home-right.top {
+      display: block;
     }
   }
 

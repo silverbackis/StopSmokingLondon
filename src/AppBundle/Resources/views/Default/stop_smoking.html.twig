@@ -23,7 +23,7 @@
 {% block page_content %}
   {{ parent() }}
   <div class="container-fluid h-100" style="padding-bottom: 5rem;">
-    {% include '@App/Default/_header.html.twig' %}
+    {% include '@App/Default/_header.html.twig' with {class: 'hills'} %}
 
     <h3 class="page-header-1">{{ 'title'|trans }}</h3>
     <ul class="nav row justify-content-center gutter-sm" role="tablist">
@@ -90,7 +90,7 @@
               <div class="row">
                 <div class="col-12 col-lg-4">
                   <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/specialist.png') }}" style="width: 126.5px; height: 126.5px;" alt="Stop smoking specialist icon" />
+                    <img src="{{ asset('bundles/app/images/main/advisor.png') }}" style="width: 128.5px; height: 139.5px;" alt="Stop smoking specialist icon" />
                   </div>
                   <h4 class="info-title">{{ 'specialist.columns.1.title'|trans }}</h4>
                   <ul class="info-list">
