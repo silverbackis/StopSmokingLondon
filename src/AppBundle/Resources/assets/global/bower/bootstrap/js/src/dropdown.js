@@ -88,7 +88,7 @@ const Dropdown = (($) => {
 
       const parent   = Dropdown._getParentFromElement(this)
       const isActive = $(parent).hasClass(ClassName.SHOW)
-
+      
       Dropdown._clearMenus()
 
       if (isActive) {

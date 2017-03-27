@@ -101,6 +101,10 @@
   .container-fluid {
     margin: 15px auto;
   }
+
+  p {
+    margin: 0;
+  }
 }
 
 .news-box {
@@ -317,6 +321,10 @@ h3 {
 @include media-breakpoint-down(md) {
   .home-features-list {
     font-size: .9rem;
+
+    p {
+      margin-top: 1rem;
+    }
   }
 
   .home-feature {
@@ -384,5 +392,20 @@ h3 {
     &.btn-success {
       font-size: 1.2rem;
     }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .home-right {
+    padding: 0;
+
+    &.top {
+      padding-top: 0;
+
+      .cta-buttons-box {
+        padding-top: 30px;
+      }
+    }
+
   }
 }

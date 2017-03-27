@@ -32,7 +32,7 @@
                   <table class="table layout-table h-100">
                     <tbody>
                       <tr>
-                        <td>
+                        <td class="mobile-dropdown">
                           <div class="container-fluid header-container">
                             <div class="row header-bar justify-content-center">
                               <div class="col-lg-{{ (app.request.attributes.get('_route') == 'homepage') ? '11' : '10' }}">
@@ -43,20 +43,23 @@
                                         <img class="header-logo" src="{{ asset('bundles/app/images/logo/ssl_regular.png') }}" alt="Stop Smoking London Logo" />
                                       </a>
                                     </div>
-                                    <div class="col{{ (app.request.attributes.get('_route') == 'homepage') ? ' align-self-end' : ' align-self-center' }}">
+                                    <div class="col col-right{{ (app.request.attributes.get('_route') == 'homepage') ? ' align-self-end' : ' align-self-center nav-outer' }}">
                                     {% if app.request.attributes.get('_route') == 'homepage' %}
                                       <h2>The capital's starting point for <b>stopping smoking</b></h2>
                                     {% else %}
                                       {% set try_prefix = 'stop_smoking_' %}
                                       <ul class="nav justify-content-end">
-                                        <li class="nav-item">
+                                        <li class="nav-item desktop">
                                           <a class="nav-link{{ (app.request.attributes.get('_route')|slice(0, try_prefix|length)) == try_prefix ? ' active' }}" href="{{ path('stop_smoking_choices') }}">Try To Stop</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item desktop">
                                           <a class="nav-link{{ (app.request.attributes.get('_route') == 'help_others_stop') ? ' active' }}" href="{{ path('help_others_stop') }}">Help Others</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item desktop">
                                           <a class="nav-link{{ (app.request.attributes.get('_route') == 'find_out_more') ? ' active' }}" href="{{ path('find_out_more') }}">About Stopping</a>
+                                        </li>
+                                        <li class="nav-item mobile">
+                                          <a class="nav-link active dropdown-toggle" href="#" data-toggle="dropdown" data-target=".mobile-dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                                         </li>
                                       </ul>
                                     {% endif %}
@@ -66,6 +69,22 @@
                               </div>
                             </div>
                           </div>
+                          {% if app.request.attributes.get('_route') != 'homepage' %}
+                          <ul class="nav mobile mobile-dropdown-menu" id="mobileMenu">
+                            <li class="nav-item">
+                              <a class="nav-link{{ (app.request.attributes.get('_route') == 'homepage') ? ' active' }}" href="{{ path('homepage') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link{{ (app.request.attributes.get('_route')|slice(0, try_prefix|length)) == try_prefix ? ' active' }}" href="{{ path('stop_smoking_choices') }}">Try To Stop</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link{{ (app.request.attributes.get('_route') == 'help_others_stop') ? ' active' }}" href="{{ path('help_others_stop') }}">Help Others</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link{{ (app.request.attributes.get('_route') == 'find_out_more') ? ' active' }}" href="{{ path('find_out_more') }}">About Stopping</a>
+                            </li>
+                          </ul>
+                          {% endif %}
                         </td>
                       </tr>
                       <tr>

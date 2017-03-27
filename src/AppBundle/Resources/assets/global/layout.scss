@@ -179,13 +179,33 @@
   }
 }
 
+@mixin nav-link() {
+  @include open-sans(.9rem, $gray, $semi-bold);
+  padding: .5em .8em;
+  text-transform: uppercase;
+
+  &.active,
+  &:hover {
+    color: $blue;
+  }
+}
+
 .header-container {
   z-index: 10;
+
+  +.nav {
+    border-top: 1px solid $gray-light;
+
+    .nav-link {
+      @include nav-link();
+    }
+  }
 }
 
 .header-bar {
   background: $white;
   box-shadow: 0 0 10px 0 rgba($black, .24);
+  line-height: 0;
   padding: .8rem 0;
   text-align: right;
 
@@ -215,17 +235,18 @@
 
   .nav-item {
     text-align: center;
+
+    &.mobile {
+      display: none;
+    }
   }
 
   .nav-link {
-    @include open-sans(.9rem, $gray, $semi-bold);
-    padding: .5em .8em;
-    text-transform: uppercase;
+    @include nav-link();
+  }
 
-    &.active,
-    &:hover {
-      color: $blue;
-    }
+  .col-right {
+    line-height: normal;
   }
 }
 
@@ -543,6 +564,18 @@
   @include open-sans(1.3rem, $gray-dark, $semi-bold);
 }
 
+@include media-breakpoint-up(lg) {
+  .header-container {
+    z-index: 10;
+
+    +.nav {
+      &.mobile {
+        display: none;
+      }
+    }
+  }
+}
+
 @include media-breakpoint-down(lg) {
   .card {
     font-size: 1.1rem;
@@ -575,11 +608,38 @@
 }
 
 @include media-breakpoint-down(md) {
+  .back-choices {
+    .desktop {
+      display: none;
+    }
+  }
+
   .gutter-sm {
     > .col,
     > [class*="col-"] {
       padding-left: 3px;
       padding-right: 3px;
+    }
+  }
+
+  .mobile-dropdown {
+    .nav {
+      &.mobile {
+        background: $white;
+        display: none;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 900;
+      }
+    }
+
+    &.show {
+      .nav {
+        &.mobile {
+          display: block;
+        }
+      }
     }
   }
 
@@ -591,6 +651,27 @@
 
     h2 {
       font-size: 1.05rem;
+    }
+
+    .nav-outer {
+      align-self: flex-end !important;
+    }
+
+    .nav {
+      .desktop {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
+
+        .dropdown-toggle::after {
+          border-width: .5em .5em 0;
+          margin-left: .3em;
+          margin-top: -.25em;
+        }
+      }
+
     }
   }
 
@@ -630,11 +711,19 @@
     font-size: .75rem;
   }
 
+  .jumbotron-outer {
+    background-position: 60% 70%;
+  }
+
   .jumbotron {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
 
     h2 {
       font-size: 1.45rem;
+    }
+
+    .back-choices + h2 {
+      margin-top: 15px;
     }
 
     .lead {
@@ -783,5 +872,9 @@
   .page-header-2,
   .block-text h4 {
     font-size: 1.1rem;
+  }
+
+  .cta-buttons-box {
+    padding: 20px 10px;
   }
 }

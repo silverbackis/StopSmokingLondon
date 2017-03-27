@@ -88,3 +88,14 @@ h3 {
     }
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .cta-box-outer-row {
+    margin-left: -4px !important;
+    margin-right: -4px !important;
+  }
+
+  .cta-box-outer {
+    padding: 0;
+  }
+}
