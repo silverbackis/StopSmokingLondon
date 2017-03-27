@@ -13,7 +13,7 @@
     {% endif %}
     <a href="{{ path('homepage') }}" class="home-link">Home</a>#}
     {% if choices_link is defined %}
-    <a href="{{ path('stop_smoking_choices') }}" class="back-choices">&lt; Back to Choices</a>
+    <a href="{{ path('stop_smoking_choices') }}#{{ app.request.attributes.get('_route') }}" class="back-choices">&lt; Back to Choices</a>
     {% endif %}
     <h2>{{ title.header | raw | nl2br }}</h2>
     {% if title.lead is defined %}

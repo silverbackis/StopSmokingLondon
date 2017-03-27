@@ -33,4 +33,17 @@ $(function(){
   $(".card-outline-success").each(function(){
     $(this).clone().appendTo($(this).parent());
   });
+
+  switch(window.location.hash)
+  {
+    case "#stop_smoking_advisor":
+      $('.nav-item .btn-cta').eq(0).trigger("click");
+    break;
+    case "#stop_smoking_medicines":
+      $('.nav-item .btn-cta').eq(1).trigger("click");
+    break;
+    case "#stop_smoking_alone":
+      $('.nav-item .btn-cta').eq(2).trigger("click");
+    break;
+  }
 });
