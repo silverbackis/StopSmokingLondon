@@ -1,0 +1,90 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+h3 {
+  @include open-sans(1.3rem, $blue, $semi-bold);
+  margin-bottom: 1rem;
+}
+
+.cta-box-outer {
+  text-align: center;
+}
+
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 800px;
+}
+
+.facts-row {
+  margin: 3rem 0 0;
+}
+
+.facts-box {
+  display: inline-block;
+  max-width: 600px;
+}
+
+.facts-carousel {
+  list-style: none;
+  margin-left: -.2rem;
+  overflow: hidden;
+  padding: 0 0 0 .2rem;
+
+  .fact-panel {
+    box-sizing: content-box;
+    display: inline-block;
+    margin: 0 5px 50px -5px;
+    min-height: 250px;
+    padding-left: 5px;
+    vertical-align: top;
+    white-space: normal;
+    width: 100%;
+
+    > p {
+      margin-bottom: 0;
+      margin-top: 1rem;
+      @include open-sans(1.3rem, $blue, $semi-bold);
+    }
+  }
+}
+
+.fact-carousel-indicators {
+  bottom: 0;
+  left: 0;
+  list-style: none;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 15;
+
+  li {
+    background-color: $blue;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    position: relative;
+    text-indent: -999px;
+    width: 20px;
+
+    &.active {
+      background-color: $cyan;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .facts-carousel {
+    .fact-panel {
+      > p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

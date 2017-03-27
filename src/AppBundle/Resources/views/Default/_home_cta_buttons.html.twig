@@ -23,6 +23,7 @@
       </div>
     </a>
   </div>
+  {% if app.request.attributes.get('_route')!='find_out_more' %}
   <div class="d-inline-block w-100 mt-2">
     <a class="btn btn-lg btn-block btn-primary btn-cta" href="{{ path('find_out_more') }}">
       <div class="media">
@@ -34,4 +35,5 @@
       </div>
     </a>
   </div>
+  {% endif %}
 </div>

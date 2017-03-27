@@ -103,12 +103,6 @@
   }
 }
 
-.cta-buttons-box {
-  background: $white;
-  box-shadow: 0 2px 4px $gray-light;
-  padding: 35px;
-}
-
 .news-box {
   padding: 35px;
   text-align: left;
@@ -261,18 +255,6 @@ h3 {
   .card-block {
     padding-bottom: 1rem;
     padding-top: 1.25rem;
-  }
-
-  .retweet-tag {
-    margin: -1rem 0 15px -1.45rem;
-    position: relative;
-
-    .text {
-      @include open-sans(.75rem, $white, $semi-bold);
-      background: url($asset-image-base + 'icon/twitter_retweet.png') 5px 50% no-repeat $gray-light;
-      background-size: 17px auto;
-      padding: 2px 5px 2px 27px;
-    }
   }
 
   .twitter-user {
