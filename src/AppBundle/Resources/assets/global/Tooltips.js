@@ -50,11 +50,14 @@ var Tooltips = (function($){
       return;
     }
     $tooltipText.each(function(){
-      var $ttCont = $(this),
+      var $ttCont = $(this);
+      $(".tooltip-link", $ttCont).contents().unwrap();
       HTML = $ttCont.html();
       $.each(tooltips, function()
       {
-        var re = new RegExp(RegExp.escape(this.key), 'gi');
+        var restr = RegExp.escape(this.key);
+        //console.log(restr);
+        var re = new RegExp(restr, 'gi');
         HTML = HTML.replace(re, replaceWithLink);
       });
       $ttCont.html(HTML);

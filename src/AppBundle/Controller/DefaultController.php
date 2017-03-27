@@ -524,13 +524,33 @@ class DefaultController extends Controller
             }
 
             //Now let's get the messages javascript needs to display results.
+            $tooltipsRepo = $this->getDoctrine()->getRepository('Lexik\Bundle\TranslationBundle\Entity\File');
+
+            // Get translation keys and tooltips
+            $mapResultPrefix = 'map_search_results.';
+            $mrpLen = strlen($mapResultPrefix);
+            $messagesResult = $tooltipsRepo->createQueryBuilder('f')
+                ->select('t.content, tu.key, tu.updatedAt')
+                ->innerJoin("f.translations", "t")
+                ->innerJoin("t.transUnit", "tu")
+                ->where("(tu.key LIKE :keystart1 OR tu.key LIKE :keystart2)")
+                ->andWhere("f.locale = :locale")
+                ->andWhere("f.domain = :domain")
+                ->setParameter('keystart1', $mapResultPrefix.'%') 
+                ->setParameter('keystart2', 'steps.2.%') 
+                ->setParameter('locale', 'en') 
+                ->setParameter('domain', 'stop_smoking_chosen') 
+                ->getQuery()
+                ->getResult();
+
+
             $path = $this->getLocaleResourcePath("@AppBundle/Resources/translations/pages/stop_smoking_chosen.{{ locale }}.yml");
             $yamlArray = Yaml::parse(file_get_contents($path));
-            $messages = [
-                'map'   =>  $yamlArray['map_search_results'],
-                'step2' =>  $yamlArray['steps'][2]
-            ];
-
+            $messages = [];
+            foreach( $messagesResult as $mr )
+            {
+                $messages[$mr['key']] =  $mr['content'];
+            }
 
             $encoders = array(new JsonEncoder());
             $normalizer = new ObjectNormalizer();

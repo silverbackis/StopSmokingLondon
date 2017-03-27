@@ -182,7 +182,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           hideAllResults();
         }
-        showBoroughInfo(ResponseMessages.map.result_not_local, true, dropdown);
+        showBoroughInfo(ResponseMessages['map_search_results.result_not_local'], true, dropdown);
       }
       else
       {
@@ -222,17 +222,17 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
       if(status === google.maps.GeocoderStatus.ZERO_RESULTS)
       {
-        showBoroughInfo(ResponseMessages.map.no_results, true, dropdown);
+        showBoroughInfo(ResponseMessages['map_search_results.no_results'], true, dropdown);
       }
       else if(status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT)
       {
         if(totalAttempts >= maxAttempts)
         {
-          showBoroughInfo(ResponseMessages.map.limit_reached, true, dropdown);
+          showBoroughInfo(ResponseMessages['map_search_results.limit_reached'], true, dropdown);
         }
         else
         {
-          showBoroughInfo(ResponseMessages.map.retry.replaceAll("%attempt_count%", totalAttempts+1), true, dropdown);
+          showBoroughInfo(ResponseMessages['map_search_results.retry'].replaceAll("%attempt_count%", totalAttempts+1), true, dropdown);
           lastSearch = null;
           setTimeout(function(){
             search(searchText, dropdown);
@@ -241,11 +241,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
       }
       else if(status === google.maps.GeocoderStatus.UNKNOWN_ERROR)
       {
-        showBoroughInfo(ResponseMessages.map.unknown_error, true, dropdown);
+        showBoroughInfo(ResponseMessages['map_search_results.unknown_error'], true, dropdown);
       }
       else
       {
-        showBoroughInfo(ResponseMessages.map.other_error.replaceAll("%status%", status), true, dropdown);
+        showBoroughInfo(ResponseMessages['map_search_results.other_error'].replaceAll("%status%", status), true, dropdown);
       }
     }
   }
@@ -338,6 +338,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $tel = $('<a />', {
         class: 'tel'
       });
+
       $("#boroughCard").addClass("card-outline-success");
       $("#liveIn").show();
       $("#selectedBorough").html(boroughProps.name);
@@ -362,14 +363,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
       },
       getMessage = function(group, key)
       {
-        var message = ResponseMessages.step2[group][key].message;
-        if(ResponseMessages.step2[group][key].append)
+        var message = ResponseMessages['steps.2.'+group+'.'+key+'.message'];
+        if(ResponseMessages['steps.2.'+group+'.'+key+'.append'])
         {
-          message += appendMessage(ResponseMessages.step2[group][key].append);
+          message += appendMessage(ResponseMessages['steps.2.'+group+'.'+key+'.append']);
         }
-        if(ResponseMessages.step2[group][key].append_fallback_message)
+        if(ResponseMessages['steps.2.'+group+'.'+key+'.append_fallback_message'])
         {
-          message += appendMessage(ResponseMessages.step2.all.fallback_message);
+          message += appendMessage(ResponseMessages['steps.2.all.fallback_message']);
         }
         message = message.replaceAll("%borough%", '<b>' + boroughProps.name + '</b>');
         message = message.replaceAll("%service_name%", (boroughProps.service && boroughProps.service.name) ? ', <b>' + boroughProps.service.name + '</b>' : '');
