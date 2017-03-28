@@ -2,13 +2,15 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
-.btn-cta {
-  font-size: .9rem;
-  min-width: 320px;
+.cta-buttons-box {
+  .btn-cta {
+    font-size: .9rem;
+    min-width: 320px;
 
-  &.btn-success {
-    font-size: 1.4rem;
-    padding: 1.5rem;
+    &.btn-success {
+      font-size: 1.4rem;
+      padding: 1.5rem;
+    }
   }
 }
 
@@ -385,14 +387,17 @@ h3 {
     }
   }
 
-  .btn-cta {
-    font-size: .8rem;
-    min-width: 290px;
+  .cta-buttons-box {
+    .btn-cta {
+      font-size: .8rem;
+      min-width: 290px;
 
-    &.btn-success {
-      font-size: 1.2rem;
+      &.btn-success {
+        font-size: 1.2rem;
+      }
     }
   }
+
 }
 
 @include media-breakpoint-down(sm) {
