@@ -110,7 +110,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="h-100">
+                        <td class="h-100 container-lower-outer">
                           {% block page_content %}{% endblock %}
                         </td>
                       </tr>
@@ -140,7 +140,7 @@
                             <a class="nav-link{{ (app.request.attributes.get('_route') == 'contact_us') ? ' active' }}" href="{{ path('contact_us') }}">Contact Us</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'terms_privacy') ? ' active' }}" href="{{ path('terms_privacy') }}">Terms &amp; Privacy</a>
+                            <a class="nav-link{{ (app.request.attributes.get('_route') == 'privacy') ? ' active' }}" href="{{ path('privacy') }}">Privacy</a>
                           </li>
                         </ul>
                       </div>

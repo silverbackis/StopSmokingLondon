@@ -30,7 +30,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
   geocoder,
   ResponseMessages,
   markerIcon;
-
+  $searchInput.focus();
   function gaTrack(obj)
   {
     if(typeof ga!='undefined')
@@ -458,7 +458,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
           "featureType": "all",
           "stylers": [
             { 
-              "color": "#eceeef",
+              "color": "#f7f7f7",
               "visibility": "off"
             }
           ]

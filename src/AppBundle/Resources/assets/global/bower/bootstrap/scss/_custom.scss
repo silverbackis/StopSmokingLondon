@@ -47,3 +47,7 @@ $bold:      700;
   font-size: $font-size;
   font-weight: $weight;
 }
+
+@mixin std-box-shadow() {
+  box-shadow: 0 2px 4px $gray-light;
+}

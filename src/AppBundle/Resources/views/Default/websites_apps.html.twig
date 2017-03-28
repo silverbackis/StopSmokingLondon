@@ -3,6 +3,12 @@
 
 {% block stylesheets %}
   {{ parent() }}
+  {% stylesheets 
+    '@AppBundle/Resources/assets/local/scss/websites-apps.scss'
+    filter='?uglifycss'
+     %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
@@ -14,7 +20,7 @@
     {% include '@App/Default/_header.html.twig' %}
 
     <div class="row justify-content-center mt-5">
-      <div class="col-12">
+      <div class="col-12 col-list">
         <div class="card card-outline-primary text-center container-fluid mobile-w-100">
           <div class="card-block row justify-content-center">
             <div class="col-12 col-md-9">

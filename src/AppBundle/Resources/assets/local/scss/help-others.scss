@@ -40,6 +40,10 @@
     cursor: pointer;
     font-weight: $semi-bold;
     text-align: center;
+
+    &:hover {
+      color: $gray;
+    }
   }
 
   .badge-pill {

@@ -43,6 +43,15 @@
 .email-thanks {
   display: none;
   margin: 2rem 0 .5rem;
+
+  h5 {
+    @include open-sans(1.8rem, $green, $semi-bold);
+    margin: 0;
+  }
+
+  p {
+    @include open-sans(1.2rem, $green, $semi-bold);
+  }
 }
 
 .website-link {

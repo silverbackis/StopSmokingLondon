@@ -50,7 +50,12 @@
     padding-top: 30px;
   }
 
+  .home-features-outer {
+    max-width: 750px;
+  }
+
   .home-right {
+    max-width: 550px;
     text-align: center;
 
     &.top {
@@ -101,7 +106,7 @@
   }
 
   .container-fluid {
-    margin: 15px auto;
+    margin: 40px auto;
   }
 
   p {
@@ -253,8 +258,8 @@ h3 {
 
 .twitter-card {
   @include open-sans(1rem);
+  @include std-box-shadow();
   border: 0;
-  border-bottom: 3px solid $blue;
   border-radius: 0;
   width: 100%;
 
@@ -295,7 +300,7 @@ h3 {
 
 @include media-breakpoint-down(lg) {
   .home-features-list {
-    font-size: .75rem;
+    font-size: .82rem;
   }
 
   .news-header {
@@ -378,10 +383,6 @@ h3 {
   }
 
   .triples-row {
-    .home-right-bg {
-      display: none;
-    }
-
     .home-right.top {
       display: block;
     }

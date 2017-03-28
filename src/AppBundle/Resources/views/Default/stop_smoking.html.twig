@@ -27,7 +27,7 @@
 
     <h3 class="page-header-1">{{ 'title'|trans }}</h3>
     <ul class="nav row justify-content-center gutter-sm" role="tablist">
-      <li class="col-4 col-xl-3 nav-item">
+      <li class="col-4 col-lg-3 nav-item">
         <a class="btn btn-lg btn-block btn-primary btn-cta" href="#talkTab" data-toggle="tab" role="tab" aria-expanded="false">
           <div class="d-flex align-items-center justify-content-center top-img">
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_specialist.png') }}" style="width: 46px; height: 36.5px;"alt="Talk to a specialist to stop smoking in London - Button icon" />
@@ -37,17 +37,17 @@
           </span>
         </a>
       </li>
-      <li class="col-4 col-xl-3 nav-item">
+      <li class="col-4 col-lg-3 nav-item">
         <a class="btn btn-lg btn-block btn-primary btn-cta" href="#useTab" data-toggle="tab" role="tab" aria-expanded="false">
           <div class="d-flex align-items-center justify-content-center top-img">
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_medicine.png') }}" style="width: 44px; height: 38.5px;"alt="Stop smoking using medicines in London - Button icon" />
           </div>
           <span class="d-flex align-items-center justify-content-center text">
-            <span class="hidden-lg-up">{{ 'medicine.button.mobile'|trans }}</span><span class="hidden-md-down">{{ 'medicine.button.desktop'|trans }}</span>
+            <span class="hidden-xl-up">{{ 'medicine.button.mobile'|trans }}</span><span class="hidden-lg-down">{{ 'medicine.button.desktop'|trans }}</span>
           </span>
         </a>
       </li>
-      <li class="col-4 col-xl-3 nav-item">
+      <li class="col-4 col-lg-3 nav-item">
         <a class="btn btn-lg btn-block btn-primary btn-cta" href="#aloneTab" data-toggle="tab" role="tab" aria-expanded="false">
           <div class="d-flex align-items-center justify-content-center top-img">
             <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_apps.png') }}" style="width: 41.5px; height: 43px;" alt="Stop smoking on your own - Button icon" />
@@ -60,19 +60,19 @@
     </ul>
 
     <div class="row justify-content-center chance-percent-row gutter-sm">
-      <div class="col-4 col-xl-3">
+      <div class="col-4 col-lg-3">
         {{ 'increase_chances_prefix'|trans }} <b>{{ 'specialist.increase_chances'|trans }}</b>
       </div>
-      <div class="col-4 col-xl-3">
+      <div class="col-4 col-lg-3">
         {{ 'increase_chances_prefix'|trans }} <b>{{ 'medicine.increase_chances'|trans }}</b>
       </div>
-      <div class="col-4 col-xl-3">
+      <div class="col-4 col-lg-3">
         {{ 'increase_chances_prefix'|trans }} <b>{{ 'alone.increase_chances'|trans }}</b>
       </div>
     </div>
 
     <div class="row justify-content-center arrow-row gutter-sm">
-      <div class="col-12 col-xl-9">
+      <div class="col-12 col-lg-9">
         <img class="d-inline-block selected-arrow" id="selectedArrow" src="{{ asset('bundles/app/images/icon/arrow_down.png') }}" style="width: 37px; height: 18px;" alt="Arrow indicator" />
       </div>
     </div>
@@ -80,7 +80,7 @@
     <div class="tab-content">
       <div class="tab-pane" role="tabpanel" id="talkTab">
         <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-xl-9">
+          <div class="col-12 col-lg-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
                 <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'specialist.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/telephone-advisor">{{ 'specialist.continue_button'|trans }}</a></span>
@@ -128,7 +128,7 @@
       </div>
       <div class="tab-pane" role="tabpanel" id="useTab">
         <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-xl-9">
+          <div class="col-12 col-lg-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
                 <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'medicine.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/using-medicines">{{ 'medicine.continue_button'|trans }}</a></span>
@@ -177,7 +177,7 @@
       </div>
       <div class="tab-pane" role="tabpanel" id="aloneTab">
         <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-xl-9">
+          <div class="col-12 col-lg-9">
             <div class="card card-outline-success text-center">
               <div class="card-block">
                 <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'alone.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/alone-with-websites-and-apps">{{ 'alone.continue_button'|trans }}</a></span>

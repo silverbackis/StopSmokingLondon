@@ -76,6 +76,10 @@
   .modal-footer {
     border: 0;
   }
+
+  .modal-content {
+    padding: 20px;
+  }
 }
 
 .tooltip-link {
@@ -93,8 +97,8 @@
 }
 
 .cta-buttons-box {
+  @include std-box-shadow();
   background: $white;
-  box-shadow: 0 2px 4px $gray-light;
   padding: 35px;
 }
 
@@ -210,7 +214,7 @@
   width: auto;
 
   .layout-table {
-    background: $gray-lighter;
+    background: $gray-lightest;
     margin: 0;
 
     td {
@@ -221,7 +225,7 @@
 }
 
 @mixin nav-link() {
-  @include open-sans(.9rem, $gray, $semi-bold);
+  @include roboto(.9rem, $gray, $bold);
   padding: .5em .8em;
   text-transform: uppercase;
 
@@ -335,9 +339,9 @@
     vertical-align: middle;
     width: 30px;
 
-    &.facebook {
-      background-image: url($asset-image-base + 'logo/footer_facebook.png');
-      height: 26px;
+    &.twitter {
+      background-image: url($asset-image-base + 'logo/footer_twitter.png');
+      height: 24px;
     }
 
     &:hover {
@@ -351,7 +355,7 @@
   background: 50% 60% no-repeat $blue-header;
 
   h2 {
-    @include open-sans(2.2rem, $blue, $semi-bold);
+    @include open-sans(2rem, $blue, $semi-bold);
   }
 
   .lead {
@@ -375,11 +379,13 @@
   &.hills {
     background-image: url($asset-image-base + 'main/header_hills.jpg');
     background-size: 2440px 341.5px;
+    border-bottom: 1px solid $gray-light;
   }
 
   &.clouds {
     background-image: url($asset-image-base + 'main/header_clouds.jpg');
     background-size: 2440px 341.5px;
+    border-bottom: 1px solid $gray-light;
   }
 }
 
@@ -417,7 +423,7 @@
 }
 
 .container-lower {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 
   > .row {
     text-align: center;
@@ -873,6 +879,7 @@
     .modal-dialog {
       .modal-content {
         margin: 20px;
+        padding: 10px;
       }
     }
   }

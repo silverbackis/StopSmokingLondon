@@ -218,7 +218,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/terms-privacy", name="terms_privacy")
+     * @Route("/privacy", name="privacy")
      */
     public function termsAction(Request $request)
     {
