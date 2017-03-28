@@ -28,7 +28,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
   boroughsLocation = "London",
   searchToken,
   geocoder,
-  ResponseMessages;
+  ResponseMessages,
+  markerIcon;
 
   function gaTrack(obj)
   {
@@ -190,7 +191,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
         searchMarker = new google.maps.Marker({
           position: resultLatLng,
           map: map,
-          animation: google.maps.Animation.DROP
+          animation: google.maps.Animation.DROP,
+          icon: markerIcon,
+          optimized: false
         });
 
         // Update and show the card displaying the borough
@@ -472,6 +475,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
       keyboardShortcuts: false,
       scrollwheel: false
     });
+
+    markerIcon = new google.maps.MarkerImage("/bundles/app/images/icon/pin.png", new google.maps.Size(42, 77), new google.maps.Point(0, 0), new google.maps.Point(10.5, 38.5), new google.maps.Size(21, 38.5));
 
     // Set token as variable and remove the attribute
     var token = $map.attr("data-token");
