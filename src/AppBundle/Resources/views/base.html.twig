@@ -31,6 +31,28 @@
                 {% block page %}
                   <table class="table layout-table h-100">
                     <tbody>
+                      <!--googleoff: all-->
+                      <tr>
+                        <td>
+                          <noscript>
+                          {% include '@App/Default/_website_compat_notice.html.twig' with {
+                            title: 'Sorry, like most websites, this site requires Javascript to be enabled.', 
+                            text: 'It seems you have disabled Javascript. This website will not function correctly until you enable it.', 
+                            button: 'How to enable Javascript', 
+                            href: 'http://www.enable-javascript.com/'
+                          } only %}
+                          </noscript>
+                          <div id="outdated" style="display: none;">
+                            {% include '@App/Default/_website_compat_notice.html.twig' with {
+                              title: 'Your web browser is out of date so you may experience issues', 
+                              text: 'Update your browser now for more security, comfort and the best experience on this website.', 
+                              button: 'Update Browser', 
+                              href: 'http://outdatedbrowser.com/'
+                            } only %}
+                          </div>
+                        </td>
+                      </tr>
+                      <!--googleon: all-->
                       <tr>
                         <td class="mobile-dropdown">
                           <div class="container-fluid header-container">
@@ -171,6 +193,7 @@
       
       {% block javascripts %}
         {% javascripts
+          '@AppBundle/Resources/assets/global/bower/outdated-browser/outdatedbrowser/outdatedbrowser.min.js'
           '@AppBundle/Resources/assets/global/greensock/TweenMax.min.js'
           '@AppBundle/Resources/assets/global/bower/jquery/dist/jquery.min.js'
           '@AppBundle/Resources/assets/global/bower/tether/dist/js/tether.min.js'

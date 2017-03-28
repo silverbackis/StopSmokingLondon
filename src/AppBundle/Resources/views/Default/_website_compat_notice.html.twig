@@ -1,0 +1,39 @@
+<table class="website-compat-notice">
+  <tbody>
+    <tr>
+      <td class="notice-outer-cell">
+        <table class="inner-table" align="center">
+          <tr>
+            <td style="width: 0;">
+              <img src="{{ asset('bundles/app/images/icon/attention.png') }}" alt="Incompatible browser/settings warning icon" style="width: 44px; height: 39.5px;" />
+            </td>
+            <td class="notice-text">
+              <h5>{{ title|raw }}</h5>
+              <p>{{ text|raw }}</p>
+            </td>
+            <td style="width: 0;">
+              <img src="{{ asset('bundles/app/images/icon/attention.png') }}" alt="Incompatible browser/settings warning icon" style="width: 44px; height: 39.5px;" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <a href="{{ href }}" class="btn btn-success btn-cta" target="_blank">{{ button }}</a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="notice-text lower">
+              <h5>Having trouble using this site?</h5>
+              <p class="lg">
+                {% if date(launch_date) <= date('now') %}
+                  You can call the Stop Smoking London Helpline on <a href="tel:+44{{ 'service_launched.telephone.number'|trans|replace({" ": ""})|slice(1) }}">{{ 'service_launched.telephone.number'|trans }}</a>
+                {% else %}
+                  Stop Smoking London Helpline will be able to help you quit smoking soon. Coming {{ launch_date|date(launch_date_format) }}
+                {% endif %}
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

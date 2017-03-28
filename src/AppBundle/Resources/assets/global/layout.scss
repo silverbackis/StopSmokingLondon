@@ -2,6 +2,47 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.website-compat-notice {
+  background: $blue-notice;
+  text-align: center;
+  width: 100%;
+
+  .notice-outer-cell {
+    padding: 25px 10px !important;
+  }
+
+  .inner-table {
+    max-width: 900px;
+  }
+
+  .notice-text {
+    h5 {
+      @include open-sans(1.1rem, $white, $semi-bold);
+      margin: 0 20px;
+    }
+
+    p {
+      @include open-sans(.9rem, $white);
+      margin: 0 20px 20px;
+
+      &.lg {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+    }
+
+    &.lower {
+      border-top: 1px solid $white;
+      padding-top: 20px;
+    }
+  }
+
+  .btn {
+    margin-bottom: 20px;
+    padding: 10px 25px;
+  }
+}
+
 .modal-backdrop {
   background: $blue-dark;
 
