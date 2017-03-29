@@ -25,204 +25,233 @@
   <div class="container-fluid h-100" style="padding-bottom: 5rem;">
     {% include '@App/Default/_header.html.twig' with {class: 'hills'} %}
 
-    <h3 class="page-header-1">{{ 'title'|trans }}</h3>
-    <ul class="nav row justify-content-center gutter-sm" role="tablist">
-      <li class="col-4 col-lg-3 nav-item">
-        <a class="btn btn-lg btn-block btn-primary btn-cta" href="#talkTab" data-toggle="tab" role="tab" aria-expanded="false">
-          <div class="d-flex align-items-center justify-content-center top-img">
-            <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_specialist.png') }}" style="width: 46px; height: 36.5px;"alt="Talk to a specialist to stop smoking in London - Button icon" />
-          </div>
-          <span class="d-flex align-items-center justify-content-center text">
-            {{ 'specialist.button'|trans }}
-          </span>
-        </a>
-      </li>
-      <li class="col-4 col-lg-3 nav-item">
-        <a class="btn btn-lg btn-block btn-primary btn-cta" href="#useTab" data-toggle="tab" role="tab" aria-expanded="false">
-          <div class="d-flex align-items-center justify-content-center top-img">
-            <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_medicine.png') }}" style="width: 44px; height: 38.5px;"alt="Stop smoking using medicines in London - Button icon" />
-          </div>
-          <span class="d-flex align-items-center justify-content-center text">
-            <span class="hidden-xl-up">{{ 'medicine.button.mobile'|trans }}</span><span class="hidden-lg-down">{{ 'medicine.button.desktop'|trans }}</span>
-          </span>
-        </a>
-      </li>
-      <li class="col-4 col-lg-3 nav-item">
-        <a class="btn btn-lg btn-block btn-primary btn-cta" href="#aloneTab" data-toggle="tab" role="tab" aria-expanded="false">
-          <div class="d-flex align-items-center justify-content-center top-img">
-            <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_apps.png') }}" style="width: 41.5px; height: 43px;" alt="Stop smoking on your own - Button icon" />
-          </div>
-          <span class="d-flex align-items-center justify-content-center text">
-            {{ 'alone.button'|trans }}
-          </span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="row justify-content-center chance-percent-row gutter-sm">
-      <div class="col-4 col-lg-3">
-        {{ 'increase_chances_prefix'|trans }} <b>{{ 'specialist.increase_chances'|trans }}</b>
-      </div>
-      <div class="col-4 col-lg-3">
-        {{ 'increase_chances_prefix'|trans }} <b>{{ 'medicine.increase_chances'|trans }}</b>
-      </div>
-      <div class="col-4 col-lg-3">
-        {{ 'increase_chances_prefix'|trans }} <b>{{ 'alone.increase_chances'|trans }}</b>
-      </div>
-    </div>
-
-    <div class="row justify-content-center arrow-row gutter-sm">
-      <div class="col-12 col-lg-9">
-        <img class="d-inline-block selected-arrow" id="selectedArrow" src="{{ asset('bundles/app/images/icon/arrow_down.png') }}" style="width: 37px; height: 18px;" alt="Arrow indicator" />
-      </div>
-    </div>
+    <div class="row justify-content-center map-row-wrapper row-main-page no-gutters">
+      <div class="col-12">
+        <div class="container mobile-w-100">
+          <div class="row justify-content-center">
+            <div class="col">
+              <h3 class="page-header-1">{{ 'title'|trans }}</h3>
     
-    <div class="tab-content">
-      <div class="tab-pane" role="tabpanel" id="talkTab">
-        <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-lg-9">
-            <div class="card card-outline-success text-center">
-              <div class="card-block">
-                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'specialist.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/telephone-advisor">{{ 'specialist.continue_button'|trans }}</a></span>
+              <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                  
+                  <ul class="nav row gutter-sm" role="tablist">
+                    
+                    <li class="col-4 nav-item">
+                      <a class="btn btn-lg btn-block btn-primary btn-cta" href="#talkTab" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="d-flex align-items-center justify-content-center top-img">
+                          <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_specialist.png') }}" style="width: 46px; height: 36.5px;"alt="Talk to a specialist to stop smoking in London - Button icon" />
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center text">
+                          {{ 'specialist.button'|trans }}
+                        </span>
+                      </a>
+                    </li>
+
+                    <li class="col-4 nav-item">
+                      <a class="btn btn-lg btn-block btn-primary btn-cta" href="#useTab" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="d-flex align-items-center justify-content-center top-img">
+                          <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_medicine.png') }}" style="width: 44px; height: 38.5px;"alt="Stop smoking using medicines in London - Button icon" />
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center text">
+                          <span class="hidden-xl-up">{{ 'medicine.button.mobile'|trans }}</span><span class="hidden-lg-down">{{ 'medicine.button.desktop'|trans }}</span>
+                        </span>
+                      </a>
+                    </li>
+
+                    <li class="col-4 nav-item">
+                      <a class="btn btn-lg btn-block btn-primary btn-cta" href="#aloneTab" data-toggle="tab" role="tab" aria-expanded="false">
+                        <div class="d-flex align-items-center justify-content-center top-img">
+                          <img class="d-inline-block" src="{{ asset('bundles/app/images/button/icon_apps.png') }}" style="width: 41.5px; height: 43px;" alt="Stop smoking on your own - Button icon" />
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center text">
+                          {{ 'alone.button'|trans }}
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div>
               </div>
-            </div>
-            <div class="container-fluid info-cols ttt">
+
+              <div class="row justify-content-center chance-percent-row">
+                <div class="col-12 col-lg-10">
+                  <div class="row gutter-sm">
+                    <div class="col-4">
+                      {{ 'increase_chances_prefix'|trans }} <b>{{ 'specialist.increase_chances'|trans }}</b>
+                    </div>
+                    <div class="col-4">
+                      {{ 'increase_chances_prefix'|trans }} <b>{{ 'medicine.increase_chances'|trans }}</b>
+                    </div>
+                    <div class="col-4">
+                      {{ 'increase_chances_prefix'|trans }} <b>{{ 'alone.increase_chances'|trans }}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center arrow-row">
+                <div class="col-12 col-lg-10">
+                  <img class="d-inline-block selected-arrow" id="selectedArrow" src="{{ asset('bundles/app/images/icon/arrow_down.png') }}" style="width: 37px; height: 18px;" alt="Arrow indicator" />
+                </div>
+              </div>
+              
               <div class="row">
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/advisor.png') }}" style="width: 128.5px; height: 139.5px;" alt="Stop smoking specialist icon" />
+                <div class="col-12 tab-content">
+                  <div class="tab-pane" role="tabpanel" id="talkTab">
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-lg-10">
+                        <div class="card card-outline-success text-center">
+                          <div class="card-block">
+                            <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'specialist.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/telephone-advisor">{{ 'specialist.continue_button'|trans }}</a></span>
+                          </div>
+                        </div>
+                        <div class="container-fluid info-cols ttt">
+                          <div class="row">
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/advisor.png') }}" style="width: 128.5px; height: 139.5px;" alt="Stop smoking specialist icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'specialist.columns.1.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('specialist.columns.1.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'specialist.columns.2.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('specialist.columns.2.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'specialist.columns.3.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('specialist.columns.3.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 class="info-title">{{ 'specialist.columns.1.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('specialist.columns.1.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
+
+                  <div class="tab-pane" role="tabpanel" id="useTab">
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-lg-10">
+                        <div class="card card-outline-success text-center">
+                          <div class="card-block">
+                            <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'medicine.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/using-medicines">{{ 'medicine.continue_button'|trans }}</a></span>
+                          </div>
+                        </div>
+                        
+                        <div class="container-fluid info-cols ttt">
+                          <div class="row">
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/medicine.png') }}" style="width: 127px; height: 127px;" alt="Stop smoking medicines icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'medicine.columns.1.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('medicine.columns.1.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'medicine.columns.2.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('medicine.columns.2.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'medicine.columns.3.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('medicine.columns.3.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 class="info-title">{{ 'specialist.columns.2.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('specialist.columns.2.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
+
+                  <div class="tab-pane" role="tabpanel" id="aloneTab">
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-lg-10">
+                        <div class="card card-outline-success text-center">
+                          <div class="card-block">
+                            <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'alone.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/alone-with-websites-and-apps">{{ 'alone.continue_button'|trans }}</a></span>
+                          </div>
+                        </div>
+                        
+                        <div class="container-fluid info-cols ttt">
+                          <div class="row">
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/info.png') }}" style="width: 130.5px; height: 132px;" alt="Stop smoking information icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'alone.columns.1.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('alone.columns.1.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'alone.columns.2.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('alone.columns.2.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                              <div class="d-flex align-items-center justify-content-center col-image">
+                                <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
+                              </div>
+                              <h4 class="info-title">{{ 'alone.columns.3.title'|trans }}</h4>
+                              <ul class="info-list">
+                                {% for litext in transarray('alone.columns.3.list', [], 'stop_smoking_choices') %}
+                                  <li>{{ litext }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 class="info-title">{{ 'specialist.columns.3.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('specialist.columns.3.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
+
                 </div>
               </div>
-            </div>
+            </div>{# col-lg-10 #}
           </div>
-        </div>
-      </div>
-      <div class="tab-pane" role="tabpanel" id="useTab">
-        <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-lg-9">
-            <div class="card card-outline-success text-center">
-              <div class="card-block">
-                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'medicine.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/using-medicines">{{ 'medicine.continue_button'|trans }}</a></span>
-              </div>
-            </div>
-            
-            <div class="container-fluid info-cols ttt">
-              <div class="row">
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/medicine.png') }}" style="width: 127px; height: 127px;" alt="Stop smoking medicines icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'medicine.columns.1.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('medicine.columns.1.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'medicine.columns.2.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('medicine.columns.2.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'medicine.columns.3.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('medicine.columns.3.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane" role="tabpanel" id="aloneTab">
-        <div class="row justify-content-center gutter-sm">
-          <div class="col-12 col-lg-9">
-            <div class="card card-outline-success text-center">
-              <div class="card-block">
-                <span><span class="text-chances">{{ 'increase_chances_prefix'|trans }} <b class="text-success">{{ 'alone.increase_chances'|trans }}</b></span> <a class="btn btn-lg btn-success btn-cta ml-4" href="/stop-smoking/alone-with-websites-and-apps">{{ 'alone.continue_button'|trans }}</a></span>
-              </div>
-            </div>
-            
-            <div class="container-fluid info-cols ttt">
-              <div class="row">
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/info.png') }}" style="width: 130.5px; height: 132px;" alt="Stop smoking information icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'alone.columns.1.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('alone.columns.1.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/graph.png') }}" style="width: 138.5px; height: 120px;" alt="Stop smoking benefits graph icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'alone.columns.2.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('alone.columns.2.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                  <div class="d-flex align-items-center justify-content-center col-image">
-                    <img src="{{ asset('bundles/app/images/main/contract.png') }}" style="width: 131.5px; height: 131.5px;" alt="Stop smoking contract commitment icon" />
-                  </div>
-                  <h4 class="info-title">{{ 'alone.columns.3.title'|trans }}</h4>
-                  <ul class="info-list">
-                    {% for litext in transarray('alone.columns.3.list', [], 'stop_smoking_choices') %}
-                      <li>{{ litext }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>{# container mobile-w-100 #}
       </div>
     </div>
     

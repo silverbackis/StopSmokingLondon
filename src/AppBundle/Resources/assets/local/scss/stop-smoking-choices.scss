@@ -2,13 +2,6 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
-
-.jumbotron {
-  h2 {
-    font-size: 3rem;
-  }
-}
-
 .btn-cta {
   font-size: .9rem;
   padding: .75rem .5rem;
@@ -96,6 +89,14 @@
     > .row {
       margin-left: -3rem;
       margin-right: -3rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .info-cols {
+    .info-list {
+      font-size: .9rem;
     }
   }
 }

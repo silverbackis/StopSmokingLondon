@@ -32,79 +32,102 @@
 
     {% include '@App/Default/_header.html.twig' with {class: 'clouds'} %}
 
-    <div class="row justify-content-center map-row-wrapper row-main-page">
-      <div class="col flex-last flex-lg-first">
-        <div id="searchText" class="toggle-area">
-          <h3 class="page-header-2 postcode-header">{{ 'search.header'|trans }}</h3>
-          <div class="form-group row postcode-group gutter-sm">
-            <div class="col">
-              <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
-            </div>
-            <div class="col-12 col-auto">
-              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">{{ 'search.button'|trans }}</a>
-            </div>
-            <div class="col-12">
-              <p class="form-text text-muted">{{ 'search.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchBorough">{{ 'search.alternative'|trans }}</a></p>
-            </div>
-          </div>
-        </div>
-        <div id="searchBorough" class="toggle-area" style="display: none;">
-          <h3 class="page-header-2 postcode-header">{{ 'select.header'|trans }}</h3>
-          <div class="form-group row borough-group gutter-sm">
-            <div class="col-12">
-              <div class="w-100">
-                <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" data-live-search="true" data-live-search-style="startsWith" title="{{ 'select.dropdown_initital_text'|trans }}" id="sessionSelect">
-                </select>
-              </div>
-            </div>
-            <div class="col-12">
-              <p class="form-text text-muted">{{ 'select.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchText">{{ 'select.alternative'|trans }}</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="card card-outline-success text-center borough-card" id="boroughCard">
-          <div class="card-block">
-            <p id="liveIn">{{ 'found_borough_prefix'|trans }}</p>
-            <h4 id="selectedBorough"></h4>
-          </div>
-        </div>
-      </div> 
-      <div class="col-12 col-lg-auto google-map-outer">
-        <center>
-          <div class="google-map spacer"></div>
-        </center>
-      </div>
-      <div data-token="{{ csrf_token('borough_json') }}" data-search-token="{{ csrf_token('geocode_search') }}" class="google-map actual" id="map"></div>
-    </div>
-    <div class="row justify-content-center mt-5 hidden" id="nextSteps">
+    <div class="row justify-content-center map-row-wrapper row-main-page no-gutters">
       <div class="col-12">
-        <h3 class="page-header-2 two-steps">{{ 'steps.header'|trans }}</h3>
-        
-        {% include '@App/Default/_step1.html.twig' %}
-        
-        {% if type == 'advisor' %}
-        <div class="card card-outline-success text-center container-fluid mobile-w-100" id="advisorCard">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <h4>{{ 'steps.2.advisor.header'|trans }}</h4>
-              <p class="message ttt"></p>
-              <span class="tel-cont"></span>
-            </div>
+        <div class="container mobile-w-100">
+          <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10">
+              <!--<div class="container-fluid">-->
+                <div class="row top-map-row">
+                  <div class="col flex-last flex-lg-first">
+                    <div id="searchText" class="toggle-area">
+                      <h3 class="page-header-2 postcode-header">{{ 'search.header'|trans }}</h3>
+                      <div class="form-group row postcode-group no-gutters">
+                        <div class="col">
+                          <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
+                        </div>
+                        <div class="col-12 col-auto">
+                          <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">{{ 'search.button'|trans }}</a>
+                        </div>
+                        <div class="col-12">
+                          <p class="form-text text-muted">{{ 'search.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchBorough">{{ 'search.alternative'|trans }}</a></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="searchBorough" class="toggle-area" style="display: none;">
+                      <h3 class="page-header-2 postcode-header">{{ 'select.header'|trans }}</h3>
+                      <div class="form-group row borough-group no-gutters">
+                        <div class="col-12">
+                          <div class="w-100">
+                            <select class="selectpicker w-100" data-style="btn-secondary btn-lg" data-dropup-auto="false" data-live-search="true" data-live-search-style="startsWith" title="{{ 'select.dropdown_initital_text'|trans }}" id="sessionSelect">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <p class="form-text text-muted">{{ 'select.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchText">{{ 'select.alternative'|trans }}</a></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card card-outline-success text-center borough-card" id="boroughCard">
+                      <div class="row gutter-sm">
+                        <div class="col-12">
+                          <div class="card-block">
+                            <p id="liveIn">{{ 'found_borough_prefix'|trans }}</p>
+                            <h4 id="selectedBorough"></h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-lg-auto google-map-outer">
+                    <center>
+                      <div class="google-map spacer"></div>
+                    </center>
+                  </div>
+
+                  <div data-token="{{ csrf_token('borough_json') }}" data-search-token="{{ csrf_token('geocode_search') }}" class="google-map actual" id="map"></div>
+                </div>
+              <!--</div>-->
+
+              <div class="row justify-content-center mt-5 hidden no-gutters mobile-w-100" id="nextSteps">
+                
+                <div class="col-12">
+                  <h3 class="page-header-2 two-steps">{{ 'steps.header'|trans }}</h3>
+                  
+                  {% include '@App/Default/_step1.html.twig' %}
+                  
+                  {% if type == 'advisor' %}
+                    <div class="card card-outline-success text-center container-fluid" id="advisorCard">
+                      <div class="card-block row justify-content-center">
+                        <div class="col-12 col-md-10">
+                          <h4>{{ 'steps.2.advisor.header'|trans }}</h4>
+                          <p class="message ttt"></p>
+                          <span class="tel-cont"></span>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                  {% if type == 'medicine' %}
+                    <div class="card card-outline-success text-center container-fluid" id="medicineCard">
+                      <div class="card-block row justify-content-center">
+                        <div class="col-12 col-md-10">
+                          <h4>{{ 'steps.2.medicine.header'|trans }}</h4>
+                          <p class="message ttt"></p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+
+                </div>
+              </div>
+              {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
           </div>
         </div>
-        {% endif %}
-        {% if type == 'medicine' %}
-        <div class="card card-outline-success text-center container-fluid mobile-w-100" id="medicineCard">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <h4>{{ 'steps.2.medicine.header'|trans }}</h4>
-              <p class="message ttt"></p>
-            </div>
-          </div>
-        </div>
-        {% endif %}
       </div>
     </div>
-    {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
   </div>
 {% endblock %}

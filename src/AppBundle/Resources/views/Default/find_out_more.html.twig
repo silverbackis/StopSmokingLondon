@@ -23,68 +23,78 @@
 {% block page_content %}
   <div class="container-fluid h-100 container-lower">
     {% include '@App/Default/_header.html.twig' %}
-    
-    <div class="row justify-content-center facts-row">
+    <div class="row justify-content-center no-gutters row-main-page">
       <div class="col-12">
-        <div class="facts-box">
-          <ol class="fact-carousel-indicators">
-            <li data-show-index="0" class="active"></li>
-            <li data-show-index="1"></li>
-            <li data-show-index="2"></li>
-            <li data-show-index="3"></li>
-            <li data-show-index="4"></li>
-          </ol>
-          <ul id="factsCarousel" class="facts-carousel">
-            <li class="fact-panel">
-              <div class="fact-image">
-                <img src="{{ asset('bundles/app/images/icon/facts/apple.png') }}" style="width: 107.5px; height: 126px;" alt="Apple with heart cut-out" />
+        <div class="container mobile-w-100">
+          
+          <div class="row justify-content-center facts-row">
+            <div class="col-12">
+              <div class="facts-box">
+                <ol class="fact-carousel-indicators">
+                  <li data-show-index="0" class="active"></li>
+                  <li data-show-index="1"></li>
+                  <li data-show-index="2"></li>
+                  <li data-show-index="3"></li>
+                  <li data-show-index="4"></li>
+                </ol>
+                <ul id="factsCarousel" class="facts-carousel">
+                  <li class="fact-panel">
+                    <div class="fact-image">
+                      <img src="{{ asset('bundles/app/images/icon/facts/apple.png') }}" style="width: 107.5px; height: 126px;" alt="Apple with heart cut-out" />
+                    </div>
+                    <p>After the age of 35, stopping smoking gains your 4 to 6 hours of healthy life for every day you don't smoke.</p>
+                  </li>
+                  <li class="fact-panel">
+                    <div class="fact-image">
+                      <img src="{{ asset('bundles/app/images/icon/facts/smileyface.png') }}" style="width: 119.5px; height: 119.5px;" alt="Adorable grinning face" />
+                    </div>
+                    <p>80% of smokers who stop report feeling happier than when they were smoking.</p>
+                  </li>
+                  <li class="fact-panel">
+                    <div class="fact-image">
+                      <img src="{{ asset('bundles/app/images/icon/facts/sunflower.png') }}" style="width: 124.5px; height: 125px;" alt="Sunflower image" />
+                    </div>
+                    <p>Within 1 day of stopping smoking, levels of the toxic gas, carbon monoxide, reduce to the levels found in non-smokers.</p>
+                  </li>
+                  <li class="fact-panel">
+                    <div class="fact-image">
+                      <img src="{{ asset('bundles/app/images/icon/facts/skin.png') }}" style="width: 135px; height: 135.5px;" alt="Skin pore illustration - skin complexion improves when you stop smoking" />
+                    </div>
+                    <p>Within 4 weeks of stopping smoking your skin complexion will improve.</p>
+                  </li>
+                  <li class="fact-panel">
+                    <div class="fact-image">
+                      <img src="{{ asset('bundles/app/images/icon/facts/money.png') }}" style="width: 123.5px; height: 124px;" alt="UK Pound icon symbolising money saved when you stop smoking" />
+                    </div>
+                    <p>The average smoker will save £23/week when they stop.</p>
+                  </li>
+                </ul>
               </div>
-              <p>After the age of 35, stopping smoking gains your 4 to 6 hours of healthy life for every day you don't smoke.</p>
-            </li>
-            <li class="fact-panel">
-              <div class="fact-image">
-                <img src="{{ asset('bundles/app/images/icon/facts/smileyface.png') }}" style="width: 119.5px; height: 119.5px;" alt="Adorable grinning face" />
-              </div>
-              <p>80% of smokers who stop report feeling happier than when they were smoking.</p>
-            </li>
-            <li class="fact-panel">
-              <div class="fact-image">
-                <img src="{{ asset('bundles/app/images/icon/facts/sunflower.png') }}" style="width: 124.5px; height: 125px;" alt="Sunflower image" />
-              </div>
-              <p>Within 1 day of stopping smoking, levels of the toxic gas, carbon monoxide, reduce to the levels found in non-smokers.</p>
-            </li>
-            <li class="fact-panel">
-              <div class="fact-image">
-                <img src="{{ asset('bundles/app/images/icon/facts/skin.png') }}" style="width: 135px; height: 135.5px;" alt="Skin pore illustration - skin complexion improves when you stop smoking" />
-              </div>
-              <p>Within 4 weeks of stopping smoking your skin complexion will improve.</p>
-            </li>
-            <li class="fact-panel">
-              <div class="fact-image">
-                <img src="{{ asset('bundles/app/images/icon/facts/money.png') }}" style="width: 123.5px; height: 124px;" alt="UK Pound icon symbolising money saved when you stop smoking" />
-              </div>
-              <p>The average smoker will save £23/week when they stop.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+            </div>
+          </div>{# end facts row #}
 
-    <div class="row justify-content-center mt-5">
-      <div class="col-12">
-        <div class="card card-outline-success text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <h4>
-                <img src="{{ asset('bundles/app/images/logo/a_to_z.png') }}" alt="A to Z of Stopping Smoking Logo" style="width: 194px; height: 45px;" />
-              </h4>
-              <p class="message">{{ 'az_stopping_smoking.text'|trans }}</p>
-              <a class="btn btn-lg btn-success btn-cta website-link" href="{{ 'az_stopping_smoking.buttons.0.link'|trans }}" target="_blank">{{ 'az_stopping_smoking.buttons.0.name'|trans }}</a>
+          <div class="row justify-content-center mt-5 mobile-w-100 no-gutters">
+            <div class="col-12">
+              <div class="card card-outline-success text-center container-fluid">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <h4>
+                      <img src="{{ asset('bundles/app/images/logo/a_to_z.png') }}" alt="A to Z of Stopping Smoking Logo" style="width: 194px; height: 45px;" />
+                    </h4>
+                    <p class="message">{{ 'az_stopping_smoking.text'|trans }}</p>
+                    <a class="btn btn-lg btn-success btn-cta website-link" href="{{ 'az_stopping_smoking.buttons.0.link'|trans }}" target="_blank">{{ 'az_stopping_smoking.buttons.0.name'|trans }}</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
+    
+
+    
 
     {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
     <div class="row cta-box-outer-row">

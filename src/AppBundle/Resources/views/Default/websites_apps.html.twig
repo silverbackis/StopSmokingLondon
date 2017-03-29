@@ -19,70 +19,76 @@
   <div class="container-fluid h-100 container-lower">
     {% include '@App/Default/_header.html.twig' %}
 
-    <div class="row justify-content-center mt-5">
-      <div class="col-12 col-list">
-        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free_formula.png') }}" alt="Smoke Free Formula Logo" style="width: 43px; height: 43.5px;" />
-              <h4>{{ 'smoke_free_formula.name'|trans }}</h4>
-              <p>{{ 'smoke_free_formula.text'|trans }}</p>
-              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free_formula.buttons.0.link'|trans }}" target="_blank">{{ 'smoke_free_formula.buttons.0.name'|trans }}</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/ash.png') }}" alt="Action on Smoking and Health (ASH) Logo" style="width: 77px; height: 45px;" />
-              <h4>{{ 'ash.name'|trans }}</h4>
-              <p>{{ 'ash.text'|trans }}</p>
-              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'ash.buttons.0.link'|trans }}" target="_blank">{{ 'ash.buttons.0.name'|trans }}</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/public_health_england.png') }}" alt="Public Health England Logo" style="width: 138.5px; height: 75.5px;" />
-              <h4>{{ 'phe.name'|trans }}</h4>
-              <p>{{ 'phe.text'|trans }}</p>
-              <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'phe.buttons.0.link'|trans }}" target="_blank">{{ 'phe.buttons.0.name'|trans }}</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/sf28.png') }}" alt="SF28 (Smoke Free 28) Logo" style="width: 84.5px; height: 84.5px;" />
-              <h4>{{ 'sf28.name'|trans }}</h4>
-              <p>{{ 'sf28.text'|trans }}</p>
-              <div>
-                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.0.link'|trans }}" target="_blank">{{ 'sf28.buttons.0.name'|trans }}</a>
-                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.1.link'|trans }}" target="_blank">{{ 'sf28.buttons.1.name'|trans }}</a>
-                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.2.link'|trans }}" target="_blank">{{ 'sf28.buttons.2.name'|trans }}</a>
+    <div class="row justify-content-center mt-5 no-gutters row-main-page">
+      <div class="col-12">
+        <div class="container mobile-w-100">
+          <div class="row mobile-w-100 no-gutters">
+            <div class="col-12 col-list">
+              <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free_formula.png') }}" alt="Smoke Free Formula Logo" style="width: 43px; height: 43.5px;" />
+                    <h4>{{ 'smoke_free_formula.name'|trans }}</h4>
+                    <p>{{ 'smoke_free_formula.text'|trans }}</p>
+                    <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free_formula.buttons.0.link'|trans }}" target="_blank">{{ 'smoke_free_formula.buttons.0.name'|trans }}</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="card card-outline-primary text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free.png') }}" alt="Smoke Free App Logo" style="width: 87.5px; height: 87.5px;" />
-              <h4>{{ 'smoke_free.name'|trans }}</h4>
-              <p>{{ 'smoke_free.text'|trans }}</p>
-              <div>
-                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free.buttons.0.link'|trans }}" target="_blank">{{ 'smoke_free.buttons.0.name'|trans }}</a>
-                <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free.buttons.1.link'|trans }}" target="_blank">{{ 'smoke_free.buttons.1.name'|trans }}</a>
+              <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/ash.png') }}" alt="Action on Smoking and Health (ASH) Logo" style="width: 77px; height: 45px;" />
+                    <h4>{{ 'ash.name'|trans }}</h4>
+                    <p>{{ 'ash.text'|trans }}</p>
+                    <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'ash.buttons.0.link'|trans }}" target="_blank">{{ 'ash.buttons.0.name'|trans }}</a>
+                  </div>
+                </div>
               </div>
+
+              <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smokefree.png') }}" alt="NHS SmokeFree Logo" style="width: 120px; height: 45px;" />
+                    <h4>{{ 'smokefree.name'|trans }}</h4>
+                    <p>{{ 'smokefree.text'|trans }}</p>
+                    <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smokefree.buttons.0.link'|trans }}" target="_blank">{{ 'smokefree.buttons.0.name'|trans }}</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/sf28.png') }}" alt="SF28 (Smoke Free 28) Logo" style="width: 84.5px; height: 84.5px;" />
+                    <h4>{{ 'sf28.name'|trans }}</h4>
+                    <p>{{ 'sf28.text'|trans }}</p>
+                    <div>
+                      <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.0.link'|trans }}" target="_blank">{{ 'sf28.buttons.0.name'|trans }}</a>
+                      <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.1.link'|trans }}" target="_blank">{{ 'sf28.buttons.1.name'|trans }}</a>
+                      <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'sf28.buttons.2.link'|trans }}" target="_blank">{{ 'sf28.buttons.2.name'|trans }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-outline-primary text-center container-fluid mobile-w-100">
+                <div class="card-block row justify-content-center">
+                  <div class="col-12 col-md-9">
+                    <img class="mb-2" src="{{ asset('bundles/app/images/logo/websites_and_apps/smoke_free.png') }}" alt="Smoke Free App Logo" style="width: 87.5px; height: 87.5px;" />
+                    <h4>{{ 'smoke_free.name'|trans }}</h4>
+                    <p>{{ 'smoke_free.text'|trans }}</p>
+                    <div>
+                      <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free.buttons.0.link'|trans }}" target="_blank">{{ 'smoke_free.buttons.0.name'|trans }}</a>
+                      <a class="btn btn-lg btn-primary btn-cta website-link" href="{{ 'smoke_free.buttons.1.link'|trans }}" target="_blank">{{ 'smoke_free.buttons.1.name'|trans }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-
       </div>
     </div>
 

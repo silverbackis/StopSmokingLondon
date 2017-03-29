@@ -33,7 +33,7 @@ $(function(){
   $(".card-outline-success").each(function(){
     $(this).clone().appendTo($(this).parent());
   });
-
+  
   switch(window.location.hash)
   {
     case "#stop_smoking_advisor":

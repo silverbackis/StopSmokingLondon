@@ -39,6 +39,7 @@ $bold:      700;
   font-family: 'Open Sans', sans-serif;
   font-size: $font-size;
   font-weight: $weight;
+  letter-spacing: -.01rem;
 }
 
 @mixin roboto($font-size: 1.1rem, $colour: $body-color, $weight: normal) {
@@ -46,6 +47,7 @@ $bold:      700;
   font-family: 'Roboto', sans-serif;
   font-size: $font-size;
   font-weight: $weight;
+  letter-spacing: -.01rem;
 }
 
 @mixin std-box-shadow() {

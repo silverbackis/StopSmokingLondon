@@ -26,50 +26,75 @@
 
     {% include '@App/Default/_header.html.twig' with {class: 'clouds'} %}
 
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center map-row-wrapper row-main-page no-gutters">
       <div class="col-12">
-        <h3 class="page-header-2 two-steps">{{ 'steps.2.alone.info.header'|trans }}</h3>
-        <div class="text-center container-fluid alone-tips" id="aloneTips">
-          <div class="row ttt">
-            <div class="col-lg-4">
-              <div class="d-flex align-items-center justify-content-center col-image">
-                <img src="{{ asset('bundles/app/images/icon/stop.png') }}" style="width: auto; height: 110px;" alt="Stop sign - stop smoking abruptly" />
-              </div>
-              <p>{{ 'steps.2.alone.info.1'|trans }}</p>
-            </div>
-            <div class="col-lg-4">
-              <div class="d-flex align-items-center justify-content-center col-image">
-                <img src="{{ asset('bundles/app/images/main/ecig.png') }}" style="width: 60x; height: 109.5px;" alt="Stop smoking specialist icon" />
-              </div>
-              <p>{{ 'steps.2.alone.info.2'|trans }}</p>
-            </div>
-            <div class="col-lg-4">
-              <div class="d-flex align-items-center justify-content-center col-image">
-                <img src="{{ asset('bundles/app/images/main/website_and_apps.png') }}" style="width: 117px; height: 96px;" alt="Stop smoking specialist icon" />
-              </div>
-              <p>{{ 'steps.2.alone.info.3'|trans }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-      <div class="col-12">
-        <h3 class="page-header-2 two-steps">{{ 'steps.header'|trans }}</h3>
-        
-        {% include '@App/Default/_step1.html.twig' %}
+        <div class="container mobile-w-100">
+          <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10">
+              
+              {# top - 3 columns of info #}
+              <div class="row justify-content-center mt-5 mobile-w-100">
+                <div class="col-12">
+                  <h3 class="page-header-2 two-steps">{{ 'steps.2.alone.info.header'|trans }}</h3>
+                  <div class="text-center container-fluid alone-tips" id="aloneTips">
+                    <div class="row ttt">
+                      
+                      <div class="col-lg-4">
+                        <div class="d-flex align-items-center justify-content-center col-image">
+                          <img src="{{ asset('bundles/app/images/icon/stop.png') }}" style="width: auto; height: 110px;" alt="Stop sign - stop smoking abruptly" />
+                        </div>
+                        <p>{{ 'steps.2.alone.info.1'|trans }}</p>
+                      </div>
+                      
+                      <div class="col-lg-4">
+                        <div class="d-flex align-items-center justify-content-center col-image">
+                          <img src="{{ asset('bundles/app/images/main/ecig.png') }}" style="width: 60x; height: 109.5px;" alt="Stop smoking specialist icon" />
+                        </div>
+                        <p>{{ 'steps.2.alone.info.2'|trans }}</p>
+                      </div>
 
-        <div class="card card-outline-success text-center container-fluid mobile-w-100">
-          <div class="card-block row justify-content-center">
-            <div class="col-12 col-md-9">
-              <h4>{{ 'steps.2.alone.header'|trans }}</h4>
-              <p class="message ttt">{{ 'steps.2.alone.text'|trans }}</p>
-              <a class="btn btn-lg btn-success btn-cta website-link" href="{{ path('websites_apps') }}">{{ 'steps.2.alone.button'|trans }}</a>
-            </div>
+                      <div class="col-lg-4">
+                        <div class="d-flex align-items-center justify-content-center col-image">
+                          <img src="{{ asset('bundles/app/images/main/website_and_apps.png') }}" style="width: 117px; height: 96px;" alt="Stop smoking specialist icon" />
+                        </div>
+                        <p>{{ 'steps.2.alone.info.3'|trans }}</p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {# end top - 3 columns of info #}
+
+              {# bottom steps #}
+              <div class="row justify-content-center mt-5 mobile-w-100 no-gutters">
+                <div class="col-12">
+                  <h3 class="page-header-2 two-steps">{{ 'steps.header'|trans }}</h3>
+                  
+                  {% include '@App/Default/_step1.html.twig' %}
+
+                  <div class="card card-outline-success text-center container-fluid mobile-w-100">
+                    <div class="card-block row justify-content-center">
+                      <div class="col-12 col-md-9">
+                        <h4>{{ 'steps.2.alone.header'|trans }}</h4>
+                        <p class="message ttt">{{ 'steps.2.alone.text'|trans }}</p>
+                        <a class="btn btn-lg btn-success btn-cta website-link" href="{{ path('websites_apps') }}">{{ 'steps.2.alone.button'|trans }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {# end bottom steps #}
+
+            </div>{# col-lg-10 #}
           </div>
         </div>
       </div>
     </div>
+
+    
+
+    
     {% include '@App/Default/_stop_smoking_london_info.html.twig' %}
   </div>
 {% endblock %}

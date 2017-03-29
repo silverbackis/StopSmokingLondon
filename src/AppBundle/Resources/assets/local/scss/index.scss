@@ -90,8 +90,8 @@
 
   .feature-image {
     &.london {
-      height: 184px;
-      width: 237.5px;
+      height: 139.5px;
+      width: 180px;
     }
 
     &.chances {
@@ -257,7 +257,7 @@ h3 {
 }
 
 .twitter-card {
-  @include open-sans(1rem);
+  @include open-sans(.9rem);
   @include std-box-shadow();
   border: 0;
   border-radius: 0;
@@ -321,7 +321,7 @@ h3 {
   }
 
   .twitter-card {
-    font-size: .9rem;
+    font-size: .82rem;
   }
 }
 
@@ -332,6 +332,10 @@ h3 {
     p {
       margin-top: 1rem;
     }
+  }
+
+  .twitter-card {
+    font-size: .9rem;
   }
 
   .home-feature {
@@ -383,6 +387,10 @@ h3 {
   }
 
   .triples-row {
+    .home-right {
+      max-width: none;
+    }
+
     .home-right.top {
       display: block;
     }

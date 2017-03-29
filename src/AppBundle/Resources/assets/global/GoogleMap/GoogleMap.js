@@ -451,7 +451,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
     // Initialise the map
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
+      zoom: 9,
       center: center,
       styles: [
         {
@@ -560,7 +560,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $map.css({
         left: Math.round(posOffset.left+spacerOffset.left)+"px"
       });
-    },
+    }/*,
     updateMap = function(breakpoint)
     {
       switch(breakpoint)
@@ -584,9 +584,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
       }
       updateRealMapLeft();
       map.setCenter(center);
-    };
-    viewport.breakpointChanged(updateMap);
-    updateMap(viewport.current());
+    }*/;
+    //viewport.breakpointChanged(updateMap);
+    //updateMap(viewport.current());
+    updateRealMapLeft();
     $(window).on("resize orientationchange", updateRealMapLeft);
 
     // Setup the selectbox change event

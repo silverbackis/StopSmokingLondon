@@ -1,6 +1,6 @@
 {% trans_default_domain "telephone_service" %}
 
-<div class="row justify-content-center stop-smoking-london-info-row">
+<div class="row justify-content-center stop-smoking-london-info-row mobile-w-100">
   <div class="col-12">
     <div class="stop-smoking-london-bottom container-fluid">
       <div class="row">
@@ -21,7 +21,7 @@
             {% endfor %}
             <p class="text-primary">{{ 'prelaunch.telephone.0'|trans|replace({"%launch_date%": launch_date|date(launch_date_format)})|raw }}</p>
           {% endif %}
-          {% if app.request.attributes.get('_route') != 'find_out_more' and app.request.attributes.get('_route') != 'stop_smoking_medicine' and app.request.attributes.get('_route') != 'stop_smoking_advisor' %}
+          {% if app.request.attributes.get('_route') != 'find_out_more' and app.request.attributes.get('_route') != 'stop_smoking_medicines' and app.request.attributes.get('_route') != 'stop_smoking_advisor' %}
           <a class="btn btn-lg btn-primary btn-cta" href="{{ path('find_out_more') }}">{{ 'find_out_more_button'|trans }}</a>
           {% endif %}
         </div>

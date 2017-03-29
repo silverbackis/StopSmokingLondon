@@ -352,10 +352,10 @@
 
 // Used on most pages
 .jumbotron-outer {
-  background: 50% 60% no-repeat $blue-header;
+  background: 50% 57% no-repeat $blue-header;
 
   h2 {
-    @include open-sans(2rem, $blue, $semi-bold);
+    @include open-sans(2.2rem, $blue, $semi-bold);
   }
 
   .lead {
@@ -424,18 +424,18 @@
 
 .container-lower {
   margin-bottom: 4rem;
+  text-align: center;
+}
 
-  > .row {
-    text-align: center;
+.row-main-page {
+  margin-top: 2rem;
 
-    &.row-main-page {
-      margin-top: 2rem;
-    }
+  > .col-12 > .container {
+    padding: 0;
 
-    + .row {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1200px;
+    > .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 }
@@ -459,6 +459,11 @@
         display: inline-block;
         font-weight: $semi-bold;
       }
+    }
+
+    b {
+      display: inline-block;
+      width: 100%;
     }
   }
 
@@ -518,13 +523,13 @@
 }
 
 .gutter-sm {
-  margin-left: -5px;
-  margin-right: -5px;
+  //margin-left: -5px;
+  //margin-right: -5px;
 
   > .col,
   > [class*="col-"] {
-    padding-left: 5px;
-    padding-right: 5px;
+    //padding-left: 5px;
+    //padding-right: 5px;
   }
 }
 
@@ -597,7 +602,7 @@
 }
 
 .page-header-1 {
-  margin: 1.2rem 0;
+  margin: 0 0 1.2rem;
 }
 
 .page-header-2,
@@ -662,6 +667,9 @@
   }
 
   .gutter-sm {
+    margin-left: -3px;
+    margin-right: -3px;
+
     > .col,
     > [class*="col-"] {
       padding-left: 3px;
@@ -795,13 +803,19 @@
     display: none;
   }
 
-  .container-lower {
-    padding-left: 4px;
-    padding-right: 4px;
+  //.container-lower {
+    //padding-left: 4px;
+    //padding-right: 4px;
 
-    > .row {
-      margin-left: -4px;
-      margin-right: -4px;
+    //> .row {
+    //  margin-left: -4px;
+    //  margin-right: -4px;
+    //}
+  //}
+  
+  .row-main-page {
+    > .container {
+      width: 100%;
     }
   }
 
@@ -809,7 +823,7 @@
     margin-top: 2rem;
 
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
 
       &:first-child {
         margin-top: 1rem;
@@ -827,12 +841,6 @@
     .ssl-logo-large {
       height: auto;
       width: 110px;
-    }
-  }
-
-  .alone-tips {
-    p {
-      font-size: .8rem;
     }
   }
 
@@ -886,16 +894,30 @@
 }
 
 @include media-breakpoint-down(sm) {
+  .row-main-page {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .mobile-w-100 {
+    &.container {
+      width: 100%;
+    }
+
+    &.row {
+      margin-left: 0;
+      margin-right: 0;
+
+      .card {
+        border-left: 0;
+        border-radius: 0;
+        border-right: 0;
+      }
+    }
+  }
+
   .card {
     font-size: .8rem;
-
-    &.mobile-w-100 {
-      border-left: 0;
-      border-radius: 0;
-      border-right: 0;
-      margin-left: -19px;
-      margin-right: -19px;
-    }
 
     .btn-cta {
       display: inline-block;
@@ -923,6 +945,23 @@
   }
 
   .cta-buttons-box {
-    padding: 20px 10px;
+    padding: 20px;
+  }
+
+  .stop-smoking-london-bottom {
+    p {
+      b {
+        display: inline;
+        width: auto;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .stop-smoking-london-bottom {
+    p {
+      font-size: 1rem;
+    }
   }
 }
