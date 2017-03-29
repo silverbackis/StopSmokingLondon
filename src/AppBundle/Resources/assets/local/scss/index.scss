@@ -2,18 +2,6 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
-.cta-buttons-box {
-  .btn-cta {
-    font-size: .9rem;
-    min-width: 320px;
-
-    &.btn-success {
-      font-size: 1.4rem;
-      padding: 1.5rem;
-    }
-  }
-}
-
 .home-feature {
   background: url($asset-image-base + 'main/header_home.png') 50% 66% no-repeat $white;
   background-size: auto 427.5px;
@@ -32,6 +20,7 @@
 
 .facts-header {
   @include open-sans(1.1rem, $white, $semi-bold);
+  margin: 0;
   padding: 2.5rem 0;
   text-align: center;
 }
@@ -341,7 +330,7 @@ h3 {
   .home-feature {
     background-position: 45% 66%;
     background-size: auto 427.5px;
-    height: 250px;
+    height: 200px;
   }
 
   .welcome {
@@ -394,32 +383,31 @@ h3 {
     .home-right.top {
       display: block;
     }
+  }  
+
+  .facts-header {
+    font-size: .9rem;
+    padding: 1.5rem 0;
   }
 
-  .cta-buttons-box {
-    .btn-cta {
-      font-size: .8rem;
-      min-width: 290px;
-
-      &.btn-success {
-        font-size: 1.2rem;
-      }
+  .triples-row {
+    > .col-lg,
+    > [class*="col-"] {
+      padding: 0;
     }
   }
-
 }
 
 @include media-breakpoint-down(sm) {
   .home-right {
-    padding: 0;
-
     &.top {
-      padding-top: 0;
-
       .cta-buttons-box {
         padding-top: 30px;
       }
     }
+  }
 
+  .tweet-name {
+    display: none;
   }
 }

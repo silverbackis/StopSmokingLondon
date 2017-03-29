@@ -17,7 +17,7 @@ h3 {
 }
 
 .facts-row {
-  margin: 3rem 0 0;
+  margin: 1rem 0 0;
 }
 
 .facts-box {
@@ -83,11 +83,19 @@ h3 {
 @include media-breakpoint-down(md) {
   .facts-carousel {
     .fact-panel {
+      margin-bottom: 30px;
+      min-height: 210px;
+
       > p {
-        font-size: 1rem;
+        font-size: .8rem;
       }
     }
   }
+
+  .facts-row {
+    margin-top: 0;
+  }
+
 }
 
 @include media-breakpoint-down(sm) {
@@ -98,5 +106,9 @@ h3 {
 
   .cta-box-outer {
     padding: 0;
+  }
+
+  .container-lower {
+    margin-bottom: 0;
   }
 }

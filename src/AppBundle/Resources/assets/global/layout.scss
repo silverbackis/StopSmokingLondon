@@ -2,6 +2,18 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.cta-buttons-box {
+  .btn-cta {
+    font-size: .9rem;
+    min-width: 320px;
+
+    &.btn-success {
+      font-size: 1.4rem;
+      padding: 1.5rem;
+    }
+  }
+}
+
 .website-compat-notice {
   background: $blue-notice;
   text-align: center;
@@ -239,7 +251,7 @@
   z-index: 10;
 
   +.nav {
-    border-top: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
 
     .nav-link {
       @include nav-link();
@@ -562,6 +574,8 @@
 
   &.card-outline-success,
   &.card-outline-warning {
+    border-color: $green;
+
     h4 {
       @include open-sans(1.8rem, $green, $semi-bold);
     }
@@ -661,6 +675,8 @@
 
 @include media-breakpoint-down(md) {
   .back-choices {
+    font-size: .8rem;
+
     .desktop {
       display: none;
     }
@@ -700,7 +716,7 @@
 
   .header-bar {
     .header-logo {
-      height: 80px;
+      height: 65px;
       width: auto;
     }
 
@@ -734,7 +750,7 @@
     font-size: .95rem;
 
     .card-block {
-      padding: 1rem .9rem;
+      padding: 2rem .9rem;
     }
 
     h4 {
@@ -771,10 +787,10 @@
   }
 
   .jumbotron {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
 
     h2 {
-      font-size: 1.45rem;
+      font-size: 1.25rem;
     }
 
     .back-choices + h2 {
@@ -888,6 +904,17 @@
       .modal-content {
         margin: 20px;
         padding: 10px;
+      }
+    }
+  }
+
+  .cta-buttons-box {
+    .btn-cta {
+      font-size: .8rem;
+      min-width: 290px;
+
+      &.btn-success {
+        font-size: 1.2rem;
       }
     }
   }

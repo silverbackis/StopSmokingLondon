@@ -85,20 +85,26 @@
               </ul>
             </div>
             <div class="col-lg-6 home-right">
-              {% include '@App/Default/_home_cta_buttons.html.twig' %}
-              <div class="news-box">
-                <div class="h3-outer">
-                  <h3 class="news-header">
-                    {{ 'header.latest_news'|trans }}
-                  </h3>
-                  <a href="{{ external_links.twitter }}" class="twitter-profile-link" target="_blank">
-                    <div class="media">
-                      <div class="d-flex mr-1 align-self-center icon"></div>
-                      <div class="media-body align-self-center">@StopSmokingLon</div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="news-box">
+                    <div class="h3-outer">
+                      <h3 class="news-header">
+                        {{ 'header.latest_news'|trans }}
+                      </h3>
+                      <a href="{{ external_links.twitter }}" class="twitter-profile-link" target="_blank">
+                        <div class="media">
+                          <div class="d-flex mr-1 align-self-center icon"></div>
+                          <div class="media-body align-self-center">@StopSmokingLon</div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
+                    <div class="carousel-container" id="carouselContainer"></div>
+                  </div>
                 </div>
-                <div class="carousel-container" id="carouselContainer"></div>
+                <div class="col-12 flex-lg-first">
+                  {% include '@App/Default/_home_cta_buttons.html.twig' %}
+                </div>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
   geocoder,
   ResponseMessages,
   markerIcon;
-  $searchInput.focus();
+  
   function gaTrack(obj)
   {
     if(typeof ga!='undefined')
@@ -157,7 +157,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
             map.data.overrideStyle(selectedFeature, {
               fillColor: '#15ce75',
               strokeColor: '#FFFFFF',
-              strokeWeight: 3,
+              strokeWeight: viewport.is("<=sm") ? 2 : 3,
               zIndex: 2
             });
             return false;
@@ -560,18 +560,26 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $map.css({
         left: Math.round(posOffset.left+spacerOffset.left)+"px"
       });
-    }/*,
+    },
     updateMap = function(breakpoint)
     {
       switch(breakpoint)
       {
-        case "xl":
-          $(".google-map").css({
+        //case "xl":
+          /*$(".google-map").css({
             height: '500px',
             width: '630px'
           });
+          google.maps.event.trigger(map, "resize");*/
+          //map.setZoom(10);
+        //break;
+        case "xs":
+          $(".google-map").css({
+            height: '160px',
+            width: '280px'
+          });
           google.maps.event.trigger(map, "resize");
-          map.setZoom(10);
+          map.setZoom(8);
         break;
         default:
           $(".google-map").css({
@@ -584,10 +592,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
       }
       updateRealMapLeft();
       map.setCenter(center);
-    }*/;
-    //viewport.breakpointChanged(updateMap);
-    //updateMap(viewport.current());
-    updateRealMapLeft();
+    };
+    viewport.breakpointChanged(updateMap);
+    updateMap(viewport.current());
+    //updateRealMapLeft();
     $(window).on("resize orientationchange", updateRealMapLeft);
 
     // Setup the selectbox change event
@@ -599,6 +607,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $(this).parents(".toggle-area").hide();
       $($(this).attr("data-toggle")).show();
     });
+  }
+
+  if(!isMobile.any)
+  {
+    $searchInput.focus();
   }
 
   var public = {
