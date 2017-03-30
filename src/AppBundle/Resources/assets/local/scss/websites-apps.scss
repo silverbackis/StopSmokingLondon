@@ -5,3 +5,9 @@
 .col-list {
   max-width: 1000px;
 }
+
+@include media-breakpoint-down(md) {
+  .card h4 + p {
+    margin-bottom: 1rem;
+  }
+}

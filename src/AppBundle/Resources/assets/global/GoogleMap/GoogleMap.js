@@ -575,7 +575,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         //break;
         case "xs":
           $(".google-map").css({
-            height: '160px',
+            height: '190px',
             width: '280px'
           });
           google.maps.event.trigger(map, "resize");
@@ -583,7 +583,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         break;
         default:
           $(".google-map").css({
-            height: '280px',
+            height: '285px',
             width: '312px'
           });
           google.maps.event.trigger(map, "resize");

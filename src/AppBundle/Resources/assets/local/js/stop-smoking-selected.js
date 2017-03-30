@@ -20,7 +20,7 @@
         } else { // 200
           $emailCard.removeClass("card-outline-warning").addClass("card-outline-success");
           $emailError.empty();
-          $emailThanks.show();
+          $emailThanks.css({display: 'inline-block'});
           $emailForm.hide();
         }
       }

@@ -287,7 +287,11 @@
   h2 {
     @include roboto(1.64rem, $blue);
     margin: 0;
-    padding-left: 10px;
+    padding-left: 20px;
+
+    b {
+      display: inline-block;
+    }
   }
 
   .nav-item {
@@ -698,6 +702,7 @@
       &.mobile {
         background: $white;
         display: none;
+        padding-bottom: .8rem;
         position: absolute;
         text-align: center;
         width: 100%;
@@ -721,7 +726,7 @@
     }
 
     h2 {
-      font-size: 1.05rem;
+      font-size: .9rem;
     }
 
     .nav-outer {
@@ -902,7 +907,7 @@
 
     .modal-dialog {
       .modal-content {
-        margin: 20px;
+        margin: 30px 20px;
         padding: 10px;
       }
     }

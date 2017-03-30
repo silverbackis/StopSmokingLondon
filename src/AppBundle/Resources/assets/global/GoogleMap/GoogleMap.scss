@@ -11,9 +11,6 @@
 }
 
 .google-map {
-  height: 280px;
-  width: 312px;
-
   &.actual {
     position: absolute;
     top: 0;
@@ -30,7 +27,7 @@
   }
 
   .map-row-wrapper {
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
 }
