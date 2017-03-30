@@ -445,15 +445,6 @@
 
 .row-main-page {
   margin-top: 2rem;
-
-  > .col-12 > .container {
-    padding: 0;
-
-    > .row {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
 }
 
 .stop-smoking-london-bottom {
@@ -929,6 +920,15 @@
   .row-main-page {
     margin-left: -15px;
     margin-right: -15px;
+
+    > .col-12 > .container {
+      padding: 0;
+
+      > .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 
   .mobile-w-100 {
