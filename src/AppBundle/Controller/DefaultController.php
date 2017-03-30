@@ -24,6 +24,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London - The capital's starting point for stopping smoking. ".
+            $translator->trans('feature.borough_search', array(), 'home')." ".
+            $translator->trans('feature.tooltips', array(), 'home')." ".
+            $translator->trans('feature.chances', array(), 'home')
+        );
+
         return $this->render('@App/Default/index.html.twig');
     }
 
@@ -33,6 +42,18 @@ class DefaultController extends Controller
     public function stopSmokingAction(Request $request)
     {
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            join(" - ", array_filter($title))." ".
+            $translator->trans('title', array(), 'stop_smoking_choices').". ".
+            $translator->trans('specialist.button', array(), 'stop_smoking_choices').", ".
+            $translator->trans('medicine.button.desktop', array(), 'stop_smoking_choices')." or ".
+            $translator->trans('alone.button', array(), 'stop_smoking_choices').". Increase your chances."
+        );
+
 
         return $this->render('@App/Default/stop_smoking.html.twig', [
             'title' => $title,
@@ -54,6 +75,15 @@ class DefaultController extends Controller
     public function stopSmokingAdvisorAction(Request $request)
     {
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title).
+            $translator->trans('search.header', array(), 'stop_smoking_chosen').". Otherwise, ".
+            $translator->trans('select.header', array(), 'stop_smoking_chosen')
+        );
 
         return $this->render('@App/Default/stop_smoking_map.html.twig', [
             "type" => 'advisor',
@@ -82,6 +112,15 @@ class DefaultController extends Controller
     {
         $title = $this->getHeader($request);
 
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title).
+            $translator->trans('search.header', array(), 'stop_smoking_chosen').". Otherwise, ".
+            $translator->trans('select.header', array(), 'stop_smoking_chosen')
+        );
+
         return $this->render('@App/Default/stop_smoking_map.html.twig', [
             "type" => 'medicine',
             "title" => $title,
@@ -109,6 +148,16 @@ class DefaultController extends Controller
     {
         $title = $this->getHeader($request);
 
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title).
+            $translator->trans('steps.2.alone.info.1', array(), 'stop_smoking_chosen')." ".
+            $translator->trans('steps.2.alone.info.2', array(), 'stop_smoking_chosen')." ".
+            $translator->trans('steps.2.alone.info.3', array(), 'stop_smoking_chosen')
+        );
+
         return $this->render('@App/Default/stop_smoking_alone.html.twig', [
             "title" => $title,
             'breadcrumb' => array(
@@ -134,6 +183,13 @@ class DefaultController extends Controller
     public function familyFriendAction(Request $request)
     {
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title)
+        );
 
         // Add SDKs to template for Share buttons
         $bwBase = $this->container->get('bw.base.page');
@@ -161,6 +217,18 @@ class DefaultController extends Controller
     {
         $title = $this->getHeader($request);
 
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title).
+            $translator->trans('fact.1', array(), 'find_out_more')." ".
+            $translator->trans('fact.2', array(), 'find_out_more')." ".
+            $translator->trans('fact.3', array(), 'find_out_more')." ".
+            $translator->trans('fact.4', array(), 'find_out_more')." ".
+            $translator->trans('fact.5', array(), 'find_out_more')." "
+        );
+
         return $this->render('@App/Default/find_out_more.html.twig', [
             'title' => $title,
             'breadcrumb' => array(
@@ -181,6 +249,13 @@ class DefaultController extends Controller
     public function websitesAppsAction(Request $request)
     {
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title)
+        );
 
         return $this->render('@App/Default/websites_apps.html.twig', [
             'title' => $title,
@@ -203,6 +278,13 @@ class DefaultController extends Controller
     {
         $title = $this->getHeader($request);
 
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title)
+        );
+
         return $this->render('@App/Default/about_us.html.twig', [
             'title' => $title,
             'breadcrumb' => array(
@@ -223,6 +305,13 @@ class DefaultController extends Controller
     public function termsAction(Request $request)
     {
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title)
+        );
 
         return $this->render('@App/Default/terms_privacy.html.twig', [
             'title' => $title,
@@ -257,6 +346,15 @@ class DefaultController extends Controller
         }
 
         $title = $this->getHeader($request);
+
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London. ".
+            $this->titleToDesc($title).
+            $translator->trans('intro_text', array(), 'contact')." "
+        );
+
         return $this->render('@App/Default/contact_us.html.twig', [
             'title' => $title,
             'breadcrumb' => array(
@@ -611,6 +709,11 @@ class DefaultController extends Controller
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->setTitle($ret['header']." - ".$seoPage->getTitle());
         return $ret;
+    }
+
+    private function titleToDesc($titleArr)
+    {
+        return trim(str_replace(array("\r", "\n"), ' ', join(" - ", array_filter($titleArr)))).". ";
     }
 
 

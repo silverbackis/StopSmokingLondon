@@ -29,7 +29,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
   searchToken,
   geocoder,
   ResponseMessages,
-  markerIcon;
+  markerIcon,
+  markerIconSmall;
   
   function gaTrack(obj)
   {
@@ -157,7 +158,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
             map.data.overrideStyle(selectedFeature, {
               fillColor: '#15ce75',
               strokeColor: '#FFFFFF',
-              strokeWeight: viewport.is("<=sm") ? 2 : 3,
+              strokeWeight: viewport.is("<sm") ? 2 : 3,
               zIndex: 2
             });
             return false;
@@ -192,7 +193,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
           position: resultLatLng,
           map: map,
           animation: google.maps.Animation.DROP,
-          icon: markerIcon,
+          icon: viewport.is("<sm") ? markerIconSmall : markerIcon,
           optimized: false
         });
 
@@ -339,8 +340,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $websiteLink,
       message,
       $tel = $('<a />', {
-        class: 'tel'
-      });
+        class: 'tel hidden-sm-down'
+      }),
+      $telBtn = $('<a />', {
+        class: 'hidden-md-up btn btn-success btn-cta btn-tel'
+      }).html('<span class="tel-text"></span>');
 
       $("#boroughCard").addClass("card-outline-success");
       $("#liveIn").show();
@@ -356,7 +360,14 @@ var GoogleMap = (function($, viewport, alert, confirm){
               $tel
                 .clone()
                   .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
-                  .html(telNumbers[0]).appendTo($telCont);
+                  .html(telNumbers[0])
+                  .appendTo($telCont);
+              var $newBtn = $telBtn.clone();
+              $(".tel-text", $newBtn).html(telNumbers[0]);
+              $newBtn
+                  .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
+                  .appendTo($telCont);
+              
               $(".stop-smoking-london-info-row").hide();
             }
           }
@@ -477,6 +488,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     });
 
     markerIcon = new google.maps.MarkerImage("/bundles/app/images/icon/pin.png", new google.maps.Size(42, 77), new google.maps.Point(0, 0), new google.maps.Point(10.5, 38.5), new google.maps.Size(21, 38.5));
+    markerIconSmall = new google.maps.MarkerImage("/bundles/app/images/icon/pin.png", new google.maps.Size(42, 77), new google.maps.Point(0, 0), new google.maps.Point(7.88, 28.88), new google.maps.Size(15.75, 28.88));
 
     // Set token as variable and remove the attribute
     var token = $map.attr("data-token");
@@ -575,7 +587,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         //break;
         case "xs":
           $(".google-map").css({
-            height: '190px',
+            height: '200px',
             width: '280px'
           });
           google.maps.event.trigger(map, "resize");
@@ -583,7 +595,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         break;
         default:
           $(".google-map").css({
-            height: '285px',
+            height: '310px',
             width: '312px'
           });
           google.maps.event.trigger(map, "resize");
@@ -606,6 +618,9 @@ var GoogleMap = (function($, viewport, alert, confirm){
       e.preventDefault();
       $(this).parents(".toggle-area").hide();
       $($(this).attr("data-toggle")).show();
+      $sessionSelect.selectpicker('toggle');
+      $sessionSelect.selectpicker('refresh');
+      $sessionSelect.selectpicker('toggle');
     });
   }
 

@@ -25,7 +25,6 @@
         }
       }
     });
-
   });
 })(jQuery, BootstrapModalAlerts.alert);
   

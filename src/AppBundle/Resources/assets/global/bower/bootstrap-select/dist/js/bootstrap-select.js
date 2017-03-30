@@ -872,7 +872,7 @@
       newElement.appendChild(menu);
 
       document.body.appendChild(newElement);
-
+      console.log(search.offsetHeight, "search.offsetHeight");
       var liHeight = a.offsetHeight,
           headerHeight = header ? header.offsetHeight : 0,
           searchHeight = search ? search.offsetHeight : 0,
