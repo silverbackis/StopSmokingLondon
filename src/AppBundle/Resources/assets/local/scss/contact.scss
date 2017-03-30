@@ -35,3 +35,11 @@
     }
   }
 }
+
+@include media-breakpoint-down(md) {
+  .block-text {
+    h3.text-success {
+      font-size: 1.4rem;
+    }
+  }
+}
