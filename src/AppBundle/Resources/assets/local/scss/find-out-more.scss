@@ -13,7 +13,7 @@ h3 {
 
 .cta-buttons-box {
   display: inline-block;
-  max-width: 800px;
+  max-width: 720px;
 }
 
 .facts-row {
@@ -38,14 +38,21 @@ h3 {
     margin: 0 5px 50px -5px;
     min-height: 250px;
     padding-left: 5px;
+    //-webkit-touch-callout:  none;  //iOS Safari
+    -khtml-user-select: none; ///Konqueror HTML
+    -moz-user-select: none; //Firefox
+    -ms-user-select: none; //Internet Explorer/Edge
+    -webkit-user-select: none; //Safari
+    user-select: none; //Non-prefixed version, currently supported by Chrome and Opera
+
     vertical-align: top;
     white-space: normal;
     width: 100%;
 
     > p {
+      @include open-sans(1.3rem, $blue, $semi-bold);
       margin-bottom: 0;
       margin-top: 1rem;
-      @include open-sans(1.3rem, $blue, $semi-bold);
     }
   }
 }
@@ -110,5 +117,9 @@ h3 {
 
   .container-lower {
     margin-bottom: 0;
+  }
+
+  .cta-buttons-box {
+    max-width: none;
   }
 }
