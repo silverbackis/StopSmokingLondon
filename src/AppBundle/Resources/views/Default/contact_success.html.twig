@@ -1,4 +1,5 @@
 {% extends '@App/base.html.twig' %}
+{% trans_default_domain "contact" %}
 
 {% block stylesheets %}
   {{ parent() }}
@@ -16,7 +17,7 @@
     
     <div class="row block-text">
       <div class="col-12">
-        <h4 class="text-success">Thank you for contacting us.</h4><p class="text-success"><b>We will try to get back to your enquiry as soon as we can.</b></p>
+        <h4 class="text-success">{{ 'success_header'|trans|nl2br }}</h4><p class="text-success"><b>{{ 'success_message'|trans|nl2br }}</b></p>
       </div>
     </div>
 
