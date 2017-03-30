@@ -19,7 +19,7 @@
             {% for paragraphtext in transarray('prelaunch.text', [], 'telephone_service') %}
               <p>{{ paragraphtext|raw }}</p>
             {% endfor %}
-            <p class="text-primary">{{ 'prelaunch.telephone.0'|trans|replace({"%launch_date%": launch_date|date(launch_date_format)})|raw }}</p>
+            <p class="text-primary">{{ 'prelaunch.telephone.intro'|trans|raw }} <b>{{ 'prelaunch.telephone.timeframe'|trans|replace({"%launch_date%": launch_date|date(launch_date_format)})|raw }}</b></p>
           {% endif %}
           {% if app.request.attributes.get('_route') != 'find_out_more' and app.request.attributes.get('_route') != 'stop_smoking_medicines' and app.request.attributes.get('_route') != 'stop_smoking_advisor' %}
           <a class="btn btn-lg btn-primary btn-cta" href="{{ path('find_out_more') }}">{{ 'find_out_more_button'|trans }}</a>
