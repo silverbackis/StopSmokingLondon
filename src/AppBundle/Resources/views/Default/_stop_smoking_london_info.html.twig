@@ -8,7 +8,7 @@
           <img src="{{ asset('bundles/app/images/logo/ssl_large.png') }}" alt="Stop Smoking London Logo" class="ssl-logo-large" />
         </div>
       </div>
-      <div class="row row justify-content-center">
+      <div class="row justify-content-center">
         <div class="col-12 col-md-11">
           {% if date(launch_date) <= date('now') %}
             {% for paragraphtext in transarray('service_launched.text', [], 'telephone_service') %}
