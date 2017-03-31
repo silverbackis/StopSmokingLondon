@@ -10,8 +10,7 @@
 }
 
 .welcome {
-  @include roboto(2.3rem, $white);
-  text-shadow: 0 1.5px 1.5px rgba($black, .24);
+  @include open-sans(2.3rem, $white);
 
   .small {
     background: $blue;
@@ -343,10 +342,10 @@ h3 {
   }
 
   .welcome {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 
     .small {
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 
