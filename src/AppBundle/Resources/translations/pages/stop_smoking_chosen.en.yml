@@ -1,75 +1,43 @@
-search:
-  header:       Search address or postcode
-  button:       Search
-  question:     Don't know what to search?
-  alternative:  Select borough instead
-
-select:
-  header:                   Select your borough
-  dropdown_initital_text:   Select your borough
-  question:                 Can't find your borough?
-  alternative:              Search instead
-
-found_borough_prefix: You have said that you live in
-
-map_search_results:
-  result_not_local:   Sorry, we couldn't find that within the London boroughs.
-  no_results:         Sorry, No Results Found.
-  limit_reached:      Sorry we've reached our limit to search for London boroughs.
-  retry:              Retrying... Attempt %attempt_count%
-  unknown_error:      Sorry, an unknown error occurred. Please try again.
-  other_error:        Sorry, there was an error searching for that address. The status returned was %status%.
-
-steps:
-  header: There are now just two small steps to get you started
-  # Step 1 text
-  1:
-    header:             "Step 1: Provide email"
-    text:               If you like, we can update you now and then with new information to help with your quit attempt. Enter your email below to register.
-    input_placeholder:  your@email.com
-    button:             Confirm
-    success:            Thank you. You'll receive email updates.
-  #Step 2 text
-  2:
-    all:
-      # Message to be appended if 'append_fallback_message' if true
-      fallback_message: But don't worry, you can still call the Stop Smoking London helpline.
-      # For advisor/medicine if borough not provided information
-      no_information:
-        message:                  "Unfortunately %borough% has not yet provided us information about the support it offers. But you can call the Stop Smoking London telephone line for help."
-        append_fallback_message:  true
-    
-    # If advisor is selected
-    advisor:
-      header: "Step 2: Contact your service"
-      no_telephone:
-        message:                  "Unfortunately %borough% has not yet provided us information about how to contact their stop smoking service. But you can always call the Stop Smoking London telephone line for help."
-        append_fallback_message:  true
-      has_advisors:
-        message:                  "Good news, %borough% does have a specialist Stop Smoking Service%service_name%. To make an appointment please call:"
-      has_pharmacy_staff:
-        message:                  "Unfortunately, %borough% does not have a specialist Stop Smoking Service, but it does have a service provided by pharmacies or health centres. To make an appointment please call:"
-      no_service:
-        message:                  "Unfortunately it appears %borough% does not have a stop smoking service."
-        append_fallback_message:  true
-    
-    # If medicine is selected
-    medicine:
-      header: "Step 2: Getting your medicine"
-      gp_prescription:
-        message:  "Your local GP or pharmacist will be able to discuss your situation and prescribe you the most appropriate medicines."
-        append:   "Alternatively, why not speak to a Stop Smoking London telephone advisor who will be able to recommend one?"
-      no_gp:
-        message:  "Unfortunately, GPs in your area do not prescribe stop smoking medicines."
-        append:   "Why not speak to a Stop Smoking London advisor who will be able to recommend one you can obtain from your local pharmacy?"
-    
-    # If go it alone is selected
-    alone: 
-      header: "Step 2: Explore useful tools"
-      text:   Click below for selected websites and apps that you may find helpful
-      button: Useful websites and apps
-      info:
-        header: Here are a few important tips to get you going
-        1:      Surprising as it may seem you are better off stopping abruptly, NOT trying to gradually cut down. Research has found that when smokers stop abruptly they are more likely to succeed.
-        2:      Electronic cigarettes can help you stop. Research has shown that smokers who use an e-cigarette in a quit attempt are 50% more likely to succeed.
-        3:      Websites and mobile apps can support you. Stop Smoking London can tell you about the best ones and help you track your progress.
+found_borough_prefix: 'You have said that you live in'
+search.header: 'Search address or postcode'
+search.button: Search
+search.question: 'Don''t know what to search?'
+search.alternative: 'Select borough instead'
+select.header: 'Select your borough'
+select.dropdown_initital_text: 'Select your borough'
+select.question: 'Can''t find your borough?'
+select.alternative: 'Search instead'
+map_search_results.result_not_local: 'Sorry, we couldn''t find that within the London boroughs.'
+map_search_results.no_results: 'Sorry, No Results Found.'
+map_search_results.limit_reached: 'Sorry we''ve reached our limit to search for London boroughs.'
+map_search_results.retry: 'Retrying... Attempt %attempt_count%'
+map_search_results.unknown_error: 'Sorry, an unknown error occurred. Please try again.'
+map_search_results.other_error: 'Sorry, there was an error searching for that address. The status returned was %status%.'
+steps.header: 'There are now just two small steps to get you started'
+steps.1.header: 'Step 1: Provide email'
+steps.1.text: 'If you like, we can update you now and then with new information to help with your quit attempt. Enter your email below to register.'
+steps.1.input_placeholder: your@email.com
+steps.1.button: Confirm
+steps.1.success: 'Thank you. You''ll receive email updates.'
+steps.2.all.fallback_message: 'But don''t worry, you can still call the Stop Smoking London helpline.'
+steps.2.all.no_information.message: 'Unfortunately %borough% has not yet provided us information about the support it offers. But you can call the Stop Smoking London telephone line for help.'
+steps.2.all.no_information.append_fallback_message: '1'
+steps.2.advisor.header: 'Step 2: Contact your service'
+steps.2.advisor.no_telephone.message: 'Unfortunately %borough% has not yet provided us information about how to contact their stop smoking service. But you can always call the Stop Smoking London telephone line for help.'
+steps.2.advisor.no_telephone.append_fallback_message: '1'
+steps.2.advisor.has_advisors.message: 'Good news, %borough% does have a specialist Stop Smoking Service%service_name%. To make an appointment please call:'
+steps.2.advisor.has_pharmacy_staff.message: 'Unfortunately, %borough% does not have a specialist Stop Smoking Service, but it does have a service provided by pharmacies or health centres. To make an appointment please call:'
+steps.2.advisor.no_service.message: 'Unfortunately it appears %borough% does not have a stop smoking service.'
+steps.2.advisor.no_service.append_fallback_message: '1'
+steps.2.medicine.header: 'Step 2: Getting your medicine'
+steps.2.medicine.gp_prescription.message: 'Your local GP or pharmacist will be able to discuss your situation and prescribe you the most appropriate medicines.'
+steps.2.medicine.gp_prescription.append: 'Alternatively, why not speak to a Stop Smoking London telephone advisor who will be able to recommend one?'
+steps.2.medicine.no_gp.message: 'Unfortunately, GPs in your area do not prescribe stop smoking medicines.'
+steps.2.medicine.no_gp.append: 'Why not speak to a Stop Smoking London advisor who will be able to recommend one you can obtain from your local pharmacy?'
+steps.2.alone.header: 'Step 2: Explore useful tools'
+steps.2.alone.text: 'Click below for selected websites and apps that you may find helpful'
+steps.2.alone.button: 'Useful websites and apps'
+steps.2.alone.info.header: 'Here are a few important tips to get you going'
+steps.2.alone.info.1: 'Surprising as it may seem you are better off stopping abruptly, NOT trying to gradually cut down. Research has found that when smokers stop abruptly they are more likely to succeed.'
+steps.2.alone.info.2: 'Electronic cigarettes can help you stop. Research has shown that smokers who use an e-cigarette in a quit attempt are 50% more likely to succeed.'
+steps.2.alone.info.3: 'Websites and mobile apps can support you. Stop Smoking London can tell you about the best ones and help you track your progress.'

@@ -1,16 +1,13 @@
-about:            About Stop Smoking London
-contact:          Contact Stop Smoking London
-contact_success:  Contact message sent
-terms_privacy:    Terms and Privacy
-stop_smoking_choices: Ready to stop smoking?
-stop_smoking_advisor: |
-                      You are making an appointment
-                      with an advisor
-stop_smoking_medicines: You are getting a stop smoking medicine
-stop_smoking_alone:     You are going it alone
-help_others_stop:       You want to help a family member or friend to stop
-find_out_more:          Find out more about stopping
-websites_apps:          Useful websites and apps
-about_us:               About Stop Smoking London
-terms_privacy:          Terms and Privacy
-contact_us:             Contact Stop Smoking London
+about: 'About Stop Smoking London'
+contact: 'Contact Stop Smoking London'
+contact_success: 'Contact message sent'
+terms_privacy: 'Terms and Privacy'
+stop_smoking_choices: 'Ready to stop smoking?'
+stop_smoking_advisor: "You are making an appointment\nwith an advisor\n"
+stop_smoking_medicines: 'You are getting a stop smoking medicine'
+stop_smoking_alone: 'You are going it alone'
+help_others_stop: 'You want to help a family member or friend to stop'
+find_out_more: 'Find out more about stopping'
+websites_apps: 'Useful websites and apps'
+about_us: 'About Stop Smoking London'
+contact_us: 'Contact Stop Smoking London'

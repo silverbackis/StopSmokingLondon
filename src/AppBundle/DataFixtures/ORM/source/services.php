@@ -2,7 +2,7 @@
 /**
  * Changes made to original data
  * - Wandworth and Richmond were combined, moved Richmond into Kick-It
- * - Added Kingston upon thames to kick-it service
+ * - Added Kingston upon thames to kick-it service (kingston did provide another contact, clarify if I should use that instead)
  * - Corrected http://oneyouealing.co.uk to http://oneyouealing.org (Failed DNS lookup validation on entry)
  * - Havering removed - added to NELFT
  * - Barking and Dagenham added to NELFT
@@ -327,6 +327,86 @@ return array(
       'web' => 'http://www.guysandstthomas.nhs.uk/ourservices/stop-smoking-service/overview.aspx',
       'tel' => array(
         '0207 188 7188'
+      )
+    ),
+    array(
+      'name' => null,
+      'boroughs' => array(
+        'Newham'
+      ),
+      'specialist_advisors' => false, // no response was given
+      'pharmacy_staff' => true,
+      'meds' => array(
+        'varenicline' => true,
+        'bupropion' => false,
+        'nrt_single' => true,
+        'nrt_dual' => true
+      ),
+      'gp_prescription' => false,
+      'ecig_friendly' => true,
+      'web' => 'http://www.newham.gov.uk/stopsmoking',
+      'tel' => array(
+        null
+      )
+    ),
+    array(
+      'name' => null,
+      'boroughs' => array(
+        'Newham'
+      ),
+      'specialist_advisors' => false, // no response was given
+      'pharmacy_staff' => true,
+      'meds' => array(
+        'varenicline' => true,
+        'bupropion' => false,
+        'nrt_single' => true,
+        'nrt_dual' => true
+      ),
+      'gp_prescription' => false,
+      'ecig_friendly' => true,
+      'web' => 'http://www.newham.gov.uk/stopsmoking',
+      'tel' => array(
+        null
+      )
+    ),
+    array(
+      'name' => null,
+      'boroughs' => array(
+        'Enfield'
+      ),
+      'specialist_advisors' => false,
+      'pharmacy_staff' => false,
+      'meds' => array(
+        'varenicline' => false,
+        'bupropion' => false,
+        'nrt_single' => false,
+        'nrt_dual' => false
+      ),
+      'gp_prescription' => false, // no answer given
+      'ecig_friendly' => false, // no answer given
+      'web' => null,
+      'tel' => array(
+        null
+      )
+    ),
+    array(
+      'name' => null,
+      'boroughs' => array(
+        'Barnet'
+      ),
+      'specialist_advisors' => false,
+      'pharmacy_staff' => true,
+      'meds' => array(
+        'varenicline' => false,
+        'bupropion' => false,
+        'nrt_single' => false,
+        'nrt_dual' => true
+      ),
+      'gp_prescription' => false, // no answer given
+      'ecig_friendly' => true,
+      'web' => null, // provided but cut off in word doc
+      'tel' => array(
+        null
       )
     )/*,
     array(

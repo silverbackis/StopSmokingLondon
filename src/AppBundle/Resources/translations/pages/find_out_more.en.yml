@@ -1,4 +1,3 @@
-az_stopping_smoking:
-  text:   "The A to Z of stopping smoking is your guide to everything about stopping smoking"
-  buttons: 
-    - { name: "Visit A to Z of Stopping Smoking", link: "http://www.smokingaz.com" }
+az_stopping_smoking.text: 'The A to Z of stopping smoking is your guide to everything about stopping smoking'
+az_stopping_smoking.buttons.0.name: 'Visit A to Z of Stopping Smoking'
+az_stopping_smoking.buttons.0.link: 'http://www.smokingaz.com'

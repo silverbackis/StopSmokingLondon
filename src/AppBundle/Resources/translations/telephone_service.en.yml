@@ -1,15 +1,7 @@
-service_launched:
-  text:
-    - "Stop Smoking London provides a special telephone service for <b>anyone wanting to stop</b>"
-    - "You can call a helpline between <b>8am and 10pm</b> and speak to a specially trained advisor. Call this number and just say you are calling from London."
-  telephone:
-    intro:  "Stop Smoking London Helpline:"
-    number: 0201 234 5678
-
-prelaunch:
-  text:
-    - "Stop Smoking London will provide a special service for <b>anyone in London wanting to stop.</b>"
-  telephone:
-    - "Stop Smoking Telephone Service: Coming %launch_date%"
-
-find_out_more_button: Find out more about stopping
+find_out_more_button: 'Find out more about stopping'
+service_launched.text.0: 'Stop Smoking London provides a special telephone service for <b>anyone wanting to stop</b>'
+service_launched.text.1: 'You can call a helpline between <b>8am and 10pm</b> and speak to a specially trained advisor. Call this number and just say you are calling from London.'
+service_launched.telephone.intro: 'Stop Smoking London Helpline:'
+service_launched.telephone.number: '0201 234 5678'
+prelaunch.text.0: 'Stop Smoking London will provide a special service for <b>anyone in London wanting to stop.</b>'
+prelaunch.telephone.0: 'Stop Smoking Telephone Service: Coming %launch_date%'

@@ -1,13 +1,9 @@
-intro_text: >
-            You can contact us with any enquiries or suggestions
-labels:
-  subject:    Reason for contact
-  name:       Your name
-  email:      Your email
-  telephone:  Your telephone number
-  message:    Comment
-  submit:     Send Message
-
-subject_choices:
-  - 'General enquiry'
-  - 'Bug report'
+intro_text: "You can contact us with any enquiries or suggestions\n"
+labels.subject: 'Reason for contact'
+labels.name: 'Your name'
+labels.email: 'Your email'
+labels.telephone: 'Your telephone number'
+labels.message: Comment
+labels.submit: 'Send Message'
+subject_choices.0: 'General enquiry'
+subject_choices.1: 'Bug report'

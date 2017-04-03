@@ -80,10 +80,8 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy(['website' => $service['web']]) ?: new StopSmokingService();
   }
 
-  private function createService(array $service, ObjectManager $manager)
+  private function setEntityData(StopSmokingService $entity, array $service, ObjectManager $manager)
   {
-    $entity = new StopSmokingService();
-
     $entity->setName($service['name']);
 
     $entity->setSpecialistAdvisors($service['specialist_advisors']);
@@ -98,7 +96,6 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     $entity->setEcigFriendly($service['ecig_friendly']);
 
     $entity->setWebsite($service['web']);
-    $entity->setTelephone($service['tel']);
 
     // validate
     $errors = $this->validator->validate($entity);
@@ -106,6 +103,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       $errorsString = (string) $errors;
       throw new \Exception($errorsString);
     }
+
 
     // persist new entity to database and flush
     $manager->persist($entity);
@@ -128,10 +126,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       }
 
       $locator = $this->locateService($service, $manager);
-      if (!$manager->contains($locator))
-      {
-          $serviceEntity = $this->createService($service, $manager);
-      }
+      $serviceEntity = $this->setEntityData($locator, $service,$manager);
 
       foreach($service['boroughs'] as $boroughName)
       {

@@ -1,19 +1,10 @@
-header:
-  main: 
-    small: Welcome to
-    large: Stop Smoking London
-  latest_news: Latest news
-  buttons: What do you want to do?
-image_captions:
-  1: |
-    1.3 million out of 8 million
-    Londoners still smoke
-  2: |
-    Most want to stop
-  3: |
-    Stop Smoking London
-    aims to help with that
-buttons:
-  self_stop: I want to stop smoking
-  help_others: I want to help a family member or friend to stop
-  find_out: I want to know more about stopping
+header.main.small: 'Welcome to'
+header.main.large: 'Stop Smoking London'
+header.latest_news: 'Latest news'
+header.buttons: 'What do you want to do?'
+image_captions.1: "1.3 million out of 8 million\nLondoners still smoke\n"
+image_captions.2: "Most want to stop\n"
+image_captions.3: "Stop Smoking London\naims to help with that\n"
+buttons.self_stop: 'I want to stop smoking'
+buttons.help_others: 'I want to help a family member or friend to stop'
+buttons.find_out: 'I want to know more about stopping'
