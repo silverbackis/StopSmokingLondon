@@ -28,6 +28,7 @@
 
 .welcome {
   @include open-sans(2.3rem, $white);
+  letter-spacing: .02rem;
 
   .small {
     background: $blue;

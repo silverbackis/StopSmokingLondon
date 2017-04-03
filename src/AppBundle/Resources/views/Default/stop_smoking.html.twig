@@ -14,6 +14,7 @@
 {% block javascripts %}
   {{ parent() }}
   {% javascripts
+    '@AppBundle/Resources/assets/global/greensock/plugins/ScrollToPlugin.min.js'
     '@AppBundle/Resources/assets/local/js/stop-smoking-choices.js'
     filter='?uglifyjs2' %}
     <script src="{{ asset_url }}"></script>

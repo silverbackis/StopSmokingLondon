@@ -238,12 +238,18 @@
 
 @mixin nav-link() {
   @include roboto(.9rem, $gray, $bold);
+  backface-visibility: hidden;
   padding: .5em .8em;
   text-transform: uppercase;
+  transition: all .2s;
 
   &.active,
   &:hover {
     color: $blue;
+  }
+
+  &:hover {
+    transform: translateZ(20px);
   }
 }
 
@@ -295,6 +301,8 @@
   }
 
   .nav-item {
+    -webkit-perspective: 1000;
+    perspective: 1000;
     text-align: center;
 
     &.mobile {
@@ -561,7 +569,8 @@
     }
   }
 
-  &:active {
+  &:active,
+  &.active {
     border-bottom-width: 0;
     margin-top: 4px;
   }

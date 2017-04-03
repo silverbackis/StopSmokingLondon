@@ -26,7 +26,19 @@ $(function(){
       $(".chance-percent-row").hide();
     }
     $selectedTab = $(this);
-    positionArrow();    
+    positionArrow();  
+
+    // Only scroll down - scroll to the header
+    var pageHeaderTop = $(".page-header-1").offset().top-20,
+    bodyTop = $("body").scrollTop(),
+    maxSecs = 1;
+    if(bodyTop<pageHeaderTop)
+    {
+      var diff = pageHeaderTop-bodyTop,
+      dur = Math.max(0.5, (diff/pageHeaderTop)*maxSecs);
+      TweenLite.to("body", dur, {scrollTo: pageHeaderTop, ease:Power1.easeInOut});  
+    }
+    
   });
   $(window).on("resize orientationchange", positionArrow);
 
