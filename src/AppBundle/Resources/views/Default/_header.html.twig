@@ -1,23 +1,13 @@
 <div class="row text-white justify-content-center jumbotron-outer {{ class is defined ? class : 'default' }}">
+  <div class="jumbotron-feature-image-outer"><div class="jumbotron-feature-image" id="JumbotronFeature"></div></div>
   <div class="col-lg-10 jumbotron jumbotron-fluid">
-    {#{% if breadcrumb is defined %}
-      <ol class="breadcrumb">
-        {% for crumb in breadcrumb %}
-          <li class="breadcrumb-item{% if loop.last %} active{% endif %}">
-            {% if crumb.path is defined %}<a href="{{ crumb.path }}">{% endif %}
-              {{ crumb.title }}
-            {% if crumb.path is defined %}</a>{% endif %}
-          </li>
-        {% endfor %}
-      </ol>
-    {% endif %}
-    <a href="{{ path('homepage') }}" class="home-link">Home</a>#}
     {% if choices_link is defined %}
     <a href="{{ path('stop_smoking_choices') }}#{{ app.request.attributes.get('_route') }}" class="back-choices"><span class="desktop">&lt;&nbsp;</span>Back<span class="desktop">&nbsp;to Choices</span></a>
     {% endif %}
-    <h2>{{ title.header | raw | nl2br }}</h2>
+    <div class="h2-outer"><h2 id="animHeader">{{ title.header | raw | nl2br }}</h2></div>
     {% if title.lead is defined %}
       <p class="lead">{{ title.lead | raw | nl2br }}</p>
     {% endif %}
   </div>
 </div>
+<script>document.getElementById("animHeader").style.opacity = 0; document.getElementById("JumbotronFeature").style.opacity = 0;</script>

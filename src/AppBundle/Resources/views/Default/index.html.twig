@@ -25,13 +25,16 @@
   <div class="container-fluid h-100">
     <div class="column">
       <div class="row home-feature justify-content-center col-auto">
+        <div class="jumbotron-feature-image-outer"><div class="jumbotron-feature-image" id="JumbotronFeature"></div></div>
         <div class="col-lg-11 align-self-center">
-          <h1 class="welcome">
+          <h1 class="welcome" id="animHeader">
             <span class="small">{{ 'header.main.small'|trans }}</span><br />
             <span class="large">{{ 'header.main.large'|trans }}</span>
           </h1>
         </div>
       </div>
+      <script>document.getElementById("animHeader").style.opacity = 0; document.getElementById("JumbotronFeature").style.opacity = 0;</script>
+
       <div class="row bg-primary justify-content-center">
         <div class="col-lg-10 align-self-center">
           <h2 class="text-white facts-header">{{ 'facts_header'|trans|nl2br }}</h2>

@@ -398,11 +398,12 @@ var GoogleMap = (function($, viewport, alert, confirm){
         $telCont = $(".tel-cont", $advisorCard).empty();
         $message = $(".message", $advisorCard);
         $(".stop-smoking-london-info-row").show();
+        var SpecialistPharmacy = (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');
         }
-        else if(null === boroughProps.service.telephone)
+        else if(null === boroughProps.service.telephone && boroughProps.service.specialistAdvisors)
         {
           message = getMessage('advisor', 'no_telephone');
         }
@@ -411,7 +412,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
           message = getMessage('advisor', 'has_advisors');
           showTelephone($telCont);
         }
-        else if(boroughProps.service.pharmacyStaff)
+        else if(SpecialistPharmacy)
         {
           message = getMessage('advisor', 'has_pharmacy_staff');
           showTelephone($telCont);

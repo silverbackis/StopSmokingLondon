@@ -3,10 +3,27 @@
 @import 'bower/bootstrap/scss/custom';
 
 .home-feature {
-  background: url($asset-image-base + 'main/header_home.png') 50% 66% no-repeat $white;
-  background-size: auto 427.5px;
+  //background: url($asset-image-base + 'main/header_home.png') 50% 66% no-repeat $white;
+  //background-size: auto 427.5px;
   height: 250px;
+  overflow: hidden;
+  position: relative;
   z-index: 1;
+
+  > [class*="col-"] {
+    z-index: 2;
+  }
+
+  .jumbotron-feature-image-outer {
+    display: block;
+  }
+
+  .jumbotron-feature-image {
+    background-image: url($asset-image-base + 'main/header_home.png');
+    background-size: auto 427.5px;
+    height: 427.5px;
+    z-index: 1;
+  }
 }
 
 .welcome {

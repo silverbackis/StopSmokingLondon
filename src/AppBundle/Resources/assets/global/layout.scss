@@ -366,9 +366,29 @@
   }
 }
 
+.jumbotron-feature-image-outer {
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.jumbotron-feature-image {
+  background-position: 50% 0;
+  bottom: 0;
+  box-sizing: content-box;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
 // Used on most pages
 .jumbotron-outer {
   background: 50% 57% no-repeat $blue-header;
+  position: relative;
 
   h2 {
     @include open-sans(2.2rem, $blue, $semi-bold);
@@ -393,15 +413,33 @@
   }
 
   &.hills {
-    background-image: url($asset-image-base + 'main/header_hills.jpg');
-    background-size: 2440px 341.5px;
+    background: $blue;
     border-bottom: 1px solid $gray-light;
+
+    .jumbotron-feature-image-outer {
+      display: block;
+    }
+
+    .jumbotron-feature-image {
+      background-image: url($asset-image-base + 'main/header_hills.jpg');
+      background-size: 2440px 341.5px;
+      height: 341.5px;
+    }
   }
 
   &.clouds {
-    background-image: url($asset-image-base + 'main/header_clouds.jpg');
-    background-size: 2440px 341.5px;
+    background: $blue;
     border-bottom: 1px solid $gray-light;
+
+    .jumbotron-feature-image-outer {
+      display: block;
+    }
+
+    .jumbotron-feature-image {
+      background-image: url($asset-image-base + 'main/header_clouds.jpg');
+      background-size: 2440px 341.5px;
+      height: 341.5px;
+    }
   }
 }
 
