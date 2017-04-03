@@ -33,10 +33,8 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       return $manager->getRepository('AppBundle\Entity\Borough')->findOneBy(['name' => $borough]) ?: new Borough();
   }
 
-  private function createBorough(array $feature, ObjectManager $manager)
+  private function createBorough(Borough $entity, array $feature, ObjectManager $manager)
   {
-    $entity = new Borough();
-
     $entity->setName($feature['properties']['name']);
     $entity->setCoordinates(json_encode($feature['geometry']['coordinates']));
     if(isset($this->boroughsServices[$feature['properties']['name']]))
@@ -77,7 +75,13 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
 
   private function locateService($service, ObjectManager $manager)
   {
-      return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy(['website' => $service['web']]) ?: new StopSmokingService();
+      return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy([
+        'website' => $service['web'],
+        'varenicline' => $service['meds']['varenicline'],
+        'bupropion' => $service['meds']['bupropion'],
+        'nrt_single' => $service['meds']['nrt_single'],
+        'nrt_dual' => $service['meds']['nrt_dual']
+      ]) ?: new StopSmokingService();
   }
 
   private function setEntityData(StopSmokingService $entity, array $service, ObjectManager $manager)
@@ -139,10 +143,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     foreach($GeoJson['features'] as $feature)
     {
       $locator = $this->locateBorough($feature['properties']['name'], $manager);
-      if (!$manager->contains($locator))
-      {
-          $this->createBorough($feature, $manager);
-      }
+      $this->createBorough($locator, $feature, $manager);
     }
   }
 }
