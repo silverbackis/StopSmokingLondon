@@ -123,20 +123,24 @@ var HeaderAnim = (function($){
   var introAnim;
   if(isHome)
   {
-    $(".welcome").css({opacity: 1});
+    
     //Intro for home
-    introAnim = new TimelineLite({paused: true, onComplete: InteractiveDesktop, delay: 0.3})
+    introAnim = new TimelineLite({paused: true, onComplete: InteractiveDesktop, onStart: function(){
+      $(".welcome").css({opacity: 1});
+    }})
       .to($FeatureImage[0], 0.6, {opacity: 1})
-      .from($(".welcome .small")[0], 0.6, {opacity: 0, y: -20})
+      .from($(".welcome .small")[0], 0.6, {opacity: 0, y: -20}, "+=0.6")
       .from($(".welcome .large")[0], 0.6, {opacity: 0, y: -15}, "-=0.4");
   }
   else
   {
-    $(".jumbotron-outer h2").css({opacity: 1});
+    
     // Intro for other pages
-    introAnim = new TimelineLite({paused: true, onComplete: InteractiveDesktop, delay: 0.3})
+    introAnim = new TimelineLite({paused: true, onComplete: InteractiveDesktop, onStart: function(){
+      $("#animHeader").css({opacity: 1});
+    }})
       .to($FeatureImage[0], 0.6, {opacity: 1})
-      .from($(".jumbotron-outer .h2-outer")[0], 0.6, {opacity: 0, y: -20});
+      .from($(".jumbotron-outer .h2-outer")[0], 0.6, {opacity: 0, y: -20}, "+=0.6");
   }
 
   // Get the large image, wait for load then play the text intro animation

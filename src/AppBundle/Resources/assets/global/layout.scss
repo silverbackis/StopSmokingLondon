@@ -408,8 +408,7 @@
   }
 
   &.default {
-    background-image: url($asset-image-base + 'main/header_default.jpg');
-    background-size: 2389.5px 347.5px;
+    background: $blue;
 
     h2 {
       color: $white;
@@ -417,6 +416,18 @@
 
     .lead {
       color: $white;
+    }
+
+    .jumbotron-feature-image-outer {
+      display: block;
+    }
+
+    .jumbotron-feature-image {
+      background-image: url($asset-image-base + 'main/header_default.jpg');
+      background-size: 2389.5px 347.5px;
+      bottom: 50%;
+      height: 347.5px;
+      margin-bottom: -124px;
     }
   }
 
