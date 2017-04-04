@@ -75,8 +75,8 @@ var HeaderAnim = (function($){
 
 
       TweenLite.set($FeatureImage[0], {
-        y: (y - Boundaries.y.min - Constraints.y)/3,
-        x: (x - Boundaries.x.min - Constraints.x)/2
+        y: ((y - Boundaries.y.min - Constraints.y)/3)*-1,
+        x: ((x - Boundaries.x.min - Constraints.x)/2)*-1
       });
     };
 
