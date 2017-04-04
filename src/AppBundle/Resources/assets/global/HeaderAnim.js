@@ -82,9 +82,9 @@ var HeaderAnim = (function($){
 
     var xExtra = Math.round(Constraints.x/2)+1;
     $FeatureImage.css({
-      bottom: Math.round((Constraints.y/3))-1,
+      bottom: Math.round((Constraints.y/3)*-1)-1,
       padding: '0 '+ xExtra + 'px',
-      left: (xExtra) + 'px'
+      left: (xExtra)*-1 + 'px'
     });
     $(window).on("deviceorientation", HeaderGyro);
   }
