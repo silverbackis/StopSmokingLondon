@@ -104,6 +104,12 @@ var HeaderAnim = (function($){
             y: st*0.18, 
             opacity: newOpac
           });
+
+          TweenLite.set(".facts-header", {
+            //y: st*0.05, 
+            scale: 1+(st*0.0005),
+            opacity: Math.min(1, newOpac+0.3)
+          });
         }
         else
         {
@@ -126,11 +132,12 @@ var HeaderAnim = (function($){
     
     //Intro for home
     introAnim = new TimelineLite({paused: true, onComplete: InteractiveDesktop, onStart: function(){
-      $(".welcome").css({opacity: 1});
+      $(".welcome, #factsHeaderOuter").css({opacity: 1});
     }})
       .to($FeatureImage[0], 0.6, {opacity: 1})
       .from($(".welcome .small")[0], 0.6, {opacity: 0, y: -20}, "+=0.6")
-      .from($(".welcome .large")[0], 0.6, {opacity: 0, y: -15}, "-=0.4");
+      .from($(".welcome .large")[0], 0.6, {opacity: 0, y: -15}, "-=0.4")
+      .from(".facts-header", 0.6, {opacity: 0, y: -15}, "-=0.4");
   }
   else
   {

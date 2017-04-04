@@ -2,6 +2,14 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+body,
+html {
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 .cta-buttons-box {
   .btn-cta {
     font-size: .9rem;
@@ -101,7 +109,7 @@
   color: inherit;
   display: inline-block;
   margin: 2px;
-  padding: 0 5px;
+  padding: 0 .35em;
 
   &:active {
     transform: translateY(1px);
@@ -133,7 +141,7 @@
 
   .dropdown-menu {
     font-size: 1rem;
-    min-height: 140px !important;
+    min-height: 60px !important;
 
     a {
       font-size: inherit;
@@ -398,8 +406,12 @@
   background: 50% 57% no-repeat $blue-header;
   position: relative;
 
+  .h2-outer {
+    padding: 0 20px;
+  }
+
   h2 {
-    @include open-sans(2.2rem, $blue, $semi-bold);
+    @include open-sans(2rem, $blue, $semi-bold);
   }
 
   .lead {
@@ -424,10 +436,10 @@
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_default.jpg');
-      background-size: 2389.5px 347.5px;
+      background-size: 2389.5px 441.5px;
       bottom: 50%;
-      height: 347.5px;
-      margin-bottom: -124px;
+      height: 441.5px;
+      margin-bottom: -221px;
     }
   }
 
@@ -441,8 +453,8 @@
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_hills.jpg');
-      background-size: 2440px 341.5px;
-      height: 341.5px;
+      background-size: 2440px 441.5px;
+      height: 441.5px;
     }
   }
 
@@ -456,8 +468,8 @@
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_clouds.jpg');
-      background-size: 2440px 341.5px;
-      height: 341.5px;
+      background-size: 2440px 441.5px;
+      height: 441.5px;
     }
   }
 }
@@ -466,6 +478,10 @@
   background: transparent;
   margin-bottom: 0;
   text-align: center;
+
+  h2 {
+    margin-bottom: 0;
+  }
 
   .breadcrumb {
     @include open-sans(.85rem, $blue-lighter);
@@ -916,6 +932,16 @@
 
   .block-text {
     margin-top: 1.5rem;
+    padding: 0 .9rem;
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      padding: 0 15px;
+    }
 
     p {
       font-size: 1rem;

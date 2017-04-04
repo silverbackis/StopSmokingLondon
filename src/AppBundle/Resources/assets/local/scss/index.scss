@@ -3,8 +3,7 @@
 @import 'bower/bootstrap/scss/custom';
 
 .home-feature {
-  //background: url($asset-image-base + 'main/header_home.png') 50% 66% no-repeat $white;
-  //background-size: auto 427.5px;
+  background: $blue-home-header;
   height: 250px;
   overflow: hidden;
   position: relative;
@@ -19,9 +18,9 @@
   }
 
   .jumbotron-feature-image {
-    background-image: url($asset-image-base + 'main/header_home.png');
-    background-size: auto 427.5px;
-    height: 427.5px;
+    background-image: url($asset-image-base + 'main/header_home.jpg');
+    background-size: auto 441.5px;
+    height: 441.5px;
     z-index: 1;
   }
 }
@@ -40,7 +39,7 @@
   .large {
     background: $blue-dark;
     display: inline-block;
-    padding: .4rem .8rem;
+    padding: .3rem .8rem .7rem;
   }
 }
 
@@ -364,6 +363,10 @@ h3 {
 
     .small {
       font-size: 1rem;
+    }
+
+    .large {
+      padding: .4rem .8rem .6rem;
     }
   }
 

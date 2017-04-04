@@ -11,6 +11,8 @@
 }
 
 .google-map {
+  margin-left: 40px;
+
   &.actual {
     position: absolute;
     top: 0;
@@ -24,6 +26,10 @@
 @include media-breakpoint-down(md) {
   .google-map-outer {
     padding: 0;
+  }
+
+  .google-map {
+    margin-left: 0;
   }
 
   .map-row-wrapper {

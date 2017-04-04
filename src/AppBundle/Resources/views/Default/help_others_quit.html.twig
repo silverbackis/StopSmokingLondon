@@ -28,38 +28,42 @@
     <div class="row justify-content-center no-gutters row-main-page">
       <div class="col-12">
         <div class="container mobile-w-100">
-          <div class="row block-text">
-            <div class="col-12">
-              <h3>Finding out if they want to quit</h3>
-              <p>Family and friends are one of the most important triggers for smokers to stop. Most want to anyway, and a gentle nudge from someone they love can be just what they need. Probably the best thing you can do is to point them to this site or other tools they can use to help them quit.</p>
-              <h3>Providing advice</h3>
-              <p>Family and friends are often not best placed to advise on stopping smoking - the most important thing you can do is to let your loved one or friend know you are on his or her side whatever and to provide lots and lots of support and congratulations.</p>
-            </div>
-          </div>
+          <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10">
+              <div class="row block-text">
+                <div class="col-12">
+                  <h3>Finding out if they want to quit</h3>
+                  <p>Family and friends are one of the most important triggers for smokers to stop. Most want to anyway, and a gentle nudge from someone they love can be just what they need. Probably the best thing you can do is to point them to this site or other tools they can use to help them quit.</p>
+                  <h3>Providing advice</h3>
+                  <p>Family and friends are often not best placed to advise on stopping smoking - the most important thing you can do is to let your loved one or friend know you are on his or her side whatever and to provide lots and lots of support and congratulations.</p>
+                </div>
+              </div>
 
-          <div class="row justify-content-center mt-5 mobile-w-100 no-gutters">
-            <div class="col-12">
-              <div class="card card-outline-success text-center container-fluid">
-                <div class="card-block row justify-content-center">
-                  <div class="col-12 col-md-9">
-                    <h4>{{ 'share.title'|trans }}</h4>
-                    <p class="message">{{ 'share.text'|trans }}</p>
+              <div class="row justify-content-center mt-5 mobile-w-100 no-gutters">
+                <div class="col-12">
+                  <div class="card card-outline-success text-center container-fluid">
+                    <div class="card-block row justify-content-center">
+                      <div class="col-12 col-md-9">
+                        <h4>{{ 'share.title'|trans }}</h4>
+                        <p class="message">{{ 'share.text'|trans }}</p>
 
-                    <div class="social-links mb-3">
-                      <a class="btn btn-lg btn-success btn-cta website-link t" id="shareT" href="https://twitter.com/intent/tweet?text={{ 'share.social_post'|trans|url_encode }}">Twitter</a>
-                      <a class="btn btn-lg btn-success btn-cta website-link f" id="shareF" href="#">Facebook</a>
-                      <a class="btn btn-lg btn-success btn-cta website-link l" id="shareL" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ "https://www.stopsmokingportal.com"|url_encode }}&amp;title={{ "Stop Smoking London"|url_encode }}
-      &amp;summary={{ 'share.social_post'|trans|url_encode }}&amp;source={{ "Stop Smoking London Website"|url_encode }}" target="_blank">LinkedIn</a>
-                    </div>
-                    <div class="form-group has-success">
-                      <div class="input-group">
-                        <input class="form-control form-control-lg" type="text" value="https://www.stopsmokingportal.com" id="shareLink" data-clipboard-target="#shareLink" readonly="readonly" />
-                        {# <span class="input-group-btn">
-                          <button class="btn btn-lg btn-success btn-cta" type="button" data-clipboard-target="#shareLink">Copy Link</button>
-                        </span> #}
+                        <div class="social-links mb-3">
+                          <a class="btn btn-lg btn-success btn-cta website-link t" id="shareT" href="https://twitter.com/intent/tweet?text={{ 'share.social_post'|trans|url_encode }}">Twitter</a>
+                          <a class="btn btn-lg btn-success btn-cta website-link f" id="shareF" href="#">Facebook</a>
+                          <a class="btn btn-lg btn-success btn-cta website-link l" id="shareL" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ "https://www.stopsmokingportal.com"|url_encode }}&amp;title={{ "Stop Smoking London"|url_encode }}
+          &amp;summary={{ 'share.social_post'|trans|url_encode }}&amp;source={{ "Stop Smoking London Website"|url_encode }}" target="_blank">LinkedIn</a>
+                        </div>
+                        <div class="form-group has-success">
+                          <div class="input-group">
+                            <input class="form-control form-control-lg" type="text" value="https://www.stopsmokingportal.com" id="shareLink" data-clipboard-target="#shareLink" readonly="readonly" />
+                            {# <span class="input-group-btn">
+                              <button class="btn btn-lg btn-success btn-cta" type="button" data-clipboard-target="#shareLink">Copy Link</button>
+                            </span> #}
+                          </div>
+                          <span class="badge badge-pill" id="copySuccess">Copied to clipboard</span>
+                          <span class="badge badge-pill" id="copyError">Press 'ctrl/cmd + c' to copy</span>
+                        </div>
                       </div>
-                      <span class="badge badge-pill" id="copySuccess">Copied to clipboard</span>
-                      <span class="badge badge-pill" id="copyError">Press 'ctrl/cmd + c' to copy</span>
                     </div>
                   </div>
                 </div>
