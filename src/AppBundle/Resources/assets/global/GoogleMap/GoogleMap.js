@@ -398,7 +398,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         $telCont = $(".tel-cont", $advisorCard).empty();
         $message = $(".message", $advisorCard);
         $(".stop-smoking-london-info-row").show();
-        var SpecialistPharmacy = (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
+        var SpecialistPharmacy = null === boroughProps.service ? false : (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');
