@@ -2,7 +2,8 @@
 /**
  * Changes made to original data
  * - Wandworth and Richmond were combined, moved Richmond into Kick-It
- * - Added Kingston upon thames to kick-it service (kingston did provide another contact, clarify if I should use that instead)
+ * - Added Kingston upon thames to kick-it service (kingston did provide another contact, clarify if I should use that instead) - SWITCHED
+ * - Kingston now provided and used their data
  * - Corrected http://oneyouealing.co.uk to http://oneyouealing.org (Failed DNS lookup validation on entry)
  * - Havering removed - added to NELFT
  * - Barking and Dagenham added to NELFT
@@ -310,6 +311,26 @@ return array(
       )
     ),
     array(
+      'name' => 'Kick-It',
+      'boroughs' => array(
+        'Kingston upon Thames'
+      ),
+      'specialist_advisors' => true,
+      'pharmacy_staff' => true,
+      'meds' => array(
+        'varenicline' => true,
+        'bupropion' => false,
+        'nrt_single' => false,
+        'nrt_dual' => true
+      ),
+      'gp_prescription' => true,
+      'ecig_friendly' => true,
+      'web' => 'https://kick-it.org.uk/',
+      'tel' => array(
+        '0203 434 2500'
+      )
+    ),
+    array(
       'name' => null,
       'boroughs' => array(
         'Lambeth'
@@ -365,29 +386,7 @@ return array(
       'gp_prescription' => false,
       'ecig_friendly' => true,
       'web' => 'http://www.newham.gov.uk/stopsmoking',
-      'tel' => array(
-        null
-      )
-    ),
-    array(
-      'name' => null,
-      'boroughs' => array(
-        'Enfield'
-      ),
-      'specialist_advisors' => false,
-      'pharmacy_staff' => false,
-      'meds' => array(
-        'varenicline' => false,
-        'bupropion' => false,
-        'nrt_single' => false,
-        'nrt_dual' => false
-      ),
-      'gp_prescription' => false, // no answer given
-      'ecig_friendly' => false, // no answer given
-      'web' => null,
-      'tel' => array(
-        null
-      )
+      'tel' => null
     ),
     array(
       'name' => null,
@@ -405,9 +404,27 @@ return array(
       'gp_prescription' => false, // no answer given
       'ecig_friendly' => true,
       'web' => null, // provided but cut off in word doc
-      'tel' => array(
-        null
-      )
+      'tel' => null
+    ),
+    // No service at all
+    array(
+      'name' => null,
+      'boroughs' => array(
+        'Enfield',
+        'Harrow'
+      ),
+      'specialist_advisors' => false,
+      'pharmacy_staff' => false,
+      'meds' => array(
+        'varenicline' => false,
+        'bupropion' => false,
+        'nrt_single' => false,
+        'nrt_dual' => false
+      ),
+      'gp_prescription' => false, // no answer given
+      'ecig_friendly' => false, // no answer given
+      'web' => null,
+      'tel' => null
     )/*,
     array(
       'boroughs' => array(

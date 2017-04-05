@@ -100,6 +100,7 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     $entity->setEcigFriendly($service['ecig_friendly']);
 
     $entity->setWebsite($service['web']);
+    $entity->setTelephone($service['tel']);
 
     // validate
     $errors = $this->validator->validate($entity);
