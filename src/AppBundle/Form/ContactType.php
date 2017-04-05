@@ -43,34 +43,34 @@ class ContactType extends AbstractType
 
         $builder
             ->add('subject', ChoiceType::class, [
-              'label' => 'labels.subject',
-              'translation_domain' => 'contact',
-              'required' => true,
-              'choices' => $choices
+                'label' => 'labels.subject',
+                'translation_domain' => 'contact',
+                'required' => true,
+                'choices' => $choices
             ])
             ->add('name', TextType::class, [
-              'label' => 'labels.name',
-              'translation_domain' => 'contact',
-              'required' => true
+                  'label' => 'labels.name',
+                  'translation_domain' => 'contact',
+                  'required' => true
             ])
             ->add('email', EmailType::class, [
-              'label' => 'labels.email',
-              'translation_domain' => 'contact',
-              'required' => true
+                  'label' => 'labels.email',
+                  'translation_domain' => 'contact',
+                  'required' => true
             ])
             ->add('telephone', TextType::class, [
-              'label' => 'labels.telephone',
-              'translation_domain' => 'contact',
-              'required' => false
+                  'label' => 'labels.telephone',
+                  'translation_domain' => 'contact',
+                  'required' => false
             ])
             ->add('message', TextareaType::class, [
-              'label' => 'labels.message',
-              'translation_domain' => 'contact',
-              'required' => true
+                  'label' => 'labels.message',
+                  'translation_domain' => 'contact',
+                  'required' => true
             ])
             ->add('submit', SubmitType::class, [
-              'label' => 'labels.submit',
-              'translation_domain' => 'contact'
+                  'label' => 'labels.submit',
+                  'translation_domain' => 'contact'
             ])
         ;
     }
