@@ -19,8 +19,8 @@
 
   .jumbotron-feature-image {
     background-image: url($asset-image-base + 'main/header_home.jpg');
-    background-size: auto 441.5px;
-    height: 441.5px;
+    background-size: 2440px 300px;
+    height: 300px;
     z-index: 1;
   }
 }
@@ -28,6 +28,8 @@
 .welcome {
   @include open-sans(2.3rem, $white);
   letter-spacing: .02rem;
+  margin-bottom: 0;
+  padding-left: 30px;
 
   .small {
     background: $blue;
@@ -43,8 +45,12 @@
   }
 }
 
+.facts-header-outer {
+  overflow: hidden;
+}
+
 .facts-header {
-  @include open-sans(1.1rem, $white, $semi-bold);
+  @include open-sans(1.2rem, $white, $semi-bold);
   margin: 0;
   padding: 2.5rem 0;
   text-align: center;
@@ -342,6 +348,7 @@ h3 {
 @include media-breakpoint-down(md) {
   .home-features-list {
     font-size: .9rem;
+    padding: 0 20px;
 
     p {
       margin-top: 1rem;
@@ -360,6 +367,8 @@ h3 {
 
   .welcome {
     font-size: 1.5rem;
+    margin-top: 4.5rem;
+    padding-left: 0;
 
     .small {
       font-size: 1rem;
@@ -416,7 +425,7 @@ h3 {
 
   .facts-header {
     font-size: .9rem;
-    padding: 1.5rem 0;
+    padding: 1.5rem 20px;
   }
 
   .triples-row {

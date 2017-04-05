@@ -3,7 +3,7 @@
 @import 'bower/bootstrap/scss/custom';
 
 .contact-row {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 
   .col-12 {
     text-align: left;
@@ -44,5 +44,9 @@
     p.text-success {
       font-size: .9rem;
     }
+  }
+
+  .contact-row {
+    margin-top: .5rem;
   }
 }

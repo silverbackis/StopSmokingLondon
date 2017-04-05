@@ -108,8 +108,9 @@ html {
   box-shadow: 0 .5px 1px $gray;
   color: inherit;
   display: inline-block;
+  line-height: 1.4em;
   margin: 2px;
-  padding: 0 .35em;
+  padding: 0 .35em .1rem;
 
   &:active {
     transform: translateY(1px);
@@ -411,7 +412,7 @@ html {
   }
 
   h2 {
-    @include open-sans(2rem, $blue, $semi-bold);
+    @include open-sans(1.8rem, $blue, $semi-bold);
   }
 
   .lead {
@@ -436,10 +437,8 @@ html {
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_default.jpg');
-      background-size: 2389.5px 441.5px;
-      bottom: 50%;
-      height: 441.5px;
-      margin-bottom: -221px;
+      background-size: 2440px 300px;
+      height: 300px;
     }
   }
 
@@ -453,8 +452,9 @@ html {
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_hills.jpg');
-      background-size: 2440px 441.5px;
-      height: 441.5px;
+      background-size: 2440px 300px;
+      height: 300px;
+      bottom: -20px;
     }
   }
 
@@ -468,8 +468,8 @@ html {
 
     .jumbotron-feature-image {
       background-image: url($asset-image-base + 'main/header_clouds.jpg');
-      background-size: 2440px 441.5px;
-      height: 441.5px;
+      background-size: 2440px 300px;
+      height: 300px;
     }
   }
 }
@@ -517,7 +517,7 @@ html {
 }
 
 .row-main-page {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .stop-smoking-london-bottom {
@@ -536,15 +536,17 @@ html {
       margin-bottom: 2rem;
 
       a {
-        display: inline-block;
         font-weight: $semi-bold;
+      }
+
+      b,
+      a {
+        display: inline-block;
+        width: 100%;
       }
     }
 
-    b {
-      display: inline-block;
-      width: 100%;
-    }
+    
   }
 
   .btn-cta {
@@ -667,7 +669,7 @@ html {
   }
 }
 
-.block-text,
+//.block-text,
 .block-text p + h3,
 .block-text p + h4,
 .block-text p + h5 {
@@ -857,7 +859,7 @@ html {
   }
 
   .jumbotron {
-    padding: 2rem 1rem;
+    padding: 3.3rem 1rem;
 
     h2 {
       font-size: 1.25rem;
@@ -900,6 +902,8 @@ html {
   //}
   
   .row-main-page {
+    margin-top: 2rem;
+
     > .container {
       width: 100%;
     }
@@ -931,7 +935,6 @@ html {
   }
 
   .block-text {
-    margin-top: .5rem;
     padding: 0 .9rem;
 
     p,
