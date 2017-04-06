@@ -43,11 +43,17 @@
                     <div id="searchText" class="toggle-area">
                       <h3 class="page-header-2 postcode-header">{{ 'search.header'|trans }}</h3>
                       <div class="form-group row postcode-group no-gutters">
-                        <div class="col">
-                          <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
-                        </div>
-                        <div class="col-12 col-auto">
-                          <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">{{ 'search.button'|trans }}</a>
+                        <div class="col-12">
+                          <div class="row no-gutters">
+                            <div class="col">
+                              <input class="form-control form-control-lg" type="text" value="" id="postcodeInput" placeholder="Eg. SW4" />
+                            </div>
+                            <div class="col-12 col-auto" style="display: flex;">
+                              <a class="btn btn-success btn-cta" id="confirmPostcode" href="#">
+                                <span class="align-middle">{{ 'search.button'|trans }}</span>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                         <div class="col-12">
                           <p class="form-text text-muted">{{ 'search.question'|trans }} <a href="#" class="search-type-toggle" data-toggle="#searchBorough">{{ 'search.alternative'|trans }}</a></p>
