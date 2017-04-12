@@ -356,7 +356,13 @@ var GoogleMap = (function($, viewport, alert, confirm){
           {
             if(null !== boroughProps.service.telephone)
             {
-              var telNumbers = JSON.parse(boroughProps.service.telephone);
+              var telNumbers;
+              try{
+                telNumbers = JSON.parse(boroughProps.service.telephone);
+              }catch(e){
+                telNumbers = [boroughProps.service.telephone];
+              }
+              
               $tel
                 .clone()
                   .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))

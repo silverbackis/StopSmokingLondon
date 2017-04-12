@@ -57,22 +57,6 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     return $entity;
   }
 
-  /*private function makeServiceName($boroughs)
-  {
-    $serviceNamePostfix = 'Stop Smoking Service';
-    $totalBoroughs = count($boroughs);
-    if($totalBoroughs === 1)
-    {
-      $serviceName = $boroughs[0]." $serviceNamePostfix";
-    }
-    else
-    {
-      $lastBorough = array_pop($boroughs);
-      $serviceName = join(", ",$boroughs)." and $lastBorough $serviceNamePostfix";
-    }
-    return $serviceName;
-  }*/
-
   private function locateService($service, ObjectManager $manager)
   {
       return $manager->getRepository('AppBundle\Entity\StopSmokingService')->findOneBy([
@@ -131,11 +115,16 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
       }
 
       $locator = $this->locateService($service, $manager);
-      $serviceEntity = $this->setEntityData($locator, $service,$manager);
-
-      foreach($service['boroughs'] as $boroughName)
+      if (!$manager->contains($locator))
       {
-        $this->boroughsServices[$boroughName] = $serviceEntity;
+        $serviceEntity = $this->setEntityData($locator, $service,$manager);
+
+
+        foreach($service['boroughs'] as $boroughName)
+        {
+          // populate array for createborough method to set service
+          $this->boroughsServices[$boroughName] = $serviceEntity;
+        }
       }
     }
 
@@ -144,7 +133,10 @@ class BoroughsAndServices implements FixtureInterface, ContainerAwareInterface
     foreach($GeoJson['features'] as $feature)
     {
       $locator = $this->locateBorough($feature['properties']['name'], $manager);
-      $this->createBorough($locator, $feature, $manager);
+      if (!$manager->contains($locator))
+      {
+        $this->createBorough($locator, $feature, $manager);
+      }
     }
   }
 }

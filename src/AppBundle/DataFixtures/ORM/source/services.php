@@ -267,25 +267,6 @@ return array(
         '0203 316 1085'
       )
     ),
-    /*array(
-      'boroughs' => array(
-        'Havering'
-      ),
-      'specialist_advisors' => true,
-      'pharmacy_staff' => false,
-      'meds' => array(
-        'varenicline' => false,
-        'bupropion' => false,
-        'nrt_single' => true,
-        'nrt_dual' => true
-      ),
-      'gp_prescription' => true,
-      'ecig_friendly' => true,
-      'web' => null,
-      'tel' => array(
-        '0208 724 8018'
-      )
-    ),*/
     array(
       'name' => 'Kick-It',
       'boroughs' => array(
@@ -425,24 +406,5 @@ return array(
       'ecig_friendly' => false, // no answer given
       'web' => null,
       'tel' => null
-    )/*,
-    array(
-      'boroughs' => array(
-        ''
-      ),
-      'specialist_advisors' => 0,
-      'pharmacy_staff' => 0,
-      'meds' => array(
-        'varenicline' => 0,
-        'bupropion' => 0,
-        'nrt_single' => 0,
-        'nrt_dual' => 0
-      ),
-      'gp_prescription' => 0,
-      'ecig_friendly' => 0,
-      'web' => '',
-      'tel' => array(
-        ''
-      )
-    )*/
+    )
   );

@@ -2,6 +2,11 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+admin_boroughs_services:
+    resource: "@BoroughServicesBundle/Controller/"
+    prefix:   /admin/services
+    type:     annotation
+
 lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
     prefix:   /admin/translations

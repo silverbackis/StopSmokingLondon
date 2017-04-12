@@ -1,0 +1,49 @@
+{% extends '@LexikTranslation/layout.html.twig' %}
+
+{% block lexik_stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/boroughservices/css/borough_services.css') }}">
+{% endblock %}
+
+{% block lexik_title %}Manage Boroughs{% endblock %}
+
+{% block lexik_content %}
+  <div class="container">
+    {% block lexik_toolbar %}
+      <div class="page-header">
+        <h1>
+          Boroughs
+          {#<div class="pull-right">
+              <a href="{{ path('lexik_translation_grid') }}" role="button" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-th"></span>
+                  {{ 'overview.show_grid'|trans }}
+              </a>
+          </div>#}
+        </h1>
+      </div>
+    {% endblock lexik_toolbar %}
+
+    <table class="table table-bordered table-striped table-overview table-hover">
+      <thead>
+        <tr>
+          <th width="100%">Borough</th>
+          <th class="text-center">Service known?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for borough in boroughs %}
+        <tr{{ borough.service == null ? ' class="warning"' }}>
+          <td>{{ borough.name }}</td>
+          <th class="text-center{{ borough.service == null ? ' text-warning' : ' text-success' }}">{{ borough.service == null ? 'N' : 'Y' }}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  </div>
+{% endblock %}
+
+{% block lexik_javascript_footer %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/boroughservices/js/borough_services.js') }}"></script>
+{% endblock %}

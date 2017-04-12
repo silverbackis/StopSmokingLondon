@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new SimpleUserBundle\SimpleUserBundle(),
             new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
             new RestrictedLexikTranslationBundle\RestrictedLexikTranslationBundle(),
+            new BoroughServicesBundle\BoroughServicesBundle(),
             new AppBundle\AppBundle(),
         ];
 

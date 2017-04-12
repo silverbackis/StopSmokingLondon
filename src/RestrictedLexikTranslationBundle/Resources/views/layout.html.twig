@@ -4,16 +4,51 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block lexik_title %}{% endblock %}</title>
         {% block lexik_stylesheets %}
-            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('bundles/lexiktranslation/ng-table/ng-table.min.css') }}">
         {% endblock %}
     </head>
     <body>
-        {% block logout_header %}
+        {% block header %}
             <div class="container">
                 <div class="row">
                     <div class="col-12" style="text-align: right;">
                         <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                  </button>
+                                  <a class="navbar-brand" href="#">Admin</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                  <ul class="nav navbar-nav">
+                                    <li class="dropdown{{ (app.request.attributes.get('_route') == 'lexik_translation_overview' or app.request.attributes.get('_route') == 'lexik_translation_grid') ? ' active' }}">
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Translations <span class="caret"></span></a>
+                                      <ul class="dropdown-menu">
+                                        <li{{ (app.request.attributes.get('_route') == 'lexik_translation_overview') ? ' class="active"' }}>
+                                            <a href="{{ path('lexik_translation_overview') }}">Overview</a>
+                                        </li>
+                                        <li{{ (app.request.attributes.get('_route') == 'lexik_translation_grid') ? ' class="active"' }}>
+                                            <a href="{{ path('lexik_translation_grid') }}">Grid</a>
+                                        </li>
+                                      </ul>
+                                    </li>
+                                    <li{{ (app.request.attributes.get('_route') == 'admin_boroughs') ? ' class="active"' }}><a href="{{ path('admin_boroughs') }}">Boroughs</a></li>
+                                    <li{{ (app.request.attributes.get('_route') == 'admin_services') ? ' class="active"' }}><a href="{{ path('admin_services') }}">Services</a></li>
+                                  </ul>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -41,6 +76,7 @@
         {% block lexik_javascript_footer %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
             <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             <script src="{{ asset('bundles/lexiktranslation/ng-table/ng-table.min.js') }}"></script>
         {% endblock %}
     </body>
