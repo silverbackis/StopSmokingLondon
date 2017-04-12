@@ -26,7 +26,7 @@
       </thead>
       <tbody>
         {% for borough in boroughs %}
-        <tr{{ borough.service == null ? ' class="warning"' }}>
+        <tr data-href="{{ borough.service != null ? path('admin_service', {id: borough.service.id}) : path('admin_service', {id: 0}) ~ '?borough=' ~ borough.id }}"{{ borough.service == null ? ' class="warning"' }}>
           <td>{{ borough.name }}</td>
           <th class="text-center{{ borough.service == null ? ' text-warning' : ' text-success' }}">{{ borough.service == null ? 'N' : 'Y' }}</th>
         </tr>

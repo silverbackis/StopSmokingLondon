@@ -63,6 +63,11 @@ class ServicesController extends Controller
     if($id === 0)
     {
       $service = new StopSmokingService();
+      if($request->query->get('borough'))
+      {
+        $borough = $this->getDoctrine()->getRepository('AppBundle:Borough')->findOneById($request->query->get('borough'));
+        $service->addBorough($borough);
+      }
     }
     else
     {
