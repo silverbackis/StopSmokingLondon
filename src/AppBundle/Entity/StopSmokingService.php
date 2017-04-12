@@ -48,9 +48,9 @@ class StopSmokingService
     protected $website;
 
     /**
-    * @ORM\Column(type="boolean", nullable=true)
+    * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $gp_prescription;
+    protected $gp_prescription = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
@@ -75,12 +75,12 @@ class StopSmokingService
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $specialist_advisors = 0;
+    protected $specialist_advisors = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $pharmacy_staff = 0;
+    protected $pharmacy_staff = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})

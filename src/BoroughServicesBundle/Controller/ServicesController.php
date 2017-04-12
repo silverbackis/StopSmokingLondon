@@ -2,6 +2,8 @@
 
 namespace LexikTranslationBundle\Controller;
 
+use AppBundle\Entity\StopSmokingService;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,9 +29,34 @@ class ServicesController extends Controller
   }
 
   /**
+   * @Route("/service/delete/{id}", name="admin_service_delete", requirements={"id": "\d+"})
+   */
+  public function deleteServiceAction(Request $request, $id)
+  {
+    $doc = $this->getDoctrine();
+    $service = $doc->getRepository('AppBundle:StopSmokingService')->findOneById($id);
+    if (!$service) {
+      $this->addFlash(
+          'danger',
+          'Could not delete service - service not found'
+      );
+      return $this->redirectToRoute('admin_services');
+    }
+
+    $em = $doc->getEntityManager();
+    $em->remove($service);
+    $em->flush();
+    $this->addFlash(
+        'success',
+        'Service successfully deleted'
+    );
+    return $this->redirectToRoute('admin_services');
+  }
+
+  /**
    * @Route("/service/{id}", name="admin_service", requirements={"id": "\d+"})
    */
-  public function modifyServiceAction(Request $request, $id)
+  public function modifyServiceAction(Request $request, int $id)
   {
     $doc = $this->getDoctrine();
     $em = $doc->getEntityManager();
@@ -42,6 +69,7 @@ class ServicesController extends Controller
       $service = $doc->getRepository('AppBundle:StopSmokingService')->findOneById($id);
     }
     $OriginalBoroughs = clone $service->getBoroughs();
+
     $form = $this->createFormBuilder($service)
       ->add('name', TextType::class, [
         'required' => false
@@ -69,7 +97,7 @@ class ServicesController extends Controller
       ->add('telephone', TextType::class, [
         'required' => false
       ])
-      ->add('save', SubmitType::class, array('label' => 'Save'))
+      ->add('save', SubmitType::class, array('label' => $service->getId() ? 'Update Service' : 'Add Service'))
       ->getForm();
 
     $form->handleRequest($request);
@@ -84,7 +112,7 @@ class ServicesController extends Controller
       {
         $borough->setService($service);
       }
-
+      $em->persist($service);
       $em->flush();
       $this->addFlash(
           'success',

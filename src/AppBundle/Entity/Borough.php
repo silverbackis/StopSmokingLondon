@@ -27,7 +27,7 @@ class Borough
     /**
      * Many boroughs havwe the same service
      * @ORM\ManyToOne(targetEntity="StopSmokingService", inversedBy="boroughs")
-     * @ORM\JoinColumn(name="service_id", referencedColumnName="id", onDelete="NO ACTION")
+     * @ORM\JoinColumn(name="service_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $service;
 
