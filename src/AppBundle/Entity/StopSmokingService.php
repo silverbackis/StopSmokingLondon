@@ -50,6 +50,11 @@ class StopSmokingService
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
+    protected $web_service_available = false;
+
+    /**
+    * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
+    */
     protected $gp_prescription = false;
 
     /**
@@ -469,5 +474,29 @@ class StopSmokingService
     public function getBoroughs()
     {
         return $this->boroughs;
+    }
+
+    /**
+     * Set webServiceAvailable
+     *
+     * @param boolean $webServiceAvailable
+     *
+     * @return StopSmokingService
+     */
+    public function setWebServiceAvailable($webServiceAvailable)
+    {
+        $this->web_service_available = $webServiceAvailable;
+
+        return $this;
+    }
+
+    /**
+     * Get webServiceAvailable
+     *
+     * @return boolean
+     */
+    public function getWebServiceAvailable()
+    {
+        return $this->web_service_available;
     }
 }

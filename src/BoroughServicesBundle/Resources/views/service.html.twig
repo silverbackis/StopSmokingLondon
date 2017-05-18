@@ -83,6 +83,22 @@
         {{ form_errors(form.telephone) }}
       </div>
 
+      <div class="form-group">
+        {{ form_label(form.web_service_available, 'Service available on website?', {'label_attr': {'class': 'control-label col-sm-3'}}) }}
+        <div class="col-sm-9">
+          {{ form_widget(form.web_service_available, {'attr': {'class': ''}}) }}
+        </div>
+        {{ form_errors(form.web_service_available) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.website, 'URL to website service', {'label_attr': {'class': 'control-label col-sm-3'}}) }}
+        <div class="col-sm-9">
+          {{ form_widget(form.website, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form.website) }}
+      </div>
+
       <div>
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-block btn-success'}}) }}
       </div>

@@ -102,6 +102,12 @@ class ServicesController extends Controller
       ->add('telephone', TextType::class, [
         'required' => false
       ])
+      ->add('web_service_available', CheckboxType::class, [
+        'required' => false
+      ])
+      ->add('website', TextType::class, [
+        'required' => false
+      ])
       ->add('save', SubmitType::class, array('label' => $service->getId() ? 'Update Service' : 'Add Service'))
       ->getForm();
 

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="stop_smoking_service")
+ * @ORM\Table(name="app_stop_smoking_service")
  * @ORM\HasLifecycleCallbacks
  */
 class StopSmokingService
@@ -32,7 +32,7 @@ class StopSmokingService
     protected $boroughs;
 
     /**
-    * @ORM\Column(type="string", length=50, nullable=true)
+    * @ORM\Column(type="string", length=100, nullable=true)
     */
     protected $telephone;
 
@@ -48,9 +48,14 @@ class StopSmokingService
     protected $website;
 
     /**
-    * @ORM\Column(type="boolean", nullable=true)
+    * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $gp_prescription;
+    protected $web_service_available = false;
+
+    /**
+    * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
+    */
+    protected $gp_prescription = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
@@ -75,12 +80,12 @@ class StopSmokingService
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $specialist_advisors = 0;
+    protected $specialist_advisors = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
     */
-    protected $pharmacy_staff = 0;
+    protected $pharmacy_staff = false;
 
     /**
     * @ORM\Column(type="boolean", nullable=false, options={"default" : 0})
@@ -411,5 +416,63 @@ class StopSmokingService
     public function getModifiedAt()
     {
         return $this->modified_at;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return StopSmokingService
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add borough
+     *
+     * @param \AppBundle\Entity\Borough $borough
+     *
+     * @return StopSmokingService
+     */
+    public function addBorough(\AppBundle\Entity\Borough $borough)
+    {
+        $this->boroughs[] = $borough;
+
+        return $this;
+    }
+
+    /**
+     * Remove borough
+     *
+     * @param \AppBundle\Entity\Borough $borough
+     */
+    public function removeBorough(\AppBundle\Entity\Borough $borough)
+    {
+        $this->boroughs->removeElement($borough);
+    }
+
+    /**
+     * Get boroughs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBoroughs()
+    {
+        return $this->boroughs;
     }
 }

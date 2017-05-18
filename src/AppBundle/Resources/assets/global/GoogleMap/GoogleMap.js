@@ -350,31 +350,54 @@ var GoogleMap = (function($, viewport, alert, confirm){
       $("#liveIn").show();
       $("#selectedBorough").html(boroughProps.name);
 
-      var showTelephone = function($telCont)
+      var showTelephone = function($telCont, key)
       {
-        if(boroughProps.service.telephone)
+        if(!key)
+        {
+          key = 'telephone';
+        }
+        var isLink = key==='website';
+
+        if(boroughProps.service[key])
           {
-            if(null !== boroughProps.service.telephone)
+            if(null !== boroughProps.service[key])
             {
               var telNumbers;
               try{
-                telNumbers = JSON.parse(boroughProps.service.telephone);
+                telNumbers = JSON.parse(boroughProps.service[key]);
               }catch(e){
-                telNumbers = [boroughProps.service.telephone];
+                telNumbers = [
+                  boroughProps.service[key]
+                ];
+              }
+              var href = !isLink ? "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1) : telNumbers[0].replace(/\s/g, '');
+              var html = !isLink ? telNumbers[0] : 'Visit Website';
+              var $telClone = $tel.clone();
+              var $newBtn = $telBtn.clone();
+              if(isLink)
+              {
+                $telClone.add($newBtn).attr("target", "_blank");
               }
               
-              $tel
-                .clone()
-                  .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
-                  .html(telNumbers[0])
+              $telClone.attr("href", href)
+                  .html(html)
                   .appendTo($telCont);
-              var $newBtn = $telBtn.clone();
-              $(".tel-text", $newBtn).html(telNumbers[0]);
+
+              
+              $(".tel-text", $newBtn).html(html);
               $newBtn
-                  .attr("href", "tel:+44"+telNumbers[0].replace(/\s/g, '').substr(1))
+                  .attr("href", href)
                   .appendTo($telCont);
               
-              $(".stop-smoking-london-info-row").hide();
+              if(!isLink)
+              {
+                $telCont.removeClass("website");
+                $(".stop-smoking-london-info-row").hide();
+              }
+              else if(!$telCont.hasClass("website"))
+              {
+                $telCont.addClass("website");
+              }
             }
           }
       },
@@ -389,7 +412,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           message += appendMessage(ResponseMessages['steps.2.'+group+'.'+key+'.append']);
         }
-        if(ResponseMessages['steps.2.'+group+'.'+key+'.append_fallback_message'])
+        var appendFallback = ResponseMessages['steps.2.'+group+'.'+key+'.append_fallback_message']=='1' || ResponseMessages['steps.2.'+group+'.'+key+'.append_fallback_message']=='true';
+        if(
+          appendFallback
+        )
         {
           message += appendMessage(ResponseMessages['steps.2.all.fallback_message']);
         }
@@ -402,9 +428,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
       {
         // We have an advisor info card to fill in
         $telCont = $(".tel-cont", $advisorCard).empty();
+        //$websiteCont = $(".website-cont", $advisorCard).empty();
         $message = $(".message", $advisorCard);
         $(".stop-smoking-london-info-row").show();
         var SpecialistPharmacy = null === boroughProps.service ? false : (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
+
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');
@@ -422,6 +450,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           message = getMessage('advisor', 'has_pharmacy_staff');
           showTelephone($telCont);
+        }
+        else if(boroughProps.service.webServiceAvailable)
+        {
+          message = getMessage('advisor', 'web_based');
+          showTelephone($telCont, 'website');
         }
         else
         {
