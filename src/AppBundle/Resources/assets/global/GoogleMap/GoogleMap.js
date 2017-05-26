@@ -538,7 +538,8 @@ var GoogleMap = (function($, viewport, alert, confirm){
     $map.removeAttr("data-search-token");
 
     // Get GeoJson with token in GET
-    $.getJSON('/boroughs-and-messages.json?token=' + token, function(data)
+    // ?token=' + token
+    $.getJSON('/boroughs-and-messages.json', function(data)
     {
       // Set local variable with the GeoJson data - parameters have all the info we need out of database
       GeoJson = data.LoadedGeoJson;

@@ -603,7 +603,6 @@ class DefaultController extends Controller
                 "features" => []
             );
 
-            
             foreach($boroughs as $borough)
             {
                 $service = $borough->getService();
@@ -649,8 +648,7 @@ class DefaultController extends Controller
             {
                 $messages[$mr['key']] =  $mr['content'];
             }
-
-            $encoders = array(new JsonEncoder());
+            /*$encoders = array(new JsonEncoder());
             $normalizer = new ObjectNormalizer();
             $normalizer->setCircularReferenceHandler(function ($object) {
                 return array(
@@ -658,15 +656,14 @@ class DefaultController extends Controller
                     'name' => $object->getName()
                 );
             });
-            $serializer = new Serializer(array($normalizer), $encoders);
+            $serializer = new Serializer(array($normalizer), $encoders);*/
             
-            $data = $serializer->serialize([
+            $data = [
                 'LoadedGeoJson' => $data,
                 'messages' => $messages
-            ], 'json');
-            $response->setContent($data);
+            ];
+            $response->setData($data);
             //$response->setEncodingOptions(JSON_PRETTY_PRINT);
-            
         }
         else
         {
