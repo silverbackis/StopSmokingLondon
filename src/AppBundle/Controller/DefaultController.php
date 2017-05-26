@@ -562,7 +562,7 @@ class DefaultController extends Controller
     {
         $response = new JsonResponse();
         // Allow in debug mode or if in production - only with a valid csrf token
-        if ($this->container->getParameter('kernel.debug')) { // || $this->isCsrfTokenValid('borough_json', $request->query->get('token'))
+        //if ($this->container->getParameter('kernel.debug')) { // || $this->isCsrfTokenValid('borough_json', $request->query->get('token'))
             //$csrf = $this->get('security.csrf.token_manager');
             //$token = $csrf->refreshToken('borough_json');
 
@@ -664,11 +664,11 @@ class DefaultController extends Controller
             ];
             $response->setData($data);
             //$response->setEncodingOptions(JSON_PRETTY_PRINT);
-        }
-        else
-        {
-            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
-        }
+        //}
+        //else
+        //{
+        //    $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
+        //}
         return $response;
     }
 
