@@ -492,6 +492,11 @@ var GoogleMap = (function($, viewport, alert, confirm){
 
   function initMap()
   {
+    $("#confirmPostcode").addClass("disabled");
+    $searchInput.prop('disabled', true);
+    var placholderText = $searchInput.attr("placeholder");
+    $searchInput.attr("placeholder", "Loading...");
+    
     // Only initialise once - public function so extra control
     // Called from the google maps async loaded script
     if(initCalled)
@@ -541,6 +546,10 @@ var GoogleMap = (function($, viewport, alert, confirm){
     // ?token=' + token
     $.getJSON('/boroughs-and-messages.json', function(data)
     {
+      $searchInput.prop('disabled', false);
+      $("#confirmPostcode").removeClass("disabled");
+      $searchInput.attr("placeholder", placholderText);
+
       // Set local variable with the GeoJson data - parameters have all the info we need out of database
       GeoJson = data.LoadedGeoJson;
       ResponseMessages = data.messages;
