@@ -475,11 +475,11 @@ class DefaultController extends Controller
             //'include_rts' => 'true', 
             'count' => 6
         ]);
-        $halfYear = round((86400*365)/2);
+        $oneHour = round((86400/24));
         $cacheArray = array(
             'last_modified' => new \DateTime(),
-            'max_age'       => $halfYear, //.5 years
-            's_maxage'      => $halfYear, //.5 years
+            'max_age'       => $oneHour, //.5 years
+            's_maxage'      => $oneHour, //.5 years
             'public'        => true
         );
         //die(dump($tweets));
