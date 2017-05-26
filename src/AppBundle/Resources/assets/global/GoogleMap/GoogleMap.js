@@ -432,7 +432,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         $message = $(".message", $advisorCard);
         $(".stop-smoking-london-info-row").show();
         var SpecialistPharmacy = null === boroughProps.service ? false : (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
-
+        
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');

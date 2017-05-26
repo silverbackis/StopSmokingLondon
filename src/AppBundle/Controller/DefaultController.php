@@ -648,7 +648,7 @@ class DefaultController extends Controller
             {
                 $messages[$mr['key']] =  $mr['content'];
             }
-            /*$encoders = array(new JsonEncoder());
+            $encoders = array(new JsonEncoder());
             $normalizer = new ObjectNormalizer();
             $normalizer->setCircularReferenceHandler(function ($object) {
                 return array(
@@ -656,13 +656,12 @@ class DefaultController extends Controller
                     'name' => $object->getName()
                 );
             });
-            $serializer = new Serializer(array($normalizer), $encoders);*/
-            
-            $data = [
+            $serializer = new Serializer(array($normalizer), $encoders);
+            $data = $serializer->serialize([
                 'LoadedGeoJson' => $data,
                 'messages' => $messages
-            ];
-            $response->setData($data);
+            ], 'json');
+            $response->setContent($data);
             //$response->setEncodingOptions(JSON_PRETTY_PRINT);
         //}
         //else
