@@ -71,7 +71,6 @@ String.prototype.ucfirst = function() {
     }
 
     $(".website-link").on("click", function(e) {
-      e.preventDefault();
       gaTrack({
         hitType: 'event',
         eventCategory: 'External Website Link',
