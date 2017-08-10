@@ -561,113 +561,106 @@ class DefaultController extends Controller
     public function boroughJsonAction(Request $request)
     {
         $response = new JsonResponse();
+
         // Allow in debug mode or if in production - only with a valid csrf token
         //if ($this->container->getParameter('kernel.debug')) { // || $this->isCsrfTokenValid('borough_json', $request->query->get('token'))
-            //$csrf = $this->get('security.csrf.token_manager');
-            //$token = $csrf->refreshToken('borough_json');
+        //$csrf = $this->get('security.csrf.token_manager');
+        //$token = $csrf->refreshToken('borough_json');
 
-            $boroughs = $this->getDoctrine()->getRepository('AppBundle:Borough')->findAll();
+        $boroughs = $this->getDoctrine()->getRepository('AppBundle:Borough')->findAll();
 
-            $lastUpdatedDate = null;
-            foreach($boroughs as $borough)
+        $lastUpdatedDate = null;
+        foreach($boroughs as $borough)
+        {
+            $lastModified = $borough->getModifiedAt();
+            $service = $borough->getService();
+            $serviceLastModified = $service ? $borough->getService()->getModifiedAt() : new \DateTime("1970");
+            if($serviceLastModified > $lastModified)
             {
-                $lastModified = $borough->getModifiedAt();
-                $service = $borough->getService();
-                $serviceLastModified = $service ? $borough->getService()->getModifiedAt() : new \DateTime("1970");
-                if($serviceLastModified > $lastModified)
-                {
-                    $lastModified = $serviceLastModified;
-                }
-                if(null === $lastUpdatedDate || $lastModified > $lastUpdatedDate)
-                {
-                    $lastUpdatedDate = $lastModified;
-                }
+                $lastModified = $serviceLastModified;
             }
-            $day = round(86400);
-            $response->setCache(array(
-                'etag'          => 'boroughs.json',
-                'last_modified' => $lastUpdatedDate,
-                'max_age'       => $day*7,
-                's_maxage'      => $day*7,
-                'public'        => true
-            ));
-            // Check that the Response is not modified for the given Request
-            if ($response->isNotModified($request)) {
-                // return the 304 Response immediately
-                return $response;
+            if(null === $lastUpdatedDate || $lastModified > $lastUpdatedDate)
+            {
+                $lastUpdatedDate = $lastModified;
             }
+        }
+        $day = round(86400);
+        $response->setCache(array(
+            'etag'          => 'boroughs.json',
+            'last_modified' => $lastUpdatedDate,
+            'max_age'       => $day*7,
+            's_maxage'      => $day*7,
+            'public'        => true
+        ));
+        // Check that the Response is not modified for the given Request
+        if ($response->isNotModified($request)) {
+            // return the 304 Response immediately
+            return $response;
+        }
 
-            // Populate complete array
-            $data = array(
-                "type" => "FeatureCollection",
-                "features" => []
+        // Populate complete array
+        $data = array(
+            "type" => "FeatureCollection",
+            "features" => []
+        );
+
+        foreach($boroughs as $borough)
+        {
+            $data['features'][] = array(
+                "type" => "Feature",
+                "id" => $borough->getId(),
+                "properties" => array(
+                    "name" => $borough->getName(),
+                    "service" => $borough->getService() ?: null
+                ),
+                "geometry" => array(
+                    "type" => "Polygon",
+                    "coordinates" => json_decode($borough->getCoordinates())
+                )
             );
+        }
 
-            foreach($boroughs as $borough)
-            {
-                $service = $borough->getService();
-                $data['features'][] = array(
-                    "type" => "Feature",
-                    "id" => $borough->getId(),
-                    "properties" => array(
-                        "name" => $borough->getName(),
-                        "service" => $borough->getService() ?: null
-                    ),
-                    "geometry" => array(
-                        "type" => "Polygon",
-                        "coordinates" => json_decode($borough->getCoordinates())
-                    )
-                );
-            }
+        //Now let's get the messages javascript needs to display results.
+        $tooltipsRepo = $this->getDoctrine()->getRepository('Lexik\Bundle\TranslationBundle\Entity\File');
 
-            //Now let's get the messages javascript needs to display results.
-            $tooltipsRepo = $this->getDoctrine()->getRepository('Lexik\Bundle\TranslationBundle\Entity\File');
+        // Get translation keys and tooltips
+        $mapResultPrefix = 'map_search_results.';
+        $messagesResult = $tooltipsRepo->createQueryBuilder('f')
+            ->select('t.content, tu.key, tu.updatedAt')
+            ->innerJoin("f.translations", "t")
+            ->innerJoin("t.transUnit", "tu")
+            ->where("(tu.key LIKE :keystart1 OR tu.key LIKE :keystart2)")
+            ->andWhere("f.locale = :locale")
+            ->andWhere("f.domain = :domain")
+            ->setParameter('keystart1', $mapResultPrefix.'%')
+            ->setParameter('keystart2', 'steps.2.%')
+            ->setParameter('locale', 'en')
+            ->setParameter('domain', 'stop_smoking_chosen')
+            ->getQuery()
+            ->getResult();
 
-            // Get translation keys and tooltips
-            $mapResultPrefix = 'map_search_results.';
-            $mrpLen = strlen($mapResultPrefix);
-            $messagesResult = $tooltipsRepo->createQueryBuilder('f')
-                ->select('t.content, tu.key, tu.updatedAt')
-                ->innerJoin("f.translations", "t")
-                ->innerJoin("t.transUnit", "tu")
-                ->where("(tu.key LIKE :keystart1 OR tu.key LIKE :keystart2)")
-                ->andWhere("f.locale = :locale")
-                ->andWhere("f.domain = :domain")
-                ->setParameter('keystart1', $mapResultPrefix.'%') 
-                ->setParameter('keystart2', 'steps.2.%') 
-                ->setParameter('locale', 'en') 
-                ->setParameter('domain', 'stop_smoking_chosen') 
-                ->getQuery()
-                ->getResult();
-
-
-            $path = $this->getLocaleResourcePath("@AppBundle/Resources/translations/pages/stop_smoking_chosen.{{ locale }}.yml");
-            $yamlArray = Yaml::parse(file_get_contents($path));
-            $messages = [];
-            foreach( $messagesResult as $mr )
-            {
-                $messages[$mr['key']] =  $mr['content'];
-            }
-            $encoders = array(new JsonEncoder());
-            $normalizer = new ObjectNormalizer();
-            $normalizer->setCircularReferenceHandler(function ($object) {
-                return array(
-                    'id' => $object->getId(),
-                    'name' => $object->getName()
-                );
-            });
-            $serializer = new Serializer(array($normalizer), $encoders);
-            $data = $serializer->serialize([
-                'LoadedGeoJson' => $data,
-                'messages' => $messages
-            ], 'json');
-            $response->setContent($data);
-            //$response->setEncodingOptions(JSON_PRETTY_PRINT);
-        //}
-        //else
-        //{
-        //    $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);
-        //}
+        $messages = [];
+        foreach( $messagesResult as $mr )
+        {
+            $messages[$mr['key']] =  $mr['content'];
+        }
+        $dataArr = [
+            'LoadedGeoJson' => $data,
+            'messages' => $messages
+        ];
+        /* $encoders = array(new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return array(
+                'id' => $object->getId(),
+                'name' => $object->getName()
+            );
+        });
+        $serializer = new Serializer(array($normalizer), $encoders);
+        $data = $serializer->serialize(, 'json'); */
+        $serializer = $this->container->get('jms_serializer');
+        $data = $serializer->serialize($dataArr, 'json');
+        $response->setContent($data);
         return $response;
     }
 

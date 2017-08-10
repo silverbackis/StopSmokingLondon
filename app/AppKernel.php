@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new SimpleUserBundle\SimpleUserBundle(),
             new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new RestrictedLexikTranslationBundle\RestrictedLexikTranslationBundle(),
             new BoroughServicesBundle\BoroughServicesBundle(),
             new AppBundle\AppBundle(),
