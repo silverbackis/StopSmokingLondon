@@ -32,6 +32,18 @@ String.prototype.ucfirst = function() {
     }
   }
 
+  function gaTrack(obj)
+  {
+    if(typeof ga!=='undefined')
+    {
+      ga('send', obj);
+    }
+    else
+    {
+      console.log("Google analytics not available. Object attempted to send", obj);
+    }
+  }
+
   $(function () {
     //call plugin function after DOM ready
     addLoadEvent(function(){
@@ -57,5 +69,15 @@ String.prototype.ucfirst = function() {
     if (isAndroid) {
       $('select.form-control').removeClass('form-control').css('width', '100%');
     }
+
+    $(".website-link").on("click", function(e) {
+      e.preventDefault();
+      gaTrack({
+        hitType: 'event',
+        eventCategory: 'External Website Link',
+        eventAction: 'Clicked',
+        eventLabel: $(this).attr("href")
+      });
+    });
   });
 })();

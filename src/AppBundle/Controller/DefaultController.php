@@ -648,16 +648,6 @@ class DefaultController extends Controller
             'LoadedGeoJson' => $data,
             'messages' => $messages
         ];
-        /* $encoders = array(new JsonEncoder());
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return array(
-                'id' => $object->getId(),
-                'name' => $object->getName()
-            );
-        });
-        $serializer = new Serializer(array($normalizer), $encoders);
-        $data = $serializer->serialize(, 'json'); */
         $serializer = $this->container->get('jms_serializer');
         $data = $serializer->serialize($dataArr, 'json');
         $response->setContent($data);
