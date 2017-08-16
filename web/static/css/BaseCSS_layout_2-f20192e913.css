@@ -1,0 +1,1161 @@
+/* line 6, assetic_compassnuIHEG.scss */
+.cta-buttons-box .btn-cta {
+  font-size: .9rem;
+  min-width: 320px;
+}
+/* line 10, assetic_compassnuIHEG.scss */
+.cta-buttons-box .btn-cta.btn-success {
+  font-size: 1.4rem;
+  padding: 1.5rem;
+}
+
+/* line 17, assetic_compassnuIHEG.scss */
+.website-compat-notice {
+  background: #095bb1;
+  text-align: center;
+  width: 100%;
+}
+/* line 22, assetic_compassnuIHEG.scss */
+.website-compat-notice .notice-outer-cell {
+  padding: 25px 10px !important;
+}
+/* line 26, assetic_compassnuIHEG.scss */
+.website-compat-notice .inner-table {
+  max-width: 900px;
+}
+/* line 31, assetic_compassnuIHEG.scss */
+.website-compat-notice .notice-text h5 {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  margin: 0 20px;
+}
+/* line 36, assetic_compassnuIHEG.scss */
+.website-compat-notice .notice-text p {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+  margin: 0 20px 20px;
+}
+/* line 40, assetic_compassnuIHEG.scss */
+.website-compat-notice .notice-text p.lg {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+/* line 46, assetic_compassnuIHEG.scss */
+.website-compat-notice .notice-text.lower {
+  border-top: 1px solid #fff;
+  padding-top: 20px;
+}
+/* line 52, assetic_compassnuIHEG.scss */
+.website-compat-notice .btn {
+  margin-bottom: 20px;
+  padding: 10px 25px;
+}
+
+/* line 58, assetic_compassnuIHEG.scss */
+.modal-backdrop {
+  background: #1866b8;
+}
+/* line 61, assetic_compassnuIHEG.scss */
+.modal-backdrop.show {
+  opacity: .7;
+}
+
+/* line 66, assetic_compassnuIHEG.scss */
+.modal-tooltip {
+  text-align: center;
+}
+/* line 69, assetic_compassnuIHEG.scss */
+.modal-tooltip .modal-header {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+/* line 73, assetic_compassnuIHEG.scss */
+.modal-tooltip .modal-header .modal-title {
+  color: #1866b8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  background: url("/bundles/app/images/icon/dictionary.png") 50% 0 no-repeat;
+  background-size: 26.5px 32px;
+  padding-top: 42px;
+  width: 100%;
+}
+/* line 82, assetic_compassnuIHEG.scss */
+.modal-tooltip .tooltip-icon {
+  display: inline-block;
+  height: 32px;
+  width: 26.5px;
+}
+/* line 88, assetic_compassnuIHEG.scss */
+.modal-tooltip .modal-footer {
+  border: 0;
+}
+/* line 92, assetic_compassnuIHEG.scss */
+.modal-tooltip .modal-content {
+  padding: 20px;
+}
+
+/* line 97, assetic_compassnuIHEG.scss */
+.tooltip-link {
+  background: #eaf0f6;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5px 1px #8b969b;
+  color: inherit;
+  display: inline-block;
+  line-height: 1.4em;
+  margin: 2px;
+  padding: 0 .35em .1rem;
+}
+/* line 107, assetic_compassnuIHEG.scss */
+.tooltip-link:active {
+  transform: translateY(1px);
+}
+
+/* line 112, assetic_compassnuIHEG.scss */
+.cta-buttons-box {
+  box-shadow: 0 2px 4px #d0d0d0;
+  background: #fff;
+  padding: 35px;
+}
+
+/* line 118, assetic_compassnuIHEG.scss */
+.back-choices {
+  background: #fff;
+  border-radius: 0.25rem;
+  font-size: .9rem;
+  left: 15px;
+  padding: 4px 12px;
+  position: absolute;
+  top: 12px;
+}
+
+/* line 128, assetic_compassnuIHEG.scss */
+.bootstrap-select {
+  font-size: 1.25rem;
+}
+/* line 131, assetic_compassnuIHEG.scss */
+.bootstrap-select .hidden {
+  display: none;
+}
+/* line 135, assetic_compassnuIHEG.scss */
+.bootstrap-select .dropdown-menu {
+  font-size: 1rem;
+  min-height: 60px !important;
+}
+/* line 139, assetic_compassnuIHEG.scss */
+.bootstrap-select .dropdown-menu a {
+  font-size: inherit;
+  width: 100%;
+}
+/* line 145, assetic_compassnuIHEG.scss */
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu {
+  display: block;
+}
+/* line 150, assetic_compassnuIHEG.scss */
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu .selected a,
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu .active a {
+  color: #15ce75;
+}
+/* line 155, assetic_compassnuIHEG.scss */
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu a {
+  display: block;
+  padding: .4rem 1rem;
+}
+/* line 159, assetic_compassnuIHEG.scss */
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu a:focus {
+  outline: none;
+}
+/* line 164, assetic_compassnuIHEG.scss */
+.bootstrap-select.show > .dropdown-menu > .dropdown-menu .no-results {
+  background: transparent;
+  color: #8b969b;
+  padding: .4rem 1rem;
+}
+/* line 171, assetic_compassnuIHEG.scss */
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+  vertical-align: middle;
+}
+/* line 175, assetic_compassnuIHEG.scss */
+.bootstrap-select > .dropdown-toggle {
+  padding-right: 2rem;
+}
+/* line 179, assetic_compassnuIHEG.scss */
+.bootstrap-select.btn-group .dropdown-toggle:focus {
+  outline: none !important;
+}
+
+/* line 184, assetic_compassnuIHEG.scss */
+.dropdown-toggle::after {
+  border-top-color: #0a76e5;
+  margin-left: -.6rem;
+}
+
+/* line 194, assetic_compassnuIHEG.scss */
+.form-control::-webkit-input-placeholder {
+  color: #d0d0d0;
+}
+/* line 198, assetic_compassnuIHEG.scss */
+.form-control::-moz-placeholder {
+  color: #d0d0d0;
+}
+/* line 202, assetic_compassnuIHEG.scss */
+.form-control:-ms-input-placeholder {
+  color: #d0d0d0;
+}
+
+@media (min-width: 1200px) {
+  /* line 208, assetic_compassnuIHEG.scss */
+  .gutter-lg {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+  /* line 212, assetic_compassnuIHEG.scss */
+  .gutter-lg > .col,
+  .gutter-lg > [class*="col-"] {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+/* line 220, assetic_compassnuIHEG.scss */
+[class*="card-outline-"] {
+  background: #fff;
+}
+
+/* line 224, assetic_compassnuIHEG.scss */
+.page {
+  max-width: 2389px;
+  padding: 0;
+  width: auto;
+}
+/* line 229, assetic_compassnuIHEG.scss */
+.page .layout-table {
+  background: #f7f7f7;
+  margin: 0;
+}
+/* line 233, assetic_compassnuIHEG.scss */
+.page .layout-table td {
+  border: 0;
+  padding: 0;
+}
+
+/* line 257, assetic_compassnuIHEG.scss */
+.header-container {
+  z-index: 10;
+}
+/* line 260, assetic_compassnuIHEG.scss */
+.header-container + .nav {
+  border-bottom: 1px solid #d0d0d0;
+}
+/* line 263, assetic_compassnuIHEG.scss */
+.header-container + .nav .nav-link {
+  color: #8b969b;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -.01rem;
+  backface-visibility: hidden;
+  padding: .5em .8em;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+@media (max-width: 991px) {
+  /* line 263, assetic_compassnuIHEG.scss */
+  .header-container + .nav .nav-link {
+    letter-spacing: -.02rem;
+  }
+}
+/* line 247, assetic_compassnuIHEG.scss */
+.header-container + .nav .nav-link.active, .header-container + .nav .nav-link:hover {
+  color: #0a76e5;
+}
+/* line 252, assetic_compassnuIHEG.scss */
+.header-container + .nav .nav-link:hover {
+  transform: translateZ(20px);
+}
+
+/* line 269, assetic_compassnuIHEG.scss */
+.header-bar {
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.24);
+  line-height: 0;
+  padding: .8rem 0;
+  text-align: right;
+}
+/* line 276, assetic_compassnuIHEG.scss */
+.header-bar .header-bar-inner {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+/* line 281, assetic_compassnuIHEG.scss */
+.header-bar .header-bar-inner .logo-link {
+  display: inline-block;
+  float: left;
+  position: relative;
+}
+/* line 288, assetic_compassnuIHEG.scss */
+.header-bar .header-logo {
+  display: inline-block;
+  height: 85.5px;
+  width: 129.5px;
+}
+/* line 294, assetic_compassnuIHEG.scss */
+.header-bar h2 {
+  color: #0a76e5;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.64rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+  margin: 0;
+  padding-left: 20px;
+}
+@media (max-width: 991px) {
+  /* line 294, assetic_compassnuIHEG.scss */
+  .header-bar h2 {
+    letter-spacing: -.02rem;
+  }
+}
+/* line 299, assetic_compassnuIHEG.scss */
+.header-bar h2 b {
+  display: inline-block;
+}
+/* line 304, assetic_compassnuIHEG.scss */
+.header-bar .nav-item {
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  text-align: center;
+}
+/* line 309, assetic_compassnuIHEG.scss */
+.header-bar .nav-item.mobile {
+  display: none;
+}
+/* line 314, assetic_compassnuIHEG.scss */
+.header-bar .nav-link {
+  color: #8b969b;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -.01rem;
+  backface-visibility: hidden;
+  padding: .5em .8em;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+@media (max-width: 991px) {
+  /* line 314, assetic_compassnuIHEG.scss */
+  .header-bar .nav-link {
+    letter-spacing: -.02rem;
+  }
+}
+/* line 247, assetic_compassnuIHEG.scss */
+.header-bar .nav-link.active, .header-bar .nav-link:hover {
+  color: #0a76e5;
+}
+/* line 252, assetic_compassnuIHEG.scss */
+.header-bar .nav-link:hover {
+  transform: translateZ(20px);
+}
+/* line 318, assetic_compassnuIHEG.scss */
+.header-bar .col-right {
+  line-height: normal;
+}
+
+/* line 323, assetic_compassnuIHEG.scss */
+.footer {
+  background-color: #fff;
+  box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.24) inset;
+  padding-bottom: 15px;
+  padding-top: 30px;
+}
+/* line 329, assetic_compassnuIHEG.scss */
+.footer .nav-link {
+  color: #8b969b;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+}
+/* line 332, assetic_compassnuIHEG.scss */
+.footer .nav-link:hover, .footer .nav-link:active, .footer .nav-link:focus, .footer .nav-link.active {
+  color: #0a76e5;
+}
+/* line 340, assetic_compassnuIHEG.scss */
+.footer .copyright-footer {
+  color: #d0d0d0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+}
+/* line 343, assetic_compassnuIHEG.scss */
+.footer .copyright-footer a {
+  color: inherit !important;
+}
+/* line 346, assetic_compassnuIHEG.scss */
+.footer .copyright-footer a:hover {
+  text-decoration: underline;
+}
+/* line 352, assetic_compassnuIHEG.scss */
+.footer .social-nav {
+  margin-top: 10px;
+}
+/* line 356, assetic_compassnuIHEG.scss */
+.footer .social-link {
+  background: 50% 0 no-repeat;
+  background-size: auto 200%;
+  display: inline-block;
+  margin: auto 5px;
+  overflow: hidden;
+  padding: 0;
+  text-indent: -9999px;
+  vertical-align: middle;
+  width: 30px;
+}
+/* line 367, assetic_compassnuIHEG.scss */
+.footer .social-link.twitter {
+  background-image: url("/bundles/app/images/logo/footer_twitter.png");
+  height: 24px;
+}
+/* line 372, assetic_compassnuIHEG.scss */
+.footer .social-link:hover {
+  background-position: 50% 100%;
+}
+
+/* line 378, assetic_compassnuIHEG.scss */
+.jumbotron-feature-image-outer {
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* line 388, assetic_compassnuIHEG.scss */
+.jumbotron-feature-image {
+  background-position: 50% 0;
+  bottom: 0;
+  box-sizing: content-box;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* line 398, assetic_compassnuIHEG.scss */
+.jumbotron-outer {
+  background: 50% 57% no-repeat #085bb0;
+  position: relative;
+}
+/* line 402, assetic_compassnuIHEG.scss */
+.jumbotron-outer .h2-outer {
+  padding: 0 20px;
+}
+/* line 406, assetic_compassnuIHEG.scss */
+.jumbotron-outer h2 {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+/* line 410, assetic_compassnuIHEG.scss */
+.jumbotron-outer .lead {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+  margin-bottom: 0;
+}
+/* line 415, assetic_compassnuIHEG.scss */
+.jumbotron-outer.default {
+  background: #0a76e5;
+}
+/* line 418, assetic_compassnuIHEG.scss */
+.jumbotron-outer.default h2 {
+  color: #fff;
+}
+/* line 422, assetic_compassnuIHEG.scss */
+.jumbotron-outer.default .lead {
+  color: #fff;
+}
+/* line 426, assetic_compassnuIHEG.scss */
+.jumbotron-outer.default .jumbotron-feature-image-outer {
+  display: block;
+}
+/* line 430, assetic_compassnuIHEG.scss */
+.jumbotron-outer.default .jumbotron-feature-image {
+  background-image: url("/bundles/app/images/main/header_default.jpg");
+  background-size: 2440px 300px;
+  height: 300px;
+}
+/* line 437, assetic_compassnuIHEG.scss */
+.jumbotron-outer.hills {
+  background: #0a76e5;
+  border-bottom: 1px solid #d0d0d0;
+}
+/* line 441, assetic_compassnuIHEG.scss */
+.jumbotron-outer.hills .jumbotron-feature-image-outer {
+  display: block;
+}
+/* line 445, assetic_compassnuIHEG.scss */
+.jumbotron-outer.hills .jumbotron-feature-image {
+  background-image: url("/bundles/app/images/main/header_hills.jpg");
+  background-size: 2440px 300px;
+  height: 300px;
+  bottom: -20px;
+}
+/* line 453, assetic_compassnuIHEG.scss */
+.jumbotron-outer.clouds {
+  background: #0a76e5;
+  border-bottom: 1px solid #d0d0d0;
+}
+/* line 457, assetic_compassnuIHEG.scss */
+.jumbotron-outer.clouds .jumbotron-feature-image-outer {
+  display: block;
+}
+/* line 461, assetic_compassnuIHEG.scss */
+.jumbotron-outer.clouds .jumbotron-feature-image {
+  background-image: url("/bundles/app/images/main/header_clouds.jpg");
+  background-size: 2440px 300px;
+  height: 300px;
+}
+
+/* line 469, assetic_compassnuIHEG.scss */
+.jumbotron {
+  background: transparent;
+  margin-bottom: 0;
+  text-align: center;
+}
+/* line 474, assetic_compassnuIHEG.scss */
+.jumbotron h2 {
+  margin-bottom: 0;
+}
+/* line 478, assetic_compassnuIHEG.scss */
+.jumbotron .breadcrumb {
+  color: #b2d6fa;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+  background: transparent;
+  left: 0;
+  margin-bottom: 0;
+  position: absolute;
+  top: 0;
+}
+/* line 487, assetic_compassnuIHEG.scss */
+.jumbotron .breadcrumb-item {
+  color: inherit;
+}
+/* line 490, assetic_compassnuIHEG.scss */
+.jumbotron .breadcrumb-item a {
+  color: inherit;
+}
+/* line 493, assetic_compassnuIHEG.scss */
+.jumbotron .breadcrumb-item a:hover, .jumbotron .breadcrumb-item a:focus {
+  color: #fff;
+}
+/* line 499, assetic_compassnuIHEG.scss */
+.jumbotron .breadcrumb-item + .breadcrumb-item::before {
+  color: #b2d6fa;
+  content: '>';
+}
+
+/* line 506, assetic_compassnuIHEG.scss */
+.container-lower {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+/* line 511, assetic_compassnuIHEG.scss */
+.row-main-page {
+  margin-top: 3rem;
+}
+
+/* line 515, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+/* line 519, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom p {
+  color: #646464;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+}
+/* line 522, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom p:first-child {
+  margin-top: 1.5rem;
+}
+/* line 526, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom p.text-primary {
+  font-size: 1.9rem;
+  margin-bottom: 2rem;
+}
+/* line 530, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom p.text-primary a {
+  font-weight: 600;
+}
+/* line 534, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom p.text-primary b,
+.stop-smoking-london-bottom p.text-primary a {
+  display: inline-block;
+  width: 100%;
+}
+/* line 544, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom .btn-cta {
+  font-size: 1.25rem;
+  width: auto;
+}
+/* line 549, assetic_compassnuIHEG.scss */
+.stop-smoking-london-bottom .ssl-logo-large {
+  height: 106px;
+  width: 160.5px;
+}
+
+/* line 555, assetic_compassnuIHEG.scss */
+.btn-cta {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  border: 4px solid #1866b8;
+  border-width: 0 0 4px;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+  white-space: normal;
+}
+/* line 562, assetic_compassnuIHEG.scss */
+.btn-cta.btn-primary.active:not(:hover) {
+  background-color: #0a76e5;
+}
+/* line 566, assetic_compassnuIHEG.scss */
+.btn-cta:not(.btn-lg) {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+/* line 570, assetic_compassnuIHEG.scss */
+.btn-cta .top-img {
+  margin: 0 0 5px;
+}
+/* line 574, assetic_compassnuIHEG.scss */
+.btn-cta + .btn-cta {
+  margin-top: 0;
+}
+/* line 578, assetic_compassnuIHEG.scss */
+.btn-cta:hover, .btn-cta:focus {
+  border-color: #0f4074;
+  color: #fff;
+}
+/* line 584, assetic_compassnuIHEG.scss */
+.btn-cta.btn-success {
+  border-color: #0fb163;
+}
+/* line 587, assetic_compassnuIHEG.scss */
+.btn-cta.btn-success:hover, .btn-cta.btn-success:focus {
+  border-color: #096a3c;
+}
+/* line 593, assetic_compassnuIHEG.scss */
+.btn-cta:active, .btn-cta.active {
+  border-bottom-width: 0;
+  margin-top: 4px;
+}
+/* line 599, assetic_compassnuIHEG.scss */
+.btn-cta > .align-middle {
+  display: inline-block;
+  margin-top: -3px;
+}
+
+/* line 616, assetic_compassnuIHEG.scss */
+.home-link {
+  display: none;
+}
+
+/* line 620, assetic_compassnuIHEG.scss */
+.card {
+  color: #646464;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  letter-spacing: -.01rem;
+}
+/* line 623, assetic_compassnuIHEG.scss */
+.card .card-block {
+  padding: 2rem 1.25rem;
+}
+/* line 627, assetic_compassnuIHEG.scss */
+.card .form-group {
+  margin-bottom: 0;
+}
+/* line 631, assetic_compassnuIHEG.scss */
+.card p {
+  margin: 0;
+}
+/* line 635, assetic_compassnuIHEG.scss */
+.card h4 {
+  color: #1866b8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+/* line 638, assetic_compassnuIHEG.scss */
+.card h4 + p {
+  margin: 1rem 0 1.5rem;
+}
+/* line 643, assetic_compassnuIHEG.scss */
+.card.card-outline-success, .card.card-outline-warning {
+  border-color: #15ce75;
+}
+/* line 647, assetic_compassnuIHEG.scss */
+.card.card-outline-success h4, .card.card-outline-warning h4 {
+  color: #15ce75;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+/* line 652, assetic_compassnuIHEG.scss */
+.card.card-outline-warning h4 {
+  color: #f0ad4e;
+}
+/* line 656, assetic_compassnuIHEG.scss */
+.card + .card {
+  margin-top: 1.5rem;
+}
+/* line 660, assetic_compassnuIHEG.scss */
+.card .btn-cta {
+  min-width: 30%;
+}
+/* line 663, assetic_compassnuIHEG.scss */
+.card .btn-cta + .btn-cta {
+  margin-left: .5rem;
+}
+
+/* line 670, assetic_compassnuIHEG.scss */
+.block-text p + h3,
+.block-text p + h4,
+.block-text p + h5 {
+  margin-top: 2rem;
+}
+
+/* line 676, assetic_compassnuIHEG.scss */
+.page-header-1,
+.block-text h3, .page-header-2,
+.block-text h4 {
+  color: #1866b8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+
+/* line 680, assetic_compassnuIHEG.scss */
+.page-header-1,
+.block-text h3 {
+  text-align: center;
+}
+
+/* line 686, assetic_compassnuIHEG.scss */
+.page-header-1 {
+  margin: 0 0 1.2rem;
+}
+
+/* line 690, assetic_compassnuIHEG.scss */
+.page-header-2,
+.block-text h4 {
+  font-size: 1.6rem;
+}
+
+/* line 696, assetic_compassnuIHEG.scss */
+.page-header-3,
+.block-text h5 {
+  color: #646464;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+}
+
+@media (min-width: 992px) {
+  /* line 702, assetic_compassnuIHEG.scss */
+  .header-container {
+    z-index: 10;
+  }
+  /* line 706, assetic_compassnuIHEG.scss */
+  .header-container + .nav.mobile {
+    display: none;
+  }
+}
+@media (max-width: 1199px) {
+  /* line 714, assetic_compassnuIHEG.scss */
+  .card {
+    font-size: 1.1rem;
+  }
+  /* line 717, assetic_compassnuIHEG.scss */
+  .card .card-block {
+    padding: 1.25rem;
+  }
+  /* line 721, assetic_compassnuIHEG.scss */
+  .card h4 {
+    font-size: 1.6rem;
+  }
+  /* line 727, assetic_compassnuIHEG.scss */
+  .card.card-outline-success h4, .card.card-outline-warning h4 {
+    font-size: 1.4rem;
+  }
+
+  /* line 733, assetic_compassnuIHEG.scss */
+  .page-header-2,
+  .block-text h4 {
+    font-size: 1.4rem;
+  }
+
+  /* line 738, assetic_compassnuIHEG.scss */
+  .page-header-3,
+  .block-text h5 {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 991px) {
+  /* line 745, assetic_compassnuIHEG.scss */
+  .back-choices {
+    font-size: .8rem;
+  }
+  /* line 748, assetic_compassnuIHEG.scss */
+  .back-choices .desktop {
+    display: none;
+  }
+
+  /* line 753, assetic_compassnuIHEG.scss */
+  .gutter-sm {
+    margin-left: -3px;
+    margin-right: -3px;
+  }
+  /* line 757, assetic_compassnuIHEG.scss */
+  .gutter-sm > .col,
+  .gutter-sm > [class*="col-"] {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  /* line 766, assetic_compassnuIHEG.scss */
+  .mobile-dropdown .nav.mobile {
+    background: #fff;
+    display: none;
+    padding-bottom: .8rem;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 900;
+  }
+  /* line 779, assetic_compassnuIHEG.scss */
+  .mobile-dropdown.show .nav.mobile {
+    display: block;
+  }
+
+  /* line 787, assetic_compassnuIHEG.scss */
+  .header-bar .header-logo {
+    height: 65px;
+    width: auto;
+  }
+  /* line 792, assetic_compassnuIHEG.scss */
+  .header-bar h2 {
+    font-size: .9rem;
+  }
+  /* line 796, assetic_compassnuIHEG.scss */
+  .header-bar .nav-outer {
+    align-self: flex-end !important;
+  }
+  /* line 801, assetic_compassnuIHEG.scss */
+  .header-bar .nav .desktop {
+    display: none;
+  }
+  /* line 805, assetic_compassnuIHEG.scss */
+  .header-bar .nav .mobile {
+    display: block;
+  }
+  /* line 808, assetic_compassnuIHEG.scss */
+  .header-bar .nav .mobile .dropdown-toggle::after {
+    border-width: .5em .5em 0;
+    margin-left: .3em;
+    margin-top: -.25em;
+  }
+
+  /* line 818, assetic_compassnuIHEG.scss */
+  .card {
+    font-size: .95rem;
+  }
+  /* line 821, assetic_compassnuIHEG.scss */
+  .card .card-block {
+    padding: 2rem .9rem;
+  }
+  /* line 825, assetic_compassnuIHEG.scss */
+  .card h4 {
+    font-size: .9rem;
+  }
+  /* line 828, assetic_compassnuIHEG.scss */
+  .card h4 + p {
+    margin: .5rem 0;
+  }
+
+  /* line 835, assetic_compassnuIHEG.scss */
+  .footer .footer-nav {
+    display: block;
+    text-align: center;
+  }
+  /* line 840, assetic_compassnuIHEG.scss */
+  .footer .social-nav {
+    margin-top: 20px;
+  }
+  /* line 844, assetic_compassnuIHEG.scss */
+  .footer .copyright-footer {
+    font-size: .6rem;
+    margin-top: 30px;
+  }
+
+  /* line 850, assetic_compassnuIHEG.scss */
+  .btn-cta {
+    font-size: .75rem;
+  }
+
+  /* line 854, assetic_compassnuIHEG.scss */
+  .jumbotron-outer {
+    background-position: 60% 70%;
+  }
+
+  /* line 858, assetic_compassnuIHEG.scss */
+  .jumbotron {
+    padding: 3.3rem 1rem;
+  }
+  /* line 861, assetic_compassnuIHEG.scss */
+  .jumbotron h2 {
+    font-size: 1.25rem;
+  }
+  /* line 865, assetic_compassnuIHEG.scss */
+  .jumbotron .back-choices + h2 {
+    margin-top: 15px;
+  }
+  /* line 869, assetic_compassnuIHEG.scss */
+  .jumbotron .lead {
+    font-size: .8rem;
+  }
+
+  /* line 874, assetic_compassnuIHEG.scss */
+  .home-link {
+    background: url("/bundles/app/images/icon/home_mob.png") 50% 50% no-repeat;
+    background-size: 23px 18.5px;
+    display: inline-block;
+    height: 19px;
+    left: 0;
+    padding: 1rem 1.5rem;
+    position: absolute;
+    text-indent: -999px;
+    top: 0;
+    width: 23px;
+  }
+
+  /* line 887, assetic_compassnuIHEG.scss */
+  .breadcrumb {
+    display: none;
+  }
+
+  /* line 901, assetic_compassnuIHEG.scss */
+  .row-main-page {
+    margin-top: 2rem;
+  }
+  /* line 904, assetic_compassnuIHEG.scss */
+  .row-main-page > .container {
+    width: 100%;
+  }
+
+  /* line 909, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom {
+    margin-top: 2rem;
+  }
+  /* line 912, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom p {
+    font-size: 1.1rem;
+  }
+  /* line 915, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom p:first-child {
+    margin-top: 1rem;
+  }
+  /* line 919, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom p.text-primary {
+    font-size: 1.4rem;
+  }
+  /* line 924, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom .btn-cta {
+    font-size: .8rem;
+  }
+  /* line 928, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom .ssl-logo-large {
+    height: auto;
+    width: 110px;
+  }
+
+  /* line 934, assetic_compassnuIHEG.scss */
+  .block-text {
+    padding: 0 .9rem;
+  }
+  /* line 937, assetic_compassnuIHEG.scss */
+  .block-text p,
+  .block-text h1,
+  .block-text h2,
+  .block-text h3,
+  .block-text h4,
+  .block-text h5 {
+    padding: 0 15px;
+  }
+  /* line 946, assetic_compassnuIHEG.scss */
+  .block-text p {
+    font-size: 1rem;
+  }
+  /* line 949, assetic_compassnuIHEG.scss */
+  .block-text p + h3,
+  .block-text p + h4,
+  .block-text p + h5 {
+    margin-top: 1.5rem;
+  }
+
+  /* line 957, assetic_compassnuIHEG.scss */
+  .page-header-1,
+  .block-text h3 {
+    font-size: 1.3rem;
+  }
+
+  /* line 962, assetic_compassnuIHEG.scss */
+  .page-header-2,
+  .block-text h4 {
+    font-size: 1.2rem;
+  }
+
+  /* line 967, assetic_compassnuIHEG.scss */
+  .page-header-3,
+  .block-text h5 {
+    font-size: 1.1rem;
+  }
+
+  /* line 974, assetic_compassnuIHEG.scss */
+  .modal-tooltip .modal-header .modal-title {
+    font-size: 1rem;
+  }
+  /* line 979, assetic_compassnuIHEG.scss */
+  .modal-tooltip .modal-body {
+    font-size: .9rem;
+  }
+  /* line 984, assetic_compassnuIHEG.scss */
+  .modal-tooltip .modal-dialog .modal-content {
+    margin: 30px 20px;
+    padding: 10px;
+  }
+
+  /* line 992, assetic_compassnuIHEG.scss */
+  .cta-buttons-box .btn-cta {
+    font-size: .8rem;
+    min-width: 290px;
+  }
+  /* line 996, assetic_compassnuIHEG.scss */
+  .cta-buttons-box .btn-cta.btn-success {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 767px) {
+  /* line 1004, assetic_compassnuIHEG.scss */
+  .row-main-page {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  /* line 1008, assetic_compassnuIHEG.scss */
+  .row-main-page > .col-12 > .container {
+    padding: 0;
+  }
+  /* line 1011, assetic_compassnuIHEG.scss */
+  .row-main-page > .col-12 > .container > .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* line 1019, assetic_compassnuIHEG.scss */
+  .mobile-w-100.container {
+    width: 100%;
+  }
+  /* line 1023, assetic_compassnuIHEG.scss */
+  .mobile-w-100.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* line 1027, assetic_compassnuIHEG.scss */
+  .mobile-w-100.row .card {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+  }
+
+  /* line 1035, assetic_compassnuIHEG.scss */
+  .card {
+    font-size: .8rem;
+  }
+  /* line 1038, assetic_compassnuIHEG.scss */
+  .card .btn-cta {
+    display: inline-block;
+    margin-bottom: .2rem;
+    width: 100%;
+  }
+  /* line 1043, assetic_compassnuIHEG.scss */
+  .card .btn-cta + .btn-cta {
+    margin-left: 0;
+  }
+  /* line 1047, assetic_compassnuIHEG.scss */
+  .card .btn-cta:last-child {
+    margin-bottom: 0;
+  }
+
+  /* line 1053, assetic_compassnuIHEG.scss */
+  .page-header-1,
+  .block-text h3 {
+    font-size: 1.1rem;
+  }
+
+  /* line 1058, assetic_compassnuIHEG.scss */
+  .page-header-2,
+  .block-text h4 {
+    font-size: 1.1rem;
+  }
+
+  /* line 1063, assetic_compassnuIHEG.scss */
+  .block-text p {
+    font-size: .9rem;
+  }
+
+  /* line 1067, assetic_compassnuIHEG.scss */
+  .cta-buttons-box {
+    padding: 20px;
+  }
+
+  /* line 1073, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom p b {
+    display: inline;
+    width: auto;
+  }
+}
+@media (max-width: 575px) {
+  /* line 1083, assetic_compassnuIHEG.scss */
+  .stop-smoking-london-bottom p {
+    font-size: 1rem;
+  }
+}

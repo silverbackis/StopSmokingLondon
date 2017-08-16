@@ -1,0 +1,6 @@
+@media (max-width: 991px) {
+  /* line 6, assetic_compasskg8SBf.scss */
+  .card h4 + p {
+    margin-bottom: 1rem;
+  }
+}

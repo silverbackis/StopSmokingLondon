@@ -1,0 +1,136 @@
+/* line 5, assetic_compassYMlfUL.scss */
+h3 {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  margin-bottom: 1rem;
+}
+
+/* line 10, assetic_compassYMlfUL.scss */
+.cta-box-outer {
+  text-align: center;
+}
+
+/* line 14, assetic_compassYMlfUL.scss */
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 720px;
+}
+
+/* line 19, assetic_compassYMlfUL.scss */
+.facts-row {
+  margin: 1rem 0 0;
+}
+
+/* line 23, assetic_compassYMlfUL.scss */
+.facts-box {
+  display: inline-block;
+  max-width: 600px;
+}
+
+/* line 28, assetic_compassYMlfUL.scss */
+.facts-carousel {
+  list-style: none;
+  overflow: hidden;
+  padding: 0 35px;
+}
+/* line 34, assetic_compassYMlfUL.scss */
+.facts-carousel .fact-panel {
+  box-sizing: content-box;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 0 50px;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: top;
+  white-space: normal;
+  width: 100%;
+}
+/* line 51, assetic_compassYMlfUL.scss */
+.facts-carousel .fact-panel > p {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+
+/* line 59, assetic_compassYMlfUL.scss */
+.fact-carousel-indicators {
+  bottom: 0;
+  left: 0;
+  list-style: none;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 15;
+}
+/* line 71, assetic_compassYMlfUL.scss */
+.fact-carousel-indicators li {
+  background-color: #0a76e5;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin-left: 3px;
+  margin-right: 3px;
+  position: relative;
+  text-indent: -999px;
+  width: 20px;
+}
+/* line 83, assetic_compassYMlfUL.scss */
+.fact-carousel-indicators li.active {
+  background-color: #0cf;
+}
+
+@media (max-width: 991px) {
+  /* line 90, assetic_compassYMlfUL.scss */
+  .facts-carousel {
+    padding: 0 15px;
+  }
+  /* line 93, assetic_compassYMlfUL.scss */
+  .facts-carousel .fact-panel {
+    margin-bottom: 40px;
+  }
+  /* line 96, assetic_compassYMlfUL.scss */
+  .facts-carousel .fact-panel > p {
+    font-size: 1.1rem;
+  }
+
+  /* line 102, assetic_compassYMlfUL.scss */
+  .facts-row {
+    margin-top: 0;
+  }
+}
+@media (max-width: 767px) {
+  /* line 109, assetic_compassYMlfUL.scss */
+  .cta-box-outer-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* line 114, assetic_compassYMlfUL.scss */
+  .cta-box-outer {
+    padding: 0;
+  }
+
+  /* line 118, assetic_compassYMlfUL.scss */
+  .container-lower {
+    margin-bottom: 0;
+  }
+
+  /* line 122, assetic_compassYMlfUL.scss */
+  .cta-buttons-box {
+    max-width: none;
+  }
+}
