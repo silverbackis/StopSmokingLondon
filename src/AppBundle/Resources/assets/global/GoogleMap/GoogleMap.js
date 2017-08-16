@@ -90,21 +90,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
       }
 
       $searchInput.prop('disabled', true);
-      /*var boundsPost = map.getBounds().getNorthEast().toUrlValue() + "|" + map.getBounds().getSouthWest().toUrlValue();
-      $.ajax({
-        url: '/geocode',
-        type: 'POST',
-        data: {
-          address: searchText,
-          bounds: boundsPost,
-          token: searchToken
-        },
-        success: function(data)
-        {
-          console.log(data);
-          searchResult(data.results, data.status, searchText, dropdown);
-        }
-      });*/
+
       if(!geocoder)
       {
         geocoder = new google.maps.Geocoder();
@@ -129,7 +115,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
     totalAttempts++;
     
     // callback with a status and result
-    if (status == google.maps.GeocoderStatus.OK) 
+    if (status === google.maps.GeocoderStatus.OK)
     {
       totalAttempts = 0;
       var resultLatLng;
@@ -297,6 +283,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         eventCategory: 'Borough Information Shown',
         eventAction: borough
       });
+
       showBoroughInfo(featureProperties);
       
       // Search will only happen if not a duplicate search so this is OK to call here.
@@ -337,7 +324,6 @@ var GoogleMap = (function($, viewport, alert, confirm){
       var boroughProps = msg,
       $telCont,
       $message,
-      $websiteLink,
       message,
       $tel = $('<a />', {
         class: 'tel hidden-sm-down'
@@ -431,17 +417,17 @@ var GoogleMap = (function($, viewport, alert, confirm){
         //$websiteCont = $(".website-cont", $advisorCard).empty();
         $message = $(".message", $advisorCard);
         $(".stop-smoking-london-info-row").show();
-        var SpecialistPharmacy = null === boroughProps.service ? false : (boroughProps.service.pharmacyStaff && null !== boroughProps.service.telephone);
-        
+        var SpecialistPharmacy = null === boroughProps.service ? false : (boroughProps.service.pharmacy_staff && null !== boroughProps.service.telephone);
+
         if(null === boroughProps.service)
         {
           message = getMessage('all', 'no_information');
         }
-        else if(null === boroughProps.service.telephone && boroughProps.service.specialistAdvisors)
+        else if(null === boroughProps.service.telephone && boroughProps.service.specialist_advisors)
         {
           message = getMessage('advisor', 'no_telephone');
         }
-        else if(boroughProps.service.specialistAdvisors)
+        else if(boroughProps.service.specialist_advisors)
         {
           message = getMessage('advisor', 'has_advisors');
           showTelephone($telCont);
@@ -451,7 +437,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
           message = getMessage('advisor', 'has_pharmacy_staff');
           showTelephone($telCont);
         }
-        else if(boroughProps.service.webServiceAvailable)
+        else if(boroughProps.service.web_service_available)
         {
           message = getMessage('advisor', 'web_based');
           showTelephone($telCont, 'website');
@@ -473,7 +459,7 @@ var GoogleMap = (function($, viewport, alert, confirm){
         {
           message = getMessage('all', 'no_information');
         }
-        else if(boroughProps.service.gpPrescription)
+        else if(boroughProps.service.gp_prescription)
         {
           message = getMessage('medicine', 'gp_prescription');
         }
