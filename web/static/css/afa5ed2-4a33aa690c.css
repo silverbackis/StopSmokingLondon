@@ -1,0 +1,41 @@
+/* line 5, assetic_compassoH5SYf.scss */
+.card.card-outline-success h4 {
+  color: #0a76e5;
+}
+
+/* line 9, assetic_compassoH5SYf.scss */
+.about-block-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 13, assetic_compassoH5SYf.scss */
+.block-text h4 ~ h5 {
+  margin-top: 2.5rem;
+}
+
+/* line 17, assetic_compassoH5SYf.scss */
+.block-text h5 {
+  color: #1866b8;
+  font-size: 1.1rem;
+}
+
+/* line 22, assetic_compassoH5SYf.scss */
+h3 {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  margin-bottom: 1rem;
+}
+
+/* line 27, assetic_compassoH5SYf.scss */
+.cta-box-outer {
+  text-align: center;
+}
+
+/* line 31, assetic_compassoH5SYf.scss */
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 720px;
+}

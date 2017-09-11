@@ -1,0 +1,49 @@
+/* line 5, assetic_compassAhSe5c.scss */
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+/* line 10, assetic_compassAhSe5c.scss */
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+/* line 15, assetic_compassAhSe5c.scss */
+.form-signin .checkbox {
+  font-weight: normal;
+}
+/* line 19, assetic_compassAhSe5c.scss */
+.form-signin .form-control {
+  box-sizing: border-box;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  position: relative;
+}
+/* line 26, assetic_compassAhSe5c.scss */
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+/* line 31, assetic_compassAhSe5c.scss */
+.form-signin .username {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* line 37, assetic_compassAhSe5c.scss */
+.form-signin .password {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+/* line 43, assetic_compassAhSe5c.scss */
+.form-signin .alert ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 48, assetic_compassAhSe5c.scss */
+.form-signin .alert ul li {
+  padding: 0;
+}
