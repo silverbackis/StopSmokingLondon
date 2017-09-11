@@ -2,6 +2,14 @@
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
 
+.tel {
+  @include open-sans(3rem, $green, $semi-bold);
+  background: url($asset-image-base + 'icon/telephone.png') 0 55% no-repeat;
+  background-size: 28px 37px;
+  line-height: 3rem;
+  padding-left: 38px;
+}
+
 .cta-buttons-box {
   .btn-cta {
     font-size: .9rem;
@@ -447,6 +455,14 @@
       background-size: 2440px 300px;
       height: 300px;
       bottom: -20px;
+    }
+
+    &.lower {
+      overflow: hidden;
+      .jumbotron-feature-image-outer {
+        padding-bottom: 20px;
+        box-sizing: content-box;
+      }
     }
   }
 

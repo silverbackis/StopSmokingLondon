@@ -38,8 +38,9 @@
         "endroid/twitter": "^1.3",
         "monolog/monolog": "^1.22",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "lexik/translation-bundle": "^4.0",
-        "jms/serializer-bundle": "^2.0"
+        "lexik/translation-bundle": "~4.0",
+        "jms/serializer-bundle": "^2.0",
+        "knplabs/knp-markdown-bundle": "^1.5"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"

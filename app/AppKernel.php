@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new RestrictedLexikTranslationBundle\RestrictedLexikTranslationBundle(),
             new BoroughServicesBundle\BoroughServicesBundle(),
             new AppBundle\AppBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

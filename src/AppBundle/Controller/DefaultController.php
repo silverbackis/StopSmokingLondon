@@ -37,6 +37,26 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/helpline", name="helpline")
+     */
+    public function helplineAction(Request $request)
+    {
+        $title = $this->getHeader($request);
+        $seoPage = $this->container->get('sonata.seo.page');
+        $translator = $this->get('translator');
+        $seoPage->addMeta("name", "description",
+            "Stop Smoking London Helpline - A free telephone helpline for Londoners to quit smoking. ".
+            $translator->trans('feature.borough_search', array(), 'home')." ".
+            $translator->trans('feature.tooltips', array(), 'home')." ".
+            $translator->trans('feature.chances', array(), 'home')
+        );
+
+        return $this->render('@App/Default/helpline.html.twig', [
+            'title' => $title
+        ]);
+    }
+
+    /**
      * @Route("/stop-smoking", name="stop_smoking_choices")
      */
     public function stopSmokingAction(Request $request)

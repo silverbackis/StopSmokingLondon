@@ -1,0 +1,34 @@
+@import 'bower/bootstrap/scss/variables';
+@import 'bower/bootstrap/scss/mixins';
+@import 'bower/bootstrap/scss/custom';
+
+.card.card-outline-success h4 {
+  color: $blue;
+}
+
+.about-block-text p:last-child {
+  margin-bottom: 0;
+}
+
+.block-text h4 ~ h5 {
+  margin-top: 2.5rem;
+}
+
+.block-text h5 {
+  color: $blue-dark;
+  font-size: 1.1rem;
+}
+
+h3 {
+  @include open-sans(1.3rem, $blue, $semi-bold);
+  margin-bottom: 1rem;
+}
+
+.cta-box-outer {
+  text-align: center;
+}
+
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 720px;
+}

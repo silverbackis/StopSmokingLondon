@@ -1,0 +1,74 @@
+{% extends '@App/base.html.twig' %}
+{% trans_default_domain "helpline" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    '@AppBundle/Resources/assets/local/scss/helpline.scss'
+    filter='?uglifycss'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block page_content %}
+    {{ parent() }}
+    <div class="container-fluid pb-md-5">
+        {% include '@App/Default/_header.html.twig' with {class: 'hills lower'} %}
+        <div class="row justify-content-center map-row-wrapper row-main-page no-gutters">
+            <div class="col-12">
+                <div class="container mobile-w-100">
+                    <div class="row justify-content-center no-gutters">
+                        <div class="col-lg-10">
+                            <div class="row justify-content-center no-gutters mobile-w-100">
+                                <div class="col-12">
+                                    <div class="card card-outline-success text-center container-fluid mb-4">
+                                        <div class="card-block row justify-content-center">
+                                            <div class="col-12 col-md-10">
+                                                <h4>Stop Smoking London Helpline</h4>
+                                                <span class="tel-cont">
+                                                    <a class="tel hidden-sm-down" href="tel:+44{{ 'service_launched.telephone.number'|trans({}, 'telephone_service')|replace({" ": ""})|slice(1) }}">{{ 'service_launched.telephone.number'|trans({}, 'telephone_service') }}</a>
+                                                    <a class="hidden-md-up btn btn-success btn-cta btn-tel" href="tel:+44{{ 'service_launched.telephone.number'|trans({}, 'telephone_service')|replace({" ": ""})|slice(1) }}"><span class="tel-text">{{ 'service_launched.telephone.number'|trans({}, 'telephone_service') }}</span></a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row block-text text-center">
+                                <div class="col-12 about-block-text">
+                                    <h4>{{ 'about.title'|trans }}</h4>
+                                    {{ 'about.text'|trans|replace({'**HELPLINE**': '<a href="tel:+44' ~ 'service_launched.telephone.number'|trans({}, 'telephone_service')|replace({" ": ""})|slice(1) ~ '">' ~ 'service_launched.telephone.number'|trans({}, 'telephone_service') ~ '</a>'})|markdown }}
+                                </div>
+                                <div class="col-12">
+                                    <hr class="my-4" />
+                                    <h4>{{ 'faq.title'|trans }}</h4>
+                                    {% set faq_trans_pre = 'faq.' %}
+                                    {% set faq_question_key = '.question' %}
+                                    {% set faq_answer_key = '.answer' %}
+                                    {% set faq_trans_i = 0 %}
+                                    {% set faq_question = faq_trans_pre ~ faq_trans_i ~ faq_question_key%}
+                                    {% set faq_set = faq_question|trans != faq_question %}
+                                    {% for i in 0..100 if faq_set %}
+                                        <h5>{{ faq_question|trans }}</h5>
+                                        {{ (faq_trans_pre ~ faq_trans_i ~ faq_answer_key)|trans|markdown }}
+                                        {% set faq_trans_i = faq_trans_i + 1 %}
+                                        {% set faq_question = faq_trans_pre ~ faq_trans_i ~ faq_question_key%}
+                                        {% set faq_set = faq_question|trans != faq_question %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="row cta-box-outer-row">
+                                <div class="col-12 cta-box-outer mt-4">
+                                    {% include '@App/Default/_home_cta_buttons.html.twig' %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
