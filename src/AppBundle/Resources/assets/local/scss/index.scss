@@ -139,6 +139,18 @@
   text-align: left;
 }
 
+@include media-breakpoint-down(md) {
+  .news-box {
+    padding: 20px;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .news-box {
+    padding: 15px;
+  }
+}
+
 
 .fact-list {
   list-style: none;
@@ -231,7 +243,7 @@ h3 {
 .news-carousel {
   list-style: none;
   margin-left: -.2rem;
-  overflow: hidden;
+  // overflow: hidden;
   padding: 0 0 0 .2rem;
 
   .news-panel {
@@ -356,7 +368,7 @@ h3 {
   }
 
   .twitter-card {
-    font-size: .9rem;
+    font-size: .8rem;
   }
 
   .home-feature {
@@ -447,5 +459,11 @@ h3 {
 
   .tweet-name {
     display: none;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .twitter-card {
+    font-size: .78rem;
   }
 }

@@ -1,40 +1,40 @@
-/* line 5, assetic_compasserI7IP.scss */
+/* line 5, assetic_compassFlukb7.scss */
 .map-row-wrapper {
   position: relative;
 }
 
-/* line 9, assetic_compasserI7IP.scss */
+/* line 9, assetic_compassFlukb7.scss */
 .google-map-outer {
   text-align: center;
 }
 
-/* line 13, assetic_compasserI7IP.scss */
+/* line 13, assetic_compassFlukb7.scss */
 .google-map {
   margin-left: 40px;
 }
-/* line 16, assetic_compasserI7IP.scss */
+/* line 16, assetic_compassFlukb7.scss */
 .google-map.actual {
   position: absolute;
   top: 0;
 }
 
-/* line 22, assetic_compasserI7IP.scss */
+/* line 22, assetic_compassFlukb7.scss */
 .borough-card {
   display: none;
 }
 
 @media (max-width: 991px) {
-  /* line 27, assetic_compasserI7IP.scss */
+  /* line 27, assetic_compassFlukb7.scss */
   .google-map-outer {
     padding: 0;
   }
 
-  /* line 31, assetic_compasserI7IP.scss */
+  /* line 31, assetic_compassFlukb7.scss */
   .google-map {
     margin-left: 0;
   }
 
-  /* line 35, assetic_compasserI7IP.scss */
+  /* line 35, assetic_compassFlukb7.scss */
   .map-row-wrapper {
     margin-top: 0;
   }
