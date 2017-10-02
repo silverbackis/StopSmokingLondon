@@ -32,3 +32,21 @@ h3 {
   display: inline-block;
   max-width: 720px;
 }
+
+.card.card-outline-success h4 {
+  color: #00a2a4;
+}
+
+.tel {
+  color: #00a2a4;
+  background-image: url('/bundles/app/images/button/phone-yellow.png');
+}
+
+.btn-cta.btn-success {
+  background-color: #00a2a4;
+  border-color: #045858;
+}
+
+.tel-cont:not(.website) .tel-text {
+  background-image: url('/bundles/app/images/button/phone-yellow.png');
+}
