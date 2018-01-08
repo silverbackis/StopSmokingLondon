@@ -11,14 +11,6 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block javascripts %}
-  {{ parent() }}
-    <script type="application/javascript">
-      if (top.location.href !== self.location.href)
-        top.location.href = self.location.href;
-    </script>
-{% endblock %}
-
 {% block page_content %}
     {{ parent() }}
     <div class="container-fluid pb-md-5">
