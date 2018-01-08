@@ -219,6 +219,7 @@ endroid_twitter:
 lexik_translation:
     fallback_locale: [en]
     managed_locales: [en]
+    grid_input_type: textarea
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
