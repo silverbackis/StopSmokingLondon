@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row block-text text-center no-gutters">
                                     <div class="col-12 about-block-text">
-                                        <h4>{{ 'about.title'|trans }}</h4>
+                                        {# <h4>{{ 'about.title'|trans }}</h4> #}
                                         {{ 'about.text'|trans|replace({'**HELPLINE**': '<a href="tel:+44' ~ 'service_launched.telephone.number'|trans({}, 'telephone_service')|replace({" ": ""})|slice(1) ~ '">' ~ 'service_launched.telephone.number'|trans({}, 'telephone_service') ~ '</a>'})|markdown }}
                                     </div>
                                 </div>
