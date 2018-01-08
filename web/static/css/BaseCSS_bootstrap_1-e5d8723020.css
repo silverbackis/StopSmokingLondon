@@ -10327,13 +10327,13 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   }
 }
 
-/* line 4, assetic_compass4jjEwf.scss */
+/* line 4, assetic_compassYKeI8t.scss */
 .col-auto {
   flex: 0 0 auto;
   width: auto;
 }
 
-/* line 9, assetic_compass4jjEwf.scss */
+/* line 9, assetic_compassYKeI8t.scss */
 body,
 html {
   color: #646464;
@@ -10351,7 +10351,7 @@ html {
   text-size-adjust: 100%;
 }
 
-/* line 22, assetic_compass4jjEwf.scss */
+/* line 22, assetic_compassYKeI8t.scss */
 button,
 input,
 optgroup,
@@ -10364,12 +10364,12 @@ textarea {
   letter-spacing: -.01rem;
 }
 
-/* line 30, assetic_compass4jjEwf.scss */
+/* line 30, assetic_compassYKeI8t.scss */
 button {
   cursor: pointer;
 }
 
-/* line 34, assetic_compass4jjEwf.scss */
+/* line 34, assetic_compassYKeI8t.scss */
 .column {
   display: flex;
   flex-direction: column;

@@ -1,4 +1,4 @@
-/* line 5, assetic_compassrYh39w.scss */
+/* line 5, assetic_compasso1mOXU.scss */
 .home-feature {
   background: #51bce6;
   height: 250px;
@@ -6,15 +6,15 @@
   position: relative;
   z-index: 1;
 }
-/* line 12, assetic_compassrYh39w.scss */
+/* line 12, assetic_compasso1mOXU.scss */
 .home-feature > [class*="col-"] {
   z-index: 2;
 }
-/* line 16, assetic_compassrYh39w.scss */
+/* line 16, assetic_compasso1mOXU.scss */
 .home-feature .jumbotron-feature-image-outer {
   display: block;
 }
-/* line 20, assetic_compassrYh39w.scss */
+/* line 20, assetic_compasso1mOXU.scss */
 .home-feature .jumbotron-feature-image {
   background-image: url("/bundles/app/images/main/header_home.jpg");
   background-size: 2440px 300px;
@@ -22,7 +22,7 @@
   z-index: 1;
 }
 
-/* line 28, assetic_compassrYh39w.scss */
+/* line 28, assetic_compasso1mOXU.scss */
 .welcome {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -33,26 +33,26 @@
   margin-bottom: 0;
   padding-left: 30px;
 }
-/* line 34, assetic_compassrYh39w.scss */
+/* line 34, assetic_compasso1mOXU.scss */
 .welcome .small {
   background: #0a76e5;
   display: inline-block;
   font-size: 1.6rem;
   padding: .4rem .8rem;
 }
-/* line 41, assetic_compassrYh39w.scss */
+/* line 41, assetic_compasso1mOXU.scss */
 .welcome .large {
   background: #1866b8;
   display: inline-block;
   padding: .3rem .8rem .7rem;
 }
 
-/* line 48, assetic_compassrYh39w.scss */
+/* line 48, assetic_compasso1mOXU.scss */
 .facts-header-outer {
   overflow: hidden;
 }
 
-/* line 52, assetic_compassrYh39w.scss */
+/* line 52, assetic_compasso1mOXU.scss */
 .facts-header {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -64,35 +64,35 @@
   text-align: center;
 }
 
-/* line 59, assetic_compassrYh39w.scss */
+/* line 59, assetic_compasso1mOXU.scss */
 .home-bottom {
   flex-grow: 1;
   max-height: 100%;
   overflow: hidden;
 }
 
-/* line 67, assetic_compassrYh39w.scss */
+/* line 67, assetic_compasso1mOXU.scss */
 .triples-row > .col-lg,
 .triples-row > [class*="col-"] {
   padding-bottom: 30px;
   padding-top: 30px;
 }
-/* line 73, assetic_compassrYh39w.scss */
+/* line 73, assetic_compasso1mOXU.scss */
 .triples-row .home-features-outer {
   max-width: 750px;
 }
-/* line 77, assetic_compassrYh39w.scss */
+/* line 77, assetic_compasso1mOXU.scss */
 .triples-row .home-right {
   max-width: 550px;
   text-align: center;
 }
-/* line 81, assetic_compassrYh39w.scss */
+/* line 81, assetic_compasso1mOXU.scss */
 .triples-row .home-right.top {
   display: none;
   padding-bottom: 0;
 }
 
-/* line 88, assetic_compassrYh39w.scss */
+/* line 88, assetic_compasso1mOXU.scss */
 .home-features-list {
   font-size: .9rem;
   line-height: 1.8;
@@ -101,100 +101,100 @@
   padding: 0;
   text-align: center;
 }
-/* line 96, assetic_compassrYh39w.scss */
+/* line 96, assetic_compasso1mOXU.scss */
 .home-features-list li {
   border-bottom: 1px solid #d0d0d0;
   border-top: 1px solid #fff;
   margin: 0;
   padding: 0;
 }
-/* line 102, assetic_compassrYh39w.scss */
+/* line 102, assetic_compasso1mOXU.scss */
 .home-features-list li:first-child {
   border-top: 0;
 }
-/* line 106, assetic_compassrYh39w.scss */
+/* line 106, assetic_compasso1mOXU.scss */
 .home-features-list li:last-child {
   border-bottom: 0;
 }
-/* line 112, assetic_compassrYh39w.scss */
+/* line 112, assetic_compasso1mOXU.scss */
 .home-features-list .feature-image.london {
   height: 139.5px;
   width: 180px;
 }
-/* line 117, assetic_compassrYh39w.scss */
+/* line 117, assetic_compasso1mOXU.scss */
 .home-features-list .feature-image.chances {
   height: 161px;
   width: 160.5px;
 }
-/* line 122, assetic_compassrYh39w.scss */
+/* line 122, assetic_compasso1mOXU.scss */
 .home-features-list .feature-image.info {
   height: 148px;
   width: 148px;
 }
-/* line 128, assetic_compassrYh39w.scss */
+/* line 128, assetic_compasso1mOXU.scss */
 .home-features-list .container-fluid {
   margin: 40px auto;
 }
-/* line 132, assetic_compassrYh39w.scss */
+/* line 132, assetic_compasso1mOXU.scss */
 .home-features-list p {
   margin: 0;
 }
 
-/* line 137, assetic_compassrYh39w.scss */
+/* line 137, assetic_compasso1mOXU.scss */
 .news-box {
   padding: 35px;
   text-align: left;
 }
 
 @media (max-width: 991px) {
-  /* line 143, assetic_compassrYh39w.scss */
+  /* line 143, assetic_compasso1mOXU.scss */
   .news-box {
     padding: 20px;
   }
 }
 @media (max-width: 575px) {
-  /* line 149, assetic_compassrYh39w.scss */
+  /* line 149, assetic_compasso1mOXU.scss */
   .news-box {
     padding: 15px;
   }
 }
-/* line 155, assetic_compassrYh39w.scss */
+/* line 155, assetic_compasso1mOXU.scss */
 .fact-list {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 240px;
 }
-/* line 161, assetic_compassrYh39w.scss */
+/* line 161, assetic_compasso1mOXU.scss */
 .fact-list li {
   margin: 30px 0 0;
   padding: 0;
   text-align: center;
 }
-/* line 166, assetic_compassrYh39w.scss */
+/* line 166, assetic_compasso1mOXU.scss */
 .fact-list li:first-child {
   margin-top: 0;
 }
-/* line 171, assetic_compassrYh39w.scss */
+/* line 171, assetic_compasso1mOXU.scss */
 .fact-list .fact-icon {
   margin-bottom: 5px;
 }
-/* line 174, assetic_compassrYh39w.scss */
+/* line 174, assetic_compasso1mOXU.scss */
 .fact-list .fact-icon.map {
   height: 71.5px;
   width: 91px;
 }
-/* line 179, assetic_compassrYh39w.scss */
+/* line 179, assetic_compasso1mOXU.scss */
 .fact-list .fact-icon.stop {
   height: 87px;
   width: 87px;
 }
-/* line 184, assetic_compassrYh39w.scss */
+/* line 184, assetic_compasso1mOXU.scss */
 .fact-list .fact-icon.stop-smoking {
   height: 82px;
   width: 81.5px;
 }
-/* line 190, assetic_compassrYh39w.scss */
+/* line 190, assetic_compasso1mOXU.scss */
 .fact-list .fact {
   color: #0a76e5;
   font-family: 'Open Sans', sans-serif;
@@ -204,7 +204,7 @@
   display: block;
 }
 
-/* line 196, assetic_compassrYh39w.scss */
+/* line 196, assetic_compasso1mOXU.scss */
 h3 {
   color: #0a76e5;
   font-family: 'Open Sans', sans-serif;
@@ -214,23 +214,23 @@ h3 {
   margin-bottom: 1rem;
 }
 
-/* line 201, assetic_compassrYh39w.scss */
+/* line 201, assetic_compasso1mOXU.scss */
 .h3-outer {
   margin-bottom: 1rem;
   position: relative;
 }
-/* line 205, assetic_compassrYh39w.scss */
+/* line 205, assetic_compasso1mOXU.scss */
 .h3-outer h3 {
   margin-bottom: 0;
 }
 
-/* line 210, assetic_compassrYh39w.scss */
+/* line 210, assetic_compasso1mOXU.scss */
 .news-header {
   display: inline-block;
   position: relative;
 }
 
-/* line 215, assetic_compassrYh39w.scss */
+/* line 215, assetic_compasso1mOXU.scss */
 .twitter-profile-link {
   color: #8b969b;
   font-family: 'Open Sans', sans-serif;
@@ -241,35 +241,35 @@ h3 {
   position: absolute;
   right: 0;
 }
-/* line 221, assetic_compassrYh39w.scss */
+/* line 221, assetic_compasso1mOXU.scss */
 .twitter-profile-link .icon {
   background: url("/bundles/app/images/icon/twitter_module.png") 50% 0 no-repeat;
   background-size: 15px 200%;
   height: 12.5px;
   width: 15px;
 }
-/* line 228, assetic_compassrYh39w.scss */
+/* line 228, assetic_compasso1mOXU.scss */
 .twitter-profile-link:hover, .twitter-profile-link:focus {
   color: #0a76e5;
 }
-/* line 232, assetic_compassrYh39w.scss */
+/* line 232, assetic_compasso1mOXU.scss */
 .twitter-profile-link:hover .icon, .twitter-profile-link:focus .icon {
   background-position: 50% 100%;
 }
 
-/* line 238, assetic_compassrYh39w.scss */
+/* line 238, assetic_compasso1mOXU.scss */
 .carousel-container {
   padding-bottom: 60px;
   position: relative;
 }
 
-/* line 243, assetic_compassrYh39w.scss */
+/* line 243, assetic_compasso1mOXU.scss */
 .news-carousel {
   list-style: none;
   margin-left: -.2rem;
   padding: 0 0 0 .2rem;
 }
-/* line 249, assetic_compassrYh39w.scss */
+/* line 249, assetic_compasso1mOXU.scss */
 .news-carousel .news-panel {
   box-sizing: content-box;
   display: inline-block;
@@ -280,7 +280,7 @@ h3 {
   width: 100%;
 }
 
-/* line 260, assetic_compassrYh39w.scss */
+/* line 260, assetic_compasso1mOXU.scss */
 .news-carousel-indicators {
   display: none;
   position: absolute;
@@ -294,7 +294,7 @@ h3 {
   margin-left: 15%;
   list-style: none;
 }
-/* line 273, assetic_compassrYh39w.scss */
+/* line 273, assetic_compasso1mOXU.scss */
 .news-carousel-indicators li {
   background-color: #0a76e5;
   border-radius: 50%;
@@ -307,12 +307,12 @@ h3 {
   text-indent: -999px;
   width: 20px;
 }
-/* line 285, assetic_compassrYh39w.scss */
+/* line 285, assetic_compasso1mOXU.scss */
 .news-carousel-indicators li.active {
   background-color: #0cf;
 }
 
-/* line 291, assetic_compassrYh39w.scss */
+/* line 291, assetic_compasso1mOXU.scss */
 .twitter-card {
   color: #646464;
   font-family: 'Open Sans', sans-serif;
@@ -324,12 +324,12 @@ h3 {
   border-radius: 0;
   width: 100%;
 }
-/* line 298, assetic_compassrYh39w.scss */
+/* line 298, assetic_compasso1mOXU.scss */
 .twitter-card .card-block {
   padding-bottom: 1rem;
   padding-top: 1.25rem;
 }
-/* line 303, assetic_compassrYh39w.scss */
+/* line 303, assetic_compasso1mOXU.scss */
 .twitter-card .twitter-user {
   color: #8b969b;
   font-family: 'Open Sans', sans-serif;
@@ -337,23 +337,23 @@ h3 {
   font-weight: 600;
   letter-spacing: -.01rem;
 }
-/* line 306, assetic_compassrYh39w.scss */
+/* line 306, assetic_compasso1mOXU.scss */
 .twitter-card .twitter-user img {
   background: #0a76e5;
   border: 0;
   height: 23px;
   width: 23px;
 }
-/* line 313, assetic_compassrYh39w.scss */
+/* line 313, assetic_compasso1mOXU.scss */
 .twitter-card .twitter-user h5 {
   font-size: inherit;
   font-weight: inherit;
 }
-/* line 318, assetic_compassrYh39w.scss */
+/* line 318, assetic_compasso1mOXU.scss */
 .twitter-card .twitter-user:hover {
   color: #0a76e5;
 }
-/* line 324, assetic_compassrYh39w.scss */
+/* line 324, assetic_compasso1mOXU.scss */
 .twitter-card .view-tweet {
   color: #8b969b;
   font-family: 'Open Sans', sans-serif;
@@ -361,28 +361,28 @@ h3 {
   font-weight: normal;
   letter-spacing: -.01rem;
 }
-/* line 327, assetic_compassrYh39w.scss */
+/* line 327, assetic_compasso1mOXU.scss */
 .twitter-card .view-tweet:hover {
   color: #0a76e5;
 }
 
 @media (max-width: 1199px) {
-  /* line 334, assetic_compassrYh39w.scss */
+  /* line 334, assetic_compasso1mOXU.scss */
   .home-features-list {
     font-size: .82rem;
   }
 
-  /* line 338, assetic_compassrYh39w.scss */
+  /* line 338, assetic_compasso1mOXU.scss */
   .news-header {
     display: block;
   }
 
-  /* line 342, assetic_compassrYh39w.scss */
+  /* line 342, assetic_compasso1mOXU.scss */
   .twitter-profile-link {
     display: inline-block;
     position: relative;
   }
-  /* line 346, assetic_compassrYh39w.scss */
+  /* line 346, assetic_compasso1mOXU.scss */
   .twitter-profile-link::before {
     content: ' ';
     display: block;
@@ -391,124 +391,124 @@ h3 {
     width: 100%;
   }
 
-  /* line 355, assetic_compassrYh39w.scss */
+  /* line 355, assetic_compasso1mOXU.scss */
   .twitter-card {
     font-size: .82rem;
   }
 }
 @media (max-width: 991px) {
-  /* line 361, assetic_compassrYh39w.scss */
+  /* line 361, assetic_compasso1mOXU.scss */
   .home-features-list {
     font-size: .9rem;
     padding: 0 20px;
   }
-  /* line 365, assetic_compassrYh39w.scss */
+  /* line 365, assetic_compasso1mOXU.scss */
   .home-features-list p {
     margin-top: 1rem;
   }
 
-  /* line 370, assetic_compassrYh39w.scss */
+  /* line 370, assetic_compasso1mOXU.scss */
   .twitter-card {
     font-size: .8rem;
   }
 
-  /* line 374, assetic_compassrYh39w.scss */
+  /* line 374, assetic_compasso1mOXU.scss */
   .home-feature {
     background-position: 45% 66%;
     background-size: auto 427.5px;
     height: 200px;
   }
 
-  /* line 380, assetic_compassrYh39w.scss */
+  /* line 380, assetic_compasso1mOXU.scss */
   .welcome {
     font-size: 1.5rem;
     margin-top: 4.5rem;
     padding-left: 0;
   }
-  /* line 385, assetic_compassrYh39w.scss */
+  /* line 385, assetic_compasso1mOXU.scss */
   .welcome .small {
     font-size: 1rem;
   }
-  /* line 389, assetic_compassrYh39w.scss */
+  /* line 389, assetic_compasso1mOXU.scss */
   .welcome .large {
     padding: .4rem .8rem .6rem;
   }
 
-  /* line 394, assetic_compassrYh39w.scss */
+  /* line 394, assetic_compasso1mOXU.scss */
   .fact-list {
     width: 100%;
   }
-  /* line 397, assetic_compassrYh39w.scss */
+  /* line 397, assetic_compasso1mOXU.scss */
   .fact-list .fact {
     font-size: .95rem;
   }
 
-  /* line 402, assetic_compassrYh39w.scss */
+  /* line 402, assetic_compasso1mOXU.scss */
   h3,
   .h3-outer {
     text-align: center;
   }
 
-  /* line 407, assetic_compassrYh39w.scss */
+  /* line 407, assetic_compasso1mOXU.scss */
   .news-carousel {
     margin-left: 0;
     padding-left: 0;
   }
 
-  /* line 412, assetic_compassrYh39w.scss */
+  /* line 412, assetic_compasso1mOXU.scss */
   .carousel-container {
     padding-bottom: 0;
   }
 
-  /* line 416, assetic_compassrYh39w.scss */
+  /* line 416, assetic_compasso1mOXU.scss */
   .news-carousel-indicators {
     display: none !important;
   }
 
-  /* line 420, assetic_compassrYh39w.scss */
+  /* line 420, assetic_compasso1mOXU.scss */
   .news-panel {
     display: block !important;
   }
 
-  /* line 424, assetic_compassrYh39w.scss */
+  /* line 424, assetic_compasso1mOXU.scss */
   .twitter-card .retweet-tag {
     margin-left: -1rem;
   }
 
-  /* line 429, assetic_compassrYh39w.scss */
+  /* line 429, assetic_compasso1mOXU.scss */
   .triples-row .home-right {
     max-width: none;
   }
-  /* line 433, assetic_compassrYh39w.scss */
+  /* line 433, assetic_compasso1mOXU.scss */
   .triples-row .home-right.top {
     display: block;
   }
 
-  /* line 438, assetic_compassrYh39w.scss */
+  /* line 438, assetic_compasso1mOXU.scss */
   .facts-header {
     font-size: .9rem;
     padding: 1.5rem 20px;
   }
 
-  /* line 444, assetic_compassrYh39w.scss */
+  /* line 444, assetic_compasso1mOXU.scss */
   .triples-row > .col-lg,
   .triples-row > [class*="col-"] {
     padding: 0;
   }
 }
 @media (max-width: 767px) {
-  /* line 454, assetic_compassrYh39w.scss */
+  /* line 454, assetic_compasso1mOXU.scss */
   .home-right.top .cta-buttons-box {
     padding-top: 30px;
   }
 
-  /* line 460, assetic_compassrYh39w.scss */
+  /* line 460, assetic_compasso1mOXU.scss */
   .tweet-name {
     display: none;
   }
 }
 @media (max-width: 575px) {
-  /* line 466, assetic_compassrYh39w.scss */
+  /* line 466, assetic_compasso1mOXU.scss */
   .twitter-card {
     font-size: .78rem;
   }

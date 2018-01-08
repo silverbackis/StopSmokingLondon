@@ -298,238 +298,53 @@ select.selectpicker {
   float: none;
 }
 /*# sourceMappingURL=bootstrap-select.css.map */
-/* line 5, assetic_compass7ur2EF.scss */
-.map-row-wrapper {
-  position: relative;
-}
-
-/* line 9, assetic_compass7ur2EF.scss */
-.google-map-outer {
-  text-align: center;
-}
-
-/* line 13, assetic_compass7ur2EF.scss */
-.google-map {
-  margin-left: 40px;
-}
-/* line 16, assetic_compass7ur2EF.scss */
-.google-map.actual {
-  position: absolute;
-  top: 0;
-}
-
-/* line 22, assetic_compass7ur2EF.scss */
-.borough-card {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  /* line 27, assetic_compass7ur2EF.scss */
-  .google-map-outer {
-    padding: 0;
-  }
-
-  /* line 31, assetic_compass7ur2EF.scss */
-  .google-map {
-    margin-left: 0;
-  }
-
-  /* line 35, assetic_compass7ur2EF.scss */
-  .map-row-wrapper {
-    margin-top: 0;
-  }
-}
-
-/* line 6, assetic_compassmtJqwv.scss */
-.bootstrap-select .dropdown-menu {
-  min-height: 140px !important;
-}
-
-/* line 12, assetic_compassmtJqwv.scss */
-.page-header-2.postcode-header {
-  margin-top: 0;
-}
-/* line 16, assetic_compassmtJqwv.scss */
-.page-header-2.two-steps {
-  margin-bottom: 1.2rem;
-  padding: 0 15px;
-}
-
-/* line 22, assetic_compassmtJqwv.scss */
-.postcode-group,
-.borough-group {
-  margin-top: 1rem;
-}
-/* line 26, assetic_compassmtJqwv.scss */
-.postcode-group .form-text,
-.borough-group .form-text {
-  font-size: .8rem;
-}
-/* line 30, assetic_compassmtJqwv.scss */
-.postcode-group .btn-cta,
-.borough-group .btn-cta {
-  margin-left: 10px;
-}
-
-/* line 35, assetic_compassmtJqwv.scss */
-.form-group .btn-cta, .website-link {
-  font-size: 1.25rem;
-  line-height: 1.25;
-  padding: .71rem 1.5rem;
-}
-
-/* line 42, assetic_compassmtJqwv.scss */
-.form-group .btn-cta {
-  display: block;
-}
-/* line 47, assetic_compassmtJqwv.scss */
-.form-group .form-control-feedback {
-  font-size: .9rem;
-  font-weight: 600;
-  text-align: left;
-}
-
-/* line 54, assetic_compassmtJqwv.scss */
-.email-thanks {
-  display: none;
-  margin: .5rem 0 0;
-}
-/* line 58, assetic_compassmtJqwv.scss */
-.email-thanks h5 {
-  color: #15ce75;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: -.01rem;
-  margin: 0;
-}
-/* line 63, assetic_compassmtJqwv.scss */
-.email-thanks p {
-  color: #15ce75;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: -.01rem;
-  line-height: normal;
-}
-
-/* line 69, assetic_compassmtJqwv.scss */
-.website-link {
-  width: auto;
-}
-
-/* line 75, assetic_compassmtJqwv.scss */
-.borough-group .btn {
-  font-size: inherit;
-  padding: .7rem 1.5rem;
-}
-
-/* line 81, assetic_compassmtJqwv.scss */
-.row.hidden {
-  display: none;
-}
-/* line 84, assetic_compassmtJqwv.scss */
-.row.hidden + .stop-smoking-london-info-row {
-  display: none;
-}
-
-/* line 90, assetic_compassmtJqwv.scss */
-.website .tel {
-  display: none;
-}
-/* line 94, assetic_compassmtJqwv.scss */
-.website .btn-cta.hidden-md-up {
-  display: inline-block !important;
-  font-size: 1.25rem;
-  line-height: 1.25;
-  padding: .71rem 1.5rem;
-}
-
-/* line 102, assetic_compassmtJqwv.scss */
-.col-image {
-  height: 120px;
-  margin-bottom: 1.5rem;
+/* line 5, assetic_compassZpVaGJ.scss */
+.contact-row {
   margin-top: 1.5rem;
 }
-
-/* line 122, assetic_compassmtJqwv.scss */
-.alone-tips p {
+/* line 8, assetic_compassZpVaGJ.scss */
+.contact-row .col-12 {
+  text-align: left;
+}
+/* line 12, assetic_compassZpVaGJ.scss */
+.contact-row .form-control-label {
+  color: #1866b8;
   font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: .2rem;
+}
+/* line 19, assetic_compassZpVaGJ.scss */
+.contact-row .form-control-feedback {
+  font-size: .8rem;
+  font-weight: 600;
+}
+/* line 24, assetic_compassZpVaGJ.scss */
+.contact-row textarea {
+  height: 160px;
+  resize: none;
+}
+/* line 29, assetic_compassZpVaGJ.scss */
+.contact-row .submit-inner-row {
+  margin: 1.5rem auto 3rem;
+  text-align: center;
+}
+/* line 33, assetic_compassZpVaGJ.scss */
+.contact-row .submit-inner-row .btn-cta {
+  width: 70%;
 }
 
-@media (max-width: 1199px) {
-  /* line 129, assetic_compassmtJqwv.scss */
-  .page-header-2.postcode-header {
-    margin-top: 0;
-  }
-
-  /* line 134, assetic_compassmtJqwv.scss */
-  .postcode-group {
-    margin-bottom: .5rem;
-  }
-}
 @media (max-width: 991px) {
-  /* line 141, assetic_compassmtJqwv.scss */
-  .page-header-2.postcode-header {
-    margin-top: 1rem;
+  /* line 41, assetic_compassZpVaGJ.scss */
+  .block-text h3.text-success {
+    font-size: 1.2rem;
+  }
+  /* line 44, assetic_compassZpVaGJ.scss */
+  .block-text p.text-success {
+    font-size: .9rem;
   }
 
-  /* line 146, assetic_compassmtJqwv.scss */
-  .postcode-group,
-  .borough-group {
-    margin-top: .6rem;
-  }
-  /* line 150, assetic_compassmtJqwv.scss */
-  .postcode-group .form-text,
-  .borough-group .form-text {
-    font-size: .7rem;
-    margin-bottom: 0;
-  }
-  /* line 155, assetic_compassmtJqwv.scss */
-  .postcode-group .dropdown-menu,
-  .borough-group .dropdown-menu {
-    font-size: .8rem;
-  }
-
-  /* line 161, assetic_compassmtJqwv.scss */
-  .form-group .btn-cta,
-  .form-group .form-control-lg,
-  .form-group .btn-lg {
-    font-size: 1rem;
-    padding-left: .8rem;
-    padding-right: .8rem;
-  }
-
-  /* line 170, assetic_compassmtJqwv.scss */
-  .website-link {
-    font-size: 1rem;
-  }
-
-  /* line 175, assetic_compassmtJqwv.scss */
-  .form-group .form-control-feedback {
-    font-size: .8rem;
-    margin-bottom: .75rem;
-  }
-
-  /* line 181, assetic_compassmtJqwv.scss */
-  .top-map-row {
-    margin: 0;
-    padding: 0 15px;
-  }
-
-  /* line 187, assetic_compassmtJqwv.scss */
-  .alone-tips p {
-    font-size: .8rem;
-  }
-
-  /* line 193, assetic_compassmtJqwv.scss */
-  .jumbotron .h2-outer {
-    margin-top: 10px;
-  }
-}
-@media (max-width: 767px) {
-  /* line 201, assetic_compassmtJqwv.scss */
-  .card .form-control-lg {
+  /* line 49, assetic_compassZpVaGJ.scss */
+  .contact-row {
     margin-top: .5rem;
   }
 }

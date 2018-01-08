@@ -1,0 +1,90 @@
+/* line 7, assetic_compassUgmgNw.scss */
+.cta-box-outer {
+  text-align: center;
+}
+
+/* line 11, assetic_compassUgmgNw.scss */
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 720px;
+}
+
+/* line 16, assetic_compassUgmgNw.scss */
+h3 {
+  color: #0a76e5;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -.01rem;
+  margin-bottom: 1rem;
+}
+
+/* line 21, assetic_compassUgmgNw.scss */
+.block-text h4 ~ h5 {
+  margin-top: 2.5rem;
+}
+
+/* line 25, assetic_compassUgmgNw.scss */
+.block-text h5 {
+  color: #1866b8;
+  font-size: 1.1rem;
+}
+
+/* line 31, assetic_compassUgmgNw.scss */
+.orange-section .card-outline-success {
+  border-color: #ef9227;
+}
+/* line 33, assetic_compassUgmgNw.scss */
+.orange-section .card-outline-success h4 {
+  color: #ef9227;
+}
+/* line 37, assetic_compassUgmgNw.scss */
+.orange-section a {
+  font-weight: 600;
+}
+/* line 40, assetic_compassUgmgNw.scss */
+.orange-section h4,
+.orange-section a {
+  color: #ef9227;
+}
+/* line 44, assetic_compassUgmgNw.scss */
+.orange-section a.btn-tel.btn-cta {
+  width: 100%;
+  color: #fff;
+  background-color: #ef9227;
+  border-color: #9c6617;
+}
+@media (min-width: 768px) {
+  /* line 44, assetic_compassUgmgNw.scss */
+  .orange-section a.btn-tel.btn-cta {
+    font-size: 2rem;
+  }
+}
+
+/*
+.card.card-outline-success h4 {
+  color: $blue;
+}
+
+.about-block-text p:last-child {
+  margin-bottom: 0;
+}
+
+.card.card-outline-success h4 {
+  color: #00a2a4;
+}
+
+.tel {
+  color: #00a2a4;
+  background-image: url('/bundles/app/images/button/phone-yellow.png');
+}
+
+.btn-cta.btn-success {
+  background-color: #00a2a4;
+  border-color: #045858;
+}
+
+.tel-cont:not(.website) .tel-text {
+  background-image: url('/bundles/app/images/button/phone-yellow.png');
+}
+*/
