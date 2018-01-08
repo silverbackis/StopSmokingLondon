@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc9373553f213ebe2b95d701a551f3d2",
+    "content-hash": "a8f56e63a06696d455552f744dc51d89",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2342,30 +2342,23 @@
         },
         {
             "name": "silverbackis/bw-base-bundle",
-            "version": "1.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverbackis/BW-BaseBundle.git",
-                "reference": "872e6c99d6ed466818b054110a5c5979606be74e"
+                "reference": "6a4516f6f47d4126489e637cdbe6a099aa13aa70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverbackis/BW-BaseBundle/zipball/872e6c99d6ed466818b054110a5c5979606be74e",
-                "reference": "872e6c99d6ed466818b054110a5c5979606be74e",
+                "url": "https://api.github.com/repos/silverbackis/BW-BaseBundle/zipball/6a4516f6f47d4126489e637cdbe6a099aa13aa70",
+                "reference": "6a4516f6f47d4126489e637cdbe6a099aa13aa70",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
-                "sonata-project/seo-bundle": "^2.0",
-                "symfony/symfony": "3.2.*"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^3.0"
+                "php": "^7.0",
+                "sonata-project/seo-bundle": "^2.3"
             },
             "type": "symfony-bundle",
-            "extra": {
-                "dev-master": "1.x-dev"
-            },
             "autoload": {
                 "psr-4": {
                     "BW\\BaseBundle\\": "src/"
@@ -2394,7 +2387,8 @@
                 "sonta",
                 "symfony"
             ],
-            "time": "2017-03-30T18:18:23+00:00"
+            "abandoned": "silverbackis/common-js-bundle",
+            "time": "2017-11-23 14:14:32"
         },
         {
             "name": "sonata-project/exporter",
@@ -3400,6 +3394,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "silverbackis/bw-base-bundle": 20,
         "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
