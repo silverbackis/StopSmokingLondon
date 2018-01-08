@@ -726,18 +726,18 @@
   }
 }
 
+a.btn-tel.btn-cta {
+  font-size: 1.6rem;
+}
+
+.tel-cont:not(.website) .tel-text {
+  background: url($asset-image-base + 'button/phone.png') 0 55% no-repeat;
+  background-size: 20.5px 27.5px;
+  display: inline-block;
+  padding-left: 25.5px;
+}
+
 @include media-breakpoint-down(md) {
-  .btn-tel {
-    font-size: 1.6rem !important;
-  }
-
-  .tel-cont:not(.website) .tel-text {
-    background: url($asset-image-base + 'button/phone.png') 0 55% no-repeat;
-    background-size: 20.5px 27.5px;
-    display: inline-block;
-    padding-left: 25.5px;
-  }
-
   .tel {
     background-size: 18px auto;
     font-size: 1.7rem;

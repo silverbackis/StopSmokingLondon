@@ -1,13 +1,21 @@
 @import 'bower/bootstrap/scss/variables';
 @import 'bower/bootstrap/scss/mixins';
 @import 'bower/bootstrap/scss/custom';
+$feature: rgb(239, 146, 39);
+$feature-shadow: #9c6617;
 
-.card.card-outline-success h4 {
-  color: $blue;
+.cta-box-outer {
+  text-align: center;
 }
 
-.about-block-text p:last-child {
-  margin-bottom: 0;
+.cta-buttons-box {
+  display: inline-block;
+  max-width: 720px;
+}
+
+h3 {
+  @include open-sans(1.3rem, $blue, $semi-bold);
+  margin-bottom: 1rem;
 }
 
 .block-text h4 ~ h5 {
@@ -19,18 +27,38 @@
   font-size: 1.1rem;
 }
 
-h3 {
-  @include open-sans(1.3rem, $blue, $semi-bold);
-  margin-bottom: 1rem;
+.orange-section {
+  .card-outline-success {
+    border-color: $feature;
+    h4 {
+      color: $feature;
+    }
+  }
+  a {
+    font-weight: 600;
+  }
+  h4,
+  a {
+    color: $feature;
+  }
+  a.btn-tel.btn-cta {
+    width: 100%;
+    color: $white;
+    background-color: $feature;
+    border-color: $feature-shadow;
+    @include media-breakpoint-up(md) {
+      font-size: 2rem;
+    }
+  }
 }
 
-.cta-box-outer {
-  text-align: center;
+/*
+.card.card-outline-success h4 {
+  color: $blue;
 }
 
-.cta-buttons-box {
-  display: inline-block;
-  max-width: 720px;
+.about-block-text p:last-child {
+  margin-bottom: 0;
 }
 
 .card.card-outline-success h4 {
@@ -50,3 +78,4 @@ h3 {
 .tel-cont:not(.website) .tel-text {
   background-image: url('/bundles/app/images/button/phone-yellow.png');
 }
+*/

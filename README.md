@@ -9,7 +9,9 @@ This website project is kept public to allow for peers to review and improve the
 
 Website created by British Websites (trading name of Silverback Internet Serices Ltd)
 ```bash
+gulp watch
 php bin/console lexik:translations:import
-php bin/console assetic:dump
+
 gulp
+php bin/console assetic:dump
 ```
