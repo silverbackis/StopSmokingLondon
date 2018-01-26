@@ -11,6 +11,15 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block javascripts %}
+  {{ parent() }}
+  {% javascripts
+    '@AppBundle/Resources/assets/local/js/helpline.js'
+    filter='?uglifyjs2' %}
+      <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+{% endblock %}
+
 {% block page_content %}
     {{ parent() }}
     <div class="container-fluid pb-md-5">
@@ -53,19 +62,34 @@
                                 <div class="col-12">
                                     <hr class="my-4" />
                                     <h4>{{ 'faq.title'|trans }}</h4>
+                                    <a class="btn btn-lg btn-primary btn-cta mt-2"
+                                       href="#"
+                                       style="width: 100%; max-width:500px;"
+                                       id="faq-btn"
+                                    >
+                                        <img src="{{ asset('bundles/app/images/button/faq_question.png') }}"
+                                             style="width: 28.5px; height: 29px; vertical-align: middle;"
+                                        />
+                                        <span class="pl-2 pr-2" style="vertical-align: middle;" id="faq-btn-text">
+                                            Show FAQs
+                                        </span>
+                                    </a>
                                     {% set faq_trans_pre = 'faq.' %}
                                     {% set faq_question_key = '.question' %}
                                     {% set faq_answer_key = '.answer' %}
                                     {% set faq_trans_i = 0 %}
                                     {% set faq_question = faq_trans_pre ~ faq_trans_i ~ faq_question_key%}
                                     {% set faq_set = faq_question|trans != faq_question %}
-                                    {% for i in 0..100 if faq_set %}
-                                        <h5>{{ faq_question|trans }}</h5>
-                                        {{ (faq_trans_pre ~ faq_trans_i ~ faq_answer_key)|trans|markdown }}
-                                        {% set faq_trans_i = faq_trans_i + 1 %}
-                                        {% set faq_question = faq_trans_pre ~ faq_trans_i ~ faq_question_key%}
-                                        {% set faq_set = faq_question|trans != faq_question %}
-                                    {% endfor %}
+                                    <div class="faqs-container d-none mt-4" id="faqs-container">
+                                        {% for i in 0..100 if faq_set %}
+                                            <h5>{{ faq_question|trans }}</h5>
+                                            {{ (faq_trans_pre ~ faq_trans_i ~ faq_answer_key)|trans|markdown }}
+                                            {% set faq_trans_i = faq_trans_i + 1 %}
+                                            {% set faq_question = faq_trans_pre ~ faq_trans_i ~ faq_question_key%}
+                                            {% set faq_set = faq_question|trans != faq_question %}
+                                        {% endfor %}
+                                    </div>
+                                    <hr class="my-4" />
                                 </div>
                             </div>
 
